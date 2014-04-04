@@ -1,0 +1,16 @@
+<!--{template header}-->
+<h2 class="title"><img src="image/app/blog.gif" />日志</h2>
+<div class="tabs_header">
+	<ul class="tabs">
+		<li$actives[me]><a href="space.php?do=menuset&view=me"><span>菜单设置</span></a></li>
+	</ul>
+</div>	
+请选择要保留的基本组件：
+<form action = "space.php?do=check" method = "post">
+<!--{loop $list $value}-->
+<input type="checkbox" name="$value[subject]" value ="$value[menusetid]" >$value[subject]<br>
+
+<!--{/loop}-->
+<input type="submit" value="提交">
+</form>
+<!--{template footer}-->

@@ -1,0 +1,30 @@
+.content {
+	padding: 0 3.125%;
+}
+
+.wrapperPic {
+	text-align: center;
+}
+.wrapperPic img {
+	width: 30%;
+	padding-right: 3.3%;
+}
+
+.content-text p {
+	line-height: 20px;
+}
+
+.cParagraph {
+	color: #737373;
+}
+
+.split {
+    background: url('./img/split.png') repeat-x;
+    height: 2px;
+    width: 100%;
+}
+
+#comment-panel  li
+{
+    line-height: 50px;
+}

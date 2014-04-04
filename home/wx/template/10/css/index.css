@@ -1,0 +1,284 @@
+* {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-user-select: none;
+}
+
+body {
+	font-family: 'Microsoft yahei' !important;
+	background: #efefef;
+	color: #707070;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+.wrapper_picture {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.wrapper_picture img {
+	vertical-align: bottom;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+#pic1,#pic2,#pic3,#pic4 {
+	position: absolute;
+	top: 0;
+	opacity: 0;
+}
+
+.title_pic {
+	width: 100%;
+	height: 35px;
+	position: relative;
+	margin-top: -35px;
+	background: rgba(0,0,0,0.5);
+	color: #fff;
+	font-size: 1em;
+}
+
+.title_text{
+	display: inline-block;
+	padding: 8px;
+}
+
+.dots {
+	float: right;
+	padding: 8px 5px; 
+}
+
+.dots img{
+	width: 10px;
+	padding-right: 2px;
+}
+
+.wrapper_icon table {
+	width: 100%;
+	text-align: center;
+	color: #707070;
+}
+
+.wrapper_icon td{
+	background: #fff;
+	border: solid 1px #dcdcdc;
+	border-radius: 5px;
+	padding-bottom: 13px;
+}
+
+.wrapper_icon img {
+	width: 50%;
+	max-width: 50px;
+	padding-top: 15px;
+	display: block;
+	margin:auto;
+	padding-bottom: 10px;
+}
+
+.discount_list, .rank, .wrapper_ad {
+	margin: 10px 8px 30px 8px;
+}
+
+.discount_list>img, .rank>img, .wrapper_ad>img {
+	width: 3px;
+}
+
+.discount_list>span, .rank>span, .wrapper_ad>span {
+	font-size: 1.2em;
+	vertical-align: middle;
+	display: inline-block;
+	padding-bottom: 8px;
+}
+
+.table_row {
+	padding: 0 0 13px 0;
+	width: 100%;
+}
+
+.div_left, .div_right {
+	width: 45%;
+	padding: 3px;
+	background: #fff;
+	border: solid 1px #dcdcdc;
+	display: inline-block;
+    margin-top: 20px;
+}
+
+.table_row img{
+	vertical-align: bottom;
+	width: 100%;
+}
+
+.discount, .rank {
+	clear: both;
+}
+
+.place {
+	position: relative;
+	height: 30px;
+	margin-top: -30px;
+	color: #fff;
+	background: rgba(0,0,0,0.5);
+}
+
+.place span {
+	display: inline-block;
+	padding: 5px;
+}
+
+.ad_price {
+	font-size: 1em;
+	padding: 10px 0 5px 3px;
+}
+
+.line_through_text {
+	display: inline-block;
+	padding: 0 0 3px 0;
+	color: #aeaeae;
+	text-decoration: line-through;
+}
+
+.discount_price {
+	color: #F04941;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul li {
+	height: 100px;
+	background: #fff;
+	display: inline-block;
+	width: 100%;
+	border: solid 1px #dfdfdf;
+	margin: 5px 0;
+}
+
+.list_item img {
+	/*padding: 7px 7px;
+	float: left;
+	width: 85px;*/
+	padding: 23px 7px;
+	float: left;
+	width: 55px;
+}
+
+.rank_num {
+	float: right;
+	display: inline-block;
+	font-size: 2.5em;
+	padding: 27px 35px;
+	color: #fff;
+	font-weight: bold;
+}
+
+.item_name_product, .item_name_product_top {
+	font-size: 1.3em;
+	color: #697253;
+	padding: 3px 0;
+}
+
+.item_name_product {
+	display: inline-block;
+}
+
+.item_name_product_top, .item_name_product {
+	padding-top: 20px;
+	display: block;
+}
+
+.price_text, .rank_price_text {
+  /*  border:1px solid black;*/
+
+	display: inline-block;
+	padding: 3px 20px 0 0;
+	color: #a1a1a1;
+	margin-top:-30px;
+}
+
+.price_text {
+	float: right;
+}
+
+.price {
+     /*font-size: 1.3em;*/
+	font-size: 1.0em;
+	color: #eb5733;
+}
+
+.address {
+	line-height: 1em;
+	font-size: 0.9em;
+	color: #a1a1a1;
+}
+
+.pre_price {
+/*	padding: 5px 10px 3px 0;
+	display: inline-block;
+	color: #aeaeae;
+	text-decoration: line-through;*/
+	padding: 0px 10px 3px 0;
+	display: inline-block;
+	color: #aeaeae;
+	text-decoration: line-through;
+	position: relative;
+    margin-left: 67px;
+	top: -28px;
+}
+
+#btn_top {
+	position: fixed;
+	width: 50px;
+	bottom: 30px;
+	right: 10px;
+}
+
+/*rank色块*/
+#rank_num_1 {
+	background: #509216;
+}
+
+#rank_num_2 {
+	background: #60AF16;
+}
+
+#rank_num_3 {
+	background: #73BC21;
+}
+
+#rank_num_4 {
+	background: #8AC61E;
+}
+
+#rank_num_5 {
+	background: #A3CF1F;
+}
+
+.main_menu
+{
+   
+   float:left;
+   width:100%;
+   margin-bottom:20px;
+}
+
+.menu_choice
+{
+	/*border:1px solid black;*/
+	text-align:center ;
+	float:left;
+	background-color:#fff;
+	
+	padding-bottom:10px;
+	width:27%;
+	margin-top:20px;
+	margin-left:4.5%;
+}

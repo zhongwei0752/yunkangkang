@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+
+
+
+    <link rel = "stylesheet" type = "text/css" href = "template/9/css/main.css">
+    <script type="text/javascript" src="template/9/js/jquery-v2.0.2.js"></script>
+    <script type="text/javascript" src="template/9/js/mobiscroll.custom-2.5.4.min.js"></script>
+    <script src="template/9/js/scrollbox.js"></script>
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <link rel="stylesheet" href="template/9/css/mobiscroll.custom-2.5.4.min.css" />
+    <script type="text/javascript" src="template/9/js/js/jquery.query.js"></script>
+    <script type="text/javascript" src="template/9/js/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="template/9/js/feed.js"></script>
+
+
+
+
+	<link rel="stylesheet" href="template/9/css/base.css" />
+	<link rel="stylesheet" href="template/9/css/common.css" />
+	<link rel="stylesheet" href="template/9/css/contentList.css" />
+	<link rel="stylesheet" href="template/9/css/info.css" />
+	<link rel="stylesheet" href="template/9/css/button.css" />
+
+
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var anyTransformY = function(target, distance) {
+                $(target).css("-webkit-transform", "translateY("+distance+")");
+            };
+            anyTransformY(".contentTitle", "40px");
+            anyTransformY(".contentHide-button", "-35px");
+
+
+            $('#nav').mobiscroll().select( {
+                theme: 'android-ics',
+                lang: 'zh',
+                display: 'bottom',
+                mode: 'scroller',
+                inputClass: 'i-txt',
+                width: 200
+            });
+            $('#show').click(function() {
+                $('#nav').mobiscroll('show');
+                return false;
+            });
+
+            $('#clearSelect').click(function() {
+                $('#nav').val(1).change();
+                $('#nav'+'_dummy').val(' ');
+                return false;
+            });
+        });
+    </script>
+
+
+    <script id="detailTemplate" type="text/x-jquery-tmpl">
+        <a href="wx.php?do=detail&id={{= $_GET[idtype]id}}&uid={{= uid}}&idtype=$_GET[idtype]id&type=$_GET[idtype]&moblieclicknum=$bac['moblieclicknum']">
+            <table>
+                <tr>
+                    <td class="info_img">
+                        <img src="{{= image1url}}" alt="" />
+                    </td>
+                    <td class="info_text">
+                        <div class="list_item_text">
+                            <span class="list_item_title">{{= subject}}</span>
+                            <br />
+                            <span class="list_item_time">{{= dateline}}</span>
+                        </div>
+                    </td>
+                </tr>
+            </table><!-- one --  >
+        </a>
+
+        <div class="split">
+            <br />
+        </div>
+
+        </script>
+
+
+
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#nav'+'_dummy').hide();
+            $(".myMargin").click(function(){
+                getComment($('#idtype').val(), $('#uid').val(), $('#page').val(), $('#perpage').val());
+            })
+
+        });
+
+    </script>
+
+
+
+	<title>$appname</title>
+</head>
+
+
+
+
+<body>
+	<div class="contentHide">
+		<div class="contentTitle cPrice f20">$appname </div>
+
+    <!--  <div id="detail-panel"></div>
+        <div class="split">
+            <br />
+        </div>     -->
+
+
+        <div class="info_list_table">
+            <div id="detail-panel"></div>
+            <div class="split">
+                <br />
+            </div>
+        </div>
+        <!-- <ul class = "list mt55">
+              <div id="detail-panel"></div>
+          </ul>          -->
+
+        <!--  <div class="button myMargin">
+              <a href="" class="f20 cWhite">更多</a>
+          </div>   -->
+
+        <input type = "button"  onclick="getComment($('#idtype').val(), $('#uid').val(), $('#page').val(), $('#perpage').val());" value = "更多" class = "more_button"  />
+        <input type="hidden" id="id" name="id" value="$_GET[id]"/>
+        <input type="hidden" id="idtype" name="idtype" value="$_GET[idtype]"/>
+        <input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
+        <input type="hidden" id="page" name="page" value="2"/>
+        <input type="hidden" id="perpage" name="perpage" value="4"/>
+        <div style = "display: none;">
+            <select name="" id="demo" class="f-dd">
+                <option value="wx.php?do=home&uid=$_GET[uid]">首页</option>
+                <!--{loop $zhongwei $value}-->
+                <option value="wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]">$value[subject]</option>
+                <!--{/loop}-->
+                <!--{if $zhongwei1}-->
+                <!--{loop $zhongwei1 $value1}-->
+                <option value="wx.php?do=feed&uid=$_GET[uid]&idtype=$value1[english]">$value1[subject]</option>
+                <!--{/loop}-->
+                <!--{/if}-->
+            </select>
+        </div>
+
+
+
+
+		<div class="contentHide-button tc w">
+			<a href="index.html"><img src="./template/9/img/btn_close.png" alt="" class="btnClose" /></a>
+		</div>
+
+        <div class="split">
+            <br />
+        </div>
+
+	</div>
+
+</body>
+</html>

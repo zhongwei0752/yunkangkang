@@ -1,0 +1,137 @@
+
+<!--{eval $_TPL['titles'] = array('在线沟通');}-->
+<!--{template header}-->
+<link rel="stylesheet" type="text/css" href="./template/default/jquery-mobile-fluid960.min.css">
+<link rel="stylesheet" type="text/css" href="./template/default/style1.css">
+<link type='text/css' href='./template/default/basic.css' rel='stylesheet' media='screen' />
+
+<!--{if !empty($_SGLOBAL[inajax])}-->
+	<div id="space_talk">
+		<h3 class="feed_header">
+			<a href="space.php?do=talk&view=me" class="r_option" target="_blank">一句话记录</a>
+			记录(共 $count 条)
+		</h3><br>
+
+		<!--{if $dolist}-->
+		<div class="talk_list">
+			<ol>
+			<!--{loop $dolist $dv}-->
+			<!--{eval $doid = $dv[doid];}-->
+				<li id="dl{$doid}">
+					<div class="talk">
+						<div class="talkcontent"><a href="space.php?uid=$dv[uid]">{$_SN[$dv[uid]]}</a>: <span>$dv[message]</span>
+						<span class="gray">(<!--{date('m-d H:i',$dv[dateline],1)}-->)</span>
+						<!--{if $dv[uid]==$_SGLOBAL[supe_uid]}--> <a href="cp.php?ac=talk&op=delete&doid=$doid&id=$dv[id]" id="talk_delete_{$doid}_{$dv[id]}" onclick="ajaxmenu(event, this.id)" class="re gray">删除</a> &nbsp;<!--{/if}-->
+						<a href="javascript:;" onclick="talkcomment_form($doid, 0);">回复</a>
+						</div>
+						
+						<!--{eval $list = $clist[$doid];}-->
+						<div class="sub_talk" id="docomment_$doid"<!--{if !$list}--> style="display:none;"<!--{/if}-->>
+							<span id="talkcomment_form_{$doid}_0"></span>
+							<!--{template space_talk_li}-->
+						</div>
+						
+					</div>
+				</li>
+			<!--{/loop}-->
+			</ol>
+			<div class='pagination'><ul>$multi</ul></div>
+		</div>
+		<!--{else}-->
+		<div class="c_form">现在还没有记录</div>
+		<!--{/if}-->
+	</div><br>
+	
+<!--{else}-->
+
+<!--{if $space[self]}-->
+
+            <div class="content" style="font-size:14px;">
+                 <div class="indexing">
+                 <span><a href="space.php?do=home">首页</a></span>><span>在线沟通</span>
+                 </div><!-- end -->
+                 <div class="bread container_12">
+                     <div class="bread_actived grid_1">
+                         在线沟通
+                     </div>
+                <a href="cp.php?ac=talk" class="btn grid_2">
+                      发布
+                     </a>
+                 </div>
+
+<!--{else}-->
+<!--{eval 
+	$_TPL['spacetitle'] = "记录";
+	$_TPL['spacemenus'][] = "<a href=\"space.php?uid=$space[uid]&do=talk&view=me\">TA的所有记录</a>";
+}-->
+<!--{template space_menu}-->
+<div class="h_status">按照发布时间排序</div>
+<!--{/if}-->
+
+<div class="content_detail_wrapper">
+
+
+	<!--{if $dolist}-->
+
+	<!--{loop $dolist $dv}-->
+		<!--{eval $doid = $dv[doid];}-->
+	<div class="content_list container_12">
+		<div class="grid_2">
+                             <div class="list_test ">
+                                  <h3>{$_SN[$dv[uid]]}:$dv[subject]</h3>
+                                  <p>$dv[message]</p> 
+                          
+					<div class="talk">
+						
+						
+
+						<a href="javascript:;" onclick="talkcomment_form($doid, 0);">回复</a>
+						<!--{if $dv[uid]==$_SGLOBAL[supe_uid]}--> <a href="cp.php?ac=talk&op=delete&doid=$doid&id=$dv[id]" id="talk_delete_{$doid}_{$dv[id]}" onclick="ajaxmenu(event, this.id)" class="re gray">删除</a> &nbsp;<!--{/if}-->
+						
+						<!--{eval $list = $clist[$doid];}-->
+			
+							<div class="sub_talk" id="talkcomment_$doid"<!--{if !$list}--> style="display:none;"<!--{/if}-->>
+							<span id="talkcomment_form_{$doid}_0"></span>
+							<!--{template space_talk_li}-->
+						</div>
+					
+					</div>
+			
+                             </div>
+                          </div>
+		
+		<br/>
+	
+				</div>
+	
+	<!--{/loop}-->
+
+<!--{else}-->
+<div class="c_form">
+	当前没有相应的信息。
+</div>
+<!--{/if}-->
+</div>
+<div class='pagination'><ul>$multi</ul></div>
+<div id="sidebar">
+	<!--{if $moodlist}-->
+	<div class="sidebox">
+		<h2 class="title">
+			<p class="r_option"><a href="space.php?uid=$space[uid]&do=mood">全部</a></p>
+			跟<!--{if $space[self]}-->我<!--{else}-->{$_SN[$space[uid]]}<!--{/if}-->同心情的朋友
+		</h2>
+		<ul class="avatar_list">
+			<!--{loop $moodlist $key $value}-->
+			<li>
+				<div class="avatar48"><a href="space.php?uid=$value[uid]&do=talk"><!--{avatar($value[uid],small)}--></a></div>
+				<p><a href="space.php?uid=$value[uid]" title="{$_SN[$value[uid]]}">{$_SN[$value[uid]]}</a></p>
+				<p class="gray"><!--{date('n月j日',$value[updatetime],1)}--></p>
+			</li>
+			<!--{/loop}-->
+		</ul>
+	</div>
+	<!--{/if}-->
+</div>
+<!--{/if}-->
+
+<!--{template footer}-->

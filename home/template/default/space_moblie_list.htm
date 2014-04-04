@@ -1,0 +1,134 @@
+<!--{eval $_TPL['titles'] = array('手机模版');}-->
+<!--{eval $friendsname = array(1 => '仅好友可见',2 => '指定好友可见',3 => '仅自己可见',4 => '凭密码可见');}-->
+  <style type="text/css">
+       h3{color: #727272;margin-top: 20px;font-weight:normal;}
+       .selected{ -webkit-box-shadow: 3px 3px 3px;
+                  -moz-box-shadow: 3px 3px 3px;
+                  box-shadow: 3px 3px 3px;
+                }
+  
+      .bg1{ background: url("./template/default/image/chosen_bg4.png");width:360px;height:210px;box-shadow: none!important;border: none!important;}
+      .open{ background: url("./template/default/image/chosen_bg3.png")!important;}
+      .open .price{color:#3EB2B8!important;}
+      .index_assembly_boxes .grid_6 .index_assembly_box .assembly_info{width:350px;margin-left:5px;}
+    </style>
+<!--{template header}-->
+    <link rel="stylesheet" type="text/css" href="./template/default/jquery-mobile-fluid960.min.css">
+    <link rel="stylesheet" type="text/css" href="./template/default/style1.css">
+<!--{if !empty($_SGLOBAL[inajax])}-->
+	<div id="space_blog" class="feed">
+		<h3 class="feed_header">
+			<a href="cp.php?ac=moblie" class="r_option" target="_blank">发布</a>
+		</h3>
+		<!--{if $count}-->
+		<ul class="line_list">
+		<!--{loop $list $value}-->
+			<li>
+				<span class="gray r_option"><!--{date('m-d H:i',$value[dateline],1)}--></span>
+				<h4><a href="space.php?uid=$space[uid]&do=moblie&id=$value[moblieid]" target="_blank" <!--{if $value[magiccolor]}--> class="magiccolor$value[magiccolor]"<!--{/if}-->>$value[subject]</a></h4>
+				<div class="detail">
+					$value[message]
+				</div>
+			</li>
+		<!--{/loop}-->
+		</ul>
+		<div class="page">$multi</div>
+		<!--{else}-->
+		<div class="c_form">还没有相关的手机模版。</div>
+		<!--{/if}-->
+	</div>
+<!--{else}-->
+
+<!--{if $space[self]}-->
+
+<div class="content" style="font-size:15px;">
+          
+                 <div class="indexing">
+                 <span><a href="space.php?do=home">首页</a></span>><span>手机模版</span>
+                 </div><!-- end -->
+                 <div class="bread container_12">
+                     <div class="bread_actived grid_1">
+                         手机模版
+                     </div>
+                      <!--{if {$_SN[$_SGLOBAL[supe_uid]]}=='admin'}-->
+                     <a href="cp.php?ac=moblie" class="btn grid_2">
+                      发布
+                     </a>
+                     <!--{/if}-->
+                 </div>	
+
+ 
+
+<!--{/if}-->
+		
+<div id="content" style="width:760px;">
+
+<div class="content_detail_wrapper">
+ 		<!--{if $list}-->
+    <br/>
+ 		<div class="container_12 index_assembly_boxes" style="margin-left:10px;">
+		    <!--{loop $list $value}-->  
+            <div class="grid_6">
+                <!--{if $value[num]==$space[moblieclicknum]}--> 
+                  <div class="index_assembly_box bg1" style="background: url('./template/default/image/chosen_bg3.png')!important;">
+                <!--{else}-->
+                  <div class="index_assembly_box bg1" >
+                <!--{/if}-->
+                    <div class="assembly_title" >
+                           <span class="title">$value[subject]</span><span style="color:red;margin-left:50px;"><!--{eval $hehe=$value[mobliecheak]}--><!--{if $hehe}-->(已购买)<!--{/if}--></span><span class="r_option" style="margin-right:10px;"><a href="space.php?uid=$value[uid]&do=$do&id=$value[moblieid]">详情>> </a></span>
+                     </div>
+
+                     <div class="assembly_info">
+                        <img src="$value[image1url]">
+                        <h5 style="padding-top:20px;">价格:$value[money]</h5>
+                        <!--{if $value[num]!=$space[moblieclicknum]}-->
+                        <!--{eval $hehe=$value[mobliecheak]}-->
+                        <!--{if $value[money]}-->
+                        <!--{if $hehe}--> 
+                         <form action="space.php?do=moblie" method="post">
+                        <input type="hidden" name="moblieusenum" value="$value[num]">    
+                        <a><input type="submit"  style="margin-left: 145px;margin-top:-50px;width:94px;" class="btn grid_2" value="应用"></input></a>
+                        </form>
+                        <!--{else}-->
+                        <form action="space.php?do=moblie" method="post">
+                        <input type="hidden" name="moblieclicknum" value="$value[num]">
+                        <input type="submit"  style="margin-left: 145px;margin-top:-50px;width:94px;" class="btn grid_2" value="购买"></input>
+                        </form>
+                        <!--{/if}-->
+                        <!--{else}-->
+                        <form action="space.php?do=moblie" method="post">
+                        <input type="hidden" name="moblieusenum" value="$value[num]">    
+                        <a><input type="submit"  style="margin-left: 145px;margin-top:-50px;width:94px;" class="btn grid_2" value="应用"></input></a>
+                        </form>
+                        <!--{/if}-->
+                        <!--{/if}-->
+                     </div>
+                </div>
+
+            </div><!-- end -->
+       
+          <!--{/loop}-->
+                   </div>
+      </div>
+
+		<!--{else}-->
+			<div class="c_form">还没有相关的手机模版。</div>
+		<!--{/if}-->
+          
+	</div>
+                     
+	<div class='pagination'><ul>$multi</ul></div>
+	
+	
+
+</div>
+
+
+<script>
+function fuidgoto(fuid) {
+	window.location.href = "space.php?do=moblie&view=we&fuid="+fuid;
+}
+</script>
+<!--{/if}-->
+	
+<!--{template footer}-->

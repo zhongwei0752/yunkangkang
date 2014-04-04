@@ -1,0 +1,2 @@
+<?PHP exit;?>	2013-09-04 16:15:36		58.63.140.157	204	/home/space.php?do=feed	updatetable('space', array('fakeid'=>,'weixinname'=>, 'wxkey'=>gh_e534f6e8083f,'weixinusername'=>1036303608,'weixinpassword'=>danzi2012),array('uid'=>204))
+<?PHP exit;?>	2013-09-04 16:15:47		58.63.140.157	204	/home/space.php?do=feed	updatetable('space', array('fakeid'=>,'weixinname'=> , 'wxkey'=>gh_e534f6e8083f,'weixinusername'=>1036303608,'weixinpassword'=>danzi2012),array('uid'=>204))

@@ -1,0 +1,11 @@
+.button {
+	line-height: 40px;
+	background: #133F5F;
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+
+.button:hover {
+	background: #046FA9;
+}

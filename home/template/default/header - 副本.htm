@@ -1,0 +1,157 @@
+<!--{if empty($_SGLOBAL['inajax'])}-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=$_SC[charset]" />
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<title><!--{if $_TPL['titles']}--><!--{loop $_TPL['titles'] $value}--><!--{if $value}-->$value - <!--{/if}--><!--{/loop}--><!--{/if}--><!--{if $_SN[$space[uid]]}-->{$_SN[$space[uid]]} - <!--{/if}-->$_SCONFIG[sitename] - Powered by UCenter Home</title>
+<script language="javascript" type="text/javascript" src="source/script_cookie.js"></script>
+<script language="javascript" type="text/javascript" src="source/script_common.js"></script>
+<script language="javascript" type="text/javascript" src="source/script_menu.js"></script>
+<script language="javascript" type="text/javascript" src="source/script_ajax.js"></script>
+<script language="javascript" type="text/javascript" src="source/script_face.js"></script>
+<script language="javascript" type="text/javascript" src="source/script_manage.js"></script>
+ <!-- Bootstrap -->
+   <!--  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen"> -->
+    <link rel="stylesheet" type="text/css" href="template/default/jquery-mobile-fluid960.min.css">
+    <link rel="stylesheet" type="text/css" href="template/default/style1.css">
+
+<style type="text/css">
+
+@import url(template/default/network.css);
+@import url(template/default/style.css);
+<!--{if $_TPL['css']}-->
+@import url(template/default/{$_TPL[css]}.css);
+<!--{/if}-->
+<!--{if !empty($_SGLOBAL['space_theme'])}-->
+@import url(theme/$_SGLOBAL[space_theme]/style.css);
+<!--{elseif $_SCONFIG[template] != 'default'}-->
+@import url(template/$_SCONFIG[template]/style.css);
+<!--{/if}-->
+<!--{if !empty($_SGLOBAL['space_css'])}-->
+$_SGLOBAL[space_css]
+<!--{/if}-->
+</style>
+<link rel="shortcut icon" href="image/favicon.ico" />
+<link rel="edituri" type="application/rsd+xml" title="rsd" href="xmlrpc.php?rsd=$space[uid]" />
+</head>
+<body>
+
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+	<div id="header">
+	<!--{if $_SGLOBAL['ad']['header']}--><div id="ad_header"><!--{ad/header}--></div><!--{/if}-->
+	 <div class="wrapper">
+	 <div class="navbar">
+            <div class="navbar-inner container_36">
+                
+                <a class="logo grid_1" href="space.php?do=home"><img src="./template/default/image/logo.png"></a>
+                <!--{if $_SGLOBAL[supe_uid]}-->
+                <a href="space.php?do=home" class="grid_2"><!--{if $_GET[do]=="home"}--><p class="nav_actived">首页</p> <!--{else}-->首页<!--{/if}--></a>
+                
+
+                <!--{else}-->
+                 <a href="index.php" class="grid_2">首页</a>
+                <!--{/if}-->
+                <!--{if $_SGLOBAL[supe_uid]}-->	
+                <!--{if $space[pmnum]}-->
+				<!--{if $space[pmnum]}--><a class="grid_2" href="space.php?do=pm&filter=newpm"><p>短消息</p><a href="space.php?do=pm" alt="短消息"><div class="message_pawpaw">$space[pmnum]</div></a><!--{/if}-->
+                 <!--{else}-->
+                <a class="grid_2" href="space.php?do=pm<!--{if !empty($_SGLOBAL['member']['newpm'])}-->&filter=newpm<!--{/if}-->"><!--{if $_GET[do]=="pm"}--><p class="nav_actived">消息</p> <!--{else}-->消息<!--{/if}--></a>
+
+	<!--{/if}-->
+				<a href="space.php?do=friend" class="grid_2"><!--{if $_GET[do]=="friend"}--><p class="nav_actived">客户列表</p> <!--{else}-->客户列表<!--{/if}--></a>
+				<!--{else}-->
+				<div class="grid_3" style="width:400px;display:inline-block;"></div>
+				<!--{/if}-->
+
+                <!--{if $_SGLOBAL[supe_uid]}-->
+               
+                <div class="grid_3"></div>
+                <div class="grid_4">
+                   <a href="cp.php?ac=profile"  style="float:left;padding-right:10px;"><!--{avatar($_SGLOBAL[supe_uid])}--></a>
+                   <span class="company_name">{$_SN[$_SGLOBAL[supe_uid]]}</span><br/>
+                   <a href="cp.php" class="header_btn setting_btn">设置</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="cp.php?ac=common&op=logout&uhash=$_SGLOBAL[uhash]"  class="header_btn quit_btn">退出</a> 
+                </div>
+         <!--{else}-->
+			<div class="grid_7"></div>
+
+                <div class="grid_4">
+                   <a href="do.php?ac=$_SCONFIG[register_action]"  style="float:left;padding-right:10px;"><!--{avatar($_SGLOBAL[supe_uid])}--></a>
+                   <span class="company_name">欢迎您</span><br/>
+                   <a href="do.php?ac=$_SCONFIG[login_action]" class="header_btn setting_btn">登录</a> &nbsp;&nbsp;&nbsp;&nbsp;<a href="do.php?ac=$_SCONFIG[register_action]"  class="header_btn quit_btn">注册</a> 
+                </div>
+		<!--{/if}-->
+	  </div>
+         </div>
+
+
+	<div id="wrap" style="width:1024px;">
+
+	<div>
+	<div id="main">
+	
+		<!--{if empty($_TPL['nosidebar'])}-->
+
+	<!--{if $zhong1}-->
+	<div id="app_sidebar">
+
+
+		<!--{if $_SGLOBAL[supe_uid]}-->
+		
+			<div class="side_bar" >
+              <div class="side_bar_inner" >
+                    <ul>
+                        <li class="side_header"><span class="title">基本组件</span><a href="space.php?do=menuset&view=me" class="manage_btn">管理</a></li>
+                        <!--{loop $zhongwei $value}-->
+						 <!--{if $value['english']==$_GET['do']||$value['english']==$_GET['ac']}--><li class="actived"><!--{else}--><li class="side_option"><!--{/if}--><a href="$value[url]">$value[subject]</a></li>
+						<!--{/loop}-->
+                       <!-- <li class="side_option actived"><a href="">企业介绍</a></li>-->
+                       
+                        <li class="side_header"><span class="title">高级组件</span><a href="space.php?do=menuset&view=me" class="manage_btn">管理</a></li>
+                        <li class="side_option"><a href="">客户管理</a></li>
+                        <li class="side_option"><a href="space.php?do=goods&view=me">商品管理</a></li>
+                        <li class="side_option"><a href="">订单管理</a></li>
+                        <li class="side_option"><a href="space.php?do=book">预约预定管理</a></li>
+                        <li class="side_option"><a href="space.php?do=recommend&view=me">焦点推荐</a></li>
+                        <li class="side_option"><a href="">群发</a></li>
+                        <li class="side_option"><a href="space.php?do=moblie&view=all">选择手机模板</a></li>
+                    </ul>
+              </div>
+         </div>
+			
+			<!--<div class="app_m">
+				<ul>
+					<!--{if {$_SN[$_SGLOBAL[supe_uid]]}=="admin"}-->
+					<!--<li><img src="image/app_add.gif"><a href="cp.php?ac=menuset" class="addApp">添加应用</a></li>
+					<!--{/if}-->
+					<!--<li><img src="image/app_set.gif"><a href="space.php?do=menuset&view=me" class="myApp">管理应用</a></li>
+				</ul>
+			</div>-->
+		
+		<!--{else}-->
+			<div class="bar_text">
+				<form id="loginform" name="loginform" action="do.php?ac=$_SCONFIG[login_action]&ref" method="post">
+				<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+					<p class="title">登录站点</p>
+					<p>用户名</p>
+					<p><input type="text" name="username" id="username" class="t_input" size="15" value="" /></p>
+					<p>密码</p>
+					<p><input type="password" name="password" id="password" class="t_input" size="15" value="" /></p>
+					<p><input type="checkbox" id="cookietime" name="cookietime" value="315360000" checked /><label for="cookietime">记住我</label></p>
+					<p>
+						<input type="submit" id="loginsubmit" name="loginsubmit" value="登录" class="submit" />
+						<input type="button" name="regbutton" value="注册" class="button" onclick="urlto('do.php?ac=$_SCONFIG[register_action]');">
+					</p>
+				</form>
+			</div>
+		<!--{/if}-->
+
+</div>
+	<!--{/if}-->
+		<div id="mainarea" style="margin-left:10px;margin-top:10px;width:800px;">
+	
+		<!--{if $_SGLOBAL['ad']['contenttop']}--><div id="ad_contenttop"><!--{ad/contenttop}--></div><!--{/if}-->
+	<!--{/if}-->
+
+<!--{/if}-->

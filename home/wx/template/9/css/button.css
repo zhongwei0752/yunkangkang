@@ -1,0 +1,33 @@
+.button {
+	line-height: 40px;
+	background: #133F5F;
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 50px;
+}
+
+.button:hover {
+	background: #046FA9;
+}
+
+
+.more_button
+{
+	line-height: 40px;
+	background: #133F5F;
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 50px;
+	border-radius: 0 !important;
+-webkit-appearance: none;
+}
+
+.more_button:hover {
+	background: #046FA9;
+}
+
+input {
+border: 0;
+border-radius: 0 !important;
+-webkit-appearance: none;
+}

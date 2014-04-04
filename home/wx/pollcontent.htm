@@ -1,0 +1,544 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="./template/css/base.css" />
+        <link rel="stylesheet" href="./template/css/expressInfo.css" />
+        <link rel = "stylesheet" href = "./template/css/main.css" />
+
+		<link rel = "stylesheet" href = "./template/css/base.css" />
+		<link rel = "stylesheet" href = "./template/css/common.css" />
+		<link rel = "stylesheet" href = "./template/css/page.css" />
+
+        <style type="text/css">
+            #bg,#bg2{ display: none;  position: fixed;  top: 0%;  left: 0%;  width: 100%;
+                height: 100%;  background:url(./template/img/guide_bg.png);
+                z-index:1001;/*  -moz-opacity: 0.7;  opacity:.70;  filter: alpha(opacity=70);*/}
+            #detail-panel li .span1
+            {
+                width: 15em ;
+                overflow: hidden ;
+                display: block;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                float: left;
+                vertical-align: middle;
+
+
+            }
+            #detail-panel li .span2
+            {
+                width: 10em ;
+                overflow: hidden ;
+                display: block;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                float:left;
+                vertical-align: middle;
+                color: #7d7b7b;
+
+            }
+            .span2
+            {
+                color: #7d7b7b;
+            }
+            .uchome-message-pic img
+            {
+                width: 100%;
+                display: block;
+                padding-top: 5px;
+            }
+            .some1
+            {
+                margin:0 auto;
+                margin-top:50px;
+                text-align:left;
+                display:block;
+                border:2px solid #1DB8AE;
+                padding:8px 8px; 
+                border-radius:10px;
+                -moz-border-radius:10px; /* 老的 Firefox */
+            }
+            .some
+            {
+                margin:0 auto;
+                margin-top:20px;
+                text-align:left;
+                display:block;
+                border:2px solid #1DB8AE;
+                padding:8px 8px; 
+                border-radius:10px;
+                -moz-border-radius:10px; /* 老的 Firefox */
+            }
+			
+			.poll_list{ margin: 0 auto; width: 700px;}
+
+			.poll_list ul{ margin: 0; padding: 0; list-style: none; }
+			.poll_list ul li{ padding: 10px 0; width:100%; border-bottom: 1px solid #eee; overflow: hidden; }
+
+			.poll_user{ float: left; margin: 0 15px 0 0; width: 60px; overflow: hidden;}
+				.poll_user p{ text-align: center; }
+			.poll_content{ float: left; margin: 0 20px 0 0; width: 545px; }
+				.poll_content h4{ font-size:14px; }
+				.poll_content h4 .poll_reward{ margin: 0 10px 0 0; padding: 0 0 0 12px; background: url(images/gold_icon.gif) no-repeat left center; color: #f30; font-size: 11px; }
+				.poll_content .poll_options{ position: relative;}
+				.poll_content .poll_options ol{ margin: 10px 0; padding: 0; }
+				.poll_content .poll_options ol li{ padding: 0; border: none; }
+
+			.poll_status{ float: left; padding: 10px 0 0; width: 60px; }
+				a.poll_joins{ margin: 0 0 5px; padding: 12px 0; width: 60px; height: 36px; background: url(images/joins_bg.gif) no-repeat 0 0; text-align: center; color: #FF8E00; display: block; overflow: hidden; }
+				a.poll_joins:hover{ text-decoration: none; }
+				a.poll_joins span{ font-size: 16px; font-weight: bold; display: block; }
+
+				a.go2_poll{ padding: 0 0 0 17px; width: 43px; height: 24px; line-height: 24px; background: url(images/poll_button.jpg) no-repeat 0 0; display: block; }
+
+			.poll_header{ margin: 0 0 20px; width: 100%; color: #999; overflow: hidden; }
+
+			.poll_title{ position: relative; padding: 5px 10px; color: #999; text-align: center; }
+			.poll_title h3{ margin: 0 5px 0 0; color: #333; font-size: 16px; display: inline; }
+			.poll_title img{ vertical-align: middle; }
+			
+			.poll_depiction{padding: 20px ; color: #666;}
+			.poll_submit{ margin: 0 0 10px; padding: 10px 0 10px 450px; }
+				.poll_submit .submit{ margin: 0 0 5px; width: 60px; }
+			.poll_p{ margin: 0 0 20px; height: 20px;}
+			
+			.print{ position: absolute; right: 0; margin: 15px 50px 0 0; width: 60px; height: 60px; text-indent: -999px; background: url(images/print.gif) no-repeat 0 0; overflow: hidden; }
+			
+				.overtime{ background-position: -60px 0; }
+			
+			.poll_item_list{ margin: 0; padding: 20px 0 10px; line-height: 20px; list-style: none; }
+			.poll_item_list li{ margin: 0 0 10px; width: 100%; overflow: hidden; }
+			.poll_item_list .poll_item{ float: left; margin: 0 10px 0 0; width: 200px; text-align: right; }
+			.poll_item_list .poll_percent{ float: left; margin: 0 10px 0 0; width: 100px; }
+			
+			.poll_htitle{ padding:0 0 5px; height:20px; border-bottom: 1px solid #eee; } 
+			.poll_htitle .custom a{ float: left; margin: 0 5px 0 0; width: 75px; height: 20px; text-align: center; line-height: 20px; display: block;}   
+			.poll_htitle a.active{ background: url(images/stab_bg.gif); color: #fff; }
+			.poll_summary{ margin: 0 0 20px; padding: 20px 0; border: 1px dashed #CDCDCD; border-left: none; border-right: none; }
+			.poll_sumuptitle {font-weight: normal;}   
+			.poll_sumup{padding: 10px 10px 0; color: green;} 
+
+			.poll_new{ padding: 0 10px; }    
+			.poll_new li{ background: url(images/poll_icon.gif) no-repeat 0 3px;}
+
+			#showvoter{ padding-bottom: 1em; }
+			.voter_list{ padding: 10px 20px; color: #999; }
+			.voter_list li{ margin: 0 0 5px; }
+			.voter_list li.moretitle{ padding: 5px 0; color: #333; font-weight: bold;}
+			
+			.meicon{ position: absolute; margin: 3px 0 0 -15px; }
+
+			.bar_bg{ float: left; margin: 0 10px 0 0; width: 170px; height: 20px; background: url(images/poll_bar_bg.gif) no-repeat 0 0; overflow: hidden; }
+			.bar_bg div{ float: left; width: 5px; height: 20px; overflow: hidden; }
+			.bar_bg .bar_left{ background-image: url(images/poll_bar_column_left.gif); background-repeat: no-repeat; }
+			.bar_bg .bar_right{ background-image: url(images/poll_bar_column_right.gif); background-repeat: no-repeat; }
+			.bar_bg .bar_middle{ background-image: url(images/poll_bar_column.gif); }
+			
+			.bc_0 div{ background-position: 0 0; }
+			.bc_1 div{ background-position: 0 -20px; }
+			.bc_2 div{ background-position: 0 -40px; }
+			.bc_3 div{ background-position: 0 -60px; }
+			.bc_4 div{ background-position: 0 -80px; }
+			.bc_5 div{ background-position: 0 -100px; }
+			.bc_6 div{ background-position: 0 -120px; }
+			.bc_7 div{ background-position: 0 -140px; }
+			.bc_8 div{ background-position: 0 -160px; }
+			.bc_9 div{ background-position: 0 -180px; }
+			.bc_10 div{ background-position: 0 -200px; }
+			.bc_11 div{ background-position: 0 -220px; }
+
+			.bc_13 div{ background-position: 0 -260px; }
+			.bc_14 div{ background-position: 0 -280px; }
+			.bc_15 div{ background-position: 0 -300px; }
+			.bc_16 div{ background-position: 0 -320px; }
+			.bc_17 div{ background-position: 0 -340px; }
+			.bc_18 div{ background-position: 0 -360px; }
+			.bc_19 div{ background-position: 0 -380px; }
+
+            ::-webkit-input-placeholder { font-size: 16px; }
+
+            input:-moz-placeholder { font-size: 16px; }
+			
+        </style>
+
+        <script src="template/js/jquery-v2.0.2.js"></script>
+        <script type="text/javascript" src="template/js/jquery.tmpl.min.js"></script>
+        <script type="text/javascript" src="template/js/detail.js"></script>
+
+
+        <title>$appname</title>
+	</head>
+	<body>
+    <div id="bg" onClick="hideDiv();">
+        <img src="./template/img/guide.png" alt="" style="position:fixed;top:0;right:16px;width:134px;height:97px;">
+    </div>
+    <div id="bg2" onClick="hideFriendDIv();">
+        <img src="./template/img/guide_firend.png" alt="" style="position:fixed;top:0;right:16px;width:134px;height:97px;">
+    </div>
+
+		<div class="itemContentFrame">
+			<div class = "article p8">
+                <h3 style="color: #1DB8AE; align:center">$wei[subject]</h3>
+                
+                <div style="width:100%;float:left;font-size:15px;margin:0 auto;">作者&nbsp;&nbsp;：$wei[username]</div>
+                <div style="width:100%;float:left;font-size:15px;margin:0 auto;">发表时间&nbsp;&nbsp;: <!--{date('Y-m-d H:i:s',$wei[dateline])}--></div>
+                </div>
+				<span class = "itemContentSubtitle"></span>
+				<!--内容框-->
+                <div class="some1">
+                <div class="messagetext">
+                    <h3>$wei3[message]</h3>
+                    <img src="http://v5.home3d.cn/home/$wei[imageurl]" style="width:100%" />
+                </div>
+                </div>
+				<!--投票框-->
+                <div class="some">
+                <div class="point" style="width:100%;">
+				    <form name="poll" method="post" action="cp.php?ac=poll&pollid=$poll[pollid]&op=vote">
+						<ol class="poll_item_list">
+							<!--{eval $bcid = rand(0, 19);}-->
+							<!--{loop $option $key $val}-->
+							<li>
+								<label class="poll_item" style="width: 250px;margin-left: 10px;">$val[option]:</label>
+								<!--{if $bcid>19}-->
+								<!--{eval $bcid=$bcid-19}-->
+								<!--{/if}-->
+								<div class="bar_bg bc_$bcid">
+									<div class="bar_left"></div>
+									<div class="bar_middle" id="bar_$key" len="{$val[width]}"></div>
+									<div class="bar_right"></div>
+								</div>
+								<!--{eval $bcid++;}-->
+								<div class="poll_percent" id="dd" style="width: 80px;">$val[votenum] ($val[percent]%)</div>
+								<div class="floatleft">
+									<!--{if $allowedvote && !$hasvoted}-->
+									<input type="<!--{if $poll[multiple]}-->checkbox<!--{else}-->radio<!--{/if}-->" name="option[]" value="$val[oid]" <!--{if $poll[multiple]}-->onclick="checkSelect(this.checked)"<!--{/if}-->/>
+									<!--{/if}-->
+								</div>
+							</li>
+							<!--{/loop}-->
+						</ol>
+						<div class="poll_submit">
+							<!--{if $allowedvote && !$hasvoted}-->
+							<input type="hidden" name="votesubmit" value="true" />
+							<input type="submit"  class="btn" id="votebutton" name="votebutton" value="投票" style="width: 94px; height: 32px; font-size: 12px; margin: 0; border: 0; padding: 0;font-size: 20px;float: right; margin-right: 200px;"/><br />
+							<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+							<!--{/if}-->
+						</div>
+						</form>
+                </div>
+                </div>
+                <div id="friend" class="friend_wrapper" style="width:100%;height:115px;border:1px dashed #999;margin:0 auto;margin-top:20px;text-align:center;">
+                    <div style="text-align: center;margin: 0 auto;width: 270px;height: 30px;margin-top: 20px">
+                        <div style="margin:0 auto;padding:0;height: 30px;width: 120px;float: left"><a id="" class="friend_btn" style="" onClick="showDIv()">
+                            <img src="./template/img/repost_icon.png" alt="">
+                            <span>发送给朋友</span>
+                        </a>  </div>
+                        <div style="margin:0 auto;padding:0;height: 30px;width: 120px;float: left;margin-left:20px">  <a id="" class="friend_btn" style="" onClick="showFriendDIv()">
+                            <img src="./template/img/friend_circle.png" alt="">
+                            <span>分享到朋友圈</span>
+                        </a></div>
+                    </div>
+                    <br/><br/><br/>
+                    <div style="margin:0 auto;padding:0;height: 30px;width:100%;text-align: center;margin-top: -50px"> <h3 style="font-size:14px;">手机用户请关注微信公众账号：$yan['weixinname']</h3></div>
+                    <div style="clear: both"></div>
+                </div><!-- / -->
+			</div>
+			<div class = "wrapperPic h2"><img src = "./template/11/img/bottom_border.png" class="w h vt" /></div>
+            <br/>
+            <input type = "button" style="color: #cccccc ;background-color: #333333"
+                   onclick="getDetail($('#idtype').val(),$('#id').val(), $('#uid').val(), $('#page').val(), $('#perpage').val());"
+                   value = "更多" class = "more_button"  />
+		</div>
+
+    <input type="hidden" id="wxkey" name="wxkey" value="$_GET[wxkey]"/>
+    <input type="hidden" id="id" name="id" value="$_GET[id]"/>
+    <input type="hidden" id="idtype" name="idtype" value="$_GET[idtype]"/>
+    <input type="hidden" id="type" name="type" value="$_GET[type]"/>
+    <input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
+    <input type="hidden" id="page" name="page" value="1"/>
+    <input type="hidden" id="perpage" name="perpage" value="10"/>
+
+	<script type="text/javascript">
+		<!--{if !$hasvoted}-->
+		var maxSelect = $poll[maxchoice];
+		var alreadySelect = 0;
+		function checkSelect(sel) {
+			if(sel) {
+				alreadySelect++;
+				if(alreadySelect == maxSelect) {
+					var oObj = document.getElementsByName("option[]");
+					for(i=0; i < oObj.length; i++) {
+						if(!oObj[i].checked) {
+							oObj[i].disabled = true;
+						}
+					}
+				}
+			} else {
+				alreadySelect--;
+				if(alreadySelect < maxSelect) {
+					var oObj = document.getElementsByName("option[]");
+					for(i=0; i < oObj.length; i++) {
+						if(oObj[i].disabled) {
+							oObj[i].disabled = false;
+						}
+					}
+				}
+			}
+		}
+		<!--{/if}-->
+		
+		
+
+		//效查
+		var optionNum = <!--{eval echo count($option)}-->;
+		var maxLength = [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14,15,16,17,18,19];
+
+		var timer;
+		var length = 0;
+		for(i = 0; i < optionNum; i++) {
+			maxLength[i] = $("bar_" + i).getAttribute('len');
+		}
+		timer = setInterval(function(){
+			setLength();
+		}, 40);
+		function setLength(){
+			for (i = 0; i < optionNum; i++) {
+				if (length - 1 >= maxLength[i]) {
+					$('bar_' + i).style.width = maxLength[i] + "px";
+				} else {
+					$('bar_' + i).style.width = length + "px";
+				}
+				length = length + 1;
+				if (length > 300) {
+					clearInterval(timer);
+				}
+			}
+		}
+		function showVoter(filtrate) {
+			$('newvoter').className = '';
+			$('wevoter').className = '';
+			$(filtrate+'voter').className = 'active';
+			ajaxget('cp.php?ac=poll&op=get&pollid=$poll[pollid]&filtrate='+filtrate, 'showvoter');
+		}
+		showVoter('new')
+	</script>
+    <script type="text/javascript">
+        $(function(){
+            $(".comment_list .commentContainer").css("display","none");
+            $("#detail-panel li span").css({width:"1em",overflow:"hidden",display:"block",textOverflow:"ellipsis",whiteSpace:"nowrap"});
+            $(".messagetext span").css({backgroundColor:"#240934",color:"#cccccc" });
+
+        })
+
+    </script>
+	<script src="template/js/jquery-v2.0.2.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            $(".some").click(function(){
+                $(".expressInfo").fadeIn();
+            });
+
+            //点击表格外的地方时消失
+            $(".expressInfo").click(function(){
+                $(".expressInfo").fadeOut();
+            });
+
+            //阻止事件冒泡
+            $(".formContainer").click(function(event){
+                event.stopPropagation();
+            });
+
+            $(".some").click(function(){
+                $(".expressInfo1").fadeIn();
+            });
+
+            //点击表格外的地方时消失
+            $(".expressInfo1").click(function(){
+                $(".expressInfo1").fadeOut();
+            });
+
+            $("#buttonSubmit").click(function(){
+                $(".expressInfo").fadeOut();
+            });
+
+            /*     $(".buttonSubmit").click(function(){
+             $(".expressInfo").fadeOut();
+             });  */
+            //阻止事件冒泡
+            $(".formContainer1").click(function(event){
+                event.stopPropagation();
+            });
+
+        });
+
+    </script>
+    <script>
+
+        function gototaobao(url){
+            window.open(url);
+        }
+    </script>
+
+    <script type="text/javascript" charset="utf-8">
+        function showDIv(){
+            document.getElementById('bg').style.display = "block";
+        }
+        function hideDiv(){
+            document.getElementById('bg').style.display = "none";
+        }
+        function showFriendDIv(){
+            document.getElementById('bg2').style.display = "block";
+        }
+        function hideFriendDIv(){
+            document.getElementById('bg2').style.display = "none";
+        }
+
+
+        $(document).ready(function () {
+            $("#feedsubmit1").click(function () {
+                var debatetype=$('#debatetype').val();
+                if($('#review').val()==""||$('#nickname').val()=="")
+                {
+                    alert("存在空值，请填好信息再提交！");
+                }
+                else {
+                    $.ajax({
+                    type: "POST",
+                    url: "wx.php?do=upload",
+                    data: "uid="+$('#uid').val()+"&id="+$('#id').val()+" &viewuid="+$('#viewuid').val()+" &moblieclicknum="+$('#moblieclicknum').val()+"&debatetype="+$('#debatetype').val()+"&nickname="+$('#nickname').val()+"&debateid="+$('#id').val()+"&review="+$('#review').val()+"&yan=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
+                    async: true,
+                    success: function (data) {
+                        $('#feedsubmit1').val("发表成功");
+                        if(debatetype==0)
+                        {
+                            $("#obcom").append(data);
+                        }
+                        else
+                        {
+                            $("#recom").append(data);
+                        }
+                    } //操作成功后的操作！msg是后台传过来的值
+                });
+                }
+            });
+        });
+    </script>
+
+
+        <div class="expressInfo">
+        <div class="formContainer bc tc">
+        <form method="post" action="wx.php?do=upload" name="buyform">
+            <h1 id="formTitle">邮寄信息</h1>
+            <input type="text" placeholder="姓名" id="username" name="username" value="$_COOKIE[uchome_username]" class="inputContainer" />
+            <br />
+            <input type="text" placeholder="电话"id="tel" name="tel" value="$_COOKIE[uchome_tel]" class="inputContainer" />
+            <br />
+            <input type="text" placeholder="购买数量" id="number" name="number" value="$_COOKIE[uchome_number]" class="inputContainer" />
+            <br />
+            <textarea  name="place" rows="3" class="inputContainer" id="place"  placeholder="地址" >$_COOKIE[uchome_place]</textarea>
+            <br />
+            <div id="zhong">
+                  <input type="button" id="submit" class="buttonSubmit"   value="提交">
+                  <input type="button" id="buttonSubmit"  class="buttonSubmit" style="margin-left:30px;" value="取消">
+            </div>
+                   <input type="hidden" id="uid" name="uid" value="$_GET['uid']"/>
+            <input type="hidden" id="gid" name="gid" value="$_GET[id]"/>
+                  <input type="hidden" id="viewuid" name="viewuid" value="$_GET[viewuid]"/>
+            <input type="hidden" name="buy" value="1">
+            <input type="hidden" id="wxkey" name="wxkey" value="$_GET[wxkey]"/>
+        </div> <!-- formContainer -->
+        </form> 
+    </div> <!-- expressInfo --> 
+
+
+
+
+
+        <div class="expressInfo1">
+        <div class="formContainer1 bc tc">
+        <form method="post" action="wx.php?do=upload">
+            <h1 id="formTitle">密码确认</h1>
+            <input type="text" placeholder="密码" name="password"  class="inputContainer" />
+            <br />
+
+            <input type="submit" class="buttonSubmit" value="提交">
+            <input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
+            <input type="hidden" id="debateid" name="debateid" value="$_GET[id]"/>
+            <input type="hidden" name="moblieclicknum" value="$_GET[moblieclicknum]">
+            <input type="hidden" name="password2" value="1">
+            <input type="hidden" id="wxkey" name="wxkey" value="$_GET[wxkey]"/>
+        
+        </form> 
+        </div> <!-- formContainer -->
+        </div> <!-- expressInfo --> 
+
+    </body>
+    <script>
+        var dataForWeixin={
+            appId:"",
+            MsgImg:"$pic",
+            TLImg:"$pic",
+            url:"$url",
+            title:"$wei[subject]",
+            desc:"$wei[subject]",
+            fakeid:"",
+            callback:function(){}
+        };
+        (function(){
+            var onBridgeReady=function(){
+                WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                    WeixinJSBridge.invoke('sendAppMessage',{
+                        "appid":dataForWeixin.appId,
+                        "img_url":dataForWeixin.MsgImg,
+                        "img_width":"120",
+                        "img_height":"120",
+                        "link":dataForWeixin.url,
+                        "desc":dataForWeixin.desc,
+                        "title":dataForWeixin.title
+                    }, function(res){(dataForWeixin.callback)();});
+                });
+                WeixinJSBridge.on('menu:share:timeline', function(argv){
+                    (dataForWeixin.callback)();
+                    WeixinJSBridge.invoke('shareTimeline',{
+                        "img_url":dataForWeixin.TLImg,
+                        "img_width":"120",
+                        "img_height":"120",
+                        "link":dataForWeixin.url,
+                        "desc":dataForWeixin.desc,
+                        "title":dataForWeixin.title
+                    }, function(res){});
+                });
+                WeixinJSBridge.on('menu:share:weibo', function(argv){
+                    WeixinJSBridge.invoke('shareWeibo',{
+                        "content":dataForWeixin.title,
+                        "url":dataForWeixin.url
+                    }, function(res){(dataForWeixin.callback)();});
+                });
+                WeixinJSBridge.on('menu:share:facebook', function(argv){
+                    (dataForWeixin.callback)();
+                    WeixinJSBridge.invoke('shareFB',{
+                        "img_url":dataForWeixin.TLImg,
+                        "img_width":"120",
+                        "img_height":"120",
+                        "link":dataForWeixin.url,
+                        "desc":dataForWeixin.desc,
+                        "title":dataForWeixin.title
+                    }, function(res){});
+                });
+            };
+            if(document.addEventListener){
+                document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+            }else if(document.attachEvent){
+                document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
+                document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+            }
+        })();
+    </script>
+
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet" href="css/index2.css" />
+	<link rel="stylesheet" href="css/contentList.css" />
+	<script type="text/javascript" src="js/jquery-v2.0.2.js"></script>
+	<title>英孚教育</title>
+
+</head>
+<body>
+	<div class="wrapperPicture">
+		<img src="img/exp0.png" alt="" id="pic0" />
+	</div> <!-- wrapperPicture --> 
+	<div class="titlePic bgTranslucent">
+		<span class="titleText cWhite">Efekt<sup>TM</sup>学习系统 科技改变英语学习</span>
+		<div class="dots fr">
+			<img src="img/dot_white.png" alt="" id="dot0" />
+			<img src="img/dot_gray.png" alt="" id="dot1" />
+			<img src="img/dot_gray.png" alt="" id="dot2" />
+			<img src="img/dot_gray.png" alt="" id="dot3" />
+			<img src="img/dot_gray.png" alt="" id="dot4" />
+		</div> <!-- dots --> 
+	</div> <!-- titlePic --> 
+
+
+	<ul>
+		<li id="slideUpTest">test1</li>
+		<div class="test">yes1!</div>
+		<li><button id="one">test2</button></li>
+		<li id="slideDownTest">test3</li>
+	</ul>
+	<ul class="itemList">
+		<li>
+			<img src="img/icon_info.png" alt="" class="itemIcon" />
+			<span class="itemTitle">企业介绍</span>
+			<img src="img/arrow_down.png" alt="" class="arrowDown fr" />
+		</li>
+
+
+
+		<li>
+			<img src="img/icon_product.png" alt="" class="itemIcon" />
+			<span class="itemTitle">产品介绍</span>
+			<img src="img/arrow_down.png" alt="" class="arrowDown fr" />
+		</li>
+		<li>
+			<img src="img/icon_product.png" alt="" class="itemIcon" />
+			<span class="itemTitle">产品介绍</span>
+			<img src="img/arrow_down.png" alt="" class="arrowDown fr" />
+		</li>
+		<li>
+			<img src="img/icon_product.png" alt="" class="itemIcon" />
+			<span class="itemTitle">产品介绍</span>
+			<img src="img/arrow_down.png" alt="" class="arrowDown fr" />
+		</li>
+		<li>
+			<img src="img/icon_product.png" alt="" class="itemIcon" />
+			<span class="itemTitle">产品介绍</span>
+			<img src="img/arrow_down.png" alt="" class="arrowDown fr" />
+		</li>
+
+	</ul>
+
+	<div class="contentHide">
+		<div class="contentTitle cPrice f20">产品介绍</div>
+		<ul class="contentList">
+			<li class="contentList-item clearfix">
+				<img src="img/mid_pic_4.png" alt="" class="fl" />
+				<h2 class="contentList-itemTitle f20 pt10">Efekta<sup>TM</sup>学习系统 科技改变英语学习</h2>
+				<span class="contentList-itemTime cTime f14">发布时间:2012-08-8</span>
+				<div class="priceText cTime fr f14"><span class="cPrice price f20">9200</span>元/年</div>
+			</li>
+
+			<li class="contentList-item clearfix">
+				<img src="img/mid_pic_4.png" alt="" class="fl" />
+				<h2 class="contentList-itemTitle f20 pt10">用科技改变教育</h2>
+				<span class="contentList-itemTime cTime f14">发布时间:2012-08-8</span>
+				<div class="priceText cTime fr f14"><span class="cPrice price f20">5400</span>元/年</div>
+			</li>
+
+		</ul>
+		
+		<div class="contentHide-button tc">
+			<img src="img/btn_close.png" alt="" class="btnClose" />
+		</div>
+	</div>
+
+		<script type="text/javascript">
+		var contentSlideToggle = function(){
+			$(".contentHide").slideToggle();
+		};
+
+
+		$(document).ready(function(){
+				$("#pic0").load(function(){
+				var upHeight = $("#pic0").height();
+				window.location="info.html";
+				alert(upHeight);
+				});
+
+			$("#one").click(function(){
+				//$(".itemList").slideToggle("fast", contentSlideToggle);
+				//$(".wrapperPicture").slideToggle("fast");
+				$(".wrapperPicture").animate({top: "-500px"});
+				$(".titlePic").animate({top: "-500px"});
+			});
+
+			$(".btnClose").click(function(){
+				$(".contentHide").slideToggle( function(){
+					$(".itemList").slideToggle("fast");
+					$(".wrapperPicture").slideToggle("fast");
+					});
+				});
+			});
+	</script>
+
+
+
+</body>
+</html>

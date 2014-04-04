@@ -1,0 +1,128 @@
+<!--{eval $_TPL['titles'] = array('预约预定');}-->
+<!--{eval $friendsname = array(1 => '仅好友可见',2 => '指定好友可见',3 => '仅自己可见',4 => '凭密码可见');}-->
+
+<!--{template header}-->
+ <link type='text/css' href='./template/default/basic_chosen.css' rel='stylesheet' media='screen' />
+    <style type="text/css">
+       h3{color: #727272;margin-top: 20px;font-weight:normal;}
+       .selected{ -webkit-box-shadow: 3px 3px 3px;
+  -moz-box-shadow: 3px 3px 3px;
+  box-shadow: 3px 3px 3px;}
+  
+      .bg1{ background: url("./template/default/image/chosen_bg.png");}
+      .open{ background: url("./template/default/image/chosen_bg2.png")!important;}
+      .open .price{color:#3EB2B8!important;}
+    </style>
+<!--{if !empty($_SGLOBAL[inajax])}-->
+	<div id="space_blog" class="feed">
+		<h3 class="feed_header">
+			<a href="cp.php?ac=product" class="r_option" target="_blank">发布</a>
+		</h3>
+		<!--{if $count}-->
+		<ul class="line_list">
+		<!--{loop $list $value}-->
+			<li>
+				<span class="gray r_option"><!--{date('m-d H:i',$value[dateline],1)}--></span>
+				<h4><a href="space.php?uid=$space[uid]&do=product&id=$value[productid]" target="_blank" <!--{if $value[magiccolor]}--> class="magiccolor$value[magiccolor]"<!--{/if}-->>$value[subject]</a></h4>
+				<div class="detail">
+					$value[message]
+				</div>
+			</li>
+		<!--{/loop}-->
+		</ul>
+		<div class="page">$multi</div>
+		<!--{else}-->
+		<div class="c_form">还没有相关的预约预定。</div>
+		<!--{/if}-->
+	</div>
+<!--{else}-->
+
+<!--{if $space[self]}-->
+
+<div class="content" style="font-size:15px;">
+          
+                 <div class="indexing">
+                 <span><a href="space.php?do=home">首页</a></span>><span>预约预定</span>
+                 </div><!-- end -->
+                 <div class="bread container_12">
+                     <div class="bread_actived grid_1">
+                         预约预定
+                     </div>
+                     <a href="cp.php?ac=product" class="btn grid_2">
+                      发布
+                     </a>
+
+                 </div>	
+
+ 
+
+<!--{/if}-->
+		
+<div id="content" style="width:760px;">
+
+<div class="content_detail_wrapper">
+ 		<!--{if $list}-->
+		<!--{loop $list $value}-->
+                     <div class="content_list container_12">
+                          <div class="grid_1">
+                               <img src="$value[image1url]" class="list_pic">
+                          </div>
+                          <div class="grid_2">
+                             <div class="list_test ">
+                                  <a href="space.php?uid=$value[uid]&do=$do&id=$value[productid]" style="float:left;"><h3>$value[subject]</h3></a> <a href="cp.php?ac=product" id="basic-modal$value[productid]" class="btn grid_2"  style="width:100px;float: right;">设置</a><br/><br/>
+                                  <p>$value[message]</p><br/>
+                                  <p class="action_info" style="margin-top:-4px;">
+                                   <a href="space.php?uid=$value[uid]"> <span>发布：{$_SN[$value[uid]]}</span></a>
+                                    <!--{if $value[viewnum]}--><a href="space.php?uid=$value[uid]&do=$do&id=$value[productid]"><span>阅读: $value[viewnum]次</span></a><!--{else}--><span>阅读: 0次</span><!--{/if}-->
+                                    <!--{if $value[replynum]}--><a href="space.php?uid=$value[uid]&do=$do&id=$value[productid]#comment"><span>评论: $value[replynum] 个</span></a><!--{else}--><span>评论: 0次</span><!--{/if}--><span>发布日期：<!--{date('Y-m-d',$value[dateline])}--></span>
+                                  </p>
+                             </div>
+                          </div>
+                     </div><!-- list end -->
+                     <br/>
+  <div id="basic-modal-content$value[productid]">
+  <h3 style="font-size:20px;color:#44B1BA;background:#ECEFF1;margin:0;line-height:40px;text-align:left;padding-left:10px;">$value[subject]</h3>
+  <div style="width:600px;height:560px;min-height:560px;max-height:560px;background:#fff;">
+   <script type="text/javascript" src="source/script_calendar.js"></script>
+   <input type="text" name="starttime" id="starttime" value="<!--{eval echo sgmdate('Y-m-d H:i', $_SGLOBAL[timestamp])}-->"  onclick="showcalendar(event,this,1,'<!--{eval echo sgmdate('Y-m-d H:i', $_SGLOBAL[timestamp])}-->', '<!--{eval echo sgmdate('Y-m-d H:i', $_SGLOBAL[timestamp] + 3600 * 24 * 60)}-->')" />    
+   </div>
+
+</div>
+
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type='text/javascript' src='./source/jquery.simplemodal.js'></script>
+    <script type="text/javascript">
+       $(document).ready(function(){
+        
+        $('#basic-modal-content$value[productid]').attr("style", "display:none;");
+           $('#basic-modal$value[productid]').click(function (e) {
+    		e.preventDefault();
+    	   $('#basic-modal-content$value[productid]').modal();
+  });
+
+            
+       })
+    </script>
+
+                   <!--{/loop}-->
+		<!--{else}-->
+			<div class="c_form">还没有相关的预约预定。</div>
+		<!--{/if}-->
+          
+	</div>
+                     
+	<div class='pagination'><ul>$multi</ul></div>
+	
+	
+
+</div>
+
+
+<script>
+function fuidgoto(fuid) {
+	window.location.href = "space.php?do=product&view=we&fuid="+fuid;
+}
+</script>
+<!--{/if}-->
+	
+<!--{template footer}-->

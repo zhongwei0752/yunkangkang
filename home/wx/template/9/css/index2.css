@@ -1,0 +1,64 @@
+.wrapperPicture {
+	position: relative;
+}
+
+.wrapperPicture img {
+	vertical-align: bottom;
+	width: 100%;
+}
+
+.titlePic {
+	height: 35px;
+	position: relative;
+	margin-top: -35px;
+}
+
+.titleText {
+	display: inline-block;
+	padding: 8px;
+}
+
+.dots {
+	padding: 8px 5px;
+}
+
+.dots img {
+	width: 10px;
+	padding-right: 2px;
+}
+
+.itemList {
+	width: 100%;
+}
+
+.itemList>li {
+	background: url('img/bg_itemList_item.png') repeat-x;
+	height: 71px;
+	border-bottom: solid 1px #B6B6B6;
+	position: relative;
+}
+
+.itemIcon {
+	width: 37px;
+	padding: 20px 20px 0 18px;
+}
+
+.itemTitle {
+	position: relative;
+	bottom: 10px;
+}
+
+.arrowDown {
+	width: 36px;
+	position: relative;
+	top: 28px;
+	right: 5px;
+}
+
+.test {
+	display: none;
+}
+
+#slideDownTest, #testUL, .contentHide {
+	display: none;
+}

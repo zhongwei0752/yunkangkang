@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet" href="css/contentList.css" />
+	<link rel="stylesheet" href="css/info.css" />
+	<link rel="stylesheet" href="css/button.css" />
+	<script type="text/javascript" src="js/jquery-v2.0.2.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+				var anyTransformY = function(target, distance) {
+					$(target).css("-webkit-transform", "translateY("+distance+")");
+					};
+					anyTransformY(".contentTitle", "40px");
+					anyTransformY(".contentHide-button", "-35px");
+				});
+	</script>
+	<title>英孚教育</title>
+</head>
+<body>
+	<div class="contentHide">
+		<div class="contentTitle cPrice f20">行业动态</div>
+		<ul class="contentList">
+			<a href="profession_content.html">
+				<li class="contentList-item">
+					<img src="img/mid_pic_4.png" alt="" class="fl" />
+					<h2 class="contentList-itemTitle f20 pt10 cTitle">厦门航空特邀英孚教育提供语言培训</h2>
+					<span class="contentList-itemTime cTime f14">2012-08-8</span>
+				</li>
+			</a>
+
+			<a href="profession_content.html">
+				<li class="contentList-item">
+					<img src="img/mid_pic_4.png" alt="" class="fl" />
+					<h2 class="contentList-itemTitle f20 pt10 cTitle">英孚教育与哈佛大学练手启动语言学习研究项目</h2>
+					<span class="contentList-itemTime cTime f14">2012-08-8</span>
+				</li>
+			</a>
+
+		</ul>
+		<div class="button myMargin">
+			<a href="" class="f20 cWhite">更多</a>
+		</div>
+
+		<div class="contentHide-button tc w">
+			<a href="index.html"><img src="img/btn_close.png" alt="" class="btnClose" /></a>
+		</div>
+	</div>
+
+</body>
+</html>

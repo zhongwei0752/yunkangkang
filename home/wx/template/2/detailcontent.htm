@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>$zhong[subject]</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <link rel="stylesheet" type="text/css" href="./template/2/css/info_content.css" />
+    <script type="text/javascript" src="./template/2/js/myAll.js"></script>
+    <link rel="stylesheet" href="./template/css/base.css" />
+    <link rel="stylesheet" href="./template/css/expressInfo.css" />
+    <style type="text/css">
+        #bg,#bg2{ display: none;  position: fixed;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background:url(./template/img/guide_bg.png);  z-index:1001;/*  -moz-opacity: 0.7;  opacity:.70;  filter: alpha(opacity=70);*/}
+    </style>
+  </head>
+
+  <body>
+   <div id="bg" onclick="hideDiv();">
+            <img src="./template/img/guide.png" alt="" style="position:fixed;top:0;right:16px;width:134px;height:97px;">
+        </div>
+        <div id="bg2" onclick="hideFriendDIv();">
+            <img src="./template/img/guide_firend.png" alt="" style="position:fixed;top:0;right:16px;width:134px;height:97px;">
+        </div>
+    <div data-role="page">
+      <header data-role="header" data-tap-toggle="false" data-theme="none">
+      <div class="title">
+        <span id="product_name">$zhong[subject]</span>
+      </div>
+      <div class="time">
+            <span id="time"><!--{date('m-d H:i',$zhong[dateline],1)}--></span>
+          <div class="status">
+          <span id="count_read">阅读（$zhong[viewnum]）</span>
+          </div>
+      </div>
+      </header>
+
+      <div data-role="content">
+
+        <table id="requirement">
+          <tr>
+            <th>职位描述:</th>
+            <td>$zhong[message]</td>
+          </tr>
+
+          <tr>
+            <th>资格要求:</th>
+            <td>$zhong[messagecomment]</td>
+          </tr>
+
+          <tr>
+            <th>电话：</th>
+            <td>$zhong[telephone]</td>
+          </tr>
+
+          <tr>
+            <th>邮箱：</th>
+            <td>$zhong[email]</td>
+          </tr>
+
+          <tr>
+            <th>待遇：</th>
+            <td>$zhong[money]</td>
+          </tr>
+
+          <tr>
+            <th>其他：</th>
+            <td>$zhong[othermessage]</td>
+          </tr>
+
+        </table><br/>
+        <div id="friend" class="friend_wrapper" style="width:100%;height:115px;border:1px dashed #999;margin:0 auto;text-align:center;">
+             <a id="" class="friend_btn" style="margin-top:20px;margin-left:40px;" onclick="showDIv()">
+                       <img src="./template/img/repost_icon.png" alt="">
+                       <span>发送给朋友</span>
+             </a>
+             <a id="" class="friend_btn" style="margin-left:20px;margin-top:20px;" onclick="showFriendDIv()">
+                       <img src="./template/img/friend_circle.png" alt="">
+                       <span>分享到朋友圈</span>
+             </a><br/><br/><br/>
+             <h3 style="font-size:14px;margin-bottom:-10px;">安卓用户请点击：</h3>
+             <a id="" class="add_btn" href="weixin://addfriend/$uidwxkey[weixinhao]">
+                 <span>关注</span>
+             </a><br/><br/><br/>
+             <!--{if $uidwxkey[weixinname]}-->
+             <h3 style="font-size:14px;margin-bottom:-10px;">手机用户请关注微信公众账号：$uidwxkey[weixinname]</h3>
+             <!--{/if}-->
+         </div><!-- / --><br/>
+        <div class="button_buy" onclick="">
+          <a href="#" id="colorButton" onmouseover="deeper()" onmouseout="shallower()" tel="$zhong[telephone]">一键拨号</a>
+          <!--<a href="book_info.html"><button id="colorButton" onmouseover="deeper()" onmouseout="shallower()">一键拨号</button></a>-->
+        </div><!-- button_more_2 -->
+
+
+
+      </div><!-- content -->
+    </div><!-- page -->
+  </body>
+  <script type="text/javascript" charset="utf-8">
+         function showDIv(){
+        document.getElementById('bg').style.display = "block";
+        }
+        function hideDiv(){
+         document.getElementById('bg').style.display = "none";
+        }
+        function showFriendDIv(){
+        document.getElementById('bg2').style.display = "block";
+        }
+         function hideFriendDIv(){
+        document.getElementById('bg2').style.display = "none";
+        }
+  </script>
+</html>

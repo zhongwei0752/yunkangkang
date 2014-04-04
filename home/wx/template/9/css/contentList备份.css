@@ -1,0 +1,42 @@
+.contentHide {
+	position: relative;
+}
+
+.contentTitle {
+	background:  url('img/bg_contentList_item.png') repeat-x;
+	text-align: center;
+	line-height: 40px;
+	box-shadow: 0 2px 2px #A0A0A0;
+	margin-bottom: 4px;
+}
+
+.contentList {
+	background: #FFF;
+}
+
+.contentList-item {
+	width: 100%;
+	height: 90px;
+	border-bottom: solid 1px #D4D4D4;
+}
+
+.contentList-item img{
+	width: 100px;
+	padding: 12px 7px 12px 5px;
+}
+
+.contentList-itemTime {
+	padding-top: 5px;
+	display: inline-block;
+}
+
+.priceText {
+	padding-top: 2px;
+	padding-right: 5px;
+}
+
+.btnClose {
+	width: 55px;
+	position: fixed;
+	bottom: 0;
+}

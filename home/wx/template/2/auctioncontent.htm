@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<title>$wei[subject]</title>
+		<meta charset = "utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+        <link rel = "stylesheet" type = "text/css" href = "./template/css/main.css">
+        <link rel="stylesheet" href="./template/css/base.css" />
+		<link rel="stylesheet" href="./template/css/expressInfo.css" />
+   
+        <style type="text/css">
+        #bg,#bg2{ display: none;  position: fixed;  top: 0%;  left: 0%;  width: 100%;
+            height: 100%;  background:url(./template/img/guide_bg.png);
+            z-index:1001;/*  -moz-opacity: 0.7;  opacity:.70;  filter: alpha(opacity=70);*/}
+        #detail-panel li .span1
+        {
+            width: 15em ;
+            overflow: hidden ;
+            display: block;
+           text-overflow: ellipsis;
+            white-space: nowrap;
+            float: left;
+            vertical-align: middle;
+
+
+        }
+        #detail-panel li .span2
+        {
+            width: 10em ;
+            overflow: hidden ;
+            display: block;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            float:left;
+            vertical-align: middle;
+            color: #7d7b7b;
+
+        }
+        .span2
+        {
+            color: #7d7b7b;
+        }
+
+        </style>
+
+
+
+
+
+		 <script src="template/js/jquery-v2.0.2.js"></script>
+     	<script type="text/javascript" src="template/js/jquery.tmpl.min.js"></script>
+
+     	<script type="text/javascript" src="template/js/detail.js"></script>
+      <script language="JavaScript"> 
+var tms = []; 
+var day = []; 
+var hour = []; 
+var minute = []; 
+var second = []; 
+function takeCount() { 
+setTimeout("takeCount()", 1000); 
+for (var i = 0, j = tms.length; i < j; i++) { 
+//计数减一 
+tms[i] -= 1000; 
+//计算时分秒 
+var days = Math.floor(tms[i] / (1000 * 60 * 60 * 24));
+var hours = Math.floor(tms[i] / (1000 * 60 * 60)) % 24; 
+var minutes = Math.floor(tms[i] / (1000 * 60)) % 60; 
+var seconds = Math.floor(tms[i] / 1000) % 60; 
+if (days < 0) 
+days = 0; 
+if (hours < 0) 
+hours = 0; 
+if (minutes < 0) 
+minutes = 0; 
+if (seconds < 0) 
+seconds = 0; 
+//将时分秒插入到html中 
+document.getElementById(day[i]).innerHTML = days; 
+document.getElementById(hour[i]).innerHTML = hours; 
+document.getElementById(minute[i]).innerHTML = minutes; 
+document.getElementById(second[i]).innerHTML = seconds; 
+} 
+} 
+setTimeout("takeCount()", 1000); 
+</script> 
+
+	</head>
+	<body> 
+	<div id="bg" onclick="hideDiv();">
+            <img src="./template/img/guide.png" alt="" style="position:fixed;top:0;right:16px;width:134px;height:97px;">
+        </div>
+        <div id="bg2" onclick="hideFriendDIv();">
+            <img src="./template/img/guide_firend.png" alt="" style="position:fixed;top:0;right:16px;width:134px;height:97px;">
+        </div>
+
+
+
+
+		<div class = "article" style="padding-bottom: 70px">
+            <img src="http://v5.home3d.cn/home/$wei[imageurl]" style="width:100%;">
+			<h3>$wei[subject]</h3>
+			<div class = "article_content">
+                <p>
+                     $message
+                </p>
+			</div>
+			<div id="friend" class="friend_wrapper" style="width:100%;height:115px;border:1px dashed #999;margin:0 auto;text-align:center;">
+                <div style="text-align: center;margin: 0 auto;width: 270px;height: 30px;margin-top: 20px">
+                <div style="margin:0 auto;padding:0;height: 30px;width: 120px;float: left"><a id="" class="friend_btn" style="" onclick="showDIv()">
+                       <img src="./template/img/repost_icon.png" alt="">
+                       <span>发送给朋友</span>
+             </a>  </div>
+                <div style="margin:0 auto;padding:0;height: 30px;width: 120px;float: left;margin-left:20px">  <a id="" class="friend_btn" style="" onclick="showFriendDIv()">
+                       <img src="./template/img/friend_circle.png" alt="">
+                       <span>分享到朋友圈</span>
+             </a></div>
+                </div>
+            <br/><br/><br/>
+               <!--{if $uidwxkey[weixinname]}-->
+                <div style="margin:0 auto;padding:0;height: 30px;width:100%;text-align: center;margin-top: -50px"> <h3 style="font-size:14px;">手机用户请关注微信公众账号：$uidwxkey[weixinname]</h3></div>
+             <!--{/if}-->
+                <div style="clear: both"></div>
+         </div><!-- / -->
+             <div style="text-align:center;color:red;margin-top: 20px">此拍卖起步价为$wei[fristprice]元,每次加价为$wei[plusprice]元</div>
+             <!--{if $_SGLOBAL['timestamp']>$wei[starttime]&&$_SGLOBAL['timestamp']<$wei[endtime]}-->
+            <input style="margin-top: 20px;background-color: #5B5999;" type = "button" id="buttonBuy"   class = "dial_btn btn" value = "我要拍" />
+            <!--{/if}-->
+             <!--{if $_SGLOBAL['timestamp']<$wei[starttime]}-->
+            <a href="wx.php?uid=$_GET[viewuid]&do=feed&wxkey=$_GET[wxkey]&idtype=auction&uid=$_GET['uid']"><input style="margin-top: 40px;background-color: #5B5999;" type = "button"  class = "dial_btn btn" value = "更多拍卖" /></a>
+            <!--{else}-->
+            <a href="wx.php?uid=$_GET[viewuid]&do=feed&wxkey=$_GET[wxkey]&idtype=auction&uid=$_GET['uid']"><input style="margin-top: 20px;background-color: #5B5999;" type = "button"  class = "dial_btn btn" value = "更多拍卖" /></a>
+            <!--{/if}-->
+             <!--{if $_SGLOBAL['timestamp']>$wei[endtime]}-->
+             <span style="font-size:16px;float:right;padding-top:24px;padding-bottom:0px" id="buttonBuy1"> 管理员点击输入密码查看订单详情</span>
+              <!--{/if}-->
+
+		</div>
+        <div class = "comment" >
+
+          <ul class = "comment_list" style="">  
+           <div id="detail-panel">
+            <li style="text:center">
+          <!--{if $_SGLOBAL['timestamp']<$wei[starttime]}-->
+            <div style="text-align:center;">当前拍卖还未开始<br/>距离开始时间还有： <em id="d1">0</em> <em> 
+              天 </em><em id="h1">0</em> <em>小时 </em><em id="m1" >0</em> <em>分 </em><em id="s1"> 
+              0</em> <em>秒</em></div> 
+              <script type="text/javascript"> 
+              tms[0] = "$time"; 
+              day[0] = "d1"; 
+              hour[0] = "h1"; 
+              minute[0] = "m1"; 
+              second[0] = "s1"; 
+              </script>
+          
+          <!--{/if}-->
+          <!--{if $_SGLOBAL['timestamp']>$wei[starttime]&&$_SGLOBAL['timestamp']<$wei[endtime]}-->
+          <div style="text-align:center;">距离结束时间还有： <em id="d1" style="">0</em> <em> 
+              天 </em><em id="h1" >0</em> <em>小时 </em><em id="m1" 
+              >0</em> <em>分 </em><em id="s1" > 
+              0</em> <em>秒</em><br/>
+              <div id="ajax">
+              <!--{if $auctionbuy[name]}-->
+              当前最高出价者：$auctionbuy[name],出价为：$auctionbuy[money]元。
+               <!--{/if}-->
+               </div>
+              <br/></div> 
+              <script type="text/javascript"> 
+              tms[0] = "$time1"; 
+              day[0] = "d1"; 
+              hour[0] = "h1"; 
+              minute[0] = "m1"; 
+              second[0] = "s1"; 
+              </script>
+
+               <!--{/if}-->
+               <!--{if $_SGLOBAL['timestamp']>$wei[endtime]}-->
+               <div style="text-align:center;"> <!--{if $auctionbuy[name]}-->拍卖已结束<br/>最终出价者：$auctionbuy[name],出价为：$auctionbuy[money]元<br/>不久后会有专人和你联系。<!--{else}-->拍卖已结束<!--{/if}-->
+                 <!--{if $_GET['zhong']=='1'}-->
+                <br/>出价者地址：$auctionbuy[place]<br/>
+                出价者电话：$auctionbuy[tel]</div> 
+                <!--{/if}-->
+               <!--{/if}-->
+          
+        
+            </li>  
+           </div>
+            </ul>
+             <br/>
+        </div>
+		<input type="hidden" id="wxkey" name="wxkey" value="$_GET[wxkey]"/>
+    	<input type="hidden" id="id" name="id" value="$_GET[id]"/>
+    	<input type="hidden" id="idtype" name="idtype" value="$_GET[idtype]"/>
+    	<input type="hidden" id="type" name="type" value="$_GET[type]"/>
+    	<input type="hidden" id="uid" name="uid" value="$_GET[viewuid]"/>
+    	<input type="hidden" id="page" name="page" value="1"/>
+    	<input type="hidden" id="perpage" name="perpage" value="10"/>
+
+
+
+
+    <script type="text/javascript">
+
+        $(function(){
+            $(".comment_list .commentContainer").css("display","none");
+            $("#detail-panel li span").css({width:"1em",overflow:"hidden",display:"block",textOverflow:"ellipsis",whiteSpace:"nowrap"});
+        })
+
+     </script>
+
+
+    	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#buttonBuy").click(function(){
+				$(".expressInfo").fadeIn();
+				});
+
+			//点击表格外的地方时消失
+			$(".expressInfo").click(function(){
+				$(".expressInfo").fadeOut();
+				});
+
+			//阻止事件冒泡
+			$(".formContainer").click(function(event){
+				event.stopPropagation();
+				});
+
+			$("#buttonBuy1").click(function(){
+                $(".expressInfo1").fadeIn();
+                });
+
+            //点击表格外的地方时消失
+            $(".expressInfo1").click(function(){
+                $(".expressInfo1").fadeOut();
+                });
+            
+            $("#buttonSubmit").click(function(){
+                $(".expressInfo").fadeOut();
+                });
+            //阻止事件冒泡
+            $(".formContainer1").click(function(event){
+                event.stopPropagation();
+                });
+
+            });
+            
+	</script>
+	<script>
+
+function gototaobao(url){
+  window.open(url);
+}
+</script>
+
+ <script type="text/javascript" charset="utf-8">
+         function showDIv(){
+        document.getElementById('bg').style.display = "block";
+        }
+        function hideDiv(){
+         document.getElementById('bg').style.display = "none";
+        }
+        function showFriendDIv(){
+        document.getElementById('bg2').style.display = "block";
+        }
+         function hideFriendDIv(){
+        document.getElementById('bg2').style.display = "none";
+        }
+
+
+      $(document).ready(function () {
+      $("#submit").click(function () {
+          var tel=$('#telephone').val();
+          if(tel.length!=11){
+            alert("手机号码填写长度不对");
+          }else{
+          if($("#username").val()==""||$("#tel").val()==""||$("#place").val()==""||$("#number").val()==""){
+            alert("邮寄信息中存在空值");
+          }else{
+          $.ajax({
+                 type: "POST",
+                 url: "wx.php?do=upload",
+                 data: "uid="+$('#uid').val()+"&gid="+$('#gid').val()+" &viewuid="+$('#viewuid').val()+" &moblieclicknum="+$('#moblieclicknum').val()+"&wxkey="+$('#wxkey').val()+"&name="+$('#name').val()+"&telephone="+$('#telephone').val()+"&auctionplace="+$('#auctionplace').val()+"&auctionbuy=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
+                  async: true,                    
+                    success: function (data) {
+                      $("#zhong").html("<p style='width:210px;text-align:center;margin:0 auto;'>你已提交订单，若想继续抢拍，请刷新页面</p>");
+                      $(".expressInfo").fadeOut();
+                       $('#ajax').html("当前最高出价者："+$('#name').val()+",出价为："+$('#money').val()+"元。");//输出提交的表表单
+                    },  //操作成功后的操作！msg是后台传过来的值
+                });
+                } 
+              }
+                 });
+              });
+  </script>
+
+	<div class="expressInfo">
+		<div class="formContainer bc tc">
+		<form method="post" action="wx.php?do=upload" name="buyform">
+			<h1 id="formTitle">抢拍信息</h1>
+			<input type="text" placeholder="姓名" id="name" name="name" value="$_COOKIE[uchome_name]" class="inputContainer" />
+			<br />
+			<input type="text" placeholder="电话"id="telephone" name="telephone" value="$_COOKIE[uchome_telephone]" class="inputContainer" />
+			<br />
+			<textarea  name="auctionplace" rows="3" class="inputContainer" id="auctionplace"  placeholder="地址" >$_COOKIE[uchome_auctionplace]</textarea>  
+			<br />
+            <div id="zhong">
+			      <input type="button" id="submit" class="buttonSubmit"   value="提交">
+                  <input type="button" id="buttonSubmit"  class="buttonSubmit" style="margin-left:30px;" value="取消">
+            </div>
+			       <input type="hidden" id="uid" name="uid" value="$_SGLOBAL['supe_uid']"/>
+            <input type="hidden" id="gid" name="gid" value="$_GET[id]"/>
+            <input type="hidden" id="money" name="money" value="$money"/>
+			      <input type="hidden" id="viewuid" name="viewuid" value="$_GET[viewuid]"/>
+            <input type="hidden" name="auctionbuy" value="1">
+            <input type="hidden" id="wxkey" name="wxkey" value="$_GET[wxkey]"/>
+		</div> <!-- formContainer -->
+		</form> 
+	</div> <!-- expressInfo --> 
+
+    <div class="expressInfo1">
+        <div class="formContainer1 bc tc">
+        <form method="post" action="wx.php?do=upload">
+            <h1 id="formTitle">密码确认</h1>
+            <input type="text" placeholder="密码" name="auctionpassword"  class="inputContainer" />
+            <br />
+
+            <input type="submit" class="buttonSubmit" value="提交">
+            <input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
+            <input type="hidden" id="gid" name="gid" value="$_GET[id]"/>
+            <input type="hidden" id="viewuid" name="viewuid" value="$_GET[viewuid]"/>
+            <input type="hidden" name="moblieclicknum" value="$_GET[moblieclicknum]">
+            <input type="hidden" name="auctionpassword1" value="1">
+            <input type="hidden" id="wxkey" name="wxkey" value="$_GET[wxkey]"/>
+        </div> <!-- formContainer -->
+        </form> 
+    </div> <!-- expressInfo --> 
+		</body>
+    <script>
+var dataForWeixin={
+   appId:"",
+   MsgImg:"$pic",
+   TLImg:"$pic",
+   url:"$url",
+   title:"$wei[subject]",
+   desc:"$wei[subject]",
+   fakeid:"",
+   callback:function(){}
+};
+(function(){
+   var onBridgeReady=function(){
+   WeixinJSBridge.on('menu:share:appmessage', function(argv){
+      WeixinJSBridge.invoke('sendAppMessage',{
+         "appid":dataForWeixin.appId,
+         "img_url":dataForWeixin.MsgImg,
+         "img_width":"120",
+         "img_height":"120",
+         "link":dataForWeixin.url,
+         "desc":dataForWeixin.desc,
+         "title":dataForWeixin.title
+      }, function(res){(dataForWeixin.callback)();});
+   });
+   WeixinJSBridge.on('menu:share:timeline', function(argv){
+      (dataForWeixin.callback)();
+      WeixinJSBridge.invoke('shareTimeline',{
+         "img_url":dataForWeixin.TLImg,
+         "img_width":"120",
+         "img_height":"120",
+         "link":dataForWeixin.url,
+         "desc":dataForWeixin.desc,
+         "title":dataForWeixin.title
+      }, function(res){});
+   });
+   WeixinJSBridge.on('menu:share:weibo', function(argv){
+      WeixinJSBridge.invoke('shareWeibo',{
+         "content":dataForWeixin.title,
+         "url":dataForWeixin.url
+      }, function(res){(dataForWeixin.callback)();});
+   });
+   WeixinJSBridge.on('menu:share:facebook', function(argv){
+      (dataForWeixin.callback)();
+      WeixinJSBridge.invoke('shareFB',{
+         "img_url":dataForWeixin.TLImg,
+         "img_width":"120",
+         "img_height":"120",
+         "link":dataForWeixin.url,
+         "desc":dataForWeixin.desc,
+         "title":dataForWeixin.title
+      }, function(res){});
+   });
+};
+if(document.addEventListener){
+   document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+}else if(document.attachEvent){
+   document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
+   document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+}
+})();
+</script>
+</html>

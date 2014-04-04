@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+	<link rel="stylesheet" href="./template/10/css/index.css" />
+	<script type="text/javascript" src="./template/10/js/jquery-v2.0.2.js"></script>
+	<script type="text/javascript" src="./template/10/js/myAll.js"></script>
+
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="template/js/mobiscroll.custom-2.5.4.min.js"></script>
+    <script src="template/js/js/jquery.query.js" type="text/javascript"></script>
+    <script type="text/javascript" src="template/js/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="template/js/feed.js"></script><!-- 时间选择插件 -->
+
+    <!--返回顶部代码-->
+
+
+	<title>$home1[subject]</title>
+</head>
+<body>
+	<div class="wrapper_picture">
+		<img src="http://v5.home3d.cn/home/$home1[imageurl]" alt="" id="pic0" />
+		<img src="http://v5.home3d.cn/home/$home1[imageurl]" alt="" id="pic1" />
+		<img src="http://v5.home3d.cn/home/$home1[imageurl]" alt="" id="pic2" />
+		<img src="http://v5.home3d.cn/home/$home1[imageurl]" alt="" id="pic3" />
+		<img src="http://v5.home3d.cn/home/$home1[imageurl]" alt="" id="pic4" />
+	</div> <!-- wrapper_picture --> 
+	<div class="title_pic">
+		<span class="title_text">$home1[subject]</span>
+		<div class="dots">
+			<img src="./template/10/img/dot_white.png" alt="" id="dot0"/>
+			<img src="./template/10/img/dot_gray.png" alt="" id="dot1" />
+			<img src="./template/10/img/dot_gray.png" alt="" id="dot2" />
+			<img src="./template/10/img/dot_gray.png" alt="" id="dot3" />
+			<img src="./template/10/img/dot_gray.png" alt="" id="dot4" />
+		</div> <!-- dots --> 
+	</div> <!-- title_pic --> 
+
+	<div class="wrapper_icon">
+        <div class="main_menu">
+            <!--{loop $zhongwei $value}-->
+            <div class="menu_choice" onclick="location.href= 'wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]'">
+                <!--{if $bac['moblieclicknum']=='1'||$bac['moblieclicknum']=='0'}-->
+                <img src="http://v5.home3d.cn/home/wx/template/img/$value[icon]" alt="" />
+                <!--{else}-->
+                <img src="http://v5.home3d.cn/home/wx/template/$bac['moblieclicknum']/img/$value[icon]" alt="" />
+                <!--{/if}-->
+                $value[subject]
+            </div>
+            <!--{/loop}-->
+            <!--{loop $zhongwei1 $value}-->
+            <div class="menu_choice" onclick="location.href= 'wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]'">
+                <!--{if $bac['moblieclicknum']=='1'||$bac['moblieclicknum']=='0'}-->
+                <img src="http://v5.home3d.cn/home/wx/template/img/$value[icon]" alt="" />
+                <!--{else}-->
+                <img src="http://v5.home3d.cn/home/wx/template/$bac['moblieclicknum']/img/$value[icon]" alt="" />
+                <!--{/if}-->
+                $value[subject]
+            </div>
+            <!--{/loop}-->
+        </div>
+
+    </div>
+
+    <!--{if $list[0]}-->
+    <div class="wrapper_ad">
+		<img src="./template/10/img/bar_title_1.png" alt="" />
+		<span>推荐</span>
+		<div class="ad_table">
+                <!--注意各个tr标签的id都与相关的页面跳转联系起来-->
+                <div class="table_row">
+
+                     <!--{loop $list $value8}-->
+
+                    <a href="wx.php?do=detail&id=$value8['productid']&uid=$value8['uid']&idtype=productid&type=product&moblieclicknum=$bac['moblieclicknum']">
+                        <div class="div_left">
+
+                            <img src="../$value8['image1url']" alt="" />
+
+                            <div class="place"><span>$value8['subject']</span></div>
+                            <div class="ad_price">
+                                <!--<span class="line_through_text">原价&#65509;$value8['money']</span>
+                                <br />  -->
+                                <span class="discount_price">特价&#65509;$value8['money']</span>
+                            </div> <!-- ad_price -->
+                        </div>
+                    </a>
+                     <!--{/loop}-->
+
+                </div> <!-- table_row -->
+
+		</div> <!-- ad_table --> 
+	</div> <!-- wrapper_ad -->
+    <!--{/if}-->
+
+
+    <!--{if $list2[0]}-->
+	<div class="rank">
+		<img src="./template/10/img/bar_title_2.png" alt="" />
+		<span>热门产品排行榜</span>
+			<ul>
+
+                <!--{loop $list2 $value9}-->
+                <a href="wx.php?do=detail&id=$value9['goodsid']&uid=$value9['uid']&idtype=goodsid&type=goods&moblieclicknum=$bac['moblieclicknum']">
+                <li>
+                    <span class="rank_num" id="rank_num_1">$value9['k']</span>
+                    <div class="list_item">
+
+                            <img  src = "../$value9['image1url']" />
+
+                        <span class="item_name_product">$value9[subject]</span>
+                        <span class="rank_price_text"><span class="price">$value9['money']</span>元</span>
+                    </div>
+                </li>
+                </a>
+                <!--{/loop}-->
+
+
+
+			</ul>
+	</div> <!-- rank -->
+    <!--{/if}-->
+
+	<a href="#"><img src="./template/10/img/btn_top.png" alt="" id="btn_top" /></a>
+
+	
+</body>
+
+<script type="text/javascript">
+    $(function () {
+        $("#btn_top").fadeOut(0);
+        $(window).scroll(function () {
+            var scrollTopValue = $(window).scrollTop();
+            if (scrollTopValue > 100) {
+                $("#btn_top").fadeIn();
+            } else {
+                $("#btn_top").fadeOut();
+            }
+        })
+        $("#btn_top").click(function () {
+            $("html, body").animate({scrollTop:0}, 600);
+            return false;
+        })
+    })
+</script>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+	<link rel="stylesheet" href="template/9/css/base.css" />
+	<link rel="stylesheet" href="template/9/css/common.css" />
+	<link rel="stylesheet" href="template/9/css/contentList.css" />
+	<link rel="stylesheet" href="template/9/css/info.css" />
+	<link rel="stylesheet" href="template/9/css/button.css" />
+	<script type="text/javascript" src="template/9/js/jquery-v2.0.2.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+				var anyTransformY = function(target, distance) {
+					$(target).css("-webkit-transform", "translateY("+distance+")");
+					};
+					anyTransformY(".contentTitle", "40px");
+					anyTransformY(".contentHide-button", "-35px");
+				});
+	</script>
+	<title>在线咨询</title>
+</head>
+<body>
+	<div class="contentHide">
+		<div class="contentTitle cPrice f20">在线咨询</div>
+		<div class="paddingContent">
+			<h2 class="f20 mt15">联系我们</h2>
+			<img src="template/9/img/mid_pic_5.png" alt="" class="w mt15" />
+			<p class="cParagraph mt15 lh130">
+				我们很高兴能帮助你，在这里，我们给你不同的选择，以获得与我们联系。
+			</p>
+			<div class="button">
+				<a href="" class="f20 cWhite">电话咨询：4006567890</a>
+			</div>
+		</div> <!-- paddingContent --> 
+		<div class="contentHide-button tc w">
+			<a href="index.html"><img src="template/9/img/btn_close.png" alt="" class="btnClose" /></a>
+		</div>
+	</div>
+
+</body>
+</html>
+

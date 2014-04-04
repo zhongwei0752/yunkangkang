@@ -1,0 +1,41 @@
+*{ font-family: 'Microsoft yahei' !important; -webkit-tap-highlight-color: rgba(0, 0, 0 ,0) }
+body{ background-color: #240934; }
+h3{ font-weight: bold; font-size: 18px; padding-top: 4px; padding-bottom: 7px;}
+h4{ margin-left: 93px; font-weight: bold; white-space: nowrap;}
+input{ border: 0; border-radius: 0 !important; -webkit-appearance: none;}
+textarea{ -webkit-appearance: none; border-radius: 0 !important; }
+a{ text-decoration: none; color: black; }
+.wrapperPic{ width: 100%; /*background-color: #240934;*/}
+.wrapperText{ width: 100%; }
+.itemFrame{ background: url("img/top_border.png") no-repeat top; }
+.itemList{ margin-bottom: 10px; }
+.itemList div{ overflow: hidden; /*min-height: 78px;*/ padding-top: 3px; background: #333333 url("img/right_border.png") no-repeat top right; color: #CCCCCC; }
+.itemList img{ height: 75px; }
+.itemSubtitle{ font-size: 12px; display: block; margin-left: 93px;}
+.menuBtn{ position: fixed; bottom: 0; left: 50%; margin-left: -27px; max-width: 54px; cursor: pointer;}/*auto fixed不居中原因？*//*display: block; */
+
+.btn{ color: white; background-color: #4FB6B1; font-size: large; cursor: pointer; }
+.btn:hover{ background-color: rgb(69, 167, 162); }
+
+.more_button{ color: white; background-color: #4FB6B1; font-size: large; cursor: pointer; }
+.more_button:hover{ background-color: rgb(69, 167, 162); }
+.more_button{ height: 40px; width: 94%; margin-left: 3%; }
+
+.publish11
+{padding-top:17px;padding-bottom:17px; width: 18%;  vertical-align: middle; color: white; background-color: #4FB6B1; font-size: large; cursor: pointer;
+text-align: center;}
+.publish11:hover{ background-color: rgb(69, 167, 162); }
+
+.articleBtn, .moreBtn{ height: 40px; width: 94%;margin-left: 3%; }
+.articleBtn{ width: 96%; margin-left: 2%; }
+.submitBtn{ height: 57px; width: 18%;  vertical-align: middle; }
+.itemContentFrame{ background-color: #333333; color: #CCCCCC;}
+.article{ background-color: #240934; }
+.article p{ /*text-indent: 2em;*/ }
+.itemContentSubtitle{ font-size: 13px; color: #999999; }
+.pageSelect{ text-align: center; padding}
+.pageSelect li{ display: inline-block; margin: 0 2%;}
+.colour{ color: #4FB6B1 !important; }
+.lt{ text-decoration: line-through; }
+.itemContentList{ padding: 16px 8px;  border-top: 1px solid #4E4E4E; font-size: 14px; }
+.comment_area{ font-size: 14px; background-color: #DDD; height: 49px; padding: 3px 2%; width: 72%; border: 1px solid #DDDDDD; vertical-align: middle; }

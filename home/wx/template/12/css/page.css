@@ -1,0 +1,16 @@
+/*product页面*/
+.itemPrice{ position: absolute; top: 20px; }
+
+/*主页*/
+.mainMenu{ /*float:left;*/cursor: pointer; background-color: white; border-radius: 6px; width: 92%; margin-left: 4%; margin-right: 4%; box-shadow: 0px 0px 5px rgb(100, 100, 100);}
+.mainMenu td{ border: 1px solid #CECECE; width: 25%;  height: 122px; text-align: center; line-height: 2.5em;}
+.mainMenu td img{ max-width: 43px;  vertical-align: middle; display: block; margin: 9px auto 0; }
+.bannerPic{ height: 30px; margin-top: -30px;}
+.bannerPic img{ height: 30px; opacity: 0.8; }
+.bannerText{ height: 26px; padding-top: 4px; color: white; text-align: center; margin-top: -30px; opacity: 0.9;}
+.bannerDot{ background-image: url("img/dotBG.png"); height: 30px;}
+.bannerDot ul{ margin: 0 auto; text-align: center;}
+.bannerDot li{ display: inline; }
+.bannerDot li img{ width: 8px; }
+.logo{ overflow: hidden; }
+#pic1, #pic2, #pic3{ position: absolute; top: 0; opacity: 0; }

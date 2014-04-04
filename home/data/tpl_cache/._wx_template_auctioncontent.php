@@ -1,0 +1,698 @@
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/auctioncontent', '1386907327', './wx/template/auctioncontent');?><!DOCTYPE html>
+<html>
+    <head>
+    	<title><?=$wei['subject']?></title>
+<meta charset = "utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+        <meta content="telephone=no" name="format-detection" />
+ <?php if($_GET['moblieclicknum']=='1'||$_GET['moblieclicknum']=='0') { ?>
+        <link rel = "stylesheet" type = "text/css" href = "./template/css/main.css">
+        <link rel="stylesheet" href="./template/css/base.css" />
+<link rel="stylesheet" href="./template/css/expressInfo.css" />
+        <link rel="stylesheet" href="./template/css/myall.css" />
+        <?php } else { ?>
+        <link rel = "stylesheet" type = "text/css" href = "./template/<?=$_GET['moblieclicknum']?>/css/main.css">
+        <link rel="stylesheet" href="./template/<?=$_GET['moblieclicknum']?>/css/base.css" />
+<link rel="stylesheet" href="./template/<?=$_GET['moblieclicknum']?>/css/expressInfo.css" />
+        <link rel="stylesheet" href="./template/<?=$_GET['moblieclicknum']?>/css/myall.css" />
+        <?php } ?>
+        <style type="text/css">
+        #bg,#bg2{ display: none;  position: fixed;  top: 0%;  left: 0%;  width: 100%;
+            height: 100%;  background:url(./template/img/guide_bg.png);
+            z-index:1001;/*  -moz-opacity: 0.7;  opacity:.70;  filter: alpha(opacity=70);*/}
+        #detail-panel li .span1
+        {
+            width: 15em ;
+            overflow: hidden ;
+            display: block;
+           text-overflow: ellipsis;
+            white-space: nowrap;
+            float: left;
+            vertical-align: middle;
+
+
+        }
+        #detail-panel li .span2
+        {
+            width: 10em ;
+            overflow: hidden ;
+            display: block;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            float:left;
+            vertical-align: middle;
+            color: #7d7b7b;
+
+        }
+        .span2
+        {
+            color: #7d7b7b;
+        }
+        /*控制倒计时器的样式↓*/
+      .auctioncontenttime
+      {
+          width: 100%;
+          background-color: #EE490E;
+      }
+            .auctioncontenttimeinside
+            {
+                background-image: url(./template/img/actioncontentbackground1.png);
+                background-repeat: no-repeat;
+                background-position: 0 0;
+                filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+                -moz-background-size:100% 100%;
+                background-size:100% 100%;
+                -moz-background-size: 100% 100%;
+                -o-background-size: 100% 100%;
+                -webkit-background-size: 100% 100%;
+                background-size: 100% 100%;
+                margin: 0 auto;
+                text-align: center;
+            }
+        .actioncontentshow
+        {
+            width: 55%;
+            margin-top: 8%;
+            margin-bottom: 8%;
+
+        }
+        .timeinsideframe
+        {
+            width: 100%;
+            padding-bottom: 2%;
+        }
+        .timeword
+        {
+            padding-top: 1%;
+            padding-bottom: 1%;
+            padding-left: 2%;
+            padding-right: 2%;
+            background-color: #C91C01;
+            font-size: 180%;
+            color: #fff;
+            margin-left: 2%;
+            border-radius: 3px;
+        }
+        .timepoint
+        {
+            /*margin-right: -6px;
+            margin-left: 5px;  */
+            margin-right: -2%;
+            margin-left: 1.2%;
+            margin-top: 1%;
+            height: 20px;
+        }
+            .timeinsideframe2
+            {
+                width: 100%;
+
+            }
+        .timeinsideframe2 span
+        {
+            padding-left: 4%;
+            padding-right: 4%;
+            font-size: 100%;
+            color: #FFFF00;
+            margin-left: 4%
+        }
+        .auctioncontenttimeinside2
+        {
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .auctionpeople
+        {
+            margin-top: 1%;
+            color: #fff;
+            font-size: 90%;
+        }
+        .auctionbutton
+        {
+            width: 100%;
+            text-align: center;
+            padding-top: 6%;
+            padding-bottom: 7%;
+        }
+        .auctionbutton input,.dial_btn,.btn
+        {
+            width: 40%;
+            background-color: #FECB55;
+            color: #C14A17;
+            font-size: 120%;
+            padding: 2%;
+            border-radius: 3px !important;
+            font-weight: 600;
+        }
+        .auctionbutton input:hover
+        {
+
+            background-color: #FED87E;
+
+        }
+
+        </style>
+
+
+
+
+
+
+ <script src="template/js/jquery-v2.0.2.js"></script>
+     	<script type="text/javascript" src="template/js/jquery.tmpl.min.js"></script>
+
+     	<script type="text/javascript" src="template/js/detail.js"></script>
+        <script id="detailTemplate" type="text/x-jquery-tmpl">
+              <li >
+                    <span  style="float:left">{{= name}}</span><span style="float:right;">{{= dateline}}</span>
+                  <div style="clear: both"></div>
+                    <?php if($_GET['zhong']=='1') { ?>
+                    <p>联系电话:{{= tel}}</p>
+                    <?php } ?>
+                  <p style="color:#666;margin-top:5px;">出价：{{= money}}元</p>
+                </li>  
+                
+</script>
+         <!--控制计时器框-->
+        <script type="text/javascript">
+            $(function(){
+                $('.timeinsideframe span').css("height", $('.timeinsideframe span').css("width"));
+                window.onresize = function(){
+                    $('.timeinsideframe span').css("height", $('.timeinsideframe span').css("width"));
+                };
+            })
+        </script>
+
+      <script language="JavaScript"> 
+var tms = []; 
+var day = []; 
+var hour = []; 
+var minute = []; 
+var second = []; 
+function takeCount() { 
+setTimeout("takeCount()", 1000); 
+for (var i = 0, j = tms.length; i < j; i++) { 
+//计数减一 
+tms[i] -= 1000; 
+//计算时分秒 
+var days = Math.floor(tms[i] / (1000 * 60 * 60 * 24));
+var hours = Math.floor(tms[i] / (1000 * 60 * 60)) % 24; 
+var minutes = Math.floor(tms[i] / (1000 * 60)) % 60; 
+var seconds = Math.floor(tms[i] / 1000) % 60; 
+if (days < 0) 
+days = 0; 
+if (hours < 0) 
+hours = 0; 
+if (minutes < 0) 
+minutes = 0; 
+if (seconds < 0) 
+seconds = 0; 
+//将时分秒插入到html中
+  if(days<10)
+  {
+      document.getElementById(day[i]).innerHTML ='0'+ days;
+  }
+    else
+  {
+      document.getElementById(day[i]).innerHTML =days;
+  }
+    if(hours<10)
+    {
+        document.getElementById(hour[i]).innerHTML ='0'+ hours;
+    }
+    else
+    {
+        document.getElementById(hour[i]).innerHTML = hours;
+    }
+    if(minutes<10)
+    {
+        document.getElementById(minute[i]).innerHTML ='0'+ minutes;
+    }
+    else
+    {
+        document.getElementById(minute[i]).innerHTML = minutes;
+    }
+    if(seconds<10)
+    {
+        document.getElementById(second[i]).innerHTML ='0' +seconds;
+    }
+    else
+    {
+        document.getElementById(second[i]).innerHTML = seconds;
+    }
+/*document.getElementById(day[i]).innerHTML = days;
+document.getElementById(hour[i]).innerHTML = hours;
+document.getElementById(minute[i]).innerHTML = minutes;
+document.getElementById(second[i]).innerHTML = seconds;  */
+} 
+} 
+setTimeout("takeCount()", 1000); 
+</script> 
+
+</head>
+<body> 
+<div id="bg" onclick="hideDiv();">
+            <img src="./template/img/guide.png" alt="" style="position:fixed;top:0;right:16px;">
+        </div>
+        <div id="bg2" onclick="hideFriendDIv();">
+            <img src="./template/img/guide_firend.png" alt="" style="position:fixed;top:0;right:16px;">
+        </div>
+
+    <div class="feedhead">
+        <a href="javascript:history.back(-1)">
+        <span class="back1">
+            <img src="./template/img/back1.png">
+        </span>
+        </a>
+        <a href="wx.php?do=home&uid=<?=$_GET['uid']?>">
+        <span class="home1">
+        <img src="./template/img/home1.png">
+        </span>
+        </a>
+  <span class="feedheadspan2 feedheadspan2_1">
+      拍卖
+  </span>
+    </div> <!--feedhead-->
+    <div style="clear: both"></div>
+
+
+<div class = "article" style="margin-bottom: 10px">
+            <img src="http://v5.home3d.cn/home/<?=$wei['imageurl']?>" style="width:100%;">
+<h3><?=$wei['subject']?></h3>
+<div class = "article_content">
+                <div style="color: #B0B0B0;margin-bottom: 10px">
+                     <?=$message?>
+                </div>
+</div>
+
+            <?php if($_SGLOBAL['timestamp']<$wei['starttime']) { ?>
+             <!--计时器的大框-->
+            <div class="auctioncontenttime">
+                <div class="auctioncontenttimeinside">
+                     <img src="./template/img/actioncontentshow2.png" class="actioncontentshow">
+                    <div class="timeinsideframe">
+                        <span><em id="d1">0</em></span><span><img class="timepoint" src="./template/img/point1.png"></span>
+                        <span><em id="h1">0</em></span><span><img class="timepoint" src="./template/img/point1.png"></span>
+                        <span><em id="m1" >0</em></span><span><img class="timepoint" src="./template/img/point1.png"></span>
+                        <span><em id="s1">0</em></span>
+                    </div><!--timeinsideframe-->
+                    <div class="timeinsideframe2">
+                        <span>天</span>
+                        <span>时</span>
+                        <span>分</span>
+                        <span>秒</span>
+                    </div><!--timeinsideframe2-->
+                </div><!--auctioncontenttimeinside-->
+                <div class="auctioncontenttimeinside2">
+                    <div class="auctionpeople">
+                     <!--   <span>当前最高出价者：</span><span><?=$auctionbuy['name']?></span>&nbsp;&nbsp;<span>出价为：</span><span><?=$auctionbuy['money']?></span> -->
+                    </div>  <!--auctionpeople-->
+                    <div class="auctionbutton">
+                     <!--   <input type="button" value="我要竞价">  -->
+                        <div style="width: 100px;height: 100px"></div>
+                    </div>
+                </div> <!--auctioncontenttimeinside2-->
+            </div><!--auctioncontenttime-->
+            <script type="text/javascript">
+                tms[0] = "<?=$time?>";
+                day[0] = "d1";
+                hour[0] = "h1";
+                minute[0] = "m1";
+                second[0] = "s1";
+            </script>
+            <?php } ?>
+
+            <?php if($_SGLOBAL['timestamp']>$wei['starttime']&&$_SGLOBAL['timestamp']<$wei['endtime']) { ?>
+            <!--计时器的大框-->
+            <div class="auctioncontenttime">
+                <div class="auctioncontenttimeinside">
+                    <img src="./template/img/actioncontentshow.png" class="actioncontentshow">
+                    <div class="timeinsideframe">
+                        <span class="timeword"><em id="d1">0</em></span><span><img class="timepoint" src="./template/img/point1.png"></span>
+                        <span class="timeword"><em id="h1">0</em></span><span><img class="timepoint" src="./template/img/point1.png"></span>
+                        <span class="timeword"><em id="m1">0</em></span><span><img class="timepoint" src="./template/img/point1.png"></span>
+                        <span class="timeword"><em id="s1">0</em></span>
+                    </div><!--timeinsideframe-->
+                    <div class="timeinsideframe2">
+                        <span>天</span>
+                        <span>时</span>
+                        <span>分</span>
+                        <span>秒</span>
+                    </div><!--timeinsideframe2-->
+                </div><!--auctioncontenttimeinside-->
+                <div class="auctioncontenttimeinside2">
+                    <div class="auctionpeople" id="ajax">
+                        <?php if($auctionbuy['name']) { ?>
+                        <span>当前最高出价者：</span><span><?=$auctionbuy['name']?></span>&nbsp;&nbsp;<span>出价为：</span><span><?=$auctionbuy['money']?>元</span>
+                        <?php } ?>
+                    </div>  <!--auctionpeople-->
+                    <div class="auctionbutton">
+                        <?php if($_SGLOBAL['timestamp']>$wei['starttime']&&$_SGLOBAL['timestamp']<$wei['endtime']) { ?>
+                        <input type="button" id="buttonBuy" value="我要竞价" class="dial_btn btn">
+                        <?php } ?>
+                        <div style="color:yellow;font-size: 90%;margin-top: 10px ">
+                        <span>最小加价幅度：<?=$wei['plusprice']?>元</span>&nbsp;&nbsp;&nbsp;<span>竞拍人数：<?=$wei['yan']?>人</span>
+                        </div>
+                    </div>
+
+                </div> <!--auctioncontenttimeinside2-->
+            </div><!--auctioncontenttime-->
+            <script type="text/javascript">
+                tms[0] = "<?=$time1?>";
+                day[0] = "d1";
+                hour[0] = "h1";
+                minute[0] = "m1";
+                second[0] = "s1";
+            </script>
+            <?php } ?>
+
+
+            <?php if($_SGLOBAL['timestamp']>$wei['endtime']) { ?>
+            <!--计时器的大框-->
+            <div class="auctioncontenttime">
+                <div class="auctioncontenttimeinside">
+                    <img src="./template/img/actioncontentshow3.png" class="actioncontentshow">
+                    <div class="timeinsideframe">
+                        <span>00</span><span><img class="timepoint" src="./template/img/point1.png"></span>
+                        <span>00</span><span><img class="timepoint" src="./template/img/point1.png"></span>
+                        <span>00</span><span><img class="timepoint" src="./template/img/point1.png"></span>
+                        <span>00</span><span><img class="timepoint" src="./template/img/point1.png"></span>
+                    </div><!--timeinsideframe-->
+                    <div class="timeinsideframe2">
+                        <span>天</span>
+                        <span>时</span>
+                        <span>分</span>
+                        <span>秒</span>
+                    </div><!--timeinsideframe2-->
+                </div><!--auctioncontenttimeinside-->
+                <div class="auctioncontenttimeinside2">
+                    <div class="auctionpeople">
+                        <?php if($auctionbuy['name']) { ?>
+                       <span>拍卖已结束</span><br/>
+                       <span>最终出价者：<?=$auctionbuy['name']?></span><span>出价为：<?=$auctionbuy['money']?>元</span><br/>
+                        <span>不久后会有专人和你联系</span>
+                        <?php } else { ?>
+                        <span>拍卖已结束</span>
+                        <?php } ?>
+                        <!--   <span>当前最高出价者：</span><span><?=$auctionbuy['name']?></span>&nbsp;&nbsp;<span>出价为：</span><span><?=$auctionbuy['money']?></span> -->
+                    </div>  <!--auctionpeople-->
+                    <div class="auctionbutton">
+                        <!--   <input type="button" value="我要竞价">  -->
+                        <div style="width: 100px;height: 100px"></div>
+                    </div>
+                </div> <!--auctioncontenttimeinside2-->
+            </div><!--auctioncontenttime-->
+            <script type="text/javascript">
+                tms[0] = "<?=$time?>";
+                day[0] = "d1";
+                hour[0] = "h1";
+                minute[0] = "m1";
+                second[0] = "s1";
+            </script>
+            <?php } ?>
+
+
+            <div class="share_send">
+                <div class="button2_button3">
+                    <a onclick="showDIv()">
+                  <span class="button2">
+                    <img src="./template/img/transmit.png"><span class="button_word">发送给朋友</span>
+                  </span>
+                    </a>
+                    <a onclick="showFriendDIv()">
+                    <span class="button3">
+                        <img src="./template/img/vitasphere.png"><span class="button_word">分享到朋友圈</span>
+                    </span>
+                    </a>
+                </div><!--button2_button3-->
+                <div style="clear: both"></div>
+                <?php if($uidwxkey['weixinname']) { ?>
+                <div style="margin:0 auto;padding:0;height: 30px;width:100%;text-align: center;margin-top: 10px">
+                    <h3 style="font-size:14px;">手机用户请关注微信公众账号：<?=$uidwxkey['weixinname']?></h3></div>
+                <div style="clear: both"></div>
+                <?php } ?>
+            </div> <!--share_send-->
+            <div style="clear: both"></div>
+
+
+             <?php if($_SGLOBAL['timestamp']>$wei['endtime']) { ?>
+            <div style="font-size:16px;float:right;padding-top:15px;padding-bottom:0px" id="buttonBuy1"> 管理员点击输入密码查看订单详情</div>
+            <div style="clear: both"></div>
+            <?php } ?>
+            <p style="font-size: 16px;color: #666;float: left;margin-top: 15px;margin-bottom: -10px;">
+                拍卖动态
+            </p>
+            <div style="clear: both"></div>
+</div>
+        <div class = "comment">
+
+          <ul class = "comment_list" style="margin-top: -10px;border-top: 1px solid #ccc">
+          
+
+                <div id="detail-panel">
+                </div>
+
+
+
+
+
+
+            </ul>
+             <br/>
+        </div>
+<input type="hidden" id="wxkey" name="wxkey" value="<?=$_GET['wxkey']?>"/>
+    	<input type="hidden" id="id" name="id" value="<?=$_GET['id']?>"/>
+    	<input type="hidden" id="idtype" name="idtype" value="<?=$_GET['idtype']?>"/>
+    	<input type="hidden" id="type" name="type" value="<?=$_GET['type']?>"/>
+    	<input type="hidden" id="uid" name="uid" value="<?=$_GET['viewuid']?>"/>
+    	<input type="hidden" id="page" name="page" value="1"/>
+    	<input type="hidden" id="perpage" name="perpage" value="10"/>
+
+
+
+
+    <script type="text/javascript">
+
+        $(function(){
+            $(".comment_list .commentContainer").css("display","none");
+            $("#detail-panel li span").css({width:"100%",display:"block",textOverflow:"ellipsis",whiteSpace:"nowrap"});
+        })
+
+     </script>
+
+
+    	<script type="text/javascript">
+$(document).ready(function(){
+$("#buttonBuy").click(function(){
+$(".expressInfo").fadeIn();
+});
+
+//点击表格外的地方时消失
+$(".expressInfo").click(function(){
+$(".expressInfo").fadeOut();
+});
+
+//阻止事件冒泡
+$(".formContainer").click(function(event){
+event.stopPropagation();
+});
+
+$("#buttonBuy1").click(function(){
+                $(".expressInfo1").fadeIn();
+                });
+
+            //点击表格外的地方时消失
+            $(".expressInfo1").click(function(){
+                $(".expressInfo1").fadeOut();
+                });
+            
+            $("#buttonSubmit").click(function(){
+                $(".expressInfo").fadeOut();
+                });
+            //阻止事件冒泡
+            $(".formContainer1").click(function(event){
+                event.stopPropagation();
+                });
+
+            });
+            
+</script>
+<script>
+
+function gototaobao(url){
+  window.open(url);
+}
+</script>
+
+ <script type="text/javascript" charset="utf-8">
+         function showDIv(){
+        document.getElementById('bg').style.display = "block";
+        }
+        function hideDiv(){
+         document.getElementById('bg').style.display = "none";
+        }
+        function showFriendDIv(){
+        document.getElementById('bg2').style.display = "block";
+        }
+         function hideFriendDIv(){
+        document.getElementById('bg2').style.display = "none";
+        }
+
+        function keyPress() {    
+     var keyCode = event.keyCode;    
+     if ((keyCode >= 48 && keyCode <= 57))    
+    {    
+         event.returnValue = true;    
+     } else {    
+           event.returnValue = false;    
+    }    
+ }   
+      $(document).ready(function () {
+      $("#submit").click(function () {
+          var tel=$('#telephone').val();
+          var money=$('#money').val();
+          var trymoney=$('#trymoney').val();
+          if(Number(money)<Number(trymoney)){
+            alert("你本次出价必须高于<?=$trymoney?>");
+          }else{
+          if(tel.length!=11){
+            alert("手机号码填写长度不对");
+          }else{
+            
+          if($("#username").val()==""||$("#tel").val()==""||$("#money").val()==""||$("#number").val()==""){
+            alert("邮寄信息中存在空值");
+          }else{
+          
+          $.ajax({
+                 type: "POST",
+                 url: "wx.php?do=upload",
+                 data: "uid="+$('#uid').val()+"&gid="+$('#gid').val()+" &viewuid="+$('#viewuid').val()+" &moblieclicknum="+$('#moblieclicknum').val()+"&wxkey="+$('#wxkey').val()+"&name="+$('#name').val()+"&telephone="+$('#telephone').val()+"&money="+$('#money').val()+"&auctionplace="+$('#auctionplace').val()+"&auctionbuy=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
+                  async: true,                    
+                    success: function (data) {
+                      if(data){
+                        if(data=='1'){
+                          alert("请输入数字");
+                        }else{
+                          alert(data);
+                        $(".expressInfo").fadeOut(); 
+                        }
+                        //alert(data);
+                      }else{
+                      $("#zhong").html("<p style='width:210px;text-align:center;margin:0 auto;'>你已出价，若想继续抢拍，请刷新页面</p>");
+                      $(".expressInfo").fadeOut();
+                      $('#ajax').html("当前最高出价者："+$('#name').val()+"  出价为："+$('#money').val()+"元");
+                       }//输出提交的表表单
+                    },  //操作成功后的操作！msg是后台传过来的值
+                });
+                }
+                } 
+              }
+                 });
+              });
+  </script>
+
+<div class="expressInfo">
+<div class="formContainer bc tc">
+<form method="post" action="wx.php?do=upload" name="buyform">
+<h1 id="formTitle" style="color:red;">此拍卖起步价为<?=$wei['fristprice']?>元<br/>每次加价最少为<?=$wei['plusprice']?>元<br/>当前出价:<?php if($auctionbuy['money']) { ?><?=$auctionbuy['money']?><?php } else { ?><?=$wei['fristprice']?><?php } ?>元</h1>
+<input type="text" placeholder="姓名" id="name" name="name" value="<?=$_COOKIE['uchome_name']?>" class="inputContainer" />
+<br />
+<input type="text" placeholder="电话"id="telephone" name="telephone" value="<?=$_COOKIE['uchome_telephone']?>" class="inputContainer" />
+<br />
+      <input type="text" id="money" name="money" placeholder="本次出价应高于<?=$trymoney?>" style="ime-mode:disabled;" onpaste="return false;"  onkeypress="keyPress()" class="inputContainer" />
+      <br />
+            <div id="zhong">
+      <input type="button" id="submit" class="buttonSubmit"   value="提交">
+                  <input type="button" id="buttonSubmit"  class="buttonSubmit" style="margin-left:30px;" value="取消">
+            </div>
+       <input type="hidden" id="uid" name="uid" value="<?=$_SGLOBAL['supe_uid']?>"/>
+            <input type="hidden" id="gid" name="gid" value="<?=$_GET['id']?>"/>
+            <input type="hidden" id="trymoney" name="trymoney" value="<?=$trymoney?>"/>
+            
+      <input type="hidden" id="viewuid" name="viewuid" value="<?=$_GET['viewuid']?>"/>
+            <input type="hidden" name="auctionbuy" value="1">
+            <input type="hidden" id="wxkey" name="wxkey" value="<?=$_GET['wxkey']?>"/>
+</div> <!-- formContainer -->
+</form> 
+</div> <!-- expressInfo --> 
+
+    <div class="expressInfo1">
+        <div class="formContainer1 bc tc">
+        <form method="post" action="wx.php?do=upload">
+            <h1 id="formTitle">密码确认</h1>
+            <input type="text" placeholder="密码" name="auctionpassword"  class="inputContainer" />
+            <br />
+
+            <input type="submit" class="buttonSubmit" value="提交">
+            <input type="hidden" id="uid" name="uid" value="<?=$_GET['uid']?>"/>
+            <input type="hidden" id="gid" name="gid" value="<?=$_GET['id']?>"/>
+            <input type="hidden" id="viewuid" name="viewuid" value="<?=$_GET['viewuid']?>"/>
+            <input type="hidden" name="moblieclicknum" value="<?=$_GET['moblieclicknum']?>">
+            <input type="hidden" name="auctionpassword1" value="1">
+            <input type="hidden" id="wxkey" name="wxkey" value="<?=$_GET['wxkey']?>"/>
+        </div> <!-- formContainer -->
+        </form> 
+    </div> <!-- expressInfo --> 
+</body>
+    <script>
+var dataForWeixin={
+   appId:"",
+   MsgImg:"<?=$pic?>",
+   TLImg:"<?=$pic?>",
+   url:"<?=$url?>",
+   title:"<?=$wei['subject']?>",
+   desc:"<?=$wei['subject']?>",
+   fakeid:"",
+   callback:function(){}
+};
+(function(){
+   var onBridgeReady=function(){
+   WeixinJSBridge.on('menu:share:appmessage', function(argv){
+      WeixinJSBridge.invoke('sendAppMessage',{
+         "appid":dataForWeixin.appId,
+         "img_url":dataForWeixin.MsgImg,
+         "img_width":"120",
+         "img_height":"120",
+         "link":dataForWeixin.url,
+         "desc":dataForWeixin.desc,
+         "title":dataForWeixin.title
+      }, function(res){(dataForWeixin.callback)();});
+   });
+   WeixinJSBridge.on('menu:share:timeline', function(argv){
+      (dataForWeixin.callback)();
+      WeixinJSBridge.invoke('shareTimeline',{
+         "img_url":dataForWeixin.TLImg,
+         "img_width":"120",
+         "img_height":"120",
+         "link":dataForWeixin.url,
+         "desc":dataForWeixin.desc,
+         "title":dataForWeixin.title
+      }, function(res){});
+   });
+   WeixinJSBridge.on('menu:share:weibo', function(argv){
+      WeixinJSBridge.invoke('shareWeibo',{
+         "content":dataForWeixin.title,
+         "url":dataForWeixin.url
+      }, function(res){(dataForWeixin.callback)();});
+   });
+   WeixinJSBridge.on('menu:share:facebook', function(argv){
+      (dataForWeixin.callback)();
+      WeixinJSBridge.invoke('shareFB',{
+         "img_url":dataForWeixin.TLImg,
+         "img_width":"120",
+         "img_height":"120",
+         "link":dataForWeixin.url,
+         "desc":dataForWeixin.desc,
+         "title":dataForWeixin.title
+      }, function(res){});
+   });
+};
+if(document.addEventListener){
+   document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+}else if(document.attachEvent){
+   document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
+   document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+}
+})();
+</script>
+</html><?php ob_out();?>

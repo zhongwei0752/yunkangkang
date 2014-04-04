@@ -1,0 +1,22 @@
+*{ font-family: 'Microsoft yahei' !important; -webkit-tap-highlight-color: rgba(0, 0, 0 ,0) }
+body{ /*background-color: #CECECE; */}
+h3{ font-weight: bold; font-size: 18px; padding-top: 3px; padding-bottom: 5px;}
+input{ border: 0; border-radius: 0 !important; -webkit-appearance: none;}
+textarea{ -webkit-appearance: none; border-radius: 0 !important; }
+a{ text-decoration: none; color: black; }
+.wrapperPic{ width: 100%; }
+.wrapperText{ width: 94%; background-color: white; padding: 8px 3%;  }
+.price{ background-color: #FF7A7A; color: white; padding: 2px 10px; font-size: 14px; }
+.menu_btn{ position: fixed; bottom: 0; /*left: 50%; margin-left: -27px; */margin-left: 43%;max-width: 54px; cursor: pointer;}/*auto fixed不居中原因？*//*display: block; */
+.btn{ color: white; background-color: #635141; font-size: large; cursor: pointer; }
+.btn:hover{ background-color: #493C30; }
+.submit_btn{ height: 57px; width: 18%;  vertical-align: middle; }
+.book_btn{ height: 40px; /*width: 96%; margin-left: 2%; */vertical-align: middle; margin-top: 10px}
+.article{ background-color: white; }
+.comment_area{ font-size: 14px; height: 49px; padding: 3px 2%; width: 72%; border: 1px solid #DDDDDD; vertical-align: middle; }
+.colour{ color: #635141 !important; }
+.wrapperBtn{ position: fixed; bottom: 0; height: 32px; width: 100%; z-index: 100; }
+.itemList{ box-shadow: 0px 0px 5px rgb(100, 100, 100); margin-bottom: 10px; position: relative; }
+.itemContentPrice{ float: right; }
+.itemContentList{ padding: 16px 8px;  border-bottom: 1px solid #DBDBDB; border-top: 1px solid #BCBCBC; font-size: 14px; color: rgb(99, 99, 99);}
+.subtitle{ padding-left: 2px; font-size: 14px; color: rgb(170, 170, 170); }

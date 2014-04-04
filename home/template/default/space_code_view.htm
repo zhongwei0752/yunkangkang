@@ -1,0 +1,104 @@
+<!--{eval $_TPL['titles'] = array($code['subject'], $newname[subject]);}-->
+<!--{eval $friendsname = array(1 => '仅好友可见',2 => '指定好友可见',3 => '仅自己可见',4 => '凭密码可见');}-->
+<!--{template header}-->
+
+<!--{if $space[self]}-->
+
+
+<!--{else}-->
+<!--{eval
+	$_TPL['spacetitle'] = " $newname[subject]";
+	$_TPL['spacemenus'][] = "<a href=\"space.php?uid=$space[uid]&do=$do&view=me\">TA的所有 $newname[subject]</a>";
+	$_TPL['spacemenus'][] = "<a href=\"space.php?uid=$space[uid]&do=code&id=$code[codeid]\">查看 $newname[subject]</a>";
+}-->
+<!--{template space_menu}-->
+<!--{/if}-->
+<style>
+.content_detail_wrapper{
+	min-height:445px;
+}
+</style>
+<script type="text/javascript" charset="$_SC[charset]" src="source/script_calendar.js"></script>
+<div style="padding:0 0 10px;">
+
+
+            <div class="content" style="font-size:15px;">
+            	<div class="indexing" style="margin-bottom:15px;">
+                <span><a href="space.php?do=home">首页</a></span>><span><a href="space.php?do=code&view=me"> $newname[subject]</a></span>
+                 </div>
+                 <div class="content_detail_wrapper">
+                      <div class="content_page_detail">
+                           <div class="content_title">$code[subject]</div>
+                           <div class="content_text_detail" style="text-align: center;margin-bottom:10px;margin-top:10px;font-size:12px;">作者 :{$_SN[$code[uid]]}</div>
+                           <div class="content_text_detail"style="overflow:hidden">
+                               <p>优惠码效果：下单即减$code[code]元</p>
+                               <p>优惠码适用范围:<!--{if $codegoods[subject]}-->$codegoods[subject]<!--{else}-->全部<!--{/if}--></p>
+                           </div>
+                           <div class="feed_action">
+                              <ul>
+                         
+                                 <!--{if $_SGLOBAL[supe_uid] == $code[uid] || checkperm('managecode')}-->
+                                 <li><a href="cp.php?ac=code&codeid=$code[codeid]&op=edit">修改</a></li>
+                                 <li><a href="cp.php?ac=code&codeid=$code[codeid]&op=delete" id="blog_delete_$code[codeid]" onclick="ajaxmenu(event, this.id)">删除</a></li>
+                                 <!--{/if}-->
+                              </ul>
+                           </div>
+                           </div><br/><br/><br/>
+                        
+                      </div>
+
+                 </div>
+                 
+                </div>
+     
+              
+
+
+
+
+
+
+<script type="text/javascript">
+<!--
+function closeSide2(oo) {
+	if($('sidebar').style.display == 'none'){
+		$('content').style.cssText = '';
+		$('sidebar').style.display = 'block';
+		oo.innerHTML = '&raquo; 关闭侧边栏';
+	}
+	else{
+		$('content').style.cssText = 'margin: 0pt; width: 810px;';
+		$('sidebar').style.display = 'none';
+		oo.innerHTML = '&laquo; 打开侧边栏';
+	}
+}
+function addFriendCall(){
+	var el = $('friendinput');
+	if(!el || el.value == "")	return;
+	var s = '<input type="checkbox" name="fusername[]" value="'+el.value+'" id="'+el.value+'" checked>';
+	s += '<label for="'+el.value+'">'+el.value+'</label>';
+	s += '<br />';
+	$('friends').innerHTML += s;
+	el.value = '';
+}
+resizeImg('code_article','700');
+resizeImg('div_main_content','450');
+
+//彩虹炫
+var elems = selector('div[class~=magicflicker]'); 
+for(var i=0; i<elems.length; i++){
+	magicColor(elems[i]);
+}
+
+-->
+</script>
+
+<!--{template footer}-->
+
+
+
+	
+
+		
+
+

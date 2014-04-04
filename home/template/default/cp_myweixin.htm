@@ -1,0 +1,119 @@
+<!--{template header}-->
+
+<link rel="stylesheet" type="text/css" href="template/default/jquery-mobile-fluid960.min.css">
+<link rel="stylesheet" type="text/css" href="template/default/style1.css">
+<link rel="stylesheet" type="text/css" href="template/default/file_beauty.css">
+
+
+<!--{if $_GET[op] == 'delete'}-->
+
+<h1>删除栏目</h1>
+<a href="javascript:hideMenu();" class="float_del" title="关闭">关闭</a>
+<div class="popupmenu_inner">
+<form method="post" action="cp.php?ac=myweixin&op=delete&myweixinid=$myweixinid">
+	<p>确定删除指定的栏目吗？</p>
+	<p class="btn_line">
+		<input type="hidden" name="refer" value="$_SGLOBAL[refer]" />
+		<input type="hidden" name="deletesubmit" value="true" />
+		<input type="submit" name="btnsubmit" value="确定" class="submit" />
+	</p>
+<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+</form>
+</div>
+
+<!--{elseif $_GET[op] == 'edithot'}-->
+
+<h1>调整热度</h1>
+<a href="javascript:hideMenu();" class="float_del" title="关闭">关闭</a>
+<div class="popupmenu_inner">
+<form method="post" action="cp.php?ac=myweixin&op=edithot&myweixinid=$myweixinid">
+	<p class="btn_line">
+		新的热度：<input type="text" name="hot" value="$myweixin[hot]" size="5"> 
+		<input type="hidden" name="refer" value="$_SGLOBAL[refer]" />
+		<input type="hidden" name="hotsubmit" value="true" />
+		<input type="submit" name="btnsubmit" value="确定" class="submit" />
+	</p>
+<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+</form>
+</div>
+
+<!--{else}-->
+
+<script language="javascript" src="image/editor/editor_function.js"></script>
+<script language="javascript" src="source/script_blog.js"></script>
+
+<!--{if $topic}-->
+	<!--{template cp_topic_menu}-->
+<!--{else}-->
+
+	<div class="content" style="font-size:15px;">
+          
+                 <div class="indexing">
+                   <span><a href="space.php?do=home">首页</a></span>><span><a href="space.php?do=myweixin&view=me">客服列表</a></span>><span>发布</span>
+                 </div><!-- end -->
+                 <div class="bread container_12">
+                     <div class="bread_actived grid_1">
+                         发布
+                     </div>
+                     <a href="space.php?do=myweixin&view=me" class="link_back_bread grid_3">
+                      客服列表
+                     </a>
+                 </div>
+<!--{/if}-->
+
+
+	  <div class="content_detail_wrapper">
+                    <div class="post_wrapper">
+	<form method="post" action="cp.php?ac=myweixin&myweixinid=$myweixin[myweixinid]" enctype="multipart/form-data">
+		<table cellspacing="4" cellpadding="4" width="100%" class="infotable">
+			<tr>
+				<td>
+					
+					<div class="post_list container_12">
+                         <span class="select_title grid_1">登录名&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                           <input type="text" class="t_input" id="username" name="username" value="$myweixin[username]"  onblur="relatekw();" />
+                            </div>
+                           <div class="post_list container_12">
+                         <span class="select_title grid_1">真实姓名&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                           <input type="text" class="t_input" id="name" name="name" value="$myweixin[name]" />
+                            </div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1">登录密码&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                           <input type="text" class="t_input" id="password" name="password" value="$myweixin[password]" />
+                            </div>
+                            
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="post_list container_12">
+                         <span class="select_title grid_1">选择服务内容&nbsp;&nbsp;:&nbsp;&nbsp;</span><br/>
+                         <!--{loop $list $value}-->
+						  	<label style="margin-left:150px;"><input name="content[]" type="checkbox" value="$value[english]" />$value[subject]评论</label><br/> 
+							<!--{/loop}-->
+							  <br/>
+                            </div>
+				</td>
+			</tr>
+		</table>
+
+		<input type="hidden" name="myweixinsubmit" value="true" />
+		<input type="hidden" name="topicid" value="$_GET[topicid]" />
+		<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+		<div class="confirm_btn container_12">
+                           <a href="space.php?do=home" class="cancle_btn grid_1">取消</a>
+                           <input type="submit" class="btn grid_2" id="issuance"  value="保存发布" class="submit" />
+                        
+                      </div>
+	</form>
+
+
+
+			
+
+</div>
+</div>
+
+
+<!--{/if}-->
+<!--{template footer}-->

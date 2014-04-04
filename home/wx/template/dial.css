@@ -1,0 +1,124 @@
+.p10
+{
+    background-image: url('.././static/img/dialbackground.jpg');
+    background-repeat: repeat-y;
+    filter:"progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+    -moz-background-size:100% 100%;
+    background-size:100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+
+}
+.alert h4
+{
+    background-image: url('.././static/img/diallist.png') ;
+    background-repeat: no-repeat;
+    background-size:40% 100%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    color: #fff !important;
+    font-weight: 500 !important;
+    width: 300px;
+}
+.alertinside
+{
+    border: 1px dashed #999;
+    border-radius: 3px;
+
+}
+.mt12
+{
+    background-color: #52BEB9 !important;
+    border-radius: 0 !important;
+    text-align: center;
+    color: #fff !important;
+    border: 0 !important;
+}
+.shownumber
+{
+    margin-bottom: 30px;
+}
+.s1
+{
+    float: left;
+}
+.s2
+{
+    float:right;
+}
+.shownumber1
+{
+    color: #fff;
+    font-size: 16px;
+}
+.shownumber2
+{
+    font-size: 15px;
+    padding: 2px;
+    padding-right: 5px;
+    padding-left: 5px;
+    background-color: #B3B3B3;
+    text-align: center;
+    color: #fff;
+    border-radius: 3px;
+}
+.shownumber2:hover
+{
+    background-color: #8C8C8C;
+}
+.alertinside div,.alertinside p,.alertinside ul
+{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#lottery {
+	/*background: url("http://yunpan.360.cn/resource/img/anniversary/disc-bg.gif?v=79804") no-repeat scroll 0 0 transparent;*/
+	height: 450px;
+	width: 100%;
+	max-width: 110%;
+	/*left: 50px;
+	position: absolute;
+	width: 450px;*/
+}
+#lottery .arrow {
+	/*background: url("http://yunpan.360.cn/resource/img/anniversary/arrow.png?v=1bde2") no-repeat scroll 0 0 transparent;*/
+	height: 191px;
+	/*left: 207px;*/
+	left: 216px;
+	position: absolute;
+	top: 91px;
+	width: 32px;
+}
+#lottery .lot-btn {
+	
+     left: 110px;
+     overflow: hidden;
+     position: absolute;
+     top: 113px;
+     width: 97px;
+
+	/*left: 177px;
+	overflow: hidden;
+	position: absolute;
+	top: 181px;
+	height: 92px;
+	width: 97px;
+	width: 91px;*/
+}
+#lottery .lot-btn span {
+	cursor: pointer;
+	display: block;
+	height: 92px;
+	position: relative;
+	width: 91px;
+
+	left: 10px;
+	top: 9px;
+}
+
+#lottery .first span {
+/*	background: url("http://yunpan.360.cn/resource/img/anniversary/buttons_01.png?v=8bc8e") no-repeat scroll 0 0 transparent;*/
+}

@@ -1,0 +1,246 @@
+@import "responsive_mixins.less";
+*{font-family: 'Microsoft yahei'!important;}
+body{
+	margin: 0;
+	font-family: 'Microsoft yahei'!important;
+	background-color: #f0f0f0;
+}
+span{
+	text-shadow:none!important;
+}
+a{
+	text-decoration: none;
+	color: #000;
+}
+.ui-content{
+	padding: 0;
+}
+.banner_pic img{
+	width:100%;
+}
+.banner_text{
+	position:relative;
+	z-index: 99;
+	background: url('img/banner_text_bg.png')repeat-x;
+	min-height: 35px;
+	max-height: 35px;
+	margin-top: -37px;
+	color: #fff;
+	font-size: 14px;
+	line-height: 35px;
+	overflow: hidden;
+	span{
+		padding-left: 10px;
+
+	}	
+}
+.menu_icon{
+	width: 20%;
+	img{max-width: 36px;.padding-left(640,200);padding-top: 4px;}
+}
+.arrow{
+	max-width: 8px;
+}
+.menu{
+	width: 100%;
+	height: 70px;
+}
+.split{
+	background: url('img/split_line.png')repeat-x;
+	height: 2px;
+	width: 100%;
+}
+.normal_wrapper_width{
+    .width(640,600);
+	margin: 0 auto;
+}
+.content_header_width{
+	.normal_wrapper_width;
+	h3{margin-bottom: 6px;color:#666666;}
+	.time{font-size: 14px;padding-left: 0;}
+}
+.header{
+	background: url('img/header_bg.png')repeat-x;
+	height: 48px;
+	width:100%;
+}
+.menu_title{
+	line-height: 48px;
+	color: #fff;
+	font-family: 'Microsoft yahei' !important;
+	padding-left: 14px;
+}
+.menu_btn{
+	display:inline-block;
+	width: 50px;
+	float:right;
+	margin-right: 10px;
+	margin-top:9px!important;
+	img{
+		max-width: 50px;
+	}
+}
+// .list{
+// 	.width(640,592);
+// 	margin: 10px auto;
+// 	border-left: 8px solid #76D1CD;
+// 	box-shadow: 1px 1px 3px #BCBCBC;
+// 	display: table-shell;
+// 	vertical-align: middle;
+// 	.ui-block-a{
+// 		.width(590,430);
+//          vertical-align: middle;
+//          display: inline-block;
+// 		.title{
+//         padding-left: 10px;
+// 	}
+// 	  .time{
+// 		font-size: 13px;
+// 		color: #CCCCCC;
+// 		padding-left: 10px;
+
+// 	}
+// 	}
+
+// 	.ui-block-b{
+// 		vertical-align: middle;
+// 		.width(490,130);
+// 		img{width:100%;}
+// 	}
+// }
+.list{
+	    display: block;
+		.width(640,592);
+		height: 75px;
+        margin: 10px auto;
+        border-left: 8px solid #76D1CD;
+        box-shadow: 1px 1px 3px #BCBCBC;
+        color: #666666;
+}
+.list_pic{
+	max-width: 73px;
+	margin-top: -1px;
+}
+.title{
+         padding-left: 10px;
+ 	}
+.time{
+ 		font-size: 13px;
+ 		color: #CCCCCC;
+ 		padding-left: 10px;
+
+ 	}
+.more_btn_link :hover{
+   background-color:#41BAB7;
+}
+.more_btn{
+	.width(640,600);
+	background-color: #7AD0CD;
+	color: #D2F8FA;
+	height: 40px;
+	font-size:18px;
+	margin: 0 auto;
+	text-align: center;
+	line-height: 40px;
+
+}
+
+.content_pic{
+	img{width: 100%;margin-top: 10px;}
+}
+.content_text{
+	background: #fff;
+	p{
+		text-indent: 2em;
+		color: #666666;
+	}
+}
+.paginate{
+	text-align: center;
+	list-style: none;
+	li{
+		display: inline;
+		padding-right: 10px;
+		a{
+			color: #4DB6B1;
+		}
+		.page_num{
+			color: #666666;
+		}
+	}
+}
+.comment_wrapper{
+	background-color: #F0F0F0;
+	width: 100%;
+}
+.comment_text_box{
+	width: 100%;
+	height: 54px;
+	margin-top: 10px;
+	margin-bottom: 8px;
+}
+.comment_btn{
+	float: right;
+	background: #49B7B1;
+	height: 60px;
+	margin-top: 10px;
+	line-height: 60px;
+	text-align: center;	
+	color: #fff;
+}
+.comment_btn:hover,.long_btn:hover{
+    background: #3F9E9A;
+}
+.normal_wrapper_width{
+	.grid_8{
+     .width(600,450);   
+}
+    .grid_3{width: 60px;height:60px;}
+
+}
+.comments{
+	padding: 10px 0;
+	font-size: 15px; 
+	color:#666666;
+}
+.commenter{
+	color: #49B7B1;
+
+}
+.order_title{
+	color: #49B7B1!important;
+}
+.order_title_detail{
+	text-indent: 2em;
+	color: #666666;
+	margin-top: 10px;
+}
+.long_btn{
+	display: block;
+	background: #49B7B1;
+	height: 40px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	line-height: 40px;
+	text-align: center;	
+	color: #fff;
+}
+.price{
+	color: #49B7B1;
+	padding-left: 10px;
+}
+.feed_action{
+	list-style: none;
+	float: right;
+	margin-top: 0;
+	li{
+		display: inline;
+	}
+}
+.product_content_text span{
+	color:#666666;
+}
+.job_content_text{
+	margin-top: 10px;
+	color: #666666;
+}

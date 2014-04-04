@@ -1,0 +1,60 @@
+body {
+	font-family: 'Microsoft yahei' !important;
+}
+
+a {
+	text-decoration: none;
+}
+
+.cWhite {
+	color: #FFF !important;
+}
+
+.bgTranslucent {
+	background: rgba(0,0,0,0.5);
+}
+
+.cComment {
+	color: #868686 !important;
+}
+
+.dtc {
+	display: table-cell;
+}
+
+.cWhite {
+	color: #fff !important;
+}
+
+.cPrice, .Name {
+	color: #133F5F !important;
+}
+
+.cTime {
+	color: #BFBFBF !important;
+}
+
+.cTitle {
+	color: #414141 !important;
+}
+
+.cParagraph {
+	color: #737373 !important;
+}
+
+.paddingContent {
+	padding: 0 3.125%;
+}
+
+.bgButton {
+	background: #133F5F;
+}
+
+.heightButton {
+	line-height: 40px;
+}
+
+.myMargin {
+	margin: 0 3.125%;
+}
+

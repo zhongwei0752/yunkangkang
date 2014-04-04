@@ -1,0 +1,290 @@
+<?php if(!defined('IN_UCHOME')) exit('Access Denied');?><?php subtplcheck('./wx/template/12/feedcontent', '1385994713', './wx/template/12/feedcontent');?><!DOCTYPE html>
+<html>
+<head>
+<meta charset = "utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<link rel = "stylesheet" href = "./template/12/css/base.css" />
+<link rel = "stylesheet" href = "./template/12/css/common.css" />
+<link rel = "stylesheet" href = "./template/12/css/page.css" />
+        <link rel = "stylesheet" href = "./template/12/css/main12.css" />
+
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="./template/js/jquery.tmpl.min.js"></script>
+        <script type="text/javascript" src="./template/js/detail.js"></script>
+
+        <style type="text/css">
+            #bg,#bg2{ display: none;  position: fixed;  top: 0%;  left: 0%;  width: 100%;  height: 100%;
+                background:url(./template/img/guide_bg.png);  z-index:1001;/*  -moz-opacity: 0.7;  opacity:.70;  filter: alpha(opacity=70);*/}
+
+            .feedcontent12message img
+            {
+                max-width: 100% !important;
+                height: auto; !important;
+
+            }
+
+            .uchome-message-pic img
+            {
+                max-width: 100% !important;
+                height: auto; !important;
+            }
+            ::-webkit-input-placeholder { font-size: 16px; }
+
+            input:-moz-placeholder { font-size: 16px; }
+
+        </style>
+
+        <script id="detailTemplate" type="text/x-jquery-tmpl">
+            <div class="head pt20">
+                <h1 class="cTitle f20">
+                    <?=BLOCK_TAG_START?>if industry<?=BLOCK_TAG_END?>
+                    <p> {{= industry.subject}}</p>
+                    <?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+                    <?=BLOCK_TAG_START?>if branch<?=BLOCK_TAG_END?>
+                    <p> {{= branch.subject}}</p>
+                    <?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+                    <?=BLOCK_TAG_START?>if development<?=BLOCK_TAG_END?>
+                    <p> {{= development.subject}}</p>
+                    <?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+                    <?=BLOCK_TAG_START?>if product<?=BLOCK_TAG_END?>
+                    <p> {{= product.subject}}</p>
+                    <?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+                    <?=BLOCK_TAG_START?>if introduce<?=BLOCK_TAG_END?>
+                    <p> {{= introduce.subject}}</p>
+                    <?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+                    <?=BLOCK_TAG_START?>if cases<?=BLOCK_TAG_END?>
+                    <p> {{= cases.subject}}</p>
+                    <?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+                    <?=BLOCK_TAG_START?>if talk<?=BLOCK_TAG_END?>
+                    <p> {{= branch.subject}}</p>
+                    <?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+                    <?=BLOCK_TAG_START?>if job<?=BLOCK_TAG_END?>
+                    <p> {{= job.subject}}</p>
+                    <?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+                    <?=BLOCK_TAG_START?>if goods<?=BLOCK_TAG_END?>
+                    <p> {{= goods.subject}}</p>
+                    <?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+                </h1>
+            </div>
+            <div class="cTime pt15">
+                <span class="time">
+                <?=BLOCK_TAG_START?>if industry<?=BLOCK_TAG_END?>
+                 <p> {{= industry.dateline}}</p>
+                 <?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+                  <?=BLOCK_TAG_START?>if branch<?=BLOCK_TAG_END?>
+                 <p> {{= branch.dateline}}</p>
+                 <?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+                    <?=BLOCK_TAG_START?>if development<?=BLOCK_TAG_END?>
+                 <p> {{= development.dateline}}</p>
+                 <?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+                 <?=BLOCK_TAG_START?>if product<?=BLOCK_TAG_END?>
+                 <p> {{= product.dateline}}</p>
+                 <?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+                 <?=BLOCK_TAG_START?>if introduce<?=BLOCK_TAG_END?>
+                 <p> {{= introduce.dateline}}</p>
+                 <?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+                 <?=BLOCK_TAG_START?>if cases<?=BLOCK_TAG_END?>
+                 <p> {{= cases.dateline}}</p>
+                 <?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+                 <?=BLOCK_TAG_START?>if talk<?=BLOCK_TAG_END?>
+                 <p> {{= branch.dateline}}</p>
+                 <?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+                 <?=BLOCK_TAG_START?>if job<?=BLOCK_TAG_END?>
+                 <p> {{= job.dateline}}</p>
+                 <?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?>
+                 <?=BLOCK_TAG_START?>if goods<?=BLOCK_TAG_END?>
+                 <p> {{= goods.dateline}}</p>
+                 <?=BLOCK_TAG_START?>/if<?=BLOCK_TAG_END?></span>
+                </span>
+            </div>
+
+        </script>
+
+        <script id="commentTemplate" type="text/x-jquery-tmpl">
+            <li class = "itemContentList">
+                <span class = "colour">{{= author}}：</span>
+                {{= message}}
+                </div>
+            </li>
+        </script>
+
+        <title><?=$appname?></title>
+
+</head>
+<body>
+
+    <div id="bg" onclick="hideDiv();">
+        <img src="./template/img/guide.png" alt="" style="position:fixed;top:0;right:16px;">
+    </div>
+    <div id="bg2" onclick="hideFriendDIv();">
+        <img src="./template/img/guide_firend.png" alt="" style="position:fixed;top:0;right:16px;">
+    </div>
+
+<div>
+<div class = "article p8">
+
+<h3><div id="detail-panel"></div></h3>
+<span class = "subtitle"></span> <!--日期-->
+<span class = "subtitle fr"></span> <!--评论-->
+<span class = "subtitle fr"></span>  <!--阅读-->
+<div class="wrapperPic mb8 mt8"></div>
+<div class="wrapperPic mb8 mt8"></div>
+<p class = "pt8 pb8">
+                    <div class="feedcontent12message" style="margin-top: -30px">
+                    <?=$message?>
+                    </div>
+</p>
+</div>
+
+            <div id="friend" class="friend_wrapper" style="
+                 background-color:#fff;width:99%;height:115px;border:1px dashed #999;margin:0 auto;margin-bottom:20px;text-align:center;">
+                <div style="text-align: center;margin: 0 auto;width: 270px;height: 30px;margin-top: 20px">
+                    <div style="margin:0 auto;padding:0;height: 30px;width: 120px;float: left">
+                        <a id="" class="friend_btn" style="" onclick="showDIv()">
+                            <img src="./template/img/repost_icon.png" alt="">
+                            <span style="">发送给朋友</span>
+                        </a>  </div>
+                    <div style="margin:0 auto;padding:0;height: 30px;width: 120px;float: left;margin-left:20px">
+                        <a id="" class="friend_btn" style="" onclick="showFriendDIv()">
+                            <img src="./template/img/friend_circle.png" alt="">
+                            <span style="">分享到朋友圈</span>
+                        </a></div>
+                </div>
+                <br/><br/><br/>
+                <?php if($uidwxkey['weixinname']) { ?>
+                <div style="margin:0 auto;padding:0;height: 30px;width:100%;text-align: center;margin-top: -50px">
+                    <h3 style="font-size:14px;">手机用户请关注微信公众账号：<?=$uidwxkey['weixinname']?></h3></div>
+                <?php } ?>
+                <div style="clear: both"></div>
+            </div><!-- / -->
+
+            <?php if($_GET['type']=="product") { ?>
+            <input style="margin-top: 0px;margin-bottom: 20px" type = "button" id="buttonBook"  class = "dial_btn btn" value = "预定" />
+            <?php } ?>
+
+<div class= "comment pt8" style="background-color: #CECECE; ">
+
+
+                <div class="comment_2" style="border-radius: 5px">
+                    <div class = "comment_2_add">
+                        <textarea placeholder = "&nbsp;&nbsp;请输入评论内容" class = "comment_area_1" id="review"></textarea>
+                        <textarea placeholder = "&nbsp;&nbsp;请输入呢称" class = "comment_area_2"  value="<?=$COOKIE?>" id="nickname" ></textarea>
+                        <input type = "button" style="float: right;padding: 6px;padding-left:15px;padding-right:15px;margin-right: 10px;
+                        font-size: 14px;margin-top: 5px;"
+                        class = "btn" onclick="cpComment($('#idtype').val(), $('#id').val(), $('#review').val(),$('#nickname').val())" value = "提交评论" />
+                    </div>
+                </div>
+
+<ul >
+                    <br>
+                    <div id="comment-panel"></div>
+</ul>
+                <input type = "button" style="color: #666 ;"
+                       onclick="getComment($('#idtype').val(),$('#id').val(), $('#uid').val(), $('#page').val(), $('#perpage').val());"
+                       value = "更多" class = "more_button"  />
+</div>
+</div>
+
+
+
+    <input type="hidden" id="wxkey" name="wxkey" value="<?=$_GET['wxkey']?>"/>
+    <input type="hidden" id="id" name="id" value="<?=$_GET['id']?>"/>
+    <input type="hidden" id="idtype" name="idtype" value="<?=$_GET['idtype']?>"/>
+    <input type="hidden" id="type" name="type" value="<?=$_GET['type']?>"/>
+    <input type="hidden" id="uid" name="uid" value="<?=$_GET['uid']?>"/>
+    <input type="hidden" id="page" name="page" value="1"/>
+    <input type="hidden" id="perpage" name="perpage" value="10"/>
+
+</body>
+
+    <script type="text/javascript" charset="utf-8">
+
+        function showDIv(){
+            document.getElementById('bg').style.display = "block";
+        }
+        function hideDiv(){
+            document.getElementById('bg').style.display = "none";
+        }
+        function showFriendDIv(){
+            document.getElementById('bg2').style.display = "block";
+        }
+        function hideFriendDIv(){
+            document.getElementById('bg2').style.display = "none";
+        }
+    </script>
+    <script>
+        var dataForWeixin={
+            appId:"",
+            MsgImg:"<?=$pic?>",
+            TLImg:"<?=$pic?>",
+            url:"<?=$url?>",
+            title:"<?=$wei['subject']?>",
+            desc:"<?=$wei['subject']?>",
+            fakeid:"",
+            callback:function(){}
+        };
+        (function(){
+            var onBridgeReady=function(){
+                WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                    WeixinJSBridge.invoke('sendAppMessage',{
+                        "appid":dataForWeixin.appId,
+                        "img_url":dataForWeixin.MsgImg,
+                        "img_width":"120",
+                        "img_height":"120",
+                        "link":dataForWeixin.url,
+                        "desc":dataForWeixin.desc,
+                        "title":dataForWeixin.title
+                    }, function(res){(dataForWeixin.callback)();});
+                });
+                WeixinJSBridge.on('menu:share:timeline', function(argv){
+                    (dataForWeixin.callback)();
+                    WeixinJSBridge.invoke('shareTimeline',{
+                        "img_url":dataForWeixin.TLImg,
+                        "img_width":"120",
+                        "img_height":"120",
+                        "link":dataForWeixin.url,
+                        "desc":dataForWeixin.desc,
+                        "title":dataForWeixin.title
+                    }, function(res){});
+                });
+
+                WeixinJSBridge.on('menu:share:weibo', function(argv){
+                    WeixinJSBridge.invoke('shareWeibo',{
+                        "content":dataForWeixin.title,
+                        "url":dataForWeixin.url
+                    }, function(res){(dataForWeixin.callback)();});
+                });
+                WeixinJSBridge.on('menu:share:facebook', function(argv){
+                    (dataForWeixin.callback)();
+                    WeixinJSBridge.invoke('shareFB',{
+                        "img_url":dataForWeixin.TLImg,
+                        "img_width":"120",
+                        "img_height":"120",
+                        "link":dataForWeixin.url,
+                        "desc":dataForWeixin.desc,
+                        "title":dataForWeixin.title
+                    }, function(res){});
+                });
+            };
+            function joinMember(wxid){
+                WeixinJSBridge.invoke('addContact',{
+                    "webtype" : "1", // 添加联系人的场景，1表示企业联系人。
+                    "username" : wxid,　// 需要添加的联系人username
+            },function(res){
+                // 关注成功提交表单
+
+            })
+        }
+
+        if(document.addEventListener){
+            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+        }else if(document.attachEvent){
+            document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
+            document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+        }
+
+        })();
+    </script>
+
+</html><?php ob_out();?>

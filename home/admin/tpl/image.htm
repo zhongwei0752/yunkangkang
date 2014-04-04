@@ -1,0 +1,33 @@
+<!--{template admin/tpl/header}-->
+
+
+<form method="post" id="batchform" action="admincp.php?ac=image" enctype="multipart/form-data">
+
+	<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+	<table cellspacing="3" cellpadding="3">
+		<tr><th>首页大图</th><td><input type="file" name="file1" ></td>
+		</tr><br>
+		
+	</table>
+	<input type="submit" name="bigimagesubmit" value="上传" class="submit">
+
+</form>
+<hr/>
+<form method="post" id="batchform" action="admincp.php?ac=image" enctype="multipart/form-data">
+
+	<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+	<table cellspacing="3" cellpadding="3">
+		<tr><th>品牌合作企业图片录入</th><td><input type="file" name="file1" ></td>
+		</tr><br>
+		
+	</table>
+	<input type="submit" name="logoimagesubmit" value="上传" class="submit">
+
+</form>
+</div>
+</div>
+<div class="side">
+	<!--{template admin/tpl/side}-->
+</div>
+
+<!--{template admin/tpl/footer}-->

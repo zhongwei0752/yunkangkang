@@ -1,0 +1,87 @@
+<!--{eval $_TPL['titles'] = array($newname[subject]);}-->
+<!--{eval $friendsname = array(1 => '仅好友可见',2 => '指定好友可见',3 => '仅自己可见',4 => '凭密码可见');}-->
+
+<!--{template header}-->
+
+<!--{if !empty($_SGLOBAL[inajax])}-->
+	<div id="space_blog" class="feed">
+		<h3 class="feed_header">
+			<a href="cp.php?ac=job" class="r_option" target="_blank">发布</a>
+		</h3>
+		<!--{if $count}-->
+		<ul class="line_list">
+		<!--{loop $list $value}-->
+			<li>
+				<span class="gray r_option"><!--{date('m-d H:i',$value[dateline],1)}--></span>
+				<h4><a href="space.php?uid=$space[uid]&do=job&id=$value[jobid]" target="_blank" <!--{if $value[magiccolor]}--> class="magiccolor$value[magiccolor]"<!--{/if}-->>$value[subject]</a></h4>
+				<div class="detail">
+					$value[message]
+				</div>
+			</li>
+		<!--{/loop}-->
+		</ul>
+		<div class="page">$multi</div>
+		<!--{else}-->
+		<div class="c_form">还没有相关的 $newname[subject]。</div>
+		<!--{/if}-->
+	</div>
+<!--{else}-->
+
+<!--{if $space[self]}-->
+<div class="content" style="font-size:15px;">
+          
+                 <div class="indexing">
+                 <span><a href="space.php?do=home">首页</a></span>><span> $newname[subject]</span>
+                 </div><!-- end -->
+                 <div class="bread container_12">
+                     <div class="bread_actived grid_1">
+                          $newname[subject]
+                     </div>
+                     <a href="cp.php?ac=job" class="btn grid_2">
+                      发布
+                     </a>
+                 </div>	
+
+<!--{/if}-->
+		
+<div id="content" style="width:760px;">
+
+<div class="content_detail_wrapper">
+ 		<!--{if $list}-->
+		<!--{loop $list $value}-->
+		<div class="content_list container_12">
+                         
+                          <div class="grid_2_advertise">
+                             <div class="list_test ">
+                                  <h3><a href="space.php?uid=$value[uid]&do=$do&id=$value[jobid]">$value[subject]</a></h3>
+                                  <p>$value[message]</p><br/>
+                                  <p class="action_info">
+                                     <a href="space.php?uid=$value[uid]"> <span>发布：{$_SN[$value[uid]]}</span></a>
+                                    <!--{if $value[viewnum]}--><a href="space.php?uid=$value[uid]&do=$do&id=$value[jobid]"><span>阅读: ($value[viewnum])</span></a><!--{else}--><span>阅读: (0)</span><!--{/if}--><span><!--{date('Y-m-d',$value[dateline])}--></span>
+                                  </p>
+                             </div>
+                          </div>
+                     </div><!-- list end -->
+                     
+                   <!--{/loop}-->
+		<!--{else}-->
+			<div class="c_form">还没有相关的 $newname[subject]。</div>
+		<!--{/if}-->
+          
+	</div>
+	
+	<div class='pagination'><ul>$multi</ul></div>
+	
+	
+
+</div>
+
+
+<script>
+function fuidgoto(fuid) {
+	window.location.href = "space.php?do=job&view=we&fuid="+fuid;
+}
+</script>
+<!--{/if}-->
+	
+<!--{template footer}-->

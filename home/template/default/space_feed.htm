@@ -1,0 +1,264 @@
+<!--{if empty($_TPL['getmore'])}-->	
+<!--{eval $_TPL['titles'] = array('首页');}-->
+<!--{template header}-->
+    <link rel="stylesheet" type="text/css" href="./template/default/jquery-mobile-fluid960.min.css">
+    <link rel="stylesheet" type="text/css" href="./template/default/style1.css">
+    <link rel="stylesheet" type="text/css" href="./template/default/file_beauty.css">
+    <link type='text/css' href='./template/default/basic_chosen.css' rel='stylesheet' media='screen' />
+    <style type="text/css">
+       h3{color: #727272;margin-top: 20px;font-weight:normal;}
+       .selected{ -webkit-box-shadow: 3px 3px 3px;
+  -moz-box-shadow: 3px 3px 3px;
+  box-shadow: 3px 3px 3px;}
+  
+      .bg1{ background: url("./template/default/image/chosen_bg.png");}
+      .open{ background: url("./template/default/image/chosen_bg2.png")!important;}
+      .open .price{color:#3EB2B8!important;}
+      #simplemodal-container{height:230px;}
+      #alpha{
+      	position: relative;
+      	z-index: 10000;
+
+      	
+      	display: none;
+      	margin-top: -128px;
+      	
+      	width: 128px;
+      	height: 128px;
+      	line-height: 128px;
+      	text-align: center;
+      	font-size: 18px;
+      	color: #fff;
+        background-color:rgba(73,65,65,0.5);
+        cursor: pointer;
+      }
+    </style>
+<style type="text/css">
+.navbar-inner .grid_4 a img{max-width: 40px;}
+</style>
+<div id="content" style="width:762px;margin-left:20px;margin-top:10px;">
+
+<!--{if $space['uid'] && $space[self]}-->
+	<table cellpadding="0" cellspacing="0" border="0" width="100%">
+		<tr>
+			<td valign="top" width="150" id="avata_img">
+				<div class="ar_r_t">
+				  <div class="ar_l_t">
+				    <div class="ar_r_b">
+				      <div class="ar_l_b">
+				        <a href="cp.php?ac=avatar"><!--{avatar($_SGLOBAL[supe_uid],middle)}--></a><div id="alpha"  onclick=window.open("cp.php?ac=avatar")>修改头像</div>	
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</td>
+			<td valign="top">
+				<h3 class="index_name" style="margin-top:-4px;border:0px;margin-bottom:-4px;">
+						<span style="color:#999;font-size:18px;"<!--{eval g_color($space[groupid]);}--> >{$_SN[$space[uid]]}</span>
+					
+					<span style="color:#43B8B0;font-size:18px;">VIP</span>
+				</h3>
+					<br/>
+					 <div class="company_avata_box container_12"  style="margin-top:-30px;">
+                   <div class="grid_2">
+                       <h5 style="margin-top:0px;">已有$space[viewnum]人访问,$space[experience]个信用</h5>
+                       <div id="weixinhome" style="margin-top:-18px;"><a href="#" class="company_setting">微信公众号修改</a></div>
+                      	<div id="weixinone"><a href="space.php?uid=$space[uid]" style="margin-top:12px;" class="company_setting">查看统计数据</a></div>
+                       <!--<a href="cp.php?ac=profile" style="margin-top:12px;" class="company_setting">企业设置</a>-->
+                   </div>
+                 </div>
+	    		
+					
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type='text/javascript' src='./source/jquery.simplemodal.js'></script>
+    <script type="text/javascript">
+       $(document).ready(function(){
+        
+        $('#weixin').attr("style", "display:none;");
+       
+        $('#weixinhome').click(function (e) {
+    	e.preventDefault();
+    	$('#weixin').modal();
+         });
+  
+           $("#avata_img").hover(
+           	function(){
+    	     $("#alpha").show();
+           },
+           function(){
+           	 $("#alpha").hide();
+           }
+           )
+           
+            
+       })
+    </script>
+				
+				
+			
+
+				
+			</td>
+		</tr>
+	</table>
+
+	
+
+	<div class="mgs_list">
+    <!--{if $namestatus}--><div><img src="image/icon/profile.gif" alt="" /><a href="admincp.php?ac=space"><strong>$namestatus</strong> 个待认证用户</a></div>
+    <!--{else}-->
+    <!--{if $space[namestatusnum]}--><div><img src="image/icon/profile.gif" alt="" /><a href="admincp.php?ac=space&perpage=20&namestatus=0&searchsubmit=1"><strong>$space[namestatusnum]</strong> 个待认证用户</a></div><!--{/if}-->
+    <!--{/if}-->
+	</div>
+	 <div style="width:100%;background:#C2C2C2;height:1px;width:100%;margin:0px 0 30px 0;"></div>
+                <div class="container_12 index_assembly_boxes">
+
+                    <div class="grid_6">
+                        <div class="index_assembly_box">
+                            <div class="assembly_title">
+                                   <span class="title">社区卫生中心微信服务号</span>
+                             </div>
+                             <div class="assembly_info">
+                                <img src="http://v5.home3d.cn/home/image/gray/introduce.jpg" style="width:120px;height:120px;">
+                                
+                                <h5 style="padding-top: 20px;">向居民提供标准化服务为主；</h5>
+                                <h5>偏向以微信应用功能实现医民互动；</h5>
+                                <a href="#" id="weixinhome1" class="quick_post">新建</a>
+                             </div>
+                        </div>
+                    </div><!-- end -->   
+                     <div class="grid_6">
+                        <div class="index_assembly_box">
+                            <div class="assembly_title">
+                                   <span class="title">GP服务号</span>
+                             </div>
+                             <div class="assembly_info">
+                                <img src="http://v5.home3d.cn/home/image/gray/introduce.jpg" style="width:120px;height:120px;">
+                                
+                                <h5 style="padding-top: 20px;">向居民提供个性化服务为主；</h5>
+                                <h5>偏向以微信沟通及资讯推送功能实现医民互动；</h5>
+                                <a href="#" id="weixinhome2" class="quick_post">新建</a>
+                             </div>
+                        </div>
+                    </div><!-- end -->   
+
+                    </div>
+                    </div>                                                         
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type='text/javascript' src='./source/jquery.simplemodal.js'></script>
+    <script type="text/javascript">
+       $(document).ready(function(){
+           $('#weixin1').attr("style", "display:none;");
+       
+              $('#weixinhome1').click(function (e) {
+            e.preventDefault();
+            $('#weixin1').modal();
+               });
+                 $('#weixin2').attr("style", "display:none;");
+             
+              $('#weixinhome2').click(function (e) {
+            e.preventDefault();
+            $('#weixin2').modal();
+         });
+	       })
+    </script>
+		
+<!--{/if}-->	
+
+	
+	
+	
+	
+
+	
+
+	
+
+</div>
+<!--/content-->
+
+
+
+
+	
+	
+
+	
+
+	
+
+	
+
+<script type="text/javascript">
+
+	var next = $start;
+	function feed_more() {
+		var x = new Ajax('XML', 'ajax_wait');
+		var html = '';
+		next = next + $perpage;
+		x.get('cp.php?ac=feed&op=get&start='+next+'&view=$_GET[view]&appid=$_GET[appid]&icon=$_GET[icon]&filter=$_GET[filter]&day=$_GET[day]', function(s){
+			html = '<h4 class="feedtime">以下是新读取的动态</h4>' + s;
+			$('feed_div').innerHTML += html;
+		});
+	}
+
+	function filter_more(id) {
+		if($('feed_filter_div_'+id).style.display == '') {
+			$('feed_filter_div_'+id).style.display = 'none';
+			$('feed_filter_notice_'+id).style.display = '';
+		} else {
+			$('feed_filter_div_'+id).style.display = '';
+			$('feed_filter_notice_'+id).style.display = 'none';
+		}
+	}
+
+	function close_feedbox() {
+		var x = new Ajax();
+		x.get('cp.php?ac=common&op=closefeedbox', function(s){
+			$('feed_box').style.display = 'none';
+		});
+	}
+	
+	var elems = selector('li[class~=magicthunder]', $('feed_div')); 
+	for(var i=0; i<elems.length; i++){		
+		magicColor(elems[i]); 
+	}
+    
+ 
+</script>
+ <div id="weixin">
+                    <form action = "space.php?do=feed" method = "post" style="margin:0 auto;text-align:center;">
+    <br/>
+   <h3 style="font-size:20px;color:#44B1BA;margin-left:-10px;line-height:40px;">你的微信登录名：<input type="text" name="weixinusername" value="$space[weixinusername]"></h3>
+    <h3 style="font-size:20px;color:#44B1BA;margin:0;line-height:40px;padding-left:10px;">你的微信密码：<input type="text" name="weixinpassword" value="$space[weixinpassword]"></h3><br/>
+    <input type="submit" name="submit" style="margin-left:250px;" class="btn grid_2" value="修改">
+    <input type="hidden" name="alreadyweixin" value="1">
+    </form>
+
+   </div>
+     <div id="weixin1">
+    <form action = "space.php?do=feed" method = "post" style="margin:0 auto;text-align:center;">
+    <br/>
+   <h3 style="font-size:20px;color:#44B1BA;margin-left:-10px;line-height:40px;">注册用户名：<input type="text" name="username" ></h3>
+    <h3 style="font-size:20px;color:#44B1BA;margin:0;line-height:40px;padding-left:10px;">注册密码：<input type="text" name="password" ></h3><br/>
+    <input type="submit" name="submit" style="margin-left:250px;" class="btn grid_2" value="创建">
+    <input type="hidden" name="sq" value="1">
+    </form>
+
+    </div>
+     <div id="weixin2">
+    <form action = "space.php?do=feed" method = "post" style="margin:0 auto;text-align:center;">
+    <br/>
+   <h3 style="font-size:20px;color:#44B1BA;margin-left:-10px;line-height:40px;">注册用户名：<input type="text" name="username" ></h3>
+    <h3 style="font-size:20px;color:#44B1BA;margin:0;line-height:40px;padding-left:10px;">注册密码：<input type="text" name="password" ></h3><br/>
+    <input type="submit" name="submit" style="margin-left:250px;" class="btn grid_2" value="创建">
+    <input type="hidden" name="gp" value="1">
+    </form>
+
+    </div>
+
+<!--{eval my_checkupdate();}-->
+<!--{eval my_showgift();}-->
+<!--{template footer}-->
+<!--{/if}-->

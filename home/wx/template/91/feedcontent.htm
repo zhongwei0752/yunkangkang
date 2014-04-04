@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <title>$appsubject[subject]</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <link rel = "stylesheet" type = "text/css" href = "./template/9/css/main.css">
+    <style type="text/css">
+        #bg,#bg2{ display: none;  position: fixed;  top: 0%;  left: 0%;  width: 100%;  height: 100%;
+            background:url(./template/9/img/guide_bg.png);  z-index:1001;/*  -moz-opacity: 0.7;  opacity:.70;  filter: alpha(opacity=70);*/}
+
+        .uchome-message-pic img
+        {
+            max-width: 100% !important;
+            height: auto!important;
+        }
+
+
+
+
+    </style>
+	<link rel="stylesheet" href="template/9/css/base.css" />
+	<link rel="stylesheet" href="template/9/css/common.css" />
+	<link rel="stylesheet" href="template/9/css/feed.css" />
+	<link rel="stylesheet" href="template/9/css/pageTitle.css" />
+	<link rel="stylesheet" href="template/9/css/pageComment.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="template/9/js/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="template/9/js/detail.js"></script>
+<!--	<script type="text/javascript" src="template/9/js/jquery-v2.0.2.js"></script>      -->
+
+
+
+   <!--这个暂时没作用，因为我重新写了两个函数将其时间和日期分开，但暂时保留-->
+    <script id="detailTemplate" type="text/x-jquery-tmpl">
+        <header data-role="header" data-tap-toggle="false" data-theme="none">
+            <div class="title"><!--{BLOCK_TAG_START}-->if industry<!--{BLOCK_TAG_END}-->
+                <p> {{= industry.subject}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if branch<!--{BLOCK_TAG_END}-->
+                <p> {{= branch.subject}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if development<!--{BLOCK_TAG_END}-->
+                <p> {{= development.subject}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if product<!--{BLOCK_TAG_END}-->
+                <p> {{= product.subject}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if introduce<!--{BLOCK_TAG_END}-->
+                <p> {{= introduce.subject}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if cases<!--{BLOCK_TAG_END}-->
+                <p> {{= cases.subject}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if talk<!--{BLOCK_TAG_END}-->
+                <p> {{= branch.subject}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if job<!--{BLOCK_TAG_END}-->
+                <p> {{= job.subject}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}--></div>
+            <div class="time"><!--{BLOCK_TAG_START}-->if industry<!--{BLOCK_TAG_END}-->
+                <p> {{= industry.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if branch<!--{BLOCK_TAG_END}-->
+                <p> {{= branch.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if development<!--{BLOCK_TAG_END}-->
+                <p> {{= development.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if product<!--{BLOCK_TAG_END}-->
+                <p> {{= product.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if introduce<!--{BLOCK_TAG_END}-->
+                <p> {{= introduce.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if cases<!--{BLOCK_TAG_END}-->
+                <p> {{= cases.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if talk<!--{BLOCK_TAG_END}-->
+                <p> {{= branch.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if job<!--{BLOCK_TAG_END}-->
+                <p> {{= job.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}--></div>
+        </header>
+    </script>
+
+
+    <!--显示时间的函数-->
+    <script id="detailTemplate2" type="text/x-jquery-tmpl">
+        <header data-role="header" data-tap-toggle="false" data-theme="none">
+            <div class="time"><!--{BLOCK_TAG_START}-->if industry<!--{BLOCK_TAG_END}-->
+                <p> {{= industry.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if branch<!--{BLOCK_TAG_END}-->
+                <p> {{= branch.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if development<!--{BLOCK_TAG_END}-->
+                <p> {{= development.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if product<!--{BLOCK_TAG_END}-->
+                <p> {{= product.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if introduce<!--{BLOCK_TAG_END}-->
+                <p> {{= introduce.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if cases<!--{BLOCK_TAG_END}-->
+                <p> {{= cases.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if talk<!--{BLOCK_TAG_END}-->
+                <p> {{= branch.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if job<!--{BLOCK_TAG_END}-->
+                <p> {{= job.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}--></div>
+        </header>
+    </script>
+
+    <!--显示标题的函数-->
+    <script id="detailTemplate3" type="text/x-jquery-tmpl">
+        <header data-role="header" data-tap-toggle="false" data-theme="none">
+            <div class="title"><!--{BLOCK_TAG_START}-->if industry<!--{BLOCK_TAG_END}-->
+                <p> {{= industry.subject}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if branch<!--{BLOCK_TAG_END}-->
+                <p> {{= branch.subject}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if development<!--{BLOCK_TAG_END}-->
+                <p> {{= development.subject}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if product<!--{BLOCK_TAG_END}-->
+                <p> {{= product.subject}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if introduce<!--{BLOCK_TAG_END}-->
+                <p> {{= introduce.subject}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if cases<!--{BLOCK_TAG_END}-->
+                <p> {{= cases.subject}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if talk<!--{BLOCK_TAG_END}-->
+                <p> {{= branch.subject}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if job<!--{BLOCK_TAG_END}-->
+                <p> {{= job.subject}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}--></div>
+        </header>
+    </script>
+
+
+
+
+
+    <script id="commentTemplate" type="text/x-jquery-tmpl">
+        <li>
+            <span class="name">{{= author}}:</span>
+								<span class="comment_content">
+									{{= message}}
+								</span>
+        </li>
+        <div class="split">
+            <br/>
+        </div><!-- split -->
+    </script>
+
+
+
+
+</head>
+<body>
+
+ <!--右上角会隐藏的图标，点击后分享-->
+<div id="bg" onclick="hideDiv();">
+    <img src="./template/9/img/guide.png" alt="" style="position:fixed;top:0;right:16px;width:134px;height:97px;">
+</div>
+<div id="bg2" onclick="hideFriendDIv();">
+    <img src="./template/9/img/guide_firend.png" alt="" style="position:fixed;top:0;right:16px;width:134px;height:97px;">
+</div>
+<div data-role="page">
+
+
+<!--   <div id="detail-panel"></div>     -->
+
+
+
+
+
+
+
+	<div class="content">
+		<div class="head pt20">
+			<h1 id="cTitle1" class="cTitle f20"></h1>
+			<div class="cTime pt15">
+				<span id="time1" class="time"></span>
+				<span id="countComment" class="fr">评论($wei[viewnum])</span>
+				<span id="countRead" class="fr pr5">浏览($wei[replynum])</span>
+			</div>
+		</div> <!-- head --> 
+
+		<div class="content-text mb20">
+			<div class="wrapperPic mt10 mb10 clearfix w">
+				<!--原来三张图片的地方，暂时没用-->
+			</div> <!-- wrapperPic --> 
+			<div class="cParagraph" style="width: 100%;">
+                $message
+			</div>
+
+		</div> <!-- content-text --> 
+	</div> <!-- content -->
+
+	<div class="comment">
+		<div class="commentContainer" style="height: 100%">
+			<div class="commentPublish">
+				<div class="commentText fl" style="border-bottom: 2px solid #d1d1d1; width: 100%;" >
+                    <div><input type="text" name="nickname" placeholder = "你的昵称" value="$COOKIE" id="nickname"
+                           style="float:left;width:200px;height:30px;border: 1px solid #DDDDDD;"> <div style="clear: both"></div></div>
+                    <div style=""> <textarea style="width: 70%;margin-left:0;"
+                             id="comment_text_box" placeholder="请写下你的评论..." name="" class="f16" id="review"></textarea>
+                    <!--<a href="#" class="cWhite fr">发&nbsp表</a>   -->
+                    <a href="#"  style="float: right" class="cWhite fr"
+                       onclick="cpComment($('#idtype').val(), $('#id').val(), $('#review').val(),$('#nickname').val())">发&nbsp表</a></div>
+
+				</div> <!-- comment_text -->
+
+			</div> <!-- comment_publish -->
+		</div><!-- comment_container -->
+
+        <div class="split">
+            <br />
+        </div><!-- split -->
+
+
+        <div class="comment_list">
+            <ul>
+                <div id="comment-panel"></div>
+
+            </ul>
+        </div><!-- comment_list -->
+
+	</div> <!-- comment -->
+
+    <input type="hidden" id="wxkey" name="wxkey" value="$_GET[wxkey]"/>
+    <input type="hidden" id="id" name="id" value="$_GET[id]"/>
+    <input type="hidden" id="idtype" name="idtype" value="$_GET[idtype]"/>
+    <input type="hidden" id="type" name="type" value="$_GET[type]"/>
+    <input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
+    <input type="hidden" id="page" name="page" value="0"/>
+    <input type="hidden" id="perpage" name="perpage" value="5"/>
+
+
+
+</div> <!-- page -->
+
+ </body>
+<script type="text/javascript" charset="utf-8">
+    function showDIv(){
+        document.getElementById('bg').style.display = "block";
+    }
+    function hideDiv(){
+        document.getElementById('bg').style.display = "none";
+    }
+    function showFriendDIv(){
+        document.getElementById('bg2').style.display = "block";
+    }
+    function hideFriendDIv(){
+        document.getElementById('bg2').style.display = "none";
+    }
+</script>
+</html>
+

@@ -1,0 +1,156 @@
+body {
+	font-family: 'Microsoft yahei' !important;
+	background: #F2F2F2;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+.list_item{
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	margin-top:15px;
+}
+
+ul li {
+	height: 100px;
+	background: #fff;
+	width: 100%;
+	display: inline-block;
+	width: 100%;
+	border: solid 1px #dfdfdf;
+	margin: -10px 3px 5px 5px;
+}
+
+.list {
+	width: 97%;
+}
+
+.list_item img {
+	padding: 7px 7px;
+	float: left;
+	width: 85px;
+}
+
+.item_name, .item_name_product {
+	font-size: 1.2em;
+	color: #697253;
+}
+
+.item_name_product {
+	display: inline-block;
+}
+
+.oh {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.price {
+	font-size: 1.1em;
+	color: #eb5733;
+}
+
+.price_text {
+	float: right;
+	display: inline-block;
+	padding: 23px 5px 0 0;
+	color: #a1a1a1;
+}
+
+.address{
+	font-size: 1em;
+	color: #a1a1a1;
+}
+
+.time {
+	font-size: 0.8em;
+	color: #AFAFAF;
+}
+
+.outline {
+	padding-top: 5px;
+	line-height: 1.2em;
+	font-size: 1em;
+	color: #a1a1a1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.bar_bottom {
+	width: 100%;
+	height: 45px;
+	position: fixed;
+	bottom: 0;
+	background: rgba(130,130,130,0.6);
+}
+
+.bar_bottom img {
+	padding-top: 4px;
+	width: 40px;
+}
+
+#btn_back {
+	float: left;
+	padding-left: 4%;
+}
+
+#btn_menu {
+	float: right;
+	padding-right: 4%;
+}
+
+.button_buy {
+	margin-bottom: 30px;
+}
+
+.button_buy button {
+	display: inline-block;
+	width: 90%;
+	margin: 5%;
+	padding: 3% 0;
+	font-size: 1.2em;
+	color: #fff;
+	border: none;
+	background-color: #697253;
+}
+
+
+.button_buy button:hover {
+	background-color: #b8bd91;
+}
+
+.more_button
+ {
+	margin-top: 130px;
+	display: inline-block;
+	width: 90%;
+	margin: 5%;
+	padding: 3% 0;
+	font-size: 1.2em;
+	color: #fff;
+	border: none;
+	background-color: #697253;
+}
+
+.more_button:hover {
+	background-color: #b8bd91;
+}
+
+
+.first_line {
+	padding: 20px 0 5px 0;
+}
+
+.colorG {
+	color: #697253;
+}

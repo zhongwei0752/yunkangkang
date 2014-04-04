@@ -1,0 +1,46 @@
+img {
+	padding: 0;
+	margin: 0;
+}
+
+.gallery {
+	width: 1024px;
+	height: 400px;
+	margin: 40px 0;
+	overflow: hidden;
+}
+
+.galleryContainer {
+	width: 4000px;
+	position: relative;
+}
+
+.adList {
+	margin-top: -10px;
+}
+
+.successList {
+	height: 110px;
+	margin-top: 50px;
+}
+
+.bottomWrapper {
+	margin-top: 40px;
+}
+
+.bottomWrapper .contactUs .listItem:link
+{
+    color: #BBBBBB;
+    *color: #BBBBBB ;
+    _color: #BBBBBB;
+}
+
+.bottomWrapper .contactUs .listItem:hover
+{
+    color: #60B4AE;
+    *color:  #60B4AE ;
+    _color:  #60B4AE;
+
+}
+
+

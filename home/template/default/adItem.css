@@ -1,0 +1,70 @@
+.adList-item {
+	display: inline-block;
+    position: relative;
+	width: 320px;
+	height: 200px;
+	background: #F7F7F7;
+	padding: 0;
+	margin: 0;
+	margin-right: 24px;
+	border-radius: 3px;
+	border: solid 1px #E6E6E6;
+    float: left;
+    margin-top: 30px;
+	/*background: url('img/bg_ad_item.png');*/
+} 
+
+.adList-item-lastItem {
+	margin-right: 0 !important;
+}
+
+.adList-item h3 {
+	font-weight: bold;
+	font-size: 18px;
+	/*color: #5C8586;*/
+	color: #29b9b0;  
+	line-height: 44px;
+	padding-left: 18px;
+	/*border-bottom: solid 1px #DDD; */
+    border: 1px solid;
+    border-bottom-color: #DDD;
+    border-top-color: #ffffff;
+    border-right-color: #ffffff;
+    border-left-color: #ffffff;
+   /* border-color: #ffffff #ffffff #DDD #ffffff;*/
+}
+
+.adList-item p {
+	width: 155px;
+	color: #999999;  
+    /*color: #29BEB5;*/
+	font-size: 14px;
+	line-height: 150%;
+	padding: 25px 0 0 18px;
+}
+
+.ad img {
+	float: right;
+	position: relative;
+	top: 30px;
+	right: 10px;
+}
+
+.borderBottomImage {
+	position: relative;
+	left: 36px;
+	top: -143px;
+    z-index: 4;
+}
+
+.stylewhite
+{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 152px;
+    width: 318px;
+    border: 1px solid white;
+    top: -130px;
+}
+

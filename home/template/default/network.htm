@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>微伍v5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8">
+      <script src="./source/jquery.js" type="text/javascript"></script>
+      <script type="text/javascript" src="./source/network.js"></script>
+      <script type="text/javascript"></script>
+    <!-- Bootstrap -->
+   <!--  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen"> -->
+    <link rel="stylesheet" type="text/css" href="./template/default/jquery-mobile-fluid960.min.css">
+    <link rel="stylesheet" type="text/css" href="./template/default/style1.css">
+	 <link rel="stylesheet" type="text/css" href="./template/default/adItem.css">
+
+     
+    <style type="text/css">
+        .companies .grid_3 span img{
+             max-width:71px;max-height:71px;min-width:71px;min-height:71px;
+          } 
+        .companies .grid_4 img{
+             max-width:172px;max-height:53px;min-width:172px;min-height:53px;
+        }
+        /*login hack*/
+        #email,#tx,#pwd{
+        margin-left:-12px\9;
+        }
+             </style>
+  </head>
+  <body>
+    
+    <div class="wrapper">
+        <div class="navbar">
+            <div class="navbar-inner container_36">
+                <a class="logo grid_1"><img src="./template/default/image/logo.png"></a>
+                <a href="home.php" class="grid_2">首页</a>
+                <a href="buy.php" class="grid_2">套餐</a>
+                <a href="cases.php" class="grid_2">成功案例</a>
+                <a href="myhelp.php" class="grid_2">帮助</a>
+
+                    <div class="zz">
+                        <a href="network.php?id=1"><div class="zhuce_1"><img src="./template/default/image/zhuceleft.fw.png"></div></a>
+                        <a href="network.php?id=2"><div class="zhuce_2"><img src="./template/default/image/zhuceright.fw.png"></div></a>
+                        <div style="clear: both"></div>
+                    </div>
+
+             </div>
+         </div>
+         <!-- navbar end -->
+         <div class="login_wrapper container_12">
+            <div class="grid_1">
+                 <img src="$bigimage[imageurl]">
+            </div>
+            <div class="grid_2 sign_window" id="log">
+                   <ul>
+                     <li style="float:left">登陆账号</li>
+                  </ul>
+                
+               <form name="loginform" action="do.php?ac=$_SCONFIG[login_action]&$url_plus&ref" method="post">
+              <input type="text" name="username" id="username"  value="$membername" />
+              <input type="password" name="password" id="password"  />
+              <p class="submitrow">
+                <input type="hidden" name="refer" value="space.php?do=home" />
+                <input type="submit" id="loginsubmit" style="border:none;" class="sign_btn" name="loginsubmit" value="登录" class="submit" />
+                <input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+              </p>
+            </form>
+            </div>
+         </div>
+
+          <p class="login_page_company_title"><span><b>企业名称</b></span></p>
+          <div class="companies_wrapper">
+          <div class="companies container_12">
+            <!--{loop $openlist $key $value}-->
+            <!--{if {$_SN[$value[uid]]}!="admin"}-->
+            <div class="grid_3">
+                   <span style="float:left;padding-right:10px;max-width:71px;max-height:71px;min-width:71px;min-height:71px;overflow:hidden;margin-bottom:20px;"><!--{avatar($value[uid],middle)}--></span>
+                   <span class="company_name">{$_SN[$value[uid]]}</span><br>
+                    <span><a  class="fans">$value[friendnum]客户</a></span> 
+              </div>
+              <!--{/if}-->
+      
+      <!--{/loop}-->
+             
+            
+          </div>
+    
+      </div><!-- 无类div结束 -->
+
+
+      <p class="login_page_company_title"><span><b>品牌合作企业</b></span></p>
+               <div class="companies_wrapper">
+          <div class="companies container_12">
+              <div class="grid_4">
+                  <img src="$logoimage[0][imageurl]">
+              </div>
+               <div class="grid_4">
+                  <img src="$logoimage[1][imageurl]">
+              </div>
+               <div class="grid_4">
+               <img src="$logoimage[2][imageurl]">
+              </div>
+               <div class="grid_4">
+               <img src="$logoimage[3][imageurl]">
+              </div>
+               <div class="grid_4">
+              <img src="$logoimage[4][imageurl]">
+              </div>
+               
+          </div>
+          
+            <div class="companies container_12">
+               <div class="grid_4">
+                <img src="$logoimage[5][imageurl]">
+              </div>
+               <div class="grid_4">
+                <img src="$logoimage[6][imageurl]">
+              </div>
+               <div class="grid_4">
+               <img src="$logoimage[7][imageurl]">
+              </div>
+               <div class="grid_4">
+               <img src="$logoimage[8][imageurl]">
+              </div>
+               <div class="grid_4">
+               <img src="$logoimage[9][imageurl]">
+              </div>
+          </div>
+      </div><!-- 无类div结束 -->
+    </div><!-- wrraper end -->
+
+
+     <script src="./source/jquery.js" type="text/javascript"></script> 
+     <script type="text/javascript" src="./source/placeholder.js"></script>
+
+    <script type="text/javascript">
+
+    //跳转去注册或者登陆页面的控制函数
+      function getUrlPara(paraName){
+          var sUrl  =  location.href;
+          var sReg  =  "(?:\\?|&){1}"+paraName+"=([^&]*)"
+          var re=new RegExp(sReg,"gi");
+          re.exec(sUrl);
+          return RegExp.$1;
+      }
+      //应用实例：test_para.html?a=11&b=22&c=33
+      //alert(getUrlPara("id"));
+      //alert(getUrlPara("b"));
+      if(getUrlPara("id")==2)
+      {
+               $('#log').animate({ opacity: '0'
+               },200);
+               $('#sign').animate({right:'0'
+               },200);
+      }
+      else if(getUrlPara("id")==1)
+      {
+          $('#sign').animate({ right:'-1000px'
+          },200);
+          $('#log').animate({opacity: '1'
+          },200);
+      }
+
+
+
+
+
+      $('#btna').click(function(){
+    $('#log').animate({ opacity: '0'
+},200);  
+     $('#sign').animate({right:'0'
+},200);  
+    // $('#log').slideToggle("medium","linear");
+    // $('#sign').slideToggle("medium","linear");
+   });
+    $('#btnb').click(function(){
+    $('#sign').animate({ right:'-1000px'
+},200);  
+     $('#log').animate({opacity: '1'
+},200);  
+    // $('#log').slideToggle("medium","linear");
+    // $('#sign').slideToggle("medium","linear");
+   })
+</script>
+
+             <script type="text/javascript">
+<!--
+  $('username').focus();
+  var lastUserName = lastPassword = lastEmail = lastSecCode = '';
+  function checkUserName() {
+    var userName = $('username').value;
+    if(userName == lastUserName) {
+      return;
+    } else {
+      lastUserName = userName;
+    }
+    var cu = $('checkusername');
+    var unLen = userName.replace(/[^\x00-\xff]/g, "**").length;
+
+    if(unLen < 3 || unLen > 150) {
+      warning(cu, unLen < 3 ? '用户名小于3个字符' : '用户名超过 15 个字符');
+      return;
+    }
+    ajaxresponse('checkusername', 'op=checkusername&username=' + (is_ie && document.charset == 'utf-8' ? encodeURIComponent(userName) : userName));
+  }
+  function checkPassword(confirm) {
+    var password = $('password').value;
+    if(!confirm && password == lastPassword) {
+      return;
+    } else {
+      lastPassword = password;
+    }
+    var cp = $('checkpassword');
+    if(password == '' || /[\'\"\\]/.test(password)) {
+      warning(cp, '密码空或包含非法字符');
+      return false;
+    } else {
+      cp.style.display = '';
+      cp.innerHTML = '<img src="image/check_right.gif" width="13" height="13">';
+      if(!confirm) {
+        checkPassword2(true);
+      }
+      return true;
+    }
+  }
+  </script>
+  <script type="text/javascript">
+       $("input").change(function(){
+        $(this).css("color","#333")
+       })
+  </script>
+  <script type="text/javascript">
+      $(".login_hover").mouseover(function(){
+          $(".login_png").attr("src","./template/default/image/login_btn_hover.png")
+      });
+      $(".login_hover").mouseout(function(){
+          $(".login_png").attr("src","./template/default/image/login_btn.png")
+      });
+
+  </script>
+
+             <script>
+  function register(id, result) {
+    if(result) {
+      $('registersubmit').disabled = true;
+      window.location.href = "$jumpurl";
+    } else {
+      updateseccode();
+    }
+  }
+</script>
+
+  
+    <script type="text/javascript">
+var tx = document.getElementById("tx"), pwd = document.getElementById("pwd");
+tx.onfocus = function(){
+if(this.value != "密码") return;
+this.style.display = "none";
+pwd.style.display = "";
+pwd.value = "";
+pwd.focus();
+}
+pwd.onblur = function(){
+if(this.value != "") return;
+this.style.display = "none";
+tx.style.display = "";
+tx.value = "密码";
+}
+
+</script>
+<!-- 以上为ie不兼容placeholder而写的 -->
+<!--{template footer}-->
+    <!--<script src="js/bootstrap.min.js"></script>-->

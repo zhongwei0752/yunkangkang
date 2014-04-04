@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>选购应用</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <!-- Bootstrap -->
+   <!--  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen"> -->
+    <link rel="stylesheet" type="text/css" href="./template/default/jquery-mobile-fluid960.min.css">
+    <link rel="stylesheet" type="text/css" href="./template/default/style1.css">
+    <link rel="stylesheet" type="text/css" href="./template/default/file_beauty.css">
+    <link type='text/css' href='./template/default/basic_chosen.css' rel='stylesheet' media='screen' />
+    <style type="text/css">
+       h3{color: #727272;margin-top: 20px;font-weight:normal;}
+       .selected{ -webkit-box-shadow: 3px 3px 3px;
+  -moz-box-shadow: 3px 3px 3px;
+  box-shadow: 3px 3px 3px;}
+  
+      .bg1{ background: url("./template/default/image/chosen_bg.png");}
+      .open{ background: url("./template/default/image/chosen_bg2.png")!important;}
+      .open .price{color:#3EB2B8!important;}
+    </style>
+    <script src="./source/jquery.js"></script>
+    <script type='text/javascript' src='./source/jquery.simplemodal.js'></script>
+   <script type='text/javascript' src='./source/basic.js'></script>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+        <div class="navbar">
+            <div class="navbar-inner container_36">
+                <a class="logo grid_1" href="space.php?do=home" style="background:none;"><img src="./template/default/image/logo.png"></a>
+                <a href="#" class="grid_5" style="float:right;color:#BDBEBF;padding-right:10px;">帮助</a>
+             </div>
+         </div>
+         <!-- navbar end -->
+         <form action = "space.php?do=highmenuset" method = "post">
+          <div class="content_wrapper" style="margin-left:auto;margin-right:auto;width:925px;">
+            <div class="content" style="width:925px;">
+             
+                <img src="./template/default/image/guide_chosen.png" style="margin:20px 110px;">
+
+                 <div class="content_detail_wrapper" style="color:#939393;">
+                      <div class="container_12 assembly">
+                           
+                        
+                            
+                          <!--{loop $list $value}-->
+                         
+        
+        <div class="grid_6">
+                            <div class="assembly_inner bg1" >
+                            <div class="assembly_title" id='basic-modal'>
+        <a href="space.php?uid=$value[uid]&do=$do&id=$value[menusetid]" ><span class="title">$value[subject]</span></a><a href="space.php?uid=$value[uid]&do=$do&id=$value[menusetid]" class="view_detail basic$value[menusetid]">查看详情>></a></div>
+      <div id="num$value[menusetid]" style="height:160px;">
+        <!--{if $value[money]}--><div id="numh$value[menusetid]"></div><!--{else}--><div id="numh$value[menusetid]"><input type='hidden' name='$value[menusetid]' value='1' style='width:20px;' /></div><!--{/if}-->
+       
+        <div class="assembly_produce">
+                                    <img src="$value[image1url]">
+                                    <div class="produce_choice">
+                                        <p class="produce_text">$value[message]</p>
+                                    </div>
+                                   
+                               <!--{if $value[money]}--> <p class="price">单价:$value[money]元/月</p><!--{else}--><p class="price">单价:免费</p><!--{/if}-->
+                             </div>
+          
+          </div>
+</div>
+          </div>
+          
+          
+
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+      <script>
+
+ 
+      $(document).ready(function()
+        {
+           <!--{if !$value[money]}-->
+            $("#num$value[menusetid]").parent(".assembly_inner").addClass("open");
+            <!--{/if}-->
+      $("#num$value[menusetid]").toggle(
+        function () {
+                    $("#num$value[menusetid]").parent(".assembly_inner").addClass("open");
+                    $("#numh$value[menusetid]").html("<input type='hidden' name='$value[menusetid]' value='1' style='width:20px;' />");
+                  },
+                  function () {
+                    $("#num$value[menusetid]").parent(".assembly_inner").removeClass("open");
+                    $("#numh$value[menusetid]").html("");
+                    }
+              );
+        
+      });
+      </script>
+  <div id="basic-modal-content$value[menusetid]">
+  <h3 style="font-size:20px;color:#44B1BA;background:#ECEFF1;margin:0;line-height:40px;text-align:left;padding-left:10px;">$value[subject]</h3>
+  <div style="width:600px;height:560px;min-height:560px;max-height:560px;background:#fff;overflow:scroll;">$value[message1]</div>
+
+</div>
+ 
+
+
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type='text/javascript' src='./source/jquery.simplemodal.js'></script>
+    <script type="text/javascript">
+       $(document).ready(function(){
+        
+        $('#basic-modal-content$value[menusetid]').attr("style", "display:none;");
+          <!--{if empty($space[weixinusername])&&empty($space[weixinpassword])}-->
+        $('#weixin').attr("style", "display:none;");
+        $('#weixin').modal();
+         $('#weixin').attr("style", "display:block;");
+              <!--{/if}-->
+           $('#basic-modal input.basic$value[menusetid], #basic-modal a.basic$value[menusetid]').click(function (e) {
+    e.preventDefault();
+    $('#basic-modal-content$value[menusetid]').modal();
+  });
+
+            
+       })
+    </script>
+    <!--{/loop}-->
+
+                
+                     <div class="confirm_btn container_12" style="padding-left:400px;">
+                      <br/>
+                           <input type="submit" class="btn grid_2">
+                      </div>
+                 </div><!-- content_detail_wrapper end -->
+               
+                </form>
+            </div>
+              
+          </div><!-- content_wrapper end -->
+    </div><!-- wrraper end -->
+ <div id="weixin">
+    <style type="text/css">
+      #simplemodal-container{height:300px;}
+    </style>
+  <!--{if empty($zhong1)}-->
+  <!--{if empty($space[weixinusername])&&empty($space[weixinpassword])}-->
+   <!--{if 1}-->
+  <form action = "space.php?do=goweixin" method = "post">
+
+   <h3 style="font-size:20px;color:#44B1BA;background:#ECEFF1;margin:0;line-height:40px;text-align:left;padding-left:10px;">你的微信用户名：<input type="text" name="weixinusername"></h3>
+    <h3 style="font-size:20px;color:#44B1BA;background:#ECEFF1;margin:0;line-height:40px;text-align:left;padding-left:10px;">你的微信密码：<input type="text" name="weixinpassword"></h3>
+    <input type="submit" name="submit" value="提交">
+    <input type="hidden" name="alreadyweixin" value="1">
+    </form>
+  <!--{else}-->
+  <!--{if !empty($newweixin[username])}-->
+  <form action = "space.php?do=goweixin" method = "post">
+  <h3 style="font-size:20px;color:#44B1BA;background:#ECEFF1;margin:0;line-height:40px;text-align:left;padding-left:10px;">系统已自动为你生成微信公众号，如你已有微信公众号，可<a href="space.php?do=menuset&status=already">点击此处</a></h3>
+  <h3 style="font-size:20px;color:#44B1BA;background:#ECEFF1;margin:0;line-height:40px;text-align:left;padding-left:10px;">你的微信id：$newweixin[wxkey]</h3>
+   <h3 style="font-size:20px;color:#44B1BA;background:#ECEFF1;margin:0;line-height:40px;text-align:left;padding-left:10px;">你的微信用户名：$newweixin[username]</h3>
+    <h3 style="font-size:20px;color:#44B1BA;background:#ECEFF1;margin:0;line-height:40px;text-align:left;padding-left:10px;">你的微信密码：$newweixin[password]</h3>
+     <input type="hidden" name="username" value="$newweixin[username]">
+     <input type="hidden" name="password" value="$newweixin[password]">
+     <input type="hidden" name="fakeid" value="$newweixin[fakeid]">
+     <input type="hidden" name="wxkey" value="$newweixin[wxkey]">
+     <input type="hidden" name="id" value="$newweixin['id']">
+    <input type="submit" name="submit" value="使用">
+    <input type="hidden" name="newweixin" value="1">
+    </form>
+    <!--{else}-->
+    <h3 style="font-size:20px;color:#44B1BA;background:#ECEFF1;margin:0;line-height:40px;text-align:left;padding-left:10px;">目前还未有微信公众号</h3>
+     <!--{/if}-->
+     <!--{/if}-->
+     <!--{/if}-->
+     <!--{/if}-->
+
+</div>
+ 
+
+ 
+   <!--{template footer}-->
+   
+
+</div>
+    
+    
+    <!--<script src="./source/bootstrap.min.js"></script>-->
+  </body>
+</html>

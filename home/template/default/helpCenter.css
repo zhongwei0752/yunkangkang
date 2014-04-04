@@ -1,0 +1,307 @@
+.helpCenterBody
+{
+   /* border: 1px solid black;*/
+   /* height: 710px;
+    width: 1020px;
+    height: 100%; */
+    height:690px;
+    padding: 0;
+    margin: 0 auto;
+    background-color:#ffffff;
+    outline: none;
+    outline-color: white;
+
+}
+.bodywhite
+{
+    height: 20px;
+    width: 1060px;
+   /* border: 1px solid black;  */
+    margin: 0 auto;
+    position: relative;
+    float: left;
+    top: -20px;
+    left: 140px;
+    background-color: white;
+    padding: 0;
+}
+.menubox
+{
+    /* border: 1px solid black; */
+    background-color: #ECEFF1;
+    float: left;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 600px;
+    width: 250px;
+    left: 0px;
+    top: 20px;
+}
+.menubox .menuboxhelp
+{
+    /* border: 1px solid black; */
+    border-top: 3px solid #35B8B0;
+    position: relative;
+    float: left;
+    padding: 0;
+    margin: 0;
+    width: 250px;
+    height: 40px;
+    background-color: #5D6976;
+}
+.menubox .menuboxhelp span
+{
+    position: relative;
+    color: #FFFFFF;
+    font-family: 微软雅黑;
+    font-size: 14px;
+    left: 17px;
+    top: 10px;
+}
+.menubox .list2
+{
+    /* border: 1px solid black; */
+    float: left;
+    position: relative;
+    background-color: #EEEEEE;
+    padding: 0;
+    margin: 0;
+    height: 500px;
+    width: 250px;
+    top: 15px;
+}
+.menubox .list2 ul
+{
+    position: relative;
+    padding: 0;
+    margin: 0;
+
+}
+.menubox .list2 ul li
+{
+    /* border: 1px solid black; */
+    padding: 0;
+    margin: 0;
+    position: relative;
+    list-style-type: none;
+    letter-spacing:1px;
+    font-family: 微软雅黑;
+    font-size: 15px;
+    color: #999999;
+    background-color: #EEEEEE;
+    padding-left: 15px;
+    height: 32px;
+    line-height: 31px;
+    cursor: default;
+}
+.menubox .list2 ul li .buttom
+{
+    position: relative;
+}
+
+.menubox .list2 .choose:link
+{
+    color: #999999;
+    background-color: #EEEEEE;
+}
+
+.menubox .list2 .choose:hover
+{
+    color: #999999;
+    background-color: #D5DBDF;
+    cursor: pointer;
+
+}
+
+.menubox .list2 .HaveChoose
+{
+    padding: 0;
+    margin: 0;
+    position: relative;
+    list-style-type: none;
+    letter-spacing:1px;
+    font-family: 微软雅黑;
+    font-size: 15px;
+    padding-left: 15px;
+    height: 30px;
+    line-height: 29px;
+
+    background-color:#3EB7B0 ;
+    color: #ffffff;
+}
+
+
+.searchbox
+{
+    /* border: 1px solid black; */
+    float: left;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 40px;
+    width: 720px;
+    left: 24px;
+    top: 20px;
+    z-index: 1;
+
+
+}
+.searchbox .search_pic
+{
+    /* border: 1px solid black; */
+    float: left;
+    width: 350px;
+    height: 40px;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    z-index: 1;
+}
+.searchbox .search_text
+{
+    /* border: 1px solid black; */
+    position: relative;
+    padding: 0;
+    margin: 0;
+    float: left;
+    width: 280px;
+    height: 30px;
+    left: -340px;
+    top: 6px;
+    z-index: 2;
+
+}
+.searchbox .search_text textarea
+{
+    position: relative;
+    padding: 0;
+    margin: 0;
+    float: left;
+    width: 280px;
+    height: 30px;
+    line-height: 28px;
+    overflow-y: hidden;
+    border-style: none;
+    border: 0;
+    color: #CCCCCC;
+    font-size: 15px;
+    font-family: 微软雅黑;
+    rows:1;
+    outline: none
+    z-index: 3;
+
+}
+.searchbox .search_buttom
+{
+   /*border: 1px solid black;  */
+   background-image: url(./template/default/image/searchbuttom.fw_r4_c5.png);
+   background-repeat: no-repeat;
+    position: relative;
+    float: left;
+    padding: 0;
+    margin: 0;
+    width: 50px;
+    height: 38px;
+    top: 0px;
+    left: -332px;
+    z-index: 3;
+}
+.contentbox
+{
+    border: 1px solid #DDDDDD;
+    border-top: 3px solid #5D6977;
+    float: left;
+    position: relative;
+    padding: 0;
+    margin: 0;
+   /* height: 600px;     */
+    background-color:white;
+    width: 742px;
+    left: 24px;
+    top: 40px;
+}
+.contentbox .contenttitle
+{
+    /* border: 1px solid black; */
+    width: 660px;
+    height: 70px;
+    margin: 0 auto ;
+    padding: 0;
+    float: left;
+    text-align: center;
+     left: 41px;
+    position: relative;
+    border-bottom:1px solid #DDDDDD ;
+}
+.contentbox .contenttitle span
+{
+    position: relative;
+    letter-spacing:1px;
+    font-family: 微软雅黑;
+    font-size: 28px;
+    color: #666666;
+    padding: 0;
+    margin: 0 auto;
+    /*float: left;  */
+    top: 16px;
+   /* left:135px ;   */
+    text-align: center;
+}
+.contentbox .showlogo
+{
+    /* border: 1px solid black; */
+    width: 600px;
+    height: 218px;
+    padding: 0;
+    margin: 0;
+    float: left;
+    position: relative;
+    left: 71px;
+    top: 20px;
+}
+.contentbox .contenttext
+{
+   /* border: 1px solid black; */
+    width: 675px;
+  /*  height: 252px;   */
+    padding: 0;
+    padding-bottom: 20px ;
+    margin: 0;
+    float: left;
+    position: relative;
+    left: 32px;
+    top: 20px;
+}
+.contentbox .contenttext p
+{
+    font-family: 微软雅黑;
+    font-size: 14px;
+    color:  #666666;
+    position: relative;
+    left:0px;
+    text-align: left;
+    line-height: 23px;
+    white-space:normal;
+
+}
+
+.bottomWrapper .contactUs .listItem:link
+{
+    color: #BBBBBB;
+    *color: #BBBBBB ;
+    _color: #BBBBBB;
+}
+
+.bottomWrapper .contactUs .listItem:hover
+{
+    color: #60B4AE;
+    *color:  #60B4AE ;
+    _color:  #60B4AE;
+
+
+}
+
+
+
+

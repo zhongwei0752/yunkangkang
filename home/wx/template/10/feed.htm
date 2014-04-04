@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>$appname</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+	<link rel="stylesheet" href="template/10/css/list.css" />
+	<link rel="stylesheet" href="template/10/css/mobiscroll.custom-2.5.4.min.css" />
+
+
+
+    <script type="text/javascript" src="template/10/js/jquery-v2.0.2.js"></script>
+    <script type="text/javascript" src="template/10/js/mobiscroll.custom-2.5.4.min.js"></script>
+
+    <script src="template/10/js/scrollbox.js"></script>
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="template/js/mobiscroll.custom-2.5.4.min.js"></script>
+    <script src="template/js/js/jquery.query.js" type="text/javascript"></script>
+    <script type="text/javascript" src="template/js/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="template/js/feed.js"></script><!-- 时间选择插件 -->
+
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var anyTransformY = function(target, distance) {
+                $(target).css("-webkit-transform", "translateY("+distance+")");
+            };
+            anyTransformY(".contentTitle", "40px");
+            anyTransformY(".contentHide-button", "-35px");
+
+
+          $('#nav').mobiscroll().select( {
+                theme: 'android-ics',
+                lang: 'zh',
+                display: 'bottom',
+                mode: 'scroller',
+                inputClass: 'i-txt',
+                width: 200
+            });
+            $('#show').click(function() {
+                $('#nav').mobiscroll('show');
+                return false;
+            });
+
+
+
+            $('#clearSelect').click(function() {
+                $('#nav').val(1).change();
+                $('#nav'+'_dummy').val(' ');
+                return false;
+            });
+        });
+    </script>
+
+
+    <script id="detailTemplate" type="text/x-jquery-tmpl">
+
+       <a  style="color:#697253"
+         href="wx.php?do=detail&id={{= $_GET[idtype]id}}&uid={{= uid}}&idtype=$_GET[idtype]id&type=$_GET[idtype]&moblieclicknum=$bac['moblieclicknum']">
+           <li style="margin-bottom:20px">
+               <div class="list_item">
+                    <!--{BLOCK_TAG_START}-->if image1url<!--{BLOCK_TAG_END}-->
+                    <img src = "{{= image1url}}" />
+
+
+
+                    <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                    <!--{BLOCK_TAG_START}-->if eventid<!--{BLOCK_TAG_END}-->
+                    <img src = "{{= image1url}}" />
+
+                    <!--{BLOCK_TAG_START}-->if goodscod<!--{BLOCK_TAG_END}-->
+                    <!--{BLOCK_TAG_START}-->if listshow=='1'<!--{BLOCK_TAG_END}-->
+                   <span class="price_text"><span class="price">{{= curprice}}</span>元</span>
+                    <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                    <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+
+                    <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                   <div class="item_name first_line">
+                    <!--{BLOCK_TAG_START}-->if eventid<!--{BLOCK_TAG_END}-->
+                    {{= title}}
+
+                    <!--{BLOCK_TAG_START}-->else<!--{BLOCK_TAG_END}-->
+                    {{= subject}}
+
+                    <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+
+                       <!--{BLOCK_TAG_START}-->if goodscod<!--{BLOCK_TAG_END}-->
+                       <!--{BLOCK_TAG_START}-->if listshow=='1'<!--{BLOCK_TAG_END}-->
+                       <span class="price_text"><span class="price">{{= curprice}}</span>元</span>
+                       <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                       <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                       <div style="font-size:12px">{{= dateline}}</div>
+                  </div>
+               </div>
+
+
+
+        <div class="split"></div>
+
+                <div class = "info_span subtitle" style="font-size:14px">
+
+
+
+                    <!--{BLOCK_TAG_START}-->if starttime<!--{BLOCK_TAG_END}-->
+                    <!--{BLOCK_TAG_START}-->if time<!--{BLOCK_TAG_END}-->
+
+                    <span style="margin-left:30px;color:red;">拍卖未开始</span>
+                    <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                    <!--{BLOCK_TAG_START}-->if time1<!--{BLOCK_TAG_END}-->
+
+                    <span style="margin-left:30px;color:red;">拍卖进行中</span>
+                    <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                    <!--{BLOCK_TAG_START}-->if time2<!--{BLOCK_TAG_END}-->
+
+                    <span style="margin-left:30px;color:red;">拍卖已结束</span>
+                    <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                    <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                </div>
+
+             </li>
+          </a>
+
+    </script>
+
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#nav'+'_dummy').hide();
+        });
+    </script>
+
+
+</head>
+<body>
+	<div class="content">
+		<div class="list">
+            <ul>
+            <div id="detail-panel"></div>
+            </ul>
+		</div> <!-- list --> 
+
+		<div class="button_buy">
+            <!-- <button id="colorButton"  onclick="getComment($('#idtype').val(), $('#uid').val(), $('#page').val(), $('#perpage').val());">更&nbsp多</button>    -->
+           <input style="color: #ffffff;font-size: 20px;font-family: '微软雅黑';border-radius: 0 !important;-webkit-appearance: none;"
+            type = "button"
+             onclick="getComment($('#idtype').val(), $('#uid').val(), $('#page').val(), $('#perpage').val());"
+             value = "更&nbsp多" class = "more_button"  />
+		</div>
+
+        <input type="hidden" id="id" name="id" value="$_GET[id]"/>
+        <input type="hidden" id="idtype" name="idtype" value="$_GET[idtype]"/>
+        <input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
+        <input type="hidden" id="page" name="page" value="2"/>
+        <input type="hidden" id="perpage" name="perpage" value="4"/>
+        <div style = "display: none;">
+            <select name="" id="nav" class="f-dd" onchange="top.location=this.value;">
+                <option value="wx.php?do=home&uid=$_GET[uid]">首页</option>
+                <!--{loop $zhongwei $value}-->
+                <option value="wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]">$value[subject]</option>
+                <!--{/loop}-->
+                <!--{if $zhongwei1}-->
+                <!--{loop $zhongwei1 $value1}-->
+                <option value="wx.php?do=feed&uid=$_GET[uid]&idtype=$value1[english]">$value1[subject]</option>
+                <!--{/loop}-->
+                <!--{/if}-->
+            </select>
+        </div>
+
+
+				<div class="bar_bottom">
+						<img src="template/10/img/btn_back_up.png" alt="" id="btn_back" onclick="window.history.back()" />
+						<a href="#" id="show" ><img src="template/10/img/btn_menu_up.png" alt=""  id = "btn_menu"/></a>
+				</div> <!-- bar_bottom --> 
+
+
+
+
+	</div> <!-- content --> 
+</body>
+</html>

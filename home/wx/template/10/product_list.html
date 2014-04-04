@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>产品列表</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/list.css" />
+	<link rel="stylesheet" href="css/mobiscroll.custom-2.5.4.min.css" />
+	<script type="text/javascript" src="js/jquery-v2.0.2.js"></script>
+	<script type="text/javascript" src="js/mobiscroll.custom-2.5.4.min.js"></script>
+	<script type="text/javascript" src="js/myAll.js"></script>
+		<script type="text/javascript">
+			$(function() {
+					$('#nav').mobiscroll().select( {
+						theme: 'android-ics',
+						lang: 'zh',
+						display: 'bottom',
+						mode: 'scroller',
+						inputClass: 'i-txt',
+						width: 200
+					});
+					$('#btn_menu').click(function() {
+						$('#nav').mobiscroll('show');
+						return false;
+					});
+
+					$('#clearSelect').click(function() {
+						$('#nav').val(1).change();
+						$('#nav'+'_dummy').val(' ');
+						return false;
+					});
+			});
+		</script>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#nav'+'_dummy').hide();
+			});
+		</script>
+
+		<style type="text/css">
+			.item_name_product {
+				display: inline;
+			}
+		</style>
+
+
+</head>
+<body>
+	<div class="content">
+		<div class="list">
+			<ul>
+
+			<a href="product_content.html">
+				<li>
+					<div class="list_item">
+						<img src="img/small_pic_list.png" alt="" />
+						<span class="price_text"><span class="price">5200</span>元/平米</span>
+						<div class="first_line oh colorG">
+							<span class="item_name_product">广州亚运城天誉</span>
+						</div>
+						<span class="address">地址：【番禺 华南】大石南大路，长隆欢乐世界向前走500米</span>
+					</div> <!-- list_item_text --> 
+				</li>
+			</a>
+
+			<a href="product_content.html">
+				<li>
+					<div class="list_item">
+						<img src="img/small_pic_list.png" alt="" />
+						<span class="price_text"><span class="price">5200</span>元/平米</span>
+						<div class="first_line oh colorG">
+							<span class="item_name_product">广州亚运城天誉-阳光海景别墅区</span>
+						</div>
+						<span class="address">地址：【番禺 华南】大石南大路，长隆欢乐世界向前走500米</span>
+					</div> <!-- list_item_text --> 
+				</li>
+			</a>
+
+			<a href="product_content.html">
+				<li>
+					<div class="list_item">
+						<img src="img/small_pic_list.png" alt="" />
+						<span class="price_text"><span class="price">5200</span>元/平米</span>
+						<div class="first_line oh colorG">
+							<span class="item_name_product">广州亚运城天誉</span>
+						</div>
+						<span class="address">地址：【番禺 华南】大石南大路，长隆欢乐世界向前走500米</span>
+					</div> <!-- list_item_text --> 
+				</li>
+			</a>
+
+
+
+			</ul>
+		</div> <!-- list --> 
+
+		<div class="button_buy">
+			<button id="colorButton">更&nbsp多</button>
+		</div>
+
+				<div class="bar_bottom">
+						<img src="img/btn_back_up.png" alt="" id="btn_back" onclick="window.history.back()" />
+						<a href="#nav"><img src="img/btn_menu_up.png" alt="" id="btn_menu" /></a>
+				</div> <!-- bar_bottom --> 
+
+
+				<select id="nav" name="navigation" class="f-dd" onchange="top.location=this.value;">
+					<option value="index.html">首页</option>
+					<option value="info.html">企业介绍</option>
+					<option value="product_list.html" selected="selected">产品列表</option>
+					<option value="feed.html">企业动态</option>
+					<option value="book.html">预定预约</option>
+					<option value="job.html">人才招聘</option>
+					<option value="#">行业动态</option>
+					<option value="product_manage.html">商品管理</option>
+				</select>
+
+
+	</div> <!-- content --> 
+</body>
+</html>

@@ -1,0 +1,33 @@
+body {
+	background: #fff;
+}
+
+.content {
+	padding: 0 3.125%;
+}
+
+.content-text img {
+	width: 100%;
+	display: block;
+	padding-top: 5px;
+}
+
+.content-text p {
+	line-height: 20px;
+}
+
+.cParagraph {
+	color: #737373;
+}
+
+
+.split {
+    background: url('./img/split.png') repeat-x;
+    height: 2px;
+    width: 100%;
+}
+
+#comment-panel  li
+{
+    line-height: 50px;
+}

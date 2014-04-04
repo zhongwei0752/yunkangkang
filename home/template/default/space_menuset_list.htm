@@ -1,0 +1,256 @@
+<!--{eval $_TPL['titles'] = array('组件');}-->
+<!--{eval $friendsname = array(1 => '仅好友可见',2 => '指定好友可见',3 => '仅自己可见',4 => '凭密码可见');}-->
+
+<!--{template header}-->
+<link rel="stylesheet" type="text/css" href="./template/default/jquery-mobile-fluid960.min.css">
+    <link rel="stylesheet" type="text/css" href="./template/default/style1.css">
+    <link rel="stylesheet" type="text/css" href="./template/default/file_beauty.css">
+    <link type='text/css' href='./template/default/basic_chosen.css' rel='stylesheet' media='screen' />
+    <style type="text/css">
+       h3{color: #727272;margin-top: 20px;font-weight:normal;}
+       .selected{ -webkit-box-shadow: 3px 3px 3px;
+  -moz-box-shadow: 3px 3px 3px;
+  box-shadow: 3px 3px 3px;}
+  
+      .bg1{ background: url("./template/default/image/chosen_bg4.png");width:360px;height:210px;box-shadow: none!important;border: none!important;}
+      .open{ background: url("./template/default/image/chosen_bg3.png")!important;}
+      .open .price{color:#3EB2B8!important;}
+    </style>
+    <script type='text/javascript' src='./source/jquery.simplemodal.js'></script>
+   <script type='text/javascript' src='./source/basic.js'></script>
+<!--{if !empty($_SGLOBAL[inajax])}-->
+	<div id="space_menuset" class="feed">
+		<h3 class="feed_header">
+			<a href="cp.php?ac=menuset" class="r_option" target="_blank">发表组件</a>
+			组件(共 $count 篇)
+		</h3>
+		<!--{if $count}-->
+		<ul class="line_list">
+		<!--{loop $list $value}-->
+			<li>
+				<span class="gray r_option"><!--{date('m-d H:i',$value[dateline],1)}--></span>
+				<h4><a href="space.php?uid=$space[uid]&do=menuset&id=$value[menusetid]" target="_blank" <!--{if $value[magiccolor]}--> class="magiccolor$value[magiccolor]"<!--{/if}-->>$value[subject]</a></h4>
+				<div class="detail">
+					$value[message]
+				</div>
+			</li>
+		<!--{/loop}-->
+		</ul>
+		<!--{if $pricount}-->
+		<div class="c_form">本页有 $pricount 篇组件因作者的隐私设置而隐藏</div>
+		<!--{/if}-->
+		<div class="page">$multi</div>
+		<!--{else}-->
+		<div class="c_form">还没有相关的组件。</div>
+		<!--{/if}-->
+	</div>
+<!--{else}-->
+
+<!--{if $space[self]}-->
+
+<!--{if $zhong1}-->
+
+<div class="content" style="font-size:15px;">
+          
+                 <div class="indexing">
+                   <span><a href="space.php?do=home">首页</a></span>><span>组件管理</span>
+                   <!--{if {$_SN[$_SGLOBAL[supe_uid]]}=='admin'}-->
+                   <a class="r_option" href="cp.php?ac=menuset">
+                      发表新组件
+                     </a>
+                    <!--{/if}-->
+                   
+                 </div><!-- end -->
+                 <div class="bread container_12">
+                 	<!--{if $_GET[view]=="all"}-->
+                      <div class="bread_actived grid_1" style="space.php?uid=$space[uid]&do=$do&view=all"style="margin-left:10px;">
+                         更多组件
+                     </div>
+                     <a href="space.php?uid=$space[uid]&do=$do&view=me"  class="link_back_bread grid_3">
+                      我的组件
+                     </a>
+                     <a href="cp.php?ac=menusetchoice"  class="link_back_bread grid_3">
+                      组件套餐
+                     </a>
+                    
+                     <!--{else}-->
+                     <a href="space.php?uid=$space[uid]&do=$do&view=all" class="link_back_bread grid_3" style="margin-left:-10px;">
+                      更多组件
+                     </a>
+                     <div class="bread_actived grid_1" style="margin-left:10px;">
+                      我的组件
+                     </div>
+                     <a href="cp.php?ac=menusetchoice"  class="link_back_bread grid_3">
+                      组件套餐
+                     </a>
+                     <!--{/if}-->
+
+                     
+                      <!--{if $_GET[page]}-->
+                     <a href="space.php?do=menuset&page=$_GET[page]&view=me&change=3" class="btn grid_2" >组件图片</a>
+                     <a class="btn grid_2" href="space.php?do=menuset&page=$_GET[page]&view=me&change=1" >排序</a>
+                     <a class="btn grid_2" href="space.php?do=menuset&page=$_GET[page]&view=me&change=2" style="margin-left:10px;">修改名称</a>
+                     <!--{else}-->
+                     <a href="space.php?do=menuset&view=me&change=3" class="btn grid_2" >组件图片</a>
+                     <a class="btn grid_2" href="space.php?do=menuset&view=me&change=1" >排序</a>
+                     <a class="btn grid_2" href="space.php?do=menuset&view=me&change=2" style="margin-left:10px;">修改名称</a>
+                     <!--{/if}-->
+                     
+                 </div>		
+
+<!--{/if}-->	
+<!--{else}-->
+<!--{eval 
+	$_TPL['spacetitle'] = "组件";
+	$_TPL['spacemenus'][] = "<a href=\"space.php?uid=$space[uid]&do=$do&view=me\">TA的所有组件</a>";
+}-->
+<!--{template space_menu}-->
+<!--{/if}-->
+		<div id="content" style="width:760px;">
+			<div class="content_detail_wrapper">
+
+
+	
+	<!--{if $searchkey}-->
+	<div class="h_status">以下是搜索组件 <span style="color:red;font-weight:bold;">$searchkey</span> 结果列表</div>
+	<!--{/if}-->
+	<script language="javascript" type="text/javascript" src="source/script_ajax.js"></script>
+	<!--{if $count}-->
+		<!--{if $_GET[view]!='me'}-->
+		<form action = "space.php?do=menuset" method = "post">
+			<!--{elseif $_GET['change']=='1'}-->
+			<form action = "space.php?do=orderid" method = "post">
+      <!--{elseif $_GET['change']=='2'}-->
+      <form action = "space.php?do=newname" method = "post">
+			<!--{/if}-->
+		<div class="container_12 index_assembly_boxes" style="margin-left:10px;margin-top:20px;">
+		    <!--{loop $list $value}-->
+                         
+        
+                    
+        <div class="grid_6">
+                            <div class="index_assembly_box bg1" <!--{if $_GET[view]!='me'}--><!--{if !$value[money]}--><!--{eval $value1=$value['zhong'];}--><!--{if $value1[appstatus]=='1'}-->style="background: url('./template/default/image/chosen_bg3.png')!important;"<!--{/if}--><!--{/if}--><!--{/if}-->  id="choice">
+                            <div class="assembly_title">
+       <!--{if $_GET[change]=='2'}--><span class="title"><input type="text" value="$value[subject]" name="$value['menusetid']"></span><!--{else}--><a href="space.php?uid=$value[uid]&do=$do&id=$value[menusetid]" ><span class="title">$value[subject]</span></a><!--{/if}--><span style="font-size:2px;"><!--{if $_GET[view]!='me'}--><!--{eval $value2=$value['zhong'];}--><!--{if $value2[cheak]=='1'}--><a href="space.php?do=menuset&op=add&menusetid=$value['menusetid']">（此组件未过期，请戳我重新开通）</a><!--{/if}--><!--{/if}--></span><!--{if $_GET[view]=='me'}--><a href="cp.php?ac=menuset&menusetid=$value[menusetid]&op=delete1" class="r_option" style="padding-right:10px;padding-top:10px;" id="menuset_delete_$value[menusetid]" onclick="ajaxmenu(event, this.id)"><img src="./template/default/image/delete1.gif"></a><!--{/if}--></div>
+        <div id="num$value[menusetid]">
+       <div id="numh$value[menusetid]"></div>
+        
+        <div class="assembly_info1">
+
+          <p class="price2" style="color:#3EB2B8!important" <!--{if $_GET[view]!='me'}--><!--{if !$value[money]}--><!--{eval $value1=$value['zhong'];}--><!--{if $value1[appstatus]=='1'}-->style="color:#3EB2B8!important;"<!--{/if}--><!--{/if}--><!--{/if}--> ><!--{if $value[money]}--> 单价:$value[money]元/年<!--{else}-->单价:免费<!--{/if}--></p>
+                                    <img src="$value[image1url]">
+                                   <h5 style="padding-top: 20px;"><!--{if $_GET[view]=='me'}--><!--{if $_GET[change]=='1'}--><select name="$value['menusetid']">
+                               <option value ="$value['orderid']" selected>$value['orderid']</option>
+                               <!--{eval  for($i=1;$i<20;$i++){ }-->
+                               <option value ="$i">$i</option><!--{eval } }--></select><!--{else}-->序号:$value['orderid']<!--{/if}--><!--{/if}--></h5>
+                               <!--{if $_GET[view]=='me'}--><!--{if $_GET[change]=='3'}--><h5 id="weixinhome$value[menusetid]"><a href="javascript::void;">上传图片</a></h5><!--{/if}-->
+                                <h5><!--{if $_GET[view]!='me'}--><!--{eval $value1=$value['zhong'];}--><!--{if $value1['num']==$value['menusetid']}--><!--{if $value[money]}--><!--{if $value1[appstatus]=='1'}-->（已订购$value1['month']年）<br/>有效期至:<!--{date('Y-m-d H:i:s',$value1[endtime])}--><!--{/if}--><!--{/if}--><!--{/if}--><!--{/if}--><!--{if $value[money]}--><!--{if $_GET[view]=='me'}-->有效期:<!--{date('Y-m-d H:i',$value[dateline1],1)}-->--<!--{date('Y-m-d H:i:s',$value[endtime])}--><!--{/if}--><!--{/if}--></h5>    
+                              
+  								
+                             </div>
+          
+          </div>
+
+          </div></div>
+   
+          
+      <!--{if $_GET[view]!='me'}-->
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+         <script>
+         var jquery = jQuery.noConflict();
+      jquery(document).ready(function()
+        {
+        
+      jquery("#num$value[menusetid]").toggle(
+        function () {
+                    jquery("#num$value[menusetid]").parent(".index_assembly_box").addClass("open");
+                    jquery("#numh$value[menusetid]").html("<input type='hidden' name='$value[menusetid]' value='1' style='width:20px;' />");
+                  },
+                  function () {
+                    jquery("#num$value[menusetid]").parent(".index_assembly_box").removeClass("open");
+                    jquery("#numh$value[menusetid]").html("");
+                    }
+              );
+        
+       
+      });
+      </script>
+     
+      <!--{/if}-->
+       <!--{if $_GET[view]=='me'}-->
+       <!--{if $_GET[change]=='3'}-->
+         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+         <script type='text/javascript' src='./source/jquery.simplemodal.js'></script>
+         <script type="text/javascript">
+
+         $(document).ready(function(){
+           $('#weixin$value[menusetid]').attr("style", "display:none;");
+         
+          $('#weixinhome$value[menusetid]').click(function (e) {
+        e.preventDefault();
+        $('#weixin$value[menusetid]').modal();
+           });
+           })
+      </script>
+       
+      <div id="weixin$value[menusetid]">
+        <br/><p style="text-align:center;">上传图片须知：上传图片规则是不带中文的jpg格式的图片</p>
+      <form action = "space.php?do=menuset" method = "post" style="margin:0 auto;text-align:center;" enctype="multipart/form-data">
+    <br/>
+   <h3 style="font-size:20px;color:#44B1BA;margin-left:-10px;line-height:40px;"><input type="file" id="files" name="files"></h3>
+<br/>
+    <input type="submit" name="submit" style="margin-left:250px;" class="btn grid_2" value="上传">
+    <br/><br/>
+    <p style="text-align:center;">目前图片:
+    <!--{if $value[imageurl]}--><img style="max-width:50px;max-height:50px;margin-top:20px;" src="$value[image4url]"><!--{/if}--></p>
+    <input type="hidden" name="menusetid" value="$value[id]">
+    <input type="hidden" name="menusetimage" value="1">
+    </form>
+
+                        </div>
+                        <!--{/if}-->
+                        <!--{/if}-->
+    <!--{/loop}-->
+    <br/>
+    
+   
+    <!--{if $_GET[view]!='me'}-->
+		<!--{if empty($list)}-->
+		<div style="text-align:center;">系统没有为你匹配到你所属行业的相关组件，你可以通过修改行业选项。</div>
+		
+		<!--{else}-->
+		 <div class="confirm_btn container_12" style="width:760px;padding-left:310px;">
+                           <input type="submit" name="submit1" id="wei0752" class="btn grid_2" value="提交">
+                      </div>
+		<!--{/if}-->
+		<!--{/if}-->
+
+    
+			</div>	
+      <div class='pagination'><ul>$multi</ul></div>
+			 <!--{if $_GET[view]=='me'}--><!--{if $_GET[change]=='1'}-->
+    <div style="padding-bottom: 30px;padding-left:12px;">*如果需要更改组件顺序，请通过修改每个组件下的下拉框进行选择，系统会通过数字大小进行排列。<br/>*务必不要选择2个相同的数字</div>
+    
+                           <input style="margin-left:330px;margin-top: -10px;" type="submit" class="btn grid_2">
+                              <!--{elseif $_GET[change]=='2'}-->
+    <div style="padding-bottom: 30px;padding-left:12px;">点击提交会对名称进行修改<br/>*提交后会以新的名字替换原来的名字，旧名字将不复存在。</div>
+                          <input style="margin-left:330px;margin-top: -10px;" type="submit" class="btn grid_2">
+                    <!--   <a class="btn grid_2" href="space.php?do=menuset&view=me&change=1" style="margin-top: -10px;">修改</a> -->
+                      <!--{/if}--></form>
+                      <!--{/if}-->
+		
+	
+	
+	
+	<!--{else}-->
+	<div class="c_form">还没有相关的组件。</div>
+	<!--{/if}-->
+	</div>
+</div>
+
+
+
+<!--{/if}-->
+ 
+	
+<!--{template footer}-->

@@ -1,0 +1,16 @@
+
+
+body {height:100%; margin:0;}
+h3 {color:#727272; font-size:1.6em; padding:0; margin:0;}
+#basic-modal-content {display:none;}
+#basic-modal-content2 {display:none;}
+
+/* Overlay */
+#simplemodal-overlay {background-color:#000; cursor:wait;}
+
+/* Container */
+#simplemodal-container { width:620px; color:#bbb; background-color:#fff;border:1px solid #444;max-height:800px;}
+#simplemodal-container code {background:#141414; border-left:3px solid #65B43D; color:#bbb; display:block; margin-bottom:12px; padding:4px 6px 6px;}
+#simplemodal-container a {color:#ddd;}
+#simplemodal-container a.modalCloseImg {background:url(./image/basic/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
+#simplemodal-container #basic-modal-content {}

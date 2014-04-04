@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+
+    <!--{if $bac['moblieclicknum']=='1'||$bac['moblieclicknum']=='0'}-->
+    <link rel = "stylesheet" type = "text/css" href = "template/9/css/main.css">
+    <link rel="stylesheet" href="template/css/mobiscroll.custom-2.5.4.min.css">
+    <!--{else}-->
+    <link rel = "stylesheet" type = "text/css" href = "template/$bac['moblieclicknum']/css/main.css">
+    <link rel="stylesheet" href="template/$bac['moblieclicknum']/css/mobiscroll.custom-2.5.4.min.css">
+    <!--{/if}-->
+    <script type="text/javascript" src="template/9/js/jquery-v2.0.2.js"></script>
+    <script type="text/javascript" src="template/9/js/mobiscroll.custom-2.5.4.min.js"></script>
+    <script src="template/9/js/scrollbox.js"></script>
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <link rel="stylesheet" href="template/9/css/mobiscroll.custom-2.5.4.min.css" />
+    <script type="text/javascript" src="template/9/js/js/jquery.query.js"></script>
+    <script type="text/javascript" src="template/9/js/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="template/9/js/feed.js"></script>
+
+
+
+
+	<link rel="stylesheet" href="template/9/css/base.css" />
+	<link rel="stylesheet" href="template/9/css/common.css" />
+	<link rel="stylesheet" href="template/9/css/contentList.css" />
+	<link rel="stylesheet" href="template/9/css/info.css" />
+	<link rel="stylesheet" href="template/9/css/button.css" />
+
+
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var anyTransformY = function(target, distance) {
+                $(target).css("-webkit-transform", "translateY("+distance+")");
+            };
+            anyTransformY(".contentTitle", "40px");
+            anyTransformY(".contentHide-button", "-35px");
+
+
+            $('#nav').mobiscroll().select( {
+                theme: 'android-ics',
+                lang: 'zh',
+                display: 'bottom',
+                mode: 'scroller',
+                inputClass: 'i-txt',
+                width: 200
+            });
+            $('#show').click(function() {
+                $('#nav').mobiscroll('show');
+                return false;
+            });
+
+            $('#clearSelect').click(function() {
+                $('#nav').val(1).change();
+                $('#nav'+'_dummy').val(' ');
+                return false;
+            });
+        });
+    </script>
+
+    <script id="detailTemplate" type="text/x-jquery-tmpl">
+        <li>
+            <!--{BLOCK_TAG_START}-->if askid<!--{BLOCK_TAG_END}-->
+            <a href = "wx.php?do=detail&id={{= id}}&uid={{= q_uid}}&idtype=$_GET[idtype]id&type=$_GET[idtype]&viewuid=$uid&wxkey=$_GET[wxkey]&moblieclicknum=$bac['moblieclicknum']&cheak='1'">
+                <!--{BLOCK_TAG_START}-->else<!--{BLOCK_TAG_END}-->
+                <a href = "wx.php?do=detail&id={{= $_GET[idtype]id}}&uid={{= uid}}&idtype=$_GET[idtype]id&type=$_GET[idtype]&viewuid=$uid&wxkey=$_GET[wxkey]&moblieclicknum=$bac['moblieclicknum']&cheak='1'">
+                    <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                    <div class="listOuter">
+                        <!--{BLOCK_TAG_START}-->if image1url<!--{BLOCK_TAG_END}-->
+                        <img src = "{{= image1url}}" />
+                        <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                        <div class="listInner">
+                            <h4>{{= subject}}</h4>
+                        </div>
+                        <span class = "info_span subtitle">{{= dateline}}</span>
+                    </div>
+                </a>
+        </li>
+    </script>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#nav'+'_dummy').hide();
+            $(".myMargin").click(function(){
+                getComment($('#idtype').val(), $('#uid').val(), $('#page').val(), $('#perpage').val());
+            })
+
+        });
+
+    </script>
+
+
+
+	<title>$appname</title>
+</head>
+
+
+
+
+<body>
+	<div class="contentHide">
+		<div class="contentTitle cPrice f20">$appname
+        <!--{if $bac['moblieclicknum']=='1'||$bac['moblieclicknum']=='0'}-->
+        <a style="float: right;padding-top: 10px;padding-right: 30px" href = "#" id = "show" class = "menu_btn"><img src = "./template/9/img/menu_btn3.png" id = "show" /></a>
+            <!--{else}-->
+         <a style="float: right;padding-top: 10px;padding-right: 30px" href = "#" id = "show" class = "menu_btn"><img src = "./template/$bac['moblieclicknum']/img/menu_btn3.png" id = "show" /></a>
+        <!--{/if}-->
+            <div  style="clear: both"></div>
+        </div>
+       <!-- <div id="detail-panel"></div>    -->
+       <ul class = "list mt55">
+            <div id="detail-panel"></div>
+        </ul>
+
+        <div class="button myMargin">
+            <a href="" class="f20 cWhite">更多</a>
+        </div>
+
+        <!--  <input type = "button"  onclick="getComment($('#idtype').val(), $('#uid').val(), $('#page').val(), $('#perpage').val());" value = "更多" class = "more_button"  />  -->
+        <input type="hidden" id="id" name="id" value="$_GET[id]"/>
+        <input type="hidden" id="idtype" name="idtype" value="$_GET[idtype]"/>
+        <input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
+        <input type="hidden" id="page" name="page" value="2"/>
+        <input type="hidden" id="perpage" name="perpage" value="4"/>
+        <div style = "display: none;">
+            <select name="" id="demo" class="f-dd">
+                <option value="wx.php?do=home&uid=$_GET[uid]">首页</option>
+                <!--{loop $zhongwei $value}-->
+                <option value="wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]">$value[subject]</option>
+                <!--{/loop}-->
+                <!--{if $zhongwei1}-->
+                <!--{loop $zhongwei1 $value1}-->
+                <option value="wx.php?do=feed&uid=$_GET[uid]&idtype=$value1[english]">$value1[subject]</option>
+                <!--{/loop}-->
+                <!--{/if}-->
+            </select>
+        </div>
+
+
+
+
+		<div class="contentHide-button tc w">
+			<a href="index.html"><img src="./template/9/img/btn_close.png" alt="" class="btnClose" /></a>
+		</div>
+
+        <div class="split">
+            <br />
+        </div>
+
+	</div>
+
+</body>
+</html>

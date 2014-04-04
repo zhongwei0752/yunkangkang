@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet" href="css/contentList.css" />
+	<link rel="stylesheet" href="css/button.css" />
+	<script type="text/javascript" src="js/jquery-v2.0.2.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+				var anyTransformY = function(target, distance) {
+					$(target).css("-webkit-transform", "translateY("+distance+")");
+					};
+					anyTransformY(".contentTitle", "40px");
+					anyTransformY(".contentHide-button", "-35px");
+				});
+	</script>
+	<title>英孚教育</title>
+</head>
+<body>
+	<div class="contentHide">
+		<div class="contentTitle cPrice f20">产品介绍</div>
+		<ul class="contentList">
+			<a href="product_content.html">
+				<li class="contentList-item">
+					<img src="img/mid_pic_4.png" alt="" class="fl" />
+					<h2 class="contentList-itemTitle f20 pt10 cTitle">Efekta<sup>TM</sup>学习系统 科技改变英语学习</h2>
+					<span class="contentList-itemTime cTime f14">2012-08-8</span>
+					<div class="priceText cTime fr f14"><span class="cPrice price f20">9200</span>元/年</div>
+				</li>
+			</a>
+
+			<a href="product_content.html">
+				<li class="contentList-item">
+					<img src="img/mid_pic_4.png" alt="" class="fl" />
+					<h2 class="contentList-itemTitle f20 pt10 cTitle">用科技改变教育</h2>
+					<span class="contentList-itemTime cTime f14">2012-08-8</span>
+					<div class="priceText cTime fr f14"><span class="cPrice price f20">5400</span>元/年</div>
+				</li>
+			</a>
+
+		</ul>
+		<div class="button myMargin">
+			<a href="" class="f20 cWhite">更多</a>
+		</div>
+
+		<div class="contentHide-button tc w">
+			<a href="index.html"><img src="img/btn_close.png" alt="" class="btnClose" /></a>
+		</div>
+	</div>
+
+</body>
+</html>

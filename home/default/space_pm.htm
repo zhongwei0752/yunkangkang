@@ -1,0 +1,150 @@
+<!--{eval $_TPL['titles'] = array('短消息');}-->
+<!--{template header}-->
+
+            <div class="content">
+              <div class="message_pawpaw">8</div><!-- 消息泡 -->
+                 <div class="indexing">
+                 <span><a href=""></a></span><span><a href=""></a></span>
+                 </div><!-- end -->
+                 <div class="bread container_12">
+                     <!--{if $_GET['filter'] == 'newpm'}-->
+					<a href="space.php?do=pm&filter=privatepm" class="link_back_bread grid_3" style="margin-left:-10px;">
+                     已读消息
+                     </a>
+                     <div class="bread_actived grid_1" style="margin-left:10px;">
+                      未读消息
+                     </div>
+                     <!--{else}-->
+                     
+                     <div class="bread_actived grid_1">
+                         已读消息
+                     </div>
+                     <a href="space.php?do=pm&filter=newpm" class="link_back_bread grid_3">
+                      未读消息
+                     </a>
+                     <!--{/if}-->
+                 </div><!-- end -->
+<div class="content_detail_wrapper">
+<br/>
+<div class="h_status">
+
+<div class="c_form">
+
+<!--{if $_GET['subop'] == 'view'}-->
+
+<!--{if $list}-->
+<ul class="pm_list" id="pm_ul">
+	<!--{loop $list $key $value}-->
+	<li class="s_clear">
+		<div class="avatar48">
+			<!--{if $value[msgfromid]}-->
+			<a href="space.php?uid=$value[msgfromid]"><!--{avatar($value[msgfromid],small)}--></a>
+			<!--{else}-->
+			<img src="image/systempm.gif" width="48" height="48" />
+			<!--{/if}-->
+		</div>
+		<div class="pm_body"><div class="pm_h"><div class="pm_f">
+			<p><!--{if $value[msgfromid]}--><a href="space.php?uid=$value[msgfromid]">{$_SN[$value[msgfromid]]}</a> <!--{/if}--><span class="gray"><!--{date('Y-m-d H:i',$value[dateline],1)}--></span></p>		
+			<div class="pm_c">
+				$value[message]
+			</div>
+		</div></div></div>
+	</li>
+	<!--{/loop}-->
+</ul>
+<!--{else}-->
+<div class="c_form">
+	当前没有相应的短消息。
+</div>
+<!--{/if}-->
+
+<!--{if $touid && $list}-->
+<ul class="pm_list" id="pm_ul_post">
+	<li class="s_clear">
+		<div class="avatar48">
+			<a href="space.php?uid=$space[uid]"><!--{avatar($space[uid],small)}--></a>
+		</div>
+		<div class="pm_body"><div class="pm_h"><div class="pm_f">
+			<p><a href="space.php?uid=$space[uid]">{$_SN[$space[uid]]}</a></p>		
+			<div class="pm_c">
+				<form id="pmform" name="pmform" method="post" action="cp.php?ac=pm&op=send&touid=$touid&pmid=$pmid&daterange=$daterange">
+				<textarea id="pm_message" name="message" cols="40" rows="4" style="width: 95%;" onkeydown="ctrlEnter(event, 'pmsubmit');"></textarea><br>
+				<p style="padding-top:5px;">
+					<input type="submit" name="pmsubmit" id="pmsubmit" value="回复" class="submit" />
+				</p>
+				<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+				</form>
+			</div>
+		</div></div></div>
+	</li>
+</ul>
+<!--{/if}-->
+
+<!--{elseif $_GET['subop'] == 'ignore'}-->
+
+<form id="ignoreform" name="ignoreform" method="post" action="cp.php?ac=pm&op=ignore">
+	<table cellspacing="0" cellpadding="0" class="formtable" width="100%">
+		<caption>
+			<h2>忽略列表</h2>
+			<p>添加到该列表中的用户给您发送短消息时将不予接收<br />
+				添加多个忽略人员名单时用逗号 "," 隔开，如“张三,李四,王五”<br />
+				如需禁止所有用户发来的短消息，请设置为 "&#123;ALL&#125;"</p>
+		</caption>
+		<tr>
+			<td><textarea id="ignorelist" name="ignorelist" cols="40" rows="6" style="width: 98%;" onkeydown="ctrlEnter(event, 'ignoresubmit');">$ignorelist</textarea></td>
+		</tr>
+		<tr>
+			<td><input type="submit" name="ignoresubmit" id="ignoresubmit" value="保存" class="submit" /></td>
+		</tr>
+	</table>
+	<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+</form>
+
+<!--{else}-->
+
+<!--{if $count}-->
+	<ol class="pm_list">
+	<!--{loop $list $key $value}-->
+		<li<!--{if $key%2==1}--> class="alt"<!--{/if}-->>
+		<div class="avatar48">
+			<!--{if $value[touid]}-->
+			<a href="space.php?uid=$value[touid]"><!--{avatar($value[touid],small)}--></a>
+			<!--{else}-->
+			<img src="image/systempm.gif" width="48" height="48" />
+			<!--{/if}-->
+		</div>
+		<div class="pm_body"><div class="pm_h"><div class="pm_f">
+			<p>
+			<!--{if $value[touid]}-->
+			<a href="space.php?uid=$value[touid]">{$_SN[$value[touid]]}</a> 
+			<!--{/if}-->
+			<span class="gray"><!--{date('n-j H:i',$value[dateline],1)}--></span></p>		
+			<div class="pm_c">
+				$value[message]
+				<p>
+				<!--{if $value[touid]}-->
+				<a href="space.php?do=pm&subop=view&pmid=$value[pmid]&touid=$value[touid]&daterange=$value[daterange]">查看详情</a>
+				<!--{else}-->
+				<a href="space.php?do=pm&subop=view&pmid=$value[pmid]">查看详情</a>
+				<!--{/if}-->
+				</p>
+			</div>
+			<a href="cp.php?ac=pm&op=delete&folder=inbox&pmid=$value[pmid]" id="a_delete_$value[pmid]" class="float_del" onclick="ajaxmenu(event, this.id)">删除</a>
+		</div></div></div>
+		</li>
+	<!--{/loop}-->
+	</ol>
+	
+	<div class="page">$multi</div>
+	
+<!--{else}-->
+<div class="c_form">
+	当前没有相应的短消息。
+</div>
+<!--{/if}-->
+
+<!--{/if}-->
+
+</div>
+
+<!--{template footer}-->

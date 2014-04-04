@@ -1,0 +1,320 @@
+﻿<!--{template header}-->
+
+<link rel="stylesheet" type="text/css" href="template/default/jquery-mobile-fluid960.min.css">
+<link rel="stylesheet" type="text/css" href="template/default/style1.css">
+<link rel="stylesheet" type="text/css" href="template/default/file_beauty.css">
+
+<!--{if $_GET[op] == 'delete'}-->
+
+<div <!--{if !$_SGLOBAL[inajax]}-->class="inpage"<!--{/if}-->>
+<form method="post" action="cp.php?ac=stratch&op=delete&stratchid=$stratchid">
+	<h1>确定删除指定的活动吗？</h1>
+	<a href="javascript:hideMenu();" class="float_del" title="关闭">关闭</a>
+	<p class="btn_line">
+		<input type="hidden" name="refer" value="$_SGLOBAL[refer]" />
+		<input type="hidden" name="deletesubmit" value="true" />
+		<input type="submit" name="btnsubmit" value="确定" class="submit" />
+		<!--{if $_SGLOBAL[inajax]}--><input type="button" name="btnclose" value="取消" onclick="hideMenu();" class="button" /><!--{/if}-->
+	</p>
+<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+</form>
+</div>
+
+<!--{elseif $_GET[op] == 'open'}-->
+<div class="inpage">
+<form method="post" action="space.php?do=stratch">
+	<h1>确定要开启该活动么？</h1>
+	<a href="javascript:hideMenu();" class="float_del" title="关闭">关闭</a>
+	<p class="btn_line">
+		<input type="hidden" name="refer" value="$_SGLOBAL[refer]" />
+		<input type="hidden" name="opensubmit" value="true" />
+		<input type="submit" name="btnsubmit" value="确定" class="submit" />
+		<input type="button" name="btnclose" value="取消" onclick="hideMenu();" class="button" />
+	</p>
+<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+</form>
+</div>
+<!--{elseif $_GET[op] == 'close'}-->
+<div class="inpage">
+<form method="post" action="cp.php?ac=stratch&op=close&stratchid=$stratchid">
+	<h1>确定要关闭该活动么？</h1>
+	<a href="javascript:hideMenu();" class="float_del" title="关闭">关闭</a>
+	<p class="btn_line">
+		<input type="hidden" name="refer" value="$_SGLOBAL[refer]" />
+		<input type="hidden" name="closesubmit" value="true" />
+		<input type="submit" name="btnsubmit" value="确定" class="submit" />
+		<!--{if $_SGLOBAL[inajax]}--><input type="button" name="btnclose" value="取消" onclick="hideMenu();" class="button" /><!--{/if}-->
+	</p>
+<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+</form>
+</div>
+<!--{else}-->
+
+<script language="javascript" src="image/editor/editor_function.js"></script>
+<script language="javascript" src="source/date.js"></script>
+<script type="text/javascript">
+	function validate(obj) {
+	    var subject = $('subject');
+	    var chance=$('chance');
+		var joinsum = $('joinsum');
+		var winsum = $('winsum');
+	    if (subject) {
+	    	var slen = strlen(subject.value);
+	        if (slen < 1 || slen > 150) {
+	            alert("标题长度(1~150字符)不符合要求");
+	            subject.focus();
+	            return false;
+	        }
+	    }
+
+	    if (chance1) {
+	    	var slen = strlen(chance1.value);
+	        if (slen < 1 ) {
+	            alert("获奖概率1不可以为空");
+	            chance1.focus();
+	            return false;
+	        }
+	    }
+		
+		if (chance2) {
+	    	var slen = strlen(chance2.value);
+	        if (slen < 1 ) {
+	            alert("获奖概率2不可以为空");
+	            chance2.focus();
+	            return false;
+	        }
+	    }
+		
+		if (chance3) {
+	    	var slen = strlen(chance3.value);
+	        if (slen < 1 ) {
+	            alert("获奖概率3不可以为空");
+	            chance3.focus();
+	            return false;
+	        }
+	    }
+		
+		
+	    if($('seccode')) {
+			var code = $('seccode').value;
+			var x = new Ajax();
+			x.get('cp.php?ac=common&op=seccode&code=' + code, function(s){
+				s = trim(s);
+				if(s.indexOf('succeed') == -1) {
+					alert(s);
+					$('seccode').focus();
+	           		return false;
+				} else {
+					uploadEdit(obj);
+					return true;
+				}
+			});
+	    } else {
+	    	uploadEdit(obj);
+	    	return true;
+	    }
+	}
+	function edit_album_show(id) {
+		var obj = $('uchome-edit-'+id);
+		if(id == 'album') {
+			$('uchome-edit-pic').style.display = 'none';
+		}
+		if(id == 'pic') {
+			$('uchome-edit-album').style.display = 'none';
+		}
+		if(obj.style.display == '') {
+			obj.style.display = 'none';
+		} else {
+			obj.style.display = '';
+		}
+	}
+</script>
+
+
+
+
+
+
+<div class="content" style="font-size:15px;">
+          
+                 <div class="indexing">
+                   <span><a href="space.php?do=home">首页</a></span>><span><a href="space.php?do=stratch">刮刮卡</a></span>><span>发起活动</span>
+                 </div><!-- end -->
+                 <div class="bread container_12">
+                     <div class="bread_actived grid_1">
+                         发起活动
+                     </div>
+                     <a href="space.php?do=stratch" class="link_back_bread grid_3">
+                      刮刮卡
+                     </a>
+                 </div>
+
+	  <div class="content_detail_wrapper">
+                    <div class="post_wrapper">
+	<form method="post" action="cp.php?ac=stratch&stratchid=$stratch[stratchid]"  enctype="multipart/form-data" >
+		<table cellspacing="4" cellpadding="4" width="100%" class="infotable">
+			<tr>
+				<td>
+					<div class="post_list container_12">
+                         <span class="select_title grid_1">活动主题&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                         <input type="text" class="text" id="subject" name="subject" value="$stratch[subject]" size="70" placeholder="主题长度不超过60字符"/>
+                    </div>
+					<div class="post_list container_12">
+                         <span class="select_title grid_1">结束时间&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                           <input name="endtime" type="text"  id="endtime" value="$stratch[endtime]" onClick="javascript:ShowCalendar(this.id,1)" size="25" placeholder="点击获取时间"/>
+                            </div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1">一等奖人数&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                         <input name="winsum1" type="text" id="winsum1" value="$stratch[winsum1]" size="50" placeholder="填写获得一等奖的人数">
+                            </div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1">一等奖概率&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                         <input name="chance1" type="text" id="chance1" value="$stratch[chance1]" size="10" placeholder="一等奖概率">
+						 &nbsp;/&nbsp;<select name="fenmu">
+						 <option value="0">1000</option><option value="1">10000</option><option value="2">100000</option><option value="3">1000000</option><option value="4">10000000</option>
+						 </select>
+                            </div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1">一等奖奖项&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                         <input name="award1" type="text" id="award1" value="$stratch[award1]" size="50" placeholder="填写一等奖的奖项">
+                            </div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1">二等奖人数&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                         <input name="winsum2" type="text" id="winsum2" value="$stratch[winsum2]" size="50" placeholder="填写获得二等奖的人数">
+                            </div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1">二等奖概率&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                         <input name="chance2" type="text" id="chance2" value="$stratch[chance2]" size="10" placeholder="二等奖概率">
+                         &nbsp;/&nbsp;<select name="fenmu1">
+						 <option value="0">1000</option><option value="1">10000</option><option value="2">100000</option><option value="3">1000000</option><option value="4">10000000</option>
+						 </select>
+							</div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1">二等奖奖项&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                         <input name="award2" type="text" id="award2" value="$stratch[award2]" size="50" placeholder="填写二等奖的奖项">
+                            </div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1">三等奖人数&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                         <input name="winsum3" type="text" id="winsum3" value="$stratch[winsum3]" size="50" placeholder="填写获得三等奖的人数">
+							</div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1">三等奖概率&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                         <input name="chance3" type="text" id="chance3" value="$stratch[chance3]" size="10" placeholder="三等奖概率">
+                            &nbsp;/&nbsp;<select name="fenmu2">
+						 <option value="0">1000</option><option value="1">10000</option><option value="2">100000</option><option value="3">1000000</option><option value="4">10000000</option>
+						 </select>
+						 </div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1">三等奖奖项&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                         <input name="award3" type="text" id="award3" value="$stratch[award3]" size="50" placeholder="填写三等奖的奖项">
+                            </div>
+							<span style="color:red;margin-left:81px;margin-bottom:20px;">请确保概率中的分母是全部一致的，如果不是，可能会出现BUG!</span>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1">参与次数&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                         <select name="times"><option value="1" >一次</option><!--<option value="2">每天两次</option><option value="3">每天三次</option><option value="4">每天四次</option><option value="5">每天五次</option>--></select>
+                            </div>
+							<div class="post_list container_12">
+                         <span class="select_title grid_1">设置密码&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                         <input name="passwd" type="text" id="passwd" value="$stratch[passwd]" size="50" placeholder="填写密码">
+                        	</div>
+				</td>
+				
+			</tr>
+			<tr>
+				<td>
+					 <div class="post_list container_12">
+                         <span class="select_title grid_1">活动内容&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+						  <textarea class="userData" name="message" id="uchome-ttHtmlEditor" style="height:100%;width:100%;display:none;border:0px">$stratch[message]</textarea>
+						  <iframe src="editor.php?charset=$_SC[charset]&allowhtml=$allowhtml&doodle=<!--{if isset($_SGLOBAL[magic][doodle])}-->1<!--{/if}-->" name="uchome-ifrHtmlEditor" id="uchome-ifrHtmlEditor" scrolling="no" border="0" frameborder="0" style="width:550px;height:350px;border: 1px solid #C5C5C5;" height="200"></iframe>
+                            </div>
+				</td>
+			</tr>
+		</table>
+		<input type="hidden" name="stratchsubmit" value="true" />
+		<input type="button" id="stratchbutton" name="stratchbutton" value="提交发布" onclick="validate(this);" style="display: none;" />
+		<input type="hidden" name="topicid" value="$_GET[topicid]" />
+		<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+	</form>
+	<style>
+	.infotable th{
+		padding-right: 0em;
+	}
+	</style>
+	<!--{if !$_SGLOBAL[inajax] && (!$introduce['uid'] || $introduce['uid']==$_SGLOBAL['supe_uid'])}-->
+	<table cellspacing="4" cellpadding="4" width="100%" class="infotable" style="margin-left:55px;">
+		<tr><th width="100" style="margin-left:50px;">图片&nbsp;&nbsp;:</th><td>
+			<div class="pic_submit container_12">
+		<input type="button" class="btn grid_3" style="margin-right:-20px;" name="clickbutton[]" value="上传图片" class="button" style="float:left;" onclick="edit_album_show('pic')">
+	
+	</div>
+		</td></tr>
+	</table>
+	<!--{/if}-->
+
+	<table cellspacing="4" cellpadding="4" width="100%" id="uchome-edit-pic" class="infotable" style="display:none;">
+		<tr>
+			<th width="100">&nbsp;</th>
+			<td>
+				<strong>选择图片</strong>: 
+				<table summary="Upload" cellspacing="2" cellpadding="0">
+					<tbody id="attachbodyhidden" style="display:none">
+						<tr>
+							<td>
+								<form method="post" id="upload" action="cp.php?ac=upload" enctype="multipart/form-data" target="uploadframe" style="background: transparent;">
+									<input type="file" name="attach" style="border: 1px solid #CCC;" />
+									<span id="localfile"></span>
+									<input type="hidden" name="uploadsubmit" id="uploadsubmit" value="true" />
+									<input type="hidden" name="albumid" id="albumid" value="0" />
+									<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+								</form>
+							</td>
+						</tr>
+					</tbody>
+					<tbody id="attachbody"></tbody>
+				</table>
+				<table cellspacing="2" cellpadding="0">
+					<tr>
+						<td>
+							<input type="hidden" name="albumid" id="uploadalbum" value="-1"/>
+							<font color="#02B4AB">*此上传图片将会出现在正文底部，且会出现在微信详情页面头部。</font>
+							<script src="source/script_upload.js" type="text/javascript"></script>
+							<iframe id="uploadframe" name="uploadframe" width="0" height="0" marginwidth="0" frameborder="0" src="about:blank"></iframe>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<table cellspacing="4" cellpadding="4" width="100%" class="infotable" id="uchome-edit-album" style="display:none;">
+		<tr>
+			<th width="100">&nbsp;</th>
+			<td>
+				选择相册: <select name="view_albumid" onchange="picView(this.value)">
+					<option value="none">选择一个相册</option>
+					<option value="0">默认相册</option>
+					<!--{loop $albums $value}-->
+					<option value="$value[albumid]">$value[albumname]</option>
+					<!--{/loop}-->
+				</select> (点击图片可以插入到内容中)
+				<div id="albumpic_body"></div>
+			</td>
+		</tr>
+	</table>
+	<table cellspacing="4" cellpadding="4" width="100%" class="infotable">
+		<tr>
+			<th width="100">&nbsp;</th>
+			<td>
+				<div class="confirm_btn container_12" style="margin-left:-20px;">
+                           <a href="space.php?do=home" class="cancle_btn grid_1">取消</a>
+                        <input type="button" class="btn grid_2" id="stratchbutton" onclick="document.getElementById('stratchbutton').click();" value="保存发布" class="submit" />
+                      </div>
+			</td>
+		</tr>
+	</table>
+</div>
+</div>
+
+<!--{/if}-->
+
+
+<!--{template footer}-->

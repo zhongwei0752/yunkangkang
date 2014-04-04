@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./wx/template/change/css/myall.css" />
+    <link rel = "stylesheet" type = "text/css" href = "./wx/template/css/main.css">
+    <link rel="stylesheet" href="./wx/template/css/expressInfo.css" />
+    <link rel="stylesheet" href="./wx/template/css/mobiscroll.custom-2.5.4.min.css">
+    <script src="./wx/template/js/jquery-v2.0.2.js"></script>
+    <script type="text/javascript" src="./wx/template/change/js/myall.js"></script>
+    <script src="./wx/template/js/mobiscroll.custom-2.5.4.min.js"></script>
+    <script src="./wx/template/js/scrollbox.js"></script>
+    <script src="./wx/template/js/mobiscroll.custom-2.5.4.min.js"></script>
+    <script src="./wx/template/js/js/jquery.query.js" type="text/javascript"></script>
+    <script type="text/javascript" src="./wx/template/js/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="./wx/template/js/feed.js"></script><!-- 时间选择插件 -->
+    <title>喜帖确认</title>
+    
+</head>
+<body>
+  
+     <script type="text/javascript" charset="utf-8">
+     var time=$("#time").val();
+     if(!time){
+        time=='1';
+     }
+       function addtocar(id){
+        
+        $.ajax({
+        //dataType:"jsonp",
+        url:"wx.php?do=upload",
+        type: "POST",
+        data:{
+            "addtocar":'1',
+            "id": id,
+        },
+        success:function(data){
+            time=Number(time)+Number(1);
+
+            $("#buynum11").html(time);
+            $("#"+id+"").css({"backgroundColor":"#FF9326"});
+            $("#"+id+"").val("已加入购物车");
+            
+
+        },
+    });
+
+        }
+     </script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+
+                $(".expressInfo1").fadeIn();
+
+            $("#buynow").click(function () {
+                    var password=$("#password").val();
+                    if(password=='1314'){
+                        //alert("123");
+                        window.location.href='http://v5.home3d.cn/home/jieguo.php';
+                    }else{
+                        alert("密码不正确");
+                    }
+            });
+            //点击表格外的地方时消失
+            $(".expressInfo1").click(function(){
+                $(".expressInfo1").fadeOut();
+                });
+         
+            $("#buttonSubmit").click(function(){
+                $(".expressInfo").fadeOut();
+                });
+            //阻止事件冒泡
+            $(".formContainer1").click(function(event){
+                event.stopPropagation();
+                });
+
+            });
+            
+    </script>  
+    <div class="expressInfo1">
+        <div class="formContainer1 bc tc">
+
+            <h1 id="formTitle">密码确认</h1>
+            <input type="text" placeholder="密码" name="password" id="password" class="inputContainer" />
+            <br />
+
+            <input type="button" class="buttonSubmit" id="buynow" value="提交">
+            <input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
+            <input type="hidden" id="gid" name="gid" value="$_GET[id]"/>
+            <input type="hidden" id="viewuid" name="viewuid" value="$_GET[viewuid]"/>
+            <input type="hidden" name="moblieclicknum" value="$_GET[moblieclicknum]">
+            <input type="hidden" name="password1" value="1">
+            <input type="hidden" id="wxkey" name="wxkey" value="$_GET[wxkey]"/>
+        </div> <!-- formContainer -->
+
+    </div> <!-- expressInfo -->   
+   
+
+</body>   
+   
+</html>

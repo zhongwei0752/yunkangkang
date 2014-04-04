@@ -1,0 +1,102 @@
+<!--{template header}-->
+
+<link rel="stylesheet" type="text/css" href="template/default/jquery-mobile-fluid960.min.css">
+<link rel="stylesheet" type="text/css" href="template/default/style1.css">
+<link rel="stylesheet" type="text/css" href="template/default/file_beauty.css">
+
+
+<!--{if $_GET[op] == 'delete'}-->
+
+<h1>删除对话？</h1>
+<a href="javascript:hideMenu();" class="float_del" title="关闭">关闭</a>
+<div class="popupmenu_inner">
+<form method="post" action="cp.php?ac=dialog&op=delete&dialog=$dialogid">
+	<p>确定删除?</p>
+	<p class="btn_line">
+		<input type="hidden" name="refer" value="$_SGLOBAL[refer]" />
+		<input type="hidden" name="deletesubmit" value="true" />
+		<input type="submit" name="btnsubmit" value="确定" class="submit" />
+	</p>
+<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+</form>
+</div>
+
+<!--{elseif $_GET[op] == 'delete1'}-->
+
+<h1>删除该问题？</h1>
+<a href="javascript:hideMenu();" class="float_del" title="关闭">关闭</a>
+<div class="popupmenu_inner">
+<form method="post" action="cp.php?ac=dialog&op=delete1&dialog=$dialogid">
+	<p>确定删除?</p>
+	<p class="btn_line">
+		<input type="hidden" name="refer" value="$_SGLOBAL[refer]" />
+		<input type="hidden" name="deletesubmit" value="true" />
+		<input type="submit" name="btnsubmit" value="确定" class="submit" />
+	</p>
+<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+</form>
+</div>
+
+<!--{elseif $_GET[op] == 'ask'}-->
+<script language="javascript" src="image/editor/editor_function.js"></script>
+<script language="javascript" src="source/script_blog.js"></script>
+<div class="content" style="font-size:15px;">
+          
+                 <div class="bread container_12">
+                     <div class="bread_actived grid_1">
+                         发布
+                     </div>
+                     <a href="space.php?do=dialog" class="link_back_bread grid_3">
+                      在线沟通
+                     </a>
+                 </div>
+	  <div class="content_detail_wrapper">
+                    <div class="post_wrapper">
+	<form method="post" action="cp.php?ac=dialog&op=ask&askid=$space[uid]" enctype="multipart/form-data">
+		<table cellspacing="4" cellpadding="4" width="100%" class="infotable">
+			<tr>
+				<td>
+					<div class="post_list container_12">
+                         <span class="select_title grid_1">问题标题&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                           <input type="text" class="t_input" id="subject" name="subject" size="40" value="$product[subject]"  onblur="relatekw();" placeholder="标题长度不超过80字符" />
+                            </div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="post_list container_12">
+                         <span class="select_title grid_1">详细描述&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                          <a id="doodleBox" href="magic.php?mid=doodle&showid=product_doodle&target=uchome-ttHtmlEditor&from=editor" style="display:none"></a>
+						  <textarea class="userData" name="message" id="uchome-ttHtmlEditor" style="height:100%;width:100%;display:none;border:0px">$product[message]</textarea>
+						  <iframe src="editor.php?charset=$_SC[charset]&allowhtml=$allowhtml&doodle=<!--{if isset($_SGLOBAL[magic][doodle])}-->1<!--{/if}-->" name="uchome-ifrHtmlEditor" id="uchome-ifrHtmlEditor" scrolling="no" border="0" frameborder="0" style="width:550px;height:350px;border: 1px solid #C5C5C5;" height="200"></iframe>
+                            </div>
+				</td>
+			</tr>
+		</table>
+
+		<input type="hidden" name="dialogsubmit" value="true" />
+		<input type="submit" id="productbutton" name="goodsbutton" value="提交发布"  style="display: none;" />
+		<input type="hidden" name="topicid" value="$_GET[topicid]" />
+		<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+	</form>
+	<style>
+	.infotable th{
+		padding-right: 0em;
+	}
+	</style>
+
+	<table cellspacing="4" cellpadding="4" width="100%" class="infotable">
+		<tr>
+			<th width="100">&nbsp;</th>
+			<td>
+				<div class="confirm_btn container_12" style="margin-left:-20px;">
+                           <a href="space.php?do=home" class="cancle_btn grid_1">取消</a>
+                           <input type="button" class="btn grid_2" id="issuance" onclick="document.getElementById('productbutton').click();" value="保存发布" class="submit" />
+                      </div>
+			</td>
+		</tr>
+	</table>
+</div>
+</div>
+<!--{/if}-->
+<!--{template footer}-->

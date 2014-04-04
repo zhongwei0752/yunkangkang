@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="./template/10/css/book_content.css" />
+
+
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="template/js/jquery.tmpl.min.js"></script>
+        <script type="text/javascript" src="./template/11/js/detail.js"></script>
+
+        <style type="text/css">
+            #bg,#bg2{ display: none;  position: fixed;  top: 0%;  left: 0%;  width: 100%;  height: 100%;
+                background:url(./template/img/guide_bg.png);  z-index:1001;/*  -moz-opacity: 0.7;  opacity:.70;  filter: alpha(opacity=70);*/}
+
+            .content-text img
+            {
+                max-width: 100% !important;
+                height: auto; !important;
+
+            }
+
+            .uchome-message-pic img
+            {
+                max-width: 100% !important;
+                height: auto; !important;
+            }
+
+            ::-webkit-input-placeholder { font-size: 16px; }
+
+            input:-moz-placeholder { font-size: 16px; }
+
+        </style>
+
+        <script id="detailTemplate" type="text/x-jquery-tmpl">
+            <div class="head pt20">
+                <h1 class="cTitle f20">
+                    <!--{BLOCK_TAG_START}-->if industry<!--{BLOCK_TAG_END}-->
+                    <p> {{= industry.subject}}</p>
+                    <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                    <!--{BLOCK_TAG_START}-->if branch<!--{BLOCK_TAG_END}-->
+                    <p> {{= branch.subject}}</p>
+                    <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                    <!--{BLOCK_TAG_START}-->if development<!--{BLOCK_TAG_END}-->
+                    <p> {{= development.subject}}</p>
+                    <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                    <!--{BLOCK_TAG_START}-->if product<!--{BLOCK_TAG_END}-->
+                    <p> {{= product.subject}}</p>
+                    <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                    <!--{BLOCK_TAG_START}-->if introduce<!--{BLOCK_TAG_END}-->
+                    <p> {{= introduce.subject}}</p>
+                    <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                    <!--{BLOCK_TAG_START}-->if cases<!--{BLOCK_TAG_END}-->
+                    <p> {{= cases.subject}}</p>
+                    <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                    <!--{BLOCK_TAG_START}-->if talk<!--{BLOCK_TAG_END}-->
+                    <p> {{= branch.subject}}</p>
+                    <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                    <!--{BLOCK_TAG_START}-->if job<!--{BLOCK_TAG_END}-->
+                    <p> {{= job.subject}}</p>
+                    <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                    <!--{BLOCK_TAG_START}-->if goods<!--{BLOCK_TAG_END}-->
+                    <p> {{= goods.subject}}</p>
+                    <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                </h1>
+            </div>
+            <div class="cTime pt15">
+                <span class="time">
+                <!--{BLOCK_TAG_START}-->if industry<!--{BLOCK_TAG_END}-->
+                 <p> {{= industry.dateline}}</p>
+                 <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                  <!--{BLOCK_TAG_START}-->if branch<!--{BLOCK_TAG_END}-->
+                 <p> {{= branch.dateline}}</p>
+                 <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                    <!--{BLOCK_TAG_START}-->if development<!--{BLOCK_TAG_END}-->
+                 <p> {{= development.dateline}}</p>
+                 <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                 <!--{BLOCK_TAG_START}-->if product<!--{BLOCK_TAG_END}-->
+                 <p> {{= product.dateline}}</p>
+                 <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                 <!--{BLOCK_TAG_START}-->if introduce<!--{BLOCK_TAG_END}-->
+                 <p> {{= introduce.dateline}}</p>
+                 <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                 <!--{BLOCK_TAG_START}-->if cases<!--{BLOCK_TAG_END}-->
+                 <p> {{= cases.dateline}}</p>
+                 <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                 <!--{BLOCK_TAG_START}-->if talk<!--{BLOCK_TAG_END}-->
+                 <p> {{= branch.dateline}}</p>
+                 <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                 <!--{BLOCK_TAG_START}-->if job<!--{BLOCK_TAG_END}-->
+                 <p> {{= job.dateline}}</p>
+                 <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                 <!--{BLOCK_TAG_START}-->if goods<!--{BLOCK_TAG_END}-->
+                 <p> {{= goods.dateline}}</p>
+                 <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}--></span>
+                </span>
+            </div>
+
+        </script>
+
+        <script id="commentTemplate" type="text/x-jquery-tmpl">
+            <li class = "itemContentList">
+                <span class = "colour">{{= author}}：</span>
+                {{= message}}
+                </div>
+            </li>
+        </script>
+
+        <title>$appname</title>
+
+	</head>
+
+	<body>
+		<div data-role="page">
+			<header data-role="header" data-tap-toggle="false" data-theme="none">
+			<div class="title">
+				<span id="product_name">公司概况</span>
+			</div>
+			<div class="time">
+				    <span id="time">2013-5-27</span>
+					<div class="status">
+					<span id="count_read">&nbsp&nbsp浏览(132)</span>
+					<span id="count_comment">&nbsp&nbsp评论(37)</span>
+					<span id="count_book">&nbsp&nbsp预约(87)</span>
+					</div>
+			</div>
+			</header>
+
+			<div data-role="content">
+				<div class="content_img">
+					<img src="img/big_pic_1.png" alt="" />
+				</div><!-- content_img -->
+
+				<div class="content_img">
+					<img src="img/big_pic_2.png" alt="" />
+				</div><!-- content_img -->
+
+				<div class="content_text" style="word-break: break-all">
+					<span id="sale">优惠预售</span><span id="content_price">：5200</span>元平米
+					<p>
+					绿城房地产集团有限公司，国内知名的房地产企业之一，专注开发系列城市优质房产品，具有国家一级开发资质，公司总部设在浙江省杭州市。绿城成立于1995年，2005年转制为外商独资企业，是香港上市公司——绿城中国控股有限公司（股票代码：3900）的全资子公司。
+历经15年的发展，绿城已辖有70多家成员企业，拥有员工2600余人，房产开发足迹遍及浙江省内的杭州、宁波、温州、湖州、绍兴市、舟山、台州、临安、桐庐、淳安、海宁、德清、长兴、上虞、绍兴县、新昌、象山、慈溪、诸暨以及国内北京、上海、合肥、长沙、青岛、济南、南京、无锡、南通、郑州、乌鲁木齐、海南陵水、大连等30多个城市。至2008年12月底，在建、待建项目达76个，总占地面积2002.6万平方米，总建筑面积2643万平方米。
+					</p>
+				</div><!-- content_text -->
+
+				<div class="comment">
+				<div class="split">
+					<br />
+				</div><!-- split -->
+
+				<div class="comment_container">
+					<div class="comment_publish">
+						<div class="comment_text">
+							<textarea id="comment_text_box" placeholder="请写下你的评论..." name=""></textarea>
+						</div> <!-- comment_text --> 
+						<a href="#">发&nbsp表</a>
+					</div> <!-- comment_publish --> 
+				</div><!-- comment_container --> 
+
+
+				<div class="split">
+					<br />
+				</div><!-- split -->
+
+					<div class="comment_list">
+						<ul>
+                            <div id="comment-panel"></div>
+						</ul>
+					</div><!-- comment_list -->
+
+				</div><!-- comment -->
+			</div><!-- content -->
+		</div><!-- page -->
+
+        <input type="hidden" id="wxkey" name="wxkey" value="$_GET[wxkey]"/>
+        <input type="hidden" id="id" name="id" value="$_GET[id]"/>
+        <input type="hidden" id="idtype" name="idtype" value="$_GET[idtype]"/>
+        <input type="hidden" id="type" name="type" value="$_GET[type]"/>
+        <input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
+        <input type="hidden" id="page" name="page" value="1"/>
+        <input type="hidden" id="perpage" name="perpage" value="10"/>
+
+	</body>
+
+    <script type="text/javascript" charset="utf-8">
+
+        function showDIv(){
+            document.getElementById('bg').style.display = "block";
+        }
+        function hideDiv(){
+            document.getElementById('bg').style.display = "none";
+        }
+        function showFriendDIv(){
+            document.getElementById('bg2').style.display = "block";
+        }
+        function hideFriendDIv(){
+            document.getElementById('bg2').style.display = "none";
+        }
+    </script>
+    <script>
+        var dataForWeixin={
+            appId:"",
+            MsgImg:"$pic",
+            TLImg:"$pic",
+            url:"$url",
+            title:"$wei[subject]",
+            desc:"$wei[subject]",
+            fakeid:"",
+            callback:function(){}
+        };
+        (function(){
+            var onBridgeReady=function(){
+                WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                    WeixinJSBridge.invoke('sendAppMessage',{
+                        "appid":dataForWeixin.appId,
+                        "img_url":dataForWeixin.MsgImg,
+                        "img_width":"120",
+                        "img_height":"120",
+                        "link":dataForWeixin.url,
+                        "desc":dataForWeixin.desc,
+                        "title":dataForWeixin.title
+                    }, function(res){(dataForWeixin.callback)();});
+                });
+                WeixinJSBridge.on('menu:share:timeline', function(argv){
+                    (dataForWeixin.callback)();
+                    WeixinJSBridge.invoke('shareTimeline',{
+                        "img_url":dataForWeixin.TLImg,
+                        "img_width":"120",
+                        "img_height":"120",
+                        "link":dataForWeixin.url,
+                        "desc":dataForWeixin.desc,
+                        "title":dataForWeixin.title
+                    }, function(res){});
+                });
+
+                WeixinJSBridge.on('menu:share:weibo', function(argv){
+                    WeixinJSBridge.invoke('shareWeibo',{
+                        "content":dataForWeixin.title,
+                        "url":dataForWeixin.url
+                    }, function(res){(dataForWeixin.callback)();});
+                });
+                WeixinJSBridge.on('menu:share:facebook', function(argv){
+                    (dataForWeixin.callback)();
+                    WeixinJSBridge.invoke('shareFB',{
+                        "img_url":dataForWeixin.TLImg,
+                        "img_width":"120",
+                        "img_height":"120",
+                        "link":dataForWeixin.url,
+                        "desc":dataForWeixin.desc,
+                        "title":dataForWeixin.title
+                    }, function(res){});
+                });
+            };
+            function joinMember(wxid){
+                WeixinJSBridge.invoke('addContact',{
+                    "webtype" : "1", // 添加联系人的场景，1表示企业联系人。
+                    "username" : wxid,　// 需要添加的联系人username
+            },function(res){
+                // 关注成功提交表单
+
+            })
+        }
+
+        if(document.addEventListener){
+            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+        }else if(document.attachEvent){
+            document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
+            document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+        }
+
+        })();
+    </script>
+
+</html>

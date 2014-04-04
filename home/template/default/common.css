@@ -1,0 +1,19 @@
+body {
+	font-family: 'Microsoft yahei' !important;
+}
+
+a {
+	text-decoration: none;
+}
+
+.page {
+	width: 1024px;
+}
+
+.cGray {
+	color: #BBB;
+}
+
+.cGreen {
+	color: #60B4AE;
+}

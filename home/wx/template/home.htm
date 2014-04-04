@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+  	 	<meta charset="utf-8" />
+  	 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+      <!--{if $bac['moblieclicknum']=='1'||$bac['moblieclicknum']=='0'}-->
+    <link rel = "stylesheet" type = "text/css" href = "./template/css/main.css" />
+    <!--{else}-->
+    <link rel = "stylesheet" type = "text/css" href = "./template/$bac['moblieclicknum']/css/main.css" />
+    <!--{/if}-->
+	</head>
+	<body>
+		<div class = "banner_pic"><img src = "http://v5.home3d.cn/home/$home1[imageurl]"/></div>
+		<div class = "banner_text" style="font-size:35px;">
+			<span style="font-size: 20px !important;">$home1[subject]<span>
+		</div>
+		<div>
+			<ul class = "menu">
+			<!--{loop $zhongwei $value}-->
+				<li>
+					<a href = "wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]&wxkey=$_GET[wxkey]"> 
+						<div>
+             <!--{if $bac['moblieclicknum']=='1'||$bac['moblieclicknum']=='0'}-->
+							<img class = "menu_item" src = "http://v5.home3d.cn/home/wx/template/img/$value[icon]" />
+              <!--{else}-->
+              <img class = "menu_item" src = "http://v5.home3d.cn/home/wx/template/$bac['moblieclicknum']/img/$value[icon]" />
+              <!--{/if}-->
+							<span>$value[subject]</span>
+							<img class = "menu_arrow" src = "template/img/arrow_right.png" />
+						</div>
+					</a>
+				</li>
+				<!--{/loop}-->
+        <!--{if $zhongwei1}-->
+        <!--{loop $zhongwei1 $value1}-->
+        <li>
+          <a href = "wx.php?do=feed&uid=$_GET[uid]&idtype=$value1[english]&wxkey=$_GET[wxkey]"> 
+            <div>
+             <!--{if $bac['moblieclicknum']=='1'||$bac['moblieclicknum']=='0'}-->
+							<img class = "menu_item" src = "http://v5.home3d.cn/home/wx/template/img/$value1[icon]" />
+              <!--{else}-->
+              <img class = "menu_item" src = "http://v5.home3d.cn/home/wx/template/$bac['moblieclicknum']/img/$value1[icon]" />
+              <!--{/if}-->
+              
+              <span>$value1[subject]</span>
+              <img class = "menu_arrow" src = "template/img/arrow_right.png" />
+            </div>
+          </a>
+        </li>
+        <!--{/loop}-->
+				<!--{/if}-->
+			</ul>
+		</div>
+	</body>
+</html>

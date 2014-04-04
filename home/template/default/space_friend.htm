@@ -1,0 +1,247 @@
+<!--{eval $_TPL['titles'] = array('客户');}-->
+<!--{template header}-->
+    <link rel="stylesheet" type="text/css" href="./template/default/jquery-mobile-fluid960.min.css">
+    <link rel="stylesheet" type="text/css" href="./template/default/style1.css">
+    <link rel="stylesheet" type="text/css" href="./template/default/file_beauty.css">
+    <link type='text/css' href='./template/default/basic_chosen.css' rel='stylesheet' media='screen' />
+    <style type="text/css">
+       h3{color: #727272;margin-top: 20px;font-weight:normal;}
+       .selected{ -webkit-box-shadow: 3px 3px 3px;
+  -moz-box-shadow: 3px 3px 3px;
+  box-shadow: 3px 3px 3px;}
+  
+      .bg1{ background: url("./template/default/image/chosen_bg.png");}
+      .open{ background: url("./template/default/image/chosen_bg2.png")!important;}
+      .open .price{color:#3EB2B8!important;}
+
+      #simplemodal-container a {
+color:#02B4AB;
+}
+    </style>
+
+<!--{if !empty($_SGLOBAL[inajax])}-->
+	<div id="space_friend">
+		<h3 class="feed_header">
+			<a href="cp.php?ac=friend&op=search" class="r_option" target="_blank">寻找客户</a>
+			客户(共 $count 个)
+		</h3><br>
+
+		<!--{if $list}-->
+		<div id="friend_ul">
+			<ul class="line_list">
+			<!--{loop $list $key $value}-->
+				<li>
+				<table width="100%">
+					<tr>
+					<td width="70">
+						<div class="avatar48"><a href="space.php?uid=$value[uid]"><!--{avatar($value[uid],small)}--></a></div>
+					</td>
+					<td>
+					<div class="thumbTitle"><p<!--{if $ols[$value[uid]]}--> class="online_icon_p"<!--{/if}-->><a href="space.php?uid=$value[uid]"<!--{eval g_color($value[groupid]);}-->>{$_SN[$value[uid]]}</a> <!--{eval g_icon($value[groupid]);}--></p></div>
+
+					<!--{if $value[note]}--><div>$value[note]</div><!--{/if}-->
+
+					<!--{if $ols[$value[uid]]}--><div class="gray"><!--{date('H:i',$ols[$value[uid]],1)}--></div><!--{/if}-->
+					<div class="setti">
+
+					<!--{if !$value['isfriend']}-->
+					<a href="cp.php?ac=friend&op=add&uid=$value[uid]" id="a_friend_$key" onclick="ajaxmenu(event, this.id, 1)">加为客户</a>
+					<!--{/if}-->
+					</div>
+					</td></tr></table>
+				</li>
+			<!--{/loop}-->
+			</ul>
+		</div>
+		<div class="page">$multi</div>
+
+		<!--{else}-->
+		<div class="c_form">
+			没有相关用户列表。
+		</div>
+		<!--{/if}-->
+	</div><br />
+
+<!--{else}-->
+
+<!--{if $space[self]}-->
+
+<div class="content" style="font-size:15px;width:760px;">
+<div class="bread container_12">
+					<!--{if $_GET['view']=='me'||$_GET['view']=='lastlogin'||$_GET['view']=='hot'}-->
+					 <div class="bread_actived grid_1" >
+                         客户列表
+                     </div>
+                     <!--{else}-->
+                     
+                     <a href="space.php?do=friend" style="margin-left:-20px;" class="link_back_bread grid_3">
+                     客户列表
+                     </a>
+                     <!--{/if}-->
+                     <!--{if $count2}-->
+                     <!--{if $_GET['view']=='free'}-->
+                     <div class="bread_actived grid_1" style="margin-left:20px;">
+                      普通版套餐客户
+                     </div>
+                     <!--{else}-->
+                     <a href="space.php?do=friend&view=free" style="margin-left:20px;" class="link_back_bread grid_3">
+                      普通版套餐客户
+                     </a>
+                      <!--{/if}-->
+                      <!--{if $_GET['view']=='case'}-->
+                     <div class="bread_actived grid_1" style="margin-left:20px;">
+                      增强版套餐用户
+                     </div>
+                     <!--{else}-->
+                     <a href="space.php?do=friend&view=case" style="margin-left:20px;" class="link_back_bread grid_3">
+                      增强版套餐用户
+                     </a>
+                      <!--{/if}-->  
+                      <!--{if $_GET['view']=='highcase'}-->
+                     <div class="bread_actived grid_1" style="margin-left:20px;">
+                      高级版套餐用户
+                     </div>
+                     <!--{else}--> 
+                     <a href="space.php?do=friend&view=highcase" style="margin-left:20px;" class="link_back_bread grid_3">
+                     高级版套餐用户
+                     </a>
+                      <!--{/if}--> 
+                    <!--{/if}-->   
+                 </div>		
+
+ <div class="content_detail_wrapper">
+<!--{if $_GET['view']=='me'||$_GET['view']=='lastlogin'||$_GET['view']=='hot'}-->
+  <div id="nav" style="margin-top:20px;margin-left:180px;">
+<a href="space.php?do=friend" style="<!--{if $_GET['view']=='me'}-->color:#02B4AB<!--{/if}-->">最新关注排序</a><a href="space.php?do=friend&view=lastlogin" style="padding-left:20px;<!--{if $_GET['view']=='lastlogin'}-->color:#02B4AB<!--{/if}-->">最后登陆时间排序</a><a href="space.php?do=friend&view=hot" style="padding-left:20px;<!--{if $_GET['view']=='hot'}-->color:#02B4AB<!--{/if}-->">活跃度排序</a>
+
+ 	</div>
+<!--{/if}-->  
+
+
+	<!--{if $list}-->
+	<div class="thumb_list" id="friend_ul">
+		<ul style="margin-top:30px;">
+
+		<!--{loop $list $key $value}-->
+			<li id="friend_{$value[uid]}_li" style="width:250px;margin-left:50px;height:80px;">
+				<!--{if $value[username] == ''}-->
+				<div class="avatar48"><img src="image/magic/hidden.gif" alt="匿名" /></div>
+				<div class="thumbTitle"><p>匿名</p></div>
+				<!--{else}-->
+				<div class="avatar48"><a href="space.php?uid=$value[uid]"><!--{avatar($value[uid],small)}--></a></div>
+				<div class="thumbTitle">
+				<p<!--{if $ols[$value[uid]]}--> class="online_icon_p"<!--{/if}-->>
+					<a style="color:#02B4AB;" href="space.php?uid=$value[uid]"<!--{eval g_color($value[groupid]);}-->>{$_SN[$value[uid]]}</a> 
+					<!--{eval g_icon($value[groupid]);}-->
+					<!--{if $value['videostatus']}-->
+					<img src="image/videophoto.gif" align="absmiddle">
+					<!--{/if}-->
+				</p></div>
+				<!--{if $value[note]}--><div>$value[note]</div><!--{/if}-->
+				<!--{/if}-->
+
+				<!--{if $_GET['view']=='blacklist'}-->
+					<div class="gray"><a href="cp.php?ac=friend&op=blacklist&subop=delete&uid=$value[uid]&start=$_GET[start]">黑名单除名</a></div>
+				<!--{elseif $_GET['view']=='visitor' || $_GET['view'] == 'trace'}-->
+					<div class="gray"><!--{date('n月j号',$value[dateline],1)}--></div>
+				<!--{elseif $_GET['view']=='online'}-->
+					<div class="gray"><!--{date('H:i',$ols[$value[uid]],1)}--></div>
+				<!--{else}-->
+					<!--{if $ols[$value[uid]]}--><div class="gray"><!--{date('H:i',$ols[$value[uid]],1)}--></div><!--{/if}-->
+					<div class="gray">
+					<!--{if !empty($value[fakeid])}-->
+					<a href="javascript:void;" id="a_talk_$value[uid]" >私信</a>
+					<!--{/if}-->
+					<a href="cp.php?ac=friend&op=ignore&uid=$value[uid]" id="a_ignore_$key" onclick="ajaxmenu(event, this.id)">删除</a>
+					</div>
+				<!--{/if}-->
+			</li>
+			
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type='text/javascript' src='./source/jquery.simplemodal.js'></script>
+    <script type="text/javascript">
+    var jquery = jQuery.noConflict();
+      jquery(document).ready(function(){
+       jquery('#talk$value[uid]').attr("style", "display:none;");
+      
+          jquery('#a_talk_$value[uid]').click(function (e) {
+    		e.preventDefault();
+   jquery('#talk$value[uid]').modal();
+  });
+
+
+            
+       })
+    </script>
+
+		<!--{/loop}-->
+		</ul>
+	</div>
+	<div class='pagination'><ul>$multi</ul></div>
+
+	<!--{else}-->
+	<div class="c_form" style="margin:0 auto;text-align:center;">
+		没有相关用户列表。
+	</div>
+	<!--{/if}-->
+
+</div>
+</div>
+
+
+<div id="sidebar" style="width: 150px;">
+	<!--{if $_SCONFIG['my_status']}-->
+	<!-- 同步客户至Manyou 开始 -->
+	<script type="text/javascript">
+		function my_sync_tip(msg, close_time) {;
+			var my_tip = document.getElementById("my_tip");
+			if (!my_tip) {
+				my_tip = document.createElement("div");
+				document.getElementsByTagName("body")[0].appendChild(my_tip);
+				my_tip.id = "my_tip";
+			}
+			my_tip.style.display = 'block';
+			my_tip.innerHTML = '<div class="popupmenu_centerbox" style="position: absolute; top: 200px; right: 500px; padding: 20px; width: 300px; height: 15px; z-index:9999;">' + msg + '</div>';
+			if (close_time) {
+				setTimeout("document.getElementById('my_tip').style.display = 'none';", close_time);
+			}
+		}
+		function my_sync_friend() {
+			my_sync_tip('正在同步客户信息...', 0);
+			var my_scri = document.createElement("script");
+			document.getElementsByTagName("head")[0].appendChild(my_scri);
+			my_scri.charset = "UTF-8";
+			my_scri.src = "http://uchome.manyou.com/user/syncFriends?sId=$_SCONFIG[my_siteid]&uUchId=$space[uid]&ts=$_SGLOBAL[timestamp]&key=<!--{eval echo md5($_SCONFIG[my_siteid] . $_SCONFIG[my_sitekey] . $space[uid] . $_SGLOBAL[timestamp]);}-->";
+		}
+	</script>
+
+	<div class="c_mgs"><div class="ye_r_t"><div class="ye_l_t"><div class="ye_r_b"><div class="ye_l_b">
+		<p>在游戏中找不到自己的客户？请点击下面的的按钮，将客户信息同步到里面。</p>
+		<p style="text-align: center;padding: 20px 0 0;"> <a href="#" onclick="my_sync_friend(); return false;" title="将客户关系同步至Manyou平台，以便在应用里看到他们"><img alt="刷新客户信息" src="image/syncfriend.gif"/></a> </p>
+	</div></div></div></div></div>
+	<!-- 同步客户至Manyou 结束 -->
+	<!--{/if}-->
+
+<!--{else}-->
+<!--{eval
+	$_TPL['spacetitle'] = "客户";
+	$_TPL['spacemenus'][] = "<a href=\"space.php?uid=$space[uid]&do=friend&view=me\">TA的客户列表</a>";
+}-->
+	<!--{template space_menu}-->
+	<div class="h_status">共有 $space[friendnum] 个客户</div>
+	<!--{template space_list}-->
+
+<!--{/if}-->
+
+<!--{/if}-->
+
+
+	<!--{loop $list $key $value}-->
+
+    <div id="talk$value[uid]">
+  <h3 style="font-size:20px;color:#44B1BA;background:#ECEFF1;margin:0;line-height:40px;text-align:left;padding-left:10px;">私信</h3>
+  <div style="width:600px;background:#fff;margin:20px auto;text-align:center;"><form action = "space.php?do=friend" method = "post"><input type="text" name="message" style="width:300px;"><input type="hidden" name="fakeid" value="$value[fakeid]"><input type="hidden" name="uid" value="$space[uid]"> <br/><br/><input type="submit" style="margin-left:250px;" class="btn grid_2" name="friendreply"></form></div>
+
+</div>
+<!--{/loop}-->
+<!--{template footer}-->

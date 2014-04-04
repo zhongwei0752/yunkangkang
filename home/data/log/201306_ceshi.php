@@ -1,0 +1,8 @@
+<?PHP exit;?>	2013-06-04 09:45:38		127.0.0.1	14	/new/home/space.php?do=menuset	SELECT bf.*, b.* FROM uchome_appset bf   				LEFT JOIN uchome_menuset b ON bf.num=b.menusetid  			 WHERE bf.num='13' and bf.uid=14
+<?PHP exit;?>	2013-06-04 09:45:38		127.0.0.1	14	/new/home/space.php?do=menuset	SELECT bf.*, b.* FROM uchome_appset bf   				LEFT JOIN uchome_menuset b ON bf.num=b.menusetid  			 WHERE bf.num='14' and bf.uid=14
+<?PHP exit;?>	2013-06-04 09:45:38		127.0.0.1	14	/new/home/space.php?do=menuset	SELECT bf.*, b.* FROM uchome_appset bf   				LEFT JOIN uchome_menuset b ON bf.num=b.menusetid  			 WHERE bf.num='15' and bf.uid=14
+<?PHP exit;?>	2013-06-04 09:45:38		127.0.0.1	14	/new/home/space.php?do=menuset	SELECT bf.*, b.* FROM uchome_appset bf   				LEFT JOIN uchome_menuset b ON bf.num=b.menusetid  			 WHERE bf.num='16' and bf.uid=14
+<?PHP exit;?>	2013-06-04 09:45:38		127.0.0.1	14	/new/home/space.php?do=menuset	SELECT bf.*, b.* FROM uchome_appset bf   				LEFT JOIN uchome_menuset b ON bf.num=b.menusetid  			 WHERE bf.num='17' and bf.uid=14
+<?PHP exit;?>	2013-06-04 09:45:38		127.0.0.1	14	/new/home/space.php?do=menuset	SELECT bf.*, b.* FROM uchome_appset bf   				LEFT JOIN uchome_menuset b ON bf.num=b.menusetid  			 WHERE bf.num='18' and bf.uid=14
+<?PHP exit;?>	2013-06-04 09:45:38		127.0.0.1	14	/new/home/space.php?do=menuset	SELECT bf.*, b.* FROM uchome_appset bf   				LEFT JOIN uchome_menuset b ON bf.num=b.menusetid  			 WHERE bf.num='19' and bf.uid=14
+<?PHP exit;?>	2013-06-04 09:45:38		127.0.0.1	14	/new/home/space.php?do=menuset	SELECT bf.*, b.* FROM uchome_appset bf   				LEFT JOIN uchome_menuset b ON bf.num=b.menusetid  			 WHERE bf.num='20' and bf.uid=14

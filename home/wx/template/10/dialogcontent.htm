@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	 <title>$appsubject[subject]</title>
+  	 <meta charset="utf-8">
+  	 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+
+      <link rel = "stylesheet" href = "./template/10/css/base_10.css" />
+      <link rel = "stylesheet" href = "./template/10/css/common_dialog.css" />
+
+     <link rel="stylesheet" type="text/css" href="./template/10/css/jquery-mobile-fluid960.min.css">
+     <link rel="stylesheet" type="text/css" href="./template/10/css/style10.css">
+     <link rel = "stylesheet" type = "text/css" href = "template/10/css/main_dialogcontent10.css">
+     <script src="template/js/jquery-v2.0.2.js"></script>
+     <script type="text/javascript" src="template/js/jquery.tmpl.min.js"></script>
+     <script type="text/javascript" src="template/10/js/detail.js"></script>
+     <script id="detailTemplate" type="text/x-jquery-tmpl"> 
+         
+			<h3>{{= subject}}</h3>
+			<span class = "info_content_span subtitle">{{= q_dateline}}</span>
+			<div class = "article_content mb100">
+				<ul class = "chat" id = "list-panel">
+					
+				</ul>
+			</div>
+		
+     </script>
+     <script id="liTemplate" type="text/x-jquery-tmpl"> 
+     	           
+                   <!--{BLOCK_TAG_START}-->if pos<!--{BLOCK_TAG_END}-->
+                   <li>
+						<div> 
+						<!--{BLOCK_TAG_START}-->if image1url<!--{BLOCK_TAG_END}-->
+							<img src=".{{= image1url}}" class="fr" />
+							<!--{BLOCK_TAG_START}-->else<!--{BLOCK_TAG_END}-->
+							<img src="./images/noavatar_small.gif" class="fr" />
+							<!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+
+							<img src="template/10/img/right_triangle.png" class="right_triangle fr" />
+							<div class="chatMessage fr color1">
+								<p>{{= message}}</p>
+								<span>{{= dialog_dateline}}</span>
+							</div>
+						</div>
+					</li>
+					<!--{BLOCK_TAG_START}-->else<!--{BLOCK_TAG_END}-->
+					<li>
+						<div>
+							<!--{BLOCK_TAG_START}-->if image1url<!--{BLOCK_TAG_END}-->
+							<img src=".{{= image1url}}" class="fl" />
+							<!--{BLOCK_TAG_START}-->else<!--{BLOCK_TAG_END}-->
+							<img src="./images/noavatar_small.gif" class="fl" />
+							<!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+							<img src="template/10/img/left_triangle.png" class="left_triangle fl" />
+							<div class="chatMessage fl color2">
+								<p>{{= message}}</p>
+								<span>{{= dialog_dateline}}</span>
+							</div>
+						</div>
+					</li>
+					<!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+     </script>
+  </head>
+
+  <body style="background-color: #f2f2f2;">
+		<div class = "article" id = "detail-panel" style="background-color: #f2f2f2;color:#697253;">
+			
+		</div>
+		<div class = "comment_add onlineComment">
+			<textarea placeholder = "输入你的回复..." class = "comment_area" id = "answer"></textarea>
+			<input type = "button" class = "ask_btn btn" value = "回复" onclick='ans($viewuid,$_GET[uid],$("#answer").val(),$_GET[id])'/>
+		</div>
+	<input type="hidden" id="wxkey" name="wxkey" value="$_GET[wxkey]"/>
+    <input type="hidden" id="id" name="id" value="$_GET[id]"/>
+    <input type="hidden" id="idtype" name="idtype" value="$_GET[idtype]"/>
+    <input type="hidden" id="type" name="type" value="$_GET[type]"/>
+    <input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
+    <input type="hidden" id="page" name="page" value="0"/>
+    <input type="hidden" id="perpage" name="perpage" value="5"/>
+	</body>
+</html>

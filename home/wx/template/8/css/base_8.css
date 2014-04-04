@@ -1,0 +1,80 @@
+/*css reset*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { margin:0; padding:0;}
+table { border-collapse:collapse; border-spacing:0; }
+fieldset,img { border:0; }
+address,caption,cite,code,dfn,em,strong,th,var { font-style:normal; font-weight:normal;}
+ol,ul { list-style:none; }
+caption,th { text-align:left; }
+h1,h2,h3,h4,h5,h6 { font-size:100%; font-weight:normal; }
+q:before,q:after { content:''; }
+abbr,acronym { border:0; }
+
+/*定位*/
+.fl{ float: left; display: inline; }
+.fr{ float: right; display: inline; }
+.vb{ vertical-align: bottom; }
+.vt{ vertical-align: top; }
+
+/*长度高度*/
+.h{ height: 100%; }
+.h4{ height: 4px; }
+.h2{ height: 2px; }
+.w{ width: 100%; }
+
+/*边距*/
+.p8{ padding: 8px; }
+.pb8{ padding-bottom: 8px; }
+.pt8{ padding-top: 8px; }
+.pl8{ padding-left: 8px; }
+.pr8{ padding-right: 8px; }
+.p15{ padding: 15px; }
+.m2{ margin: 2px; }
+.mb2{ margin-bottom: 2px; }
+.mt2{ margin-top: 2px; }
+.ml2{ margin-left: 2px; }
+.mr2{ margin-right: 2px; }
+.m1{ margin: 1px; }
+.mb1{ margin-bottom: 1px; }
+.mt1{ margin-top: 1px; }
+.ml1{ margin-left: 1px; }
+.mr1{ margin-right: 1px; }
+.m5{ margin: 5px; }
+.mb5{ margin-bottom: 5px; }
+.mt5{ margin-top: 5px; }
+.ml5{ margin-left: 5px; }
+.mr5{ margin-right: 5px; }
+.m8{ margin: 8px; }
+.mb8{ margin-bottom: 8px; }
+.mt8{ margin-top: 8px; }
+.ml8{ margin-left: 8px; }
+.mr8{ margin-right: 8px; }
+.mt15{ margin-top: 15px; }
+.mb15{ margin-bottom: 15px; }
+.ml15{ margin-left: 15px; }
+.mr15{ margin-right: 15px; }
+.mt10{ margin-top: 10px; }
+.mb10{ margin-bottom: 10px; }
+.ml10{ margin-left: 10px; }
+.mr10{ margin-right: 10px; }
+.mt18{ margin-top: 18px; }
+.mb35{ margin-bottom: 35px; }
+.ml35{ margin-left: 35px; }
+.ml3{ margin-left: 3px; }
+
+
+/*清除*/
+.clearMB{ margin-bottom: 0 !important; }
+.clearBT{ border-top: none !important; }
+.clearBB{ border-bottom: none !important; }
+.clearBL{ border-left: none !important; }
+.clearBR{ border-right: none !important; }
+
+/*颜色*/
+.blue{ background-color: #4547B4; }
+.lightBlue{ background-color: #58A7B3; }
+.orange{ background-color: #CF5423; }
+.green{ background-color: #8AA600; }
+.yellow{ background-color: #D58B00; }
+.purple{ background-color: #651760; }
+.pink{ background-color: #DF6ABB; }
+.deepBlue{ background-color: #004799; }

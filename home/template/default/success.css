@@ -1,0 +1,246 @@
+.successCase {
+	margin-top: 30px;
+	height: 400px;
+}
+
+/*背景*/ 
+
+#firstCase {
+	background: url('./image/img/big_pic_success1.jpg');
+}
+
+#seventhCase
+{
+    background: url('./image/img/big_pic_success7.jpg');
+}
+
+
+
+#secondCase {
+	background: url('./image/img/big_pic_success2.jpg');
+}
+
+
+
+#thirdCase {
+	background: url('./image/img/big_pic_success3.jpg');
+}
+
+
+
+#fourthCase
+{
+    background: url('./image/img/big_pic_success4.jpg');
+}
+
+#fifthCase
+{
+    background: url('./image/img/big_pic_success5.jpg');
+}
+
+#sixthCase
+{
+    background: url('./image/img/big_pic_success6.jpg');
+}
+
+#eighthCase
+{
+    background: url('./image/img/big_pic_success8.jpg');
+}
+#ninthCase
+{
+    background: url('./image/img/big_pic_success9.jpg');
+}
+/*案例标题*/ 
+
+.caseTitle {
+	font-size: 30px;
+	color: #43423E;
+}
+
+#firstCase .caseTitle {
+	position: relative;
+
+    padding-top: 245px;
+    padding-left: 640px;
+	/*top: 245px;
+	border: 1px solid #000000;
+	left: 640px;    */
+}
+
+
+#secondCase .caseTitle {
+	position: relative;
+    padding-top: 98px;
+    padding-left: 180px;
+	/*top:98px;
+	left: 180px;  */
+}
+
+
+
+#thirdCase .caseTitle {
+	position: relative;
+    padding-top: 264px;
+    padding-left: 256px;
+	/*top: 264px;
+	left: 256px;  */
+}
+
+
+
+#fourthCase .caseTitle
+{
+    position: relative;
+    padding-top: 245px;
+    padding-left: 640px;
+   /* top: 245px;
+    left: 640px;*/
+}
+
+#fifthCase .caseTitle {
+    position: relative;
+    padding-top: 98px;
+    padding-left: 180px;
+ /*   top:98px;
+    left: 180px;    */
+}
+
+#sixthCase .caseTitle {
+    position: relative;
+    padding-top: 264px;
+    padding-left: 256px;
+  /*  top: 264px;
+    left: 256px;   */
+}
+
+#seventhCase .caseTitle {
+    position: relative;
+    padding-top: 245px;
+    padding-left: 640px;
+  /*  top: 245px;
+    left: 640px;    */
+}
+
+/*案例描述*/ 
+
+.description {
+	font-size: 14px;
+	line-height: 150%;
+	color: #666;
+}
+
+#firstCase .description {
+	position: relative;
+
+    margin-top: -175px;
+    padding-left: 512px;
+	/*top: 90px;
+	 border: 1px solid #000000;
+	left: 512px;     */
+}
+
+#secondCase .description {
+	position: relative;
+    margin-top:40px ;
+    padding-left: 45px;
+	/*top: 160px;
+	left: 37px; */
+}
+
+#thirdCase  .description {
+	position: relative;
+    margin-top: -160px;
+    padding-left: 28px;
+	/*top: 110px;
+	left: 28px;    */
+}
+
+
+
+#fourthCase .description {
+    position: relative;
+    margin-top: -175px;
+    padding-left: 512px;
+  /*  top: 90px;
+    left: 512px;  */
+}
+
+#fifthCase .description {
+    position: relative;
+    margin-top:40px ;
+    padding-left: 45px;
+   /* top: 160px;
+    left: 37px;  */
+}
+
+#sixthCase  .description {
+    position: relative;
+    margin-top: -160px;
+    padding-left: 28px;
+   /* top: 110px;
+    left: 28px; */
+}
+
+#seventhCase .description {
+    position: relative;
+    margin-top: -175px;
+    padding-left: 512px;
+  /*  top: 90px;
+    left: 512px;  */
+}
+
+/*缩进类*/ 
+
+.indentGrade0 {
+	text-indent: 0;
+}
+
+.indentGrade1 {
+	text-indent: 2em;
+}
+
+.indentGrade2 {
+	text-indent: 4em;
+}
+
+.indentGrade3 {
+	text-indent: 6em;
+}
+
+.indentGrade4
+{
+    text-indent: 8em;
+}
+
+.indentGrade5
+{
+    text-indent: 10em;
+}
+.indentGrade6
+{
+    text-indent: 12em;
+}
+
+/*底部边距*/ 
+
+.bottomWrapper {
+	margin-top: 60px;
+}
+
+
+
+.bottomWrapper .contactUs .listItem:link
+{
+    color: #BBBBBB;
+    *color: #BBBBBB ;
+    _color: #BBBBBB;
+}
+
+.bottomWrapper .contactUs .listItem:hover
+{
+    color: #60B4AE;
+    *color:  #60B4AE ;
+    _color:  #60B4AE;
+
+}

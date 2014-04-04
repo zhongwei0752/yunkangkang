@@ -1,0 +1,182 @@
+<!--{eval $_TPL['titles'] = array($auction['subject'], $newname[subject]);}-->
+<!--{eval $friendsname = array(1 => '仅好友可见',2 => '指定好友可见',3 => '仅自己可见',4 => '凭密码可见');}-->
+<!--{template header}-->
+
+<!--{if $space[self]}-->
+
+
+<!--{else}-->
+<!--{eval
+	$_TPL['spacetitle'] = " $newname[subject]";
+	$_TPL['spacemenus'][] = "<a href=\"space.php?uid=$space[uid]&do=$do&view=me\">TA的所有 $newname[subject]</a>";
+	$_TPL['spacemenus'][] = "<a href=\"space.php?uid=$space[uid]&do=auction&id=$auction[auctionid]\">查看 $newname[subject]</a>";
+}-->
+<!--{template space_menu}-->
+<!--{/if}-->
+<script language="JavaScript"> 
+var tms = []; 
+var day = []; 
+var hour = []; 
+var minute = []; 
+var second = []; 
+function takeCount() { 
+setTimeout("takeCount()", 1000); 
+for (var i = 0, j = tms.length; i < j; i++) { 
+//计数减一 
+tms[i] -= 1000; 
+//计算时分秒 
+var days = Math.floor(tms[i] / (1000 * 60 * 60 * 24));
+var hours = Math.floor(tms[i] / (1000 * 60 * 60)) % 24; 
+var minutes = Math.floor(tms[i] / (1000 * 60)) % 60; 
+var seconds = Math.floor(tms[i] / 1000) % 60; 
+if (days < 0) 
+days = 0; 
+if (hours < 0) 
+hours = 0; 
+if (minutes < 0) 
+minutes = 0; 
+if (seconds < 0) 
+seconds = 0; 
+//将时分秒插入到html中 
+document.getElementById(day[i]).innerHTML = days; 
+document.getElementById(hour[i]).innerHTML = hours; 
+document.getElementById(minute[i]).innerHTML = minutes; 
+document.getElementById(second[i]).innerHTML = seconds; 
+} 
+} 
+setTimeout("takeCount()", 1000); 
+</script> 
+<script type="text/javascript" charset="$_SC[charset]" src="source/script_calendar.js"></script>
+<div style="padding:0 0 10px;">
+
+
+            <div class="content" style="font-size:15px;">
+            	<div class="indexing" style="margin-bottom:15px;">
+                <span><a href="space.php?do=home">首页</a></span>><span><a href="space.php?do=auction&view=me"> $newname[subject]</a></span>
+                 </div>
+                 <div class="content_detail_wrapper">
+                      <div class="content_page_detail">
+                           <div class="content_title">$auction[subject]</div>
+                           <div class="content_text_detail" style="text-align: center;margin-bottom:10px;margin-top:10px;font-size:12px;">作者 :{$_SN[$auction[uid]]}&nbsp;|&nbsp;发布时间 : <!--{date('Y-m-d H:i:s',$auction[dateline])}--></div>
+                           <!--{if $_SGLOBAL['timestamp']<$auction[starttime]}-->
+                           <div style="text-align:center;">距离开始时间还有： <span id="d1" style="">0</span> <span> 
+							天 </span><span id="h1" >0</span> <span>小时 </span><span id="m1" 
+							>0</span> <span>分 </span><span id="s1" > 
+							0</span> <span>秒</span></div> 
+							<script type="text/javascript"> 
+							tms[0] = "$time"; 
+							day[0] = "d1"; 
+							hour[0] = "h1"; 
+							minute[0] = "m1"; 
+							second[0] = "s1"; 
+							</script>
+							 <!--{/if}-->
+							 <!--{if $_SGLOBAL['timestamp']>$auction[starttime]&&$_SGLOBAL['timestamp']<$auction[endtime]}-->
+							 <div style="text-align:center;">距离结束时间还有： <span id="d1" style="">0</span> <span> 
+							天 </span><span id="h1" >0</span> <span>小时 </span><span id="m1" 
+							>0</span> <span>分 </span><span id="s1" > 
+							0</span> <span>秒</span></div> 
+							<script type="text/javascript"> 
+							tms[0] = "$time1"; 
+							day[0] = "d1"; 
+							hour[0] = "h1"; 
+							minute[0] = "m1"; 
+							second[0] = "s1"; 
+							</script>
+							 <!--{/if}-->
+							 <!--{if $_SGLOBAL['timestamp']>$auction[endtime]}-->
+							 <div style="text-align:center;">已结束</div> 
+							 <!--{/if}-->
+                           <div class="content_text_detail"style="overflow:hidden">
+                               <p>$auction[message]</p>
+                           </div>
+                           <div class="feed_action">
+                              <ul>
+                                 <li>阅览（$auction[viewnum]）</li>
+                                 <li>评论（$auction[replynum]）</li>
+                                 <!--{if $_SGLOBAL[supe_uid] == $auction[uid] || checkperm('manageauction')}-->
+                                 <li><a href="cp.php?ac=auction&auctionid=$auction[auctionid]&op=edit">修改</a></li>
+                                 <li><a href="cp.php?ac=auction&auctionid=$auction[auctionid]&op=delete" id="blog_delete_$auction[auctionid]" onclick="ajaxmenu(event, this.id)">删除</a></li>
+                                 <!--{/if}-->
+                              </ul>
+                           </div>
+                           </div><br/><br/><br/>
+                           <!--{if $_SGLOBAL['timestamp']>$auction[starttime]&&$_SGLOBAL['timestamp']<$auction[endtime]}-->
+                           <p style="text-align:center;">目前已有$auction[replynum]个参与者参与拍卖。</p>
+                           <!--{if $auctionbuy[name]}-->
+                           <p style="text-align:center;">目前最高出价是:$auctionbuy[name],价位为：$auctionbuy[money],电话:$auctionbuy[tel]</p><br/>
+                           <!--{/if}-->
+                           <!--{loop $auctionbuy1 $value}-->
+							<p style="text-align:center;">姓名:$value[name],出价:$value[money],电话:$value[tel]</p><br/>
+							<!--{/loop}-->
+							<div class='pagination'><ul>$multi</ul></div>
+                           <!--{/if}-->
+                           <!--{if $_SGLOBAL['timestamp']>$auction[endtime]}-->
+                           <p style="text-align:center;">共有$auction[replynum]个参与者参与拍卖。</p>
+                           <!--{if $auctionbuy[name]}-->
+                           <p style="text-align:center;">最高出价是:$auctionbuy[name],价位为：$auctionbuy[money]</p>
+                           <p style="text-align:center;">联系电话:$auctionbuy[tel]</p>
+                           <br/>
+                           <!--{/if}-->
+                           <!--{loop $auctionbuy1 $value}-->
+							<p style="text-align:center;">姓名:$value[name],出价:$value[money],电话:$value[tel]</p><br/>
+							<!--{/loop}-->
+							<div class='pagination'><ul>$multi</ul></div>
+                            <!--{/if}-->
+                      </div>
+
+                 </div>
+                 
+                </div>
+     
+              
+
+
+
+
+
+
+<script type="text/javascript">
+<!--
+function closeSide2(oo) {
+	if($('sidebar').style.display == 'none'){
+		$('content').style.cssText = '';
+		$('sidebar').style.display = 'block';
+		oo.innerHTML = '&raquo; 关闭侧边栏';
+	}
+	else{
+		$('content').style.cssText = 'margin: 0pt; width: 810px;';
+		$('sidebar').style.display = 'none';
+		oo.innerHTML = '&laquo; 打开侧边栏';
+	}
+}
+function addFriendCall(){
+	var el = $('friendinput');
+	if(!el || el.value == "")	return;
+	var s = '<input type="checkbox" name="fusername[]" value="'+el.value+'" id="'+el.value+'" checked>';
+	s += '<label for="'+el.value+'">'+el.value+'</label>';
+	s += '<br />';
+	$('friends').innerHTML += s;
+	el.value = '';
+}
+resizeImg('auction_article','700');
+resizeImg('div_main_content','450');
+
+//彩虹炫
+var elems = selector('div[class~=magicflicker]'); 
+for(var i=0; i<elems.length; i++){
+	magicColor(elems[i]);
+}
+
+-->
+</script>
+
+<!--{template footer}-->
+
+
+
+	
+
+		
+
+

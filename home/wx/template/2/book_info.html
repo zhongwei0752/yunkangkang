@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+		<link rel="stylesheet" type="text/css" href="css/book_info.css" />
+
+		<!-- mobiscroll 引入文件 注意顺序--> 
+		<link rel="stylesheet" href="css/mobiscroll.custom-2.5.4.min.css" />
+		<script type="text/javascript" src="js/jquery-v2.0.2.js"></script>
+		<script type="text/javascript" src="js/mobiscroll.custom-2.5.4.min.js"></script>
+
+		<!-- 自动添加当前日期 --> 
+		<script type="text/javascript">
+			$(document).ready(function () {
+					var today = new Date();
+					document.getElementById('date').value=(today.getFullYear()) + "-" + (today.getMonth()+1) + "-" + today.getDate();
+					});
+		</script>
+
+		<!-- mobiscroll 监听代码 --> 
+		<script type="text/javascript">
+			$(function() {
+					$('#nav, #quantity, #pay_way, #take_way').mobiscroll().select( {
+						theme: 'android-ics',
+						lang: 'zh',
+						display: 'bottom',
+						mode: 'scroller',
+						inputClass: 'i-txt',
+						width: 200
+					});
+					$('#nav_td').click(function() {
+						$('#nav').mobiscroll('show');
+						return false;
+					});
+					$('#quantity_td').click(function() {
+						$('#quantity').mobiscroll('show');
+						return false;
+					});
+					$('#pay_way_td').click(function() {
+						$('#pay_way').mobiscroll('show');
+						return false;
+					});
+					$('#take_way_td').click(function() {
+						$('#take_way').mobiscroll('show');
+						return false;
+					});
+
+					$('#clearSelect').click(function() {
+						$('#nav').val(1).change();
+						$('#nav'+'_dummy').val(' ');
+						return false;
+					});
+			});
+		</script>
+
+		<script type="text/javascript">
+			$(function(){
+				$('#date').mobiscroll().date({
+					nvalid: { daysOfWeek: [0, 6], daysOfMonth: ['5/1', '12/24', '12/25'] },
+					theme: 'android-ics',
+					lang: 'zh',
+					display: 'bottom',
+					mode: 'scroller',
+					dateOrder: 'yymmdd',
+					dateFormat: 'yy-mm-dd'
+				});    
+				$('#date_td').click(function(){
+					$('#date').mobiscroll('show'); 
+					return false;
+				});
+			});
+		</script>
+
+		<script type="text/javascript" src="js/myAll.js"></script>
+	</head>
+	
+	<body>
+		<div data-role="page" data-tap-toggle="false" data-theme="none">
+			<header data-role="header"></header>
+			<div data-role="content">
+				<h1>美丽人生夏季限量版连衣裙订单</h1>
+				<p>
+					&nbsp&nbsp&nbsp&nbsp
+					&nbsp&nbsp
+					各位亲们， 美丽人生夏季限量版连衣裙准备登陆！数量有限，
+					售完即止！快来抢购吧！
+				</p>
+				<form id="info_form" action="">
+					<table class="book_table">
+						<tr>
+						<th class="my_th">订单号</th>
+						<td colspan="2" class="my_td"><output id="order_number">522222998321</output></td>
+					</tr>
+					<tr>
+						<th class="my_th">品&nbsp&nbsp名</th>
+						<td colspan="2" class="my_td"><output id="clothing_name">夏季限量版连衣裙</output></td>
+					</tr>
+					<tr>
+						<th class="my_th">尺&nbsp&nbsp寸</th>
+						<td colspan="2" class="my_td" id="nav_td">
+							<select id="nav" name="size" class="f-dd">
+								<option value="1">S码</option>
+								<option value="2">M码</option>
+								<option value="3">L码</option>
+								<option value="4">XL码</option>
+								<option value="5">XXL码</option>
+							</select>
+							<img src="img/arrow_down.png" alt="" />
+						</td>
+					</tr>
+
+					<tr>
+						<th class="my_th">数&nbsp&nbsp量</th>
+						<td colspan="2" class="my_td" id="quantity_td">
+							<select id="quantity" name="quantity" class="f-dd">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+							</select>
+							<img src="img/arrow_down.png" alt="" />
+						</td>
+					</tr>
+	
+					<tr>
+						<th class="my_th">单&nbsp&nbsp价</th>
+						<td colspan="2" class="my_td"><output id="unit-price">254元</output></td>
+					</tr>
+
+					<tr>
+						<th class="my_th">金&nbsp&nbsp额</th>
+						<td class="my_td"><output id="total">254元</output></td>
+						<td class="my_td" id="pay_way_td">
+							<select id="pay_way" name="pay_way">
+									<option value="0">到店付款</option>
+									<option value="1">淘宝</option>
+									<option value="2">淘跑</option>
+							</select>
+							<img src="img/arrow_down.png" alt="" />
+						</td>
+					</tr>
+
+					<tr>
+						<th class="my_th">提取时间</th>
+						<td colspan="2" class="my_td" id="date_td">
+							<input id="date" name="date" class="i-txt" />
+							<img src="img/arrow_down.png" alt="" />
+						</td>
+					</tr>
+
+					<tr>
+						<th class="my_th">提取方式</th>
+						<td colspan="2" class="my_td" id="take_way_td">
+							<select id="take_way" name="take_way" class="one_col">
+								<option value="0">到店提取</option>
+								<option value="1">快递到家</option>
+								<option value="2">不要也罢</option>
+							</select>
+							<img src="img/arrow_down.png" alt="" />
+						</td>
+					</tr>
+
+					<tr style="height: 70px">
+						<th class="my_th">备&nbsp&nbsp注</th>
+						<td colspan="2" class="my_td"><textarea id="remarks" name="remarks" rows="4"></textarea></td>
+					</tr>
+					</table>
+				</form>
+
+				<input type="submit" id="submit" value="提&nbsp&nbsp交" />
+			</div><!-- content -->
+		</div><!-- page -->
+	</body>
+</html>

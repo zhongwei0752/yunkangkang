@@ -1,0 +1,202 @@
+<!--{eval $_TPL['titles'] = array($event['title'], '活动');}-->
+<!--{template header}-->
+
+<!--{if $space[self]}-->
+
+<style type="text/css">
+.event-list-center{margin-left:auto;margin-right: auto;}
+.event-list-header{border: 1px solid #ddd;width:660px;padding:20px;margin-top:20px;}
+.event-list-content{padding-top:28px;padding-left:28px;}
+.event-list-table td{padding-right:18px;padding-top: 10px;}
+.event-list-td-word{color:#00A69E;font-size:13px;padding-right:10px;}
+
+.event-list-h1{padding-bottom:10px;font-size:20px;color:#00A69E;}
+.dec-content{padding-bottom:20px;border-bottom: 1px dotted #ddd;}
+
+.event-cp-table th{text-align:left;}
+.clearfloat{clear:both;}
+/*活动页面详情页css*/
+.event-view-header{text-align:center;margin-top: 20px;}
+.event-view-header h1{font-size:20px;color:#00A69E;}
+.event-view-con{padding:20px;font-size:14px;}
+.event-view-con-header{padding:10px;color:#02B4AB;font-size:medium;}
+.event-view-con-content{padding:10px;font-size:14px;}
+.spacing-left{padding-left:20px;}
+.spacing-right{padding-right:20px;}
+.event-font{}
+.submit:hover{background: #02B4AB;}
+a:hover{color:black;}
+</style>
+<div class="content" style="font-size:15px;">
+	
+    <div class="bread container_12">
+    	<div class="bread_actived grid_1"> 活动详情</div>
+    	
+    	<!--{if empty($_SGLOBAL[supe_userevent]) && $event[deadline] > $_SGLOBAL[timestamp]}-->
+							<!--{if $event['limitnum']==0 || $event['membernum']<$event['limitnum']}-->
+						<a id="a_join" href="cp.php?ac=event&op=join&id=$eventid" onclick="ajaxmenu(event, this.id)" class="btn grid_2">我要参加</a>
+							<!--{/if}-->
+						<!--{elseif !empty($_SGLOBAL[supe_userevent]) && $_SGLOBAL['supe_userevent']['status'] == 0}-->
+						<a id="a_quit" href="cp.php?ac=event&id=$eventid&op=quit" onclick="ajaxmenu(event, this.id)" class="btn grid_2">不参加了</a>
+						<!--{elseif $_SGLOBAL['supe_userevent']['status'] == 1}-->
+							<!--{if $event[deadline] > $_SGLOBAL[timestamp] && ($event['limitnum']==0 || $event['membernum']<$event['limitnum'])}-->
+						<a id="a_join" href="cp.php?ac=event&op=join&id=$eventid" onclick="ajaxmenu(event, this.id)" class="btn grid_2">我要参加</a>
+							<!--{/if}-->
+						<!--{elseif $_SGLOBAL['supe_userevent']['status'] > 1}-->
+							<!--{if $_SGLOBAL[supe_uid] != $event[uid]}-->
+						<a id="a_quit" href="cp.php?ac=event&id=$eventid&op=quit" onclick="ajaxmenu(event, this.id)" class="btn grid_2">不参加了</a>
+							<!--{/if}-->
+						<!--{/if}-->
+    </div>
+	<div id="content" style="width:760px;">
+		<div class="content_detail_wrapper">
+			<div class = "event-view-header" style="margin-top: 40px;">
+				<h1 style="color: black; margin-top: 30px;">$event[title]</h1>
+			</div>
+			<div class="content_text_detail" style="text-align: center;margin-bottom:10px;margin-top:15px;font-size:12px;">作者 : {$_SN[$event[uid]]}&nbsp;|&nbsp;发布时间 : <!--{date('Y-m-d H:i:s',$event[dateline])}--></div>
+			<div class = "event-view-con">
+				<div class = "event-view-con-header">
+					基本情况
+				</div>
+				<div class = "event-view-con-content">
+					<div class="grid_1">
+                    	<img src="$event['pic']" class="list_pic" width="200px" height="150px">
+                    </div>
+                    <div class="grid_2 spacing-left">
+					<table class="">
+						
+						<tr>
+							<th class ="spacing-right">活动类型:</th><td>$_SGLOBAL[eventclass][$event[classid]][classname]</td>
+						</tr>
+						<tr>
+							<th class ="spacing-right">活动地点:</th><td>$event[province] $event[city] $event[location]</td>
+						</tr>
+						<tr>
+							<th class ="spacing-right">活动时间:</th><td><!--{eval echo sgmdate("m月d日 H:i", $event[starttime])}--> - <!--{eval echo sgmdate("m月d日 H:i", $event[endtime])}--></td>
+						</tr>
+						<tr>
+							<th class ="spacing-right">截止报名:</th><td><!--{if $event[deadline]>=$_SGLOBAL[timestamp]}-->
+							<!--{eval echo sgmdate("m月d日 H:i", $event[deadline])}-->
+							<!--{else}-->
+							报名结束
+							<!--{/if}--></td>
+						</tr>
+						
+						
+					</table>
+					</div>
+				</div>
+			</div>
+			<div class = "clearfloat"></div>
+			<div class = "event-view-con">
+				<div class="event-view-con-header">
+					活动介绍
+				</div>
+				<div class = "event-view-con-content">
+					$event[detail]
+				</div>
+			</div>
+			<div class = "event-view-con">
+				<div class = "event-view-con-header">
+					活动成员
+					<a href="cp.php?ac=event&id=$eventid&op=members" style="margin-left: 40px;">成员管理</a>
+				</div>
+				<div class = "event-view-con-content">
+					<!--{if $members}-->
+			<ul class="avatar_list1">
+				<!--{loop $members $key $userevent}-->
+				<li>
+					<p style="margin-top:8px;">
+						$userevent['username']&nbsp;:&nbsp;$userevent['tel']
+					</p>
+					<!--{if $event[allowfellow]}-->
+					<p><!--{if $userevent[fellow]}-->携带 $userevent[fellow] 人<!--{/if}--></p>
+					<!--{/if}-->
+				</li>
+				<!--{/loop}-->
+			</ul>
+			<!--{else}-->
+			<p style="text-align:center;">还没有活动成员。
+			<!--{if $event[grade]>0 && $_SGLOBAL[timestamp]<= $event[deadline] && ($event[limitnum] <= 0 || $event[membernum] < $event[limitnum]) && ($_SGLOBAL[supe_userevent][status] >= 3 || ($event[allowinvite] && $_SGLOBAL[supe_userevent][status]==2))}-->
+			<a href="cp.php?ac=event&id=$eventid&op=invite">邀请好友参加</a>
+			<!--{/if}-->
+			</p>
+			<!--{/if}-->
+				</div>
+			</div>
+			
+			<div class = "event-view-con">
+		
+				<div class = "event-view-con-content">
+					<ul class="menu_list" style="width: 700px;">
+				<li style="width: 10%;float: right;"><a id="a_close" onclick="ajaxmenu(event, this.id)" href="cp.php?ac=event&id=$eventid&op=close">取消</a></li>
+				<li style="width: 10%;float: right;"><a href="cp.php?ac=event&id=$eventid&op=edit">修改</a></li>
+					
+				<!--{/if}-->
+				
+				<!--{if $event[grade]>0 && $_SGLOBAL[timestamp]<= $event[deadline] && ($event[template] || $event[allowfellow])}-->
+				<li style="width: 10%;float: right;"><a id="a_join" href="cp.php?ac=event&id=$eventid&op=join" onclick="ajaxmenu(event, this.id)">报名信息</a></li>
+				<!--{/if}-->
+				
+				<!--{if $_SGLOBAL[supe_userevent][uid] == $event[uid]}-->
+					<!--{if $event[grade]>0 && $_SGLOBAL[timestamp]>$event[endtime]}-->
+				
+					<!--{/if}-->
+					<!--{if $event[grade]==-2 && $_SGLOBAL[timestamp]>$event[endtime]}-->
+				<li style="width: 10%;float: right;"><a id="a_open" onclick="ajaxmenu(event, this.id)" href="cp.php?ac=event&id=$eventid&op=open">开启活动</a></li>
+					<!--{/if}-->
+				<li style="width: 10%;float: right;"><a id="a_delete" onclick="ajaxmenu(event, this.id)" href="cp.php?ac=event&id=$eventid&op=delete">删除</a></li>
+				<!--{elseif $_SGLOBAL[endtime]<= $_SGLOBAL[timestamp]}-->
+				<li style="width: 10%;float: right;"><a id="a_quit2" onclick="ajaxmenu(event, this.id)" href="cp.php?ac=event&id=$eventid&op=quit">退出活动</a></li>
+				<!--{/if}-->
+				<li style="width: 15%;float: right;">阅读&nbsp;（&nbsp;$event[viewnum]&nbsp;）&nbsp;</li>
+				<li style="width: 15%;float: right;">评论&nbsp;（&nbsp;$event[replynum]&nbsp;）&nbsp;</li>
+				
+			</ul>
+					<!--{if $event[grade]>0 && ($event[allowpost] || $_SGLOBAL[supe_userevent][status] > 1)}-->
+		<div class="space_wall_post" style="width: 800px;">
+			<form action="cp.php?ac=comment" id="commentform_{$space[uid]}" name="commentform_{$space[uid]}" method="post">
+				<a href="###" id="message_face" onclick="showFace(this.id, 'comment_message');return false;"><img src="image/facelist.gif" align="absmiddle" /></a>
+				<!--{if $_SGLOBAL['magic']['doodle']}-->
+				<a id="a_magic_doodle" href="magic.php?mid=doodle&showid=comment_doodle&target=comment_message" onclick="ajaxmenu(event, this.id, 1)"><img src="image/magic/doodle.small.gif" class="magicicon" />涂鸦板</a>
+				<!--{/if}-->
+				<br />
+				<textarea name="message" id="comment_message" rows="5" cols="111" onkeydown="ctrlEnter(event, 'commentsubmit_btn');" style="width: 560px; float: left; margin-right: 20px; height: 105px;"></textarea>
+				<input type="hidden" name="refer" value="space.php?do=event&id=$eventid" />
+				<input type="hidden" name="id" value="$eventid" />
+				<input type="hidden" name="idtype" value="eventid" />
+				<input type="hidden" name="commentsubmit" value="true" />
+				<input type="button" style=" width: 123px; height: 107px; font-size: 26px; border-radius: 2px;" id="commentsubmit_btn" name="commentsubmit_btn" class="submit" value="留言" onclick="ajaxpost('commentform_{$space[uid]}', 'wall_add')" />
+				<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+			</form>
+		</div>
+		<br>
+		<!--{elseif $event[grade]>0}-->
+		<textarea name="message" id="comment_message" rows="5" cols="60" readonly="">只有活动成员才能发布留言</textarea>
+		<!--{/if}-->
+		<!--{if $cid}-->
+		<div class="notice">
+			当前只显示与你操作相关的单个评论，<a href="space.php?do=event&id=$eventid&view=comment">点击此处查看全部评论</a>
+		</div>
+		<!--{/if}-->
+		<div class="page">$multi</div>
+		<div class="comments_list" id="comment">
+			<input type="hidden" value="1" name="comment_prepend" id="comment_prepend" />
+			<ul id="comment_ul">
+			<!--{loop $comments $value}-->
+				<!--{template space_comment_li}-->
+			<!--{/loop}-->
+			</ul>
+		</div>
+		<div class="page">$multi</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+
+
+
+<!--{template footer}-->

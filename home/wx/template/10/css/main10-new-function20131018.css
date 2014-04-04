@@ -1,0 +1,495 @@
+* { 
+	margin: 0;	padding: 0; border: 0; 
+	font-family: 'Microsoft yahei' !important;
+	-webkit-tap-highlight-color: rgba(0, 0, 0 ,0);
+}
+
+input{ border: 0; border-radius: 0 !important; -webkit-appearance: none;}
+textarea{ -webkit-appearance: none; border-radius: 0 !important; }
+
+body{
+	font-family: 'Microsoft yahei' !important;
+	background-color: rgb(240, 240, 240);
+	line-height: 1.5em;
+}
+
+/*index*/
+.banner_pic img{
+	width: 100%;
+    vertical-align: bottom;
+}
+
+.banner_text{
+	background: url("./template/css/img/banner_text.png") repeat-x;
+	width: 100%;
+    position: relative;
+    margin-top: -35px;
+	z-index: 1000;
+	line-height: 35px;
+	min-height: 35px;
+	max-height: 35px;
+	color: white;
+	overflow: hidden;
+}
+
+.banner_text span{
+	font-size: 13px !important;
+	padding-left: 12.5px;
+}
+
+.menu{
+	list-style: none;
+	background-color: rgb(240, 240, 240);
+}
+
+.menu li{
+	border-bottom: 1px solid rgb(216, 216, 216);
+	border-top: 1px solid rgb(252 , 252, 252);
+}
+
+.menu li div{
+	/*min-height: 70px;
+	max-height: 70px;*/
+	height: 70px;
+	line-height: 70px;
+	
+	/*display: table-cell;
+	width: 1000px; /*in fact is not 1000px*/
+}
+
+.menu li:first-child{
+	border-top: none;
+}
+
+.menu li a{ 
+	text-decoration: none; 
+	color: black;
+}
+
+.menu li .menu_item{
+	/*vertical-align: middle;*/ /*微信有问题*/
+	max-width: 36px;
+	padding: 20px 5% 0 7.8125%;
+}
+
+.menu li span{
+	vertical-align: 9px;
+}
+
+.menu li .menu_arrow{
+	float: right;
+	margin: 30px 6.875% 0 0;
+	max-width: 8px
+}
+
+/*info*/
+.navigation{
+	width: 100%;
+	height: 45px;
+	line-height: 45px;
+	background-color: rgb(66, 184, 177);
+	box-shadow: 1px 1px 3px rgb(100, 100, 100);
+	color: white;
+	position: fixed;
+	top: 0;
+	z-index: 999;
+}
+
+.mt55{
+	margin-top: 55px;
+}
+
+.mb10{
+	margin-bottom: 10px;
+}
+
+.navigation span{
+	font-weight: bold;
+	padding-left: 4.6%;
+}
+
+.navigation img{
+	max-width: 50px;
+	/*padding: 7px 2.1875% 0 0;
+	float: right;
+	cursor: pointer;*/
+}
+
+.menu_btn {
+    display: inline-block;
+  	width: 50px;
+ 	height: 30px;
+  	float: right;
+  	margin-right: 10px;
+  	margin-top: 8px !important;
+}
+
+.list li{
+	margin: 10px 3.125%;
+}
+
+.list li a{
+	text-decoration: none;
+}
+
+.listOuter{
+	overflow: hidden;
+	border-left: 5px solid rgb(118, 209, 205);
+	box-shadow: 1px 1px 3px #BCBCBC;
+	height: 84px;
+	background-color: white;
+}
+
+.listInner{
+	width: 72%;
+	height: 45px;
+	overflow: hidden;
+	margin-top: 7px;
+}
+
+.list li img{
+	max-width: 69px;
+	float: right;
+	position: relative;
+	margin-right: 7px;
+	margin-top: 7px;
+}
+
+.list h4{
+	padding: 4px 0 0 10px;
+	color: rgb(100, 100, 100);
+	font-size: 15px;
+	line-height: 1.2;
+}
+
+.list h4 span{
+	padding-left: 3.75%;
+	color: rgb(66, 184, 177);
+}
+
+.info_span{
+	padding: 0 0 0 10px;
+}
+
+.subtitle{
+	color: rgb(204, 204, 204);
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.more_button{
+	color: white;
+	/*background-color: rgb(118, 209, 205);    */
+    background-color:#fff;
+	font-size: 18px;
+	margin: 0 3.125% 10px;
+	width: 93.75%;
+	height: 40px;
+	cursor: pointer;
+	letter-spacing: 12px;
+	text-indent: 12px;
+	*text-indent: 0;
+}
+
+.more_button:hover{
+/*	background-color: rgb(66, 184, 177);      */
+}
+
+/*info_content*/
+.article{
+	width: 93.75%;
+	background-color: white;
+	padding: 22px 3.125%;
+	color: rgb(102, 102, 102);
+}
+
+.article h3 span{
+	padding-left: 3.75%;
+	color: rgb(66, 184, 177);
+}
+
+.article_content{
+	margin-top: 10px;
+    color: #956666;
+}
+
+.article_content p{
+	text-indent: 0em;
+}
+
+.article_content img{
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.article .article_content table{
+	border-collapse: collapse;
+	margin-top: 10px;
+	width: 100%;
+	background-color: white;
+}
+
+.article .article_content table td{
+	border: 1px solid rgb(204, 204, 204);
+	height: 40px;
+	padding: 0 10px;
+}
+
+.article .article_content table td textarea{
+	vertical-align: middle;
+	width: 100%;
+	height: 80%;
+}
+
+.article .article_content table td img{
+	max-width: 13px;
+	margin: 8px 8px 0 0;
+	float: right;
+}
+
+.info_content_span{
+	padding-top: 7.5px;
+	display: inline-block; /*因为span设padding并不影响其他行*/
+}
+
+.page_select{
+	list-style: none;
+	margin: 10px auto;
+	text-align: center;
+}
+
+.page_select li{
+	display: inline-block;
+	padding: 0 3.4375%;
+}
+
+.page_select li a{
+	text-decoration: none;
+	color: rgb(78, 182, 177);
+}
+
+.comment_add{
+	padding: 0 3.125%;
+	height: 82px;
+	line-height: 82px;
+	border-bottom: 1px solid rgb(209, 209, 209);
+}
+
+.comment_add .comment_area{
+	height: 49px;
+	padding: 3px 2%;
+	width: 72%;
+	border: 1px solid #DDDDDD;
+	display: inline;
+	vertical-align: middle;
+	font-size: 14px;
+}
+
+.btn{
+	color: white;
+	/*background-color: rgb(122, 208, 205);    */
+    background-color: #697253;
+	font-size: large;
+	cursor: pointer;
+}
+
+.btn:hover{
+	/*background-color: rgb(63, 158, 154); */
+    background-color: #b8bd91;
+}
+
+.comment_add .submit_btn{
+	height: 55px;
+	width: 18%;
+	display: inline;
+	vertical-align: middle;
+	margin-left: 3%;
+	font-size: 16px;
+}
+
+.comment_list li{
+	border-bottom: 1px solid #fff;
+	border-top: 1px solid #DDDDCE;
+	padding: 12px 3.125%;
+    background-color: #F4F3E3;
+	color: rgb(102, 102, 102);
+}
+
+.comment_list li span{
+	color: rgb(79, 182, 177);
+}
+
+/*job_content*/
+.sub_btn,.order_btn,.buy_btn,.dial_btn{
+	width: 100%;
+	height: 40px;
+	margin: 10px 0 0 0;
+}
+
+.job_content_span{
+	float: right;
+	padding: 7.5px 0 0 1%;
+}
+
+/*product_content*/
+.colour{
+	color: rgb(122, 208, 205) !important;
+}
+
+.underline{
+	text-decoration: underline;
+}
+
+.through{
+	text-decoration: line-through;
+}
+
+/*book_info*/
+.grid3{
+	width: 27.5%;
+}
+
+.grid4{
+	width: 36.25%;
+}
+
+.ml35{
+	margin-left: 35px;
+}
+
+/*online*/
+.onlineComment{
+	box-shadow: -1px -1px 3px rgb(100, 100, 100);
+	background-color: rgb(240, 240, 240);;
+	position: fixed;
+	width: 100%;
+	height: 86px;
+	bottom: 0;
+}
+
+.onlineComment .comment_area{
+	width: 64.2%;
+	height: 63px;
+}
+
+.ask_btn{
+	width: 24%;
+	height: 70px;
+	display: inline;
+	vertical-align: middle;
+	font-size: 16px;
+}
+
+.mb100{
+	margin-bottom: 100px;
+}
+
+.onlineArticle{
+	min-height: 100%;
+}
+
+.chat{
+	list-style: none;
+}
+
+.chat img{
+	width: 40px;
+}
+
+.chat li{
+	margin-bottom: 15px;
+}
+
+.chat li>div{
+	overflow: hidden;
+	position: relative;
+}
+
+.chatMessage{
+	display: inline-block;
+	padding: 14px 10px;
+	max-width: 65%;
+}
+
+.chatMessage p{
+	text-indent: 0;
+}
+
+.right_triangle{
+	width: 12px !important;
+	margin-right: 10px;
+}
+
+.left_triangle{
+	width: 12px !important;
+	margin-left: 10px;
+}
+
+.fr{
+	float: right;
+}
+
+.fl{
+	float: left;
+}
+
+.color1{
+	background-color: rgb(240, 240, 240);
+	color: black;
+}
+
+.color2{
+	background-color: rgb(122, 208, 205);
+	color: white;
+}
+
+.color1 span{
+	color: rgb(180, 180, 180);
+}
+
+.color2 span{
+	color: rgb(240, 240, 240);
+}
+
+/*详情页面转发朋友圈*/
+.friend_wrapper {
+  width: 260px;
+  margin: 20px auto;
+}
+.friend_btn {
+  display: block;
+  background: #EEEEEE;
+  width: 120px;
+  height: 30px;
+  margin-bottom: 20px;
+  float: left;
+  font-size: 13px;
+}
+.friend_btn img {
+  width: 24px;
+  height: 24px;
+  padding-top: 3px;
+  padding-left: 10px;
+  vertical-align: -7px;
+}
+.friend_btn:hover {
+  background: #ccc;
+  text-decoration: none;
+}
+.add_btn {
+  display: block;
+  background: #7AD0CD;
+  margin: 20px auto;
+  height: 40px;
+  text-align: center;
+  text-decoration: none;
+}
+.add_btn span {
+  line-height: 40px;
+  color: #fff;
+  font-size: 16px;
+}
+.add_btn:hover {
+  background: #4ABFBC;
+  text-decoration: none;
+}

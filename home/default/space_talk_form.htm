@@ -1,0 +1,30 @@
+<h2 class="title"><img src="$wei1[image2url]">在线沟通</h2>
+<div class="tabs_header">
+	<ul class="tabs">
+		<li<!--{if empty($talk[talkid])}--> class="active"<!--{/if}-->><a href="cp.php?ac=talk"><span>发布</span></a></li>
+		<li$actives[all]><a href="space.php?uid=$space[uid]&do=talk&view=all"><span>在线沟通</span></a></li>
+		<li class="null"  style="margin-left:625px;"><a href="cp.php?ac=talk">发布</a></li>
+
+	</ul>
+</div>
+<form method="post" id="talkform" action="cp.php?ac=talk&view=$_GET[view]" class="post_talk">
+标题:<br/><textarea id="subject" name="subject"  rows="4" style="width:538px; height: 22px;"></textarea><br/>
+内容:<div class="r_option1"style="margin-left:400px;">还可输入 <strong id="maxlimit">200</strong> 个字符</div>
+<a href="###" id="talkface" onclick="showFace(this.id, 'message');return false;"><img src="image/facelist.gif" align="absmiddle" /></a></td>
+<!--{if checkperm('seccode')}-->
+	<!--{if $_SCONFIG['questionmode']}-->
+	回答提问：<!--{eval question();}--> 
+	<!--{else}-->
+	输入验证码：<script>seccode();</script> 
+	<!--{/if}-->
+	<input type="text" id="seccode" name="seccode" value="" size="10" class="t_input">
+<!--{/if}-->
+<br>
+
+<textarea id="message" name="message" onkeyup="textCounter(this, 'maxlimit', 200)" onkeydown="ctrlEnter(event, 'add');" rows="4" style="width:538px; height: 172px;"></textarea><br/>
+<input type="hidden" name="addsubmit" value="true" />
+<button type="submit" id="add" name="add" class="post_button">发布</button>
+<input type="hidden" name="refer" value="$theurl" />
+<input type="hidden" name="topicid" value="$topicid" />
+<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+</form>

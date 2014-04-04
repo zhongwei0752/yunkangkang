@@ -1,0 +1,20 @@
+.content {
+	padding: 0 3.125%;
+}
+
+.wrapperPic {
+	text-align: center;
+}
+.wrapperPic img {
+	width: 30%;
+	padding-right: 3.3%;
+}
+
+.content-text p {
+	line-height: 20px;
+}
+
+.cParagraph {
+	color: #737373;
+}
+

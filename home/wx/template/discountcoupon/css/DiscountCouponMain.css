@@ -1,0 +1,175 @@
+﻿*
+{
+    margin: 0;	padding: 0; border: 0;
+    font-family: 'Microsoft yahei' !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0 ,0);
+}
+input{ border: 0; border-radius: 0 !important; -webkit-appearance: none;}
+textarea{ -webkit-appearance: none; border-radius: 0 !important; }
+
+body,html
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+body
+{
+    background-color: #F0F0F0;
+}
+
+.flower
+{
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+.flower img
+{
+    width: 150px;
+}
+.showword
+{
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.showword p
+{
+    color: #49B7B1;
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+.CouponShow
+{
+    border: 1px dashed #fff;
+    width: 96%;
+    margin-left: 2%;
+    background-color: #E95E66;
+    height: 100px;
+    margin-top: 30px;
+}
+.CouponShow p
+{
+    text-align: center;
+    color: #fff;
+}
+.p1
+{
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 25px;
+}
+.p2
+{
+    font-size: 15px;
+    margin-top: 5px;
+}
+.CouponShow img
+{
+    width: 30px;
+    float: right;
+}
+.CouponShowSucess
+{
+    background-color: #fff;
+    border: 1px dashed #E66165;
+    width: 96%;
+    margin-left: 2%;
+    float: left;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+.s1
+{
+    float: left;
+
+}
+.s1_p1
+{
+    color: #4FB6B1;
+    font-size: 15px;
+    width: 200px;
+    margin-top: 5%;
+    padding-left: 10px;
+}
+.s1_p2
+{
+    color: #666666;
+    font-size: 14px;
+    width: 200px;
+    margin-top: 5%;
+    padding-left: 10px;
+}
+.s1_p3
+{
+    color:#48B7B1;
+    font-size: 14px;
+    width: 200px;
+    margin-top: 5%;
+    padding-left: 10px;
+    margin-bottom: 5px;
+}
+
+
+.s2
+{
+    width:65px;
+
+    float: right;
+    background-color:#E66165 ;
+
+}
+.s2_div
+{
+    height: 50px;
+    width: 50px;
+   /* border: 1px solid #000;  */
+    margin: 0 auto;
+    position: relative;
+
+
+}
+.s2_p1
+{
+    color: #fff;
+    font-size: 30px;
+    margin-top: 5px;
+    margin-left: 10px;
+
+
+
+}
+.s2_p2
+{
+    color: #fff;
+    font-size: 14px;
+    margin-top: -25px;
+    margin-left: 30px;
+
+
+}
+/*.s2_pic
+{
+    float: right;
+    border: 1px solid #000;
+    position:absolute;
+
+    bottom:-25%;
+
+
+
+
+}
+.s2_pic  img
+{
+
+    width: 15px;
+    float: right;
+
+
+
+
+}  */

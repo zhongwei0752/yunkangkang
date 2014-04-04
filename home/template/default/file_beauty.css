@@ -1,0 +1,27 @@
+ *{margin:0;padding:0;}  
+a{text-decoration:none;}  
+.btn_addPic{  
+display: block;  
+position: relative;  
+width: 94px;  
+height: 32px;  
+overflow: hidden;  
+background: url('image/btn_normal.png')no-repeat;
+color: #fff;  
+padding-bottom: 4px;
+cursor: pointer;  
+text-align: center;  
+}  
+.btn_addPic span{display: block;line-height: 32px;}  
+ 
+.filePrew {  
+display: block;  
+position: absolute;  
+top: 0;  
+left: 0;  
+width: 94px;  
+height: 32px;  
+font-size: 100px; /* 增大不同浏览器的可点击区域 */  
+opacity: 0; /* 实现的关键点 */  
+filter:alpha(opacity=0);/* 兼容IE */  
+}  

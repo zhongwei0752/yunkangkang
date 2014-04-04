@@ -1,0 +1,109 @@
+<!--{eval $_TPL['titles'] = array($job['subject'], '人才招聘');}-->
+<!--{eval $friendsname = array(1 => '仅好友可见',2 => '指定好友可见',3 => '仅自己可见',4 => '凭密码可见');}-->
+<!--{template header}-->
+
+<!--{if $space[self]}-->
+
+<!--{else}-->
+<!--{eval
+	$_TPL['spacetitle'] = "人才招聘";
+	$_TPL['spacemenus'][] = "<a href=\"space.php?uid=$space[uid]&do=$do&view=me\">TA的所有企业介绍</a>";
+	$_TPL['spacemenus'][] = "<a href=\"space.php?uid=$space[uid]&do=job&id=$job[jobid]\">查看企业介绍</a>";
+}-->
+<!--{template space_menu}-->
+<!--{/if}-->
+
+<script type="text/javascript" charset="$_SC[charset]" src="source/script_calendar.js"></script>
+
+<div style="padding:0 0 10px;">
+            <div class="content" style="font-size:15px;">
+                    <div class="indexing content_indexing">
+                    <span><a href="space.php?do=home">首页</a></span>><span><a href="space.php?do=job&view=me">人才招聘</a></span>
+                    </div><!-- end -->
+                 <div class="content_detail_wrapper">
+                 	
+                      <div class="content_page_detail">
+                           <div class="content_title">$job[subject]</div>
+                         <div class="content_text_detail" style="text-align: center;margin-bottom:10px;margin-top:10px;font-size:12px;">作者 : $job[username]&nbsp;|&nbsp;发布时间 : <!--{date('Y-m-d H:i:s',$job[dateline])}--></div>
+                           <div class="advertise_content_text_detail" style="overflow:hidden">
+                           	   <!--{if $job[message]}-->
+                               <p><b>职位描述:</b>$job[message]</p>
+                               <!--{/if}-->
+							   <!--{if $job[messagecomment]}-->
+                               <p><b>资格要求:</b>$job[messagecomment]</p>
+                               <!--{/if}-->
+                               <!--{if $job[telephone]}-->
+							   <p><b>电话:</b>$job[telephone]</p>
+							   <!--{/if}-->
+							   <!--{if $job[email]}-->
+							   <p><b>邮箱:</b>$job[email]</p>
+							   <!--{/if}-->
+							   <!--{if $job[money]}-->
+							   <p><b>待遇:</b>$job[money]</p>
+							   <!--{/if}-->
+							   <!--{if $job[othermessage]}-->
+							   <p><b>其它:</b>$job[othermessage]</p>
+							   <!--{/if}-->
+                              
+                           </div>
+                       
+                           <div class="feed_action">
+                              <ul>
+                                 <li>阅览（$job[viewnum]）</li>
+                                 <!--{if $_SGLOBAL[supe_uid] == $job[uid] || checkperm('managejob')}-->
+                                 <li><a href="cp.php?ac=job&jobid=$job[jobid]&op=edit">修改</a></li>
+                                 <li><a href="cp.php?ac=job&jobid=$job[jobid]&op=delete">删除</a></li>
+                                 <!--{/if}-->
+                              </ul>
+                           </div>
+                  
+                      </div>
+                 </div>
+                 
+                
+              
+            </div>
+
+	
+
+
+
+
+
+
+<script type="text/javascript">
+<!--
+function closeSide2(oo) {
+	if($('sidebar').style.display == 'none'){
+		$('content').style.cssText = '';
+		$('sidebar').style.display = 'block';
+		oo.innerHTML = '&raquo; 关闭侧边栏';
+	}
+	else{
+		$('content').style.cssText = 'margin: 0pt; width: 810px;';
+		$('sidebar').style.display = 'none';
+		oo.innerHTML = '&laquo; 打开侧边栏';
+	}
+}
+function addFriendCall(){
+	var el = $('friendinput');
+	if(!el || el.value == "")	return;
+	var s = '<input type="checkbox" name="fusername[]" value="'+el.value+'" id="'+el.value+'" checked>';
+	s += '<label for="'+el.value+'">'+el.value+'</label>';
+	s += '<br />';
+	$('friends').innerHTML += s;
+	el.value = '';
+}
+resizeImg('job_article','700');
+resizeImg('div_main_content','450');
+
+//彩虹炫
+var elems = selector('div[class~=magicflicker]'); 
+for(var i=0; i<elems.length; i++){
+	magicColor(elems[i]);
+}
+
+-->
+</script>
+
+<!--{template footer}-->

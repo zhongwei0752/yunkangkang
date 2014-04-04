@@ -1,0 +1,9 @@
+.jobTable {
+	line-height: 1.2em;
+}
+
+.jobTable th {
+	width: 25%;
+	font-weight: bold;
+}
+

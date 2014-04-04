@@ -1,0 +1,1 @@
+<?PHP exit;?>	2013-05-23 16:15:22		127.0.0.1	1	/new/home/space.php?uid=1&do=menuset&view=me	SELECT bf.*, b.* FROM uchome_menuset b   				LEFT JOIN uchome_appset bf ON bf.num=b.menusetid  				WHERE b.uid='1'  				ORDER BY b.dateline ASC LIMIT 0,10

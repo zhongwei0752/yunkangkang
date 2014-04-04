@@ -1,0 +1,178 @@
+<!--{if empty($_TPL['getmore'])}-->	
+<!--{eval $_TPL['titles'] = array('首页');}-->
+<!--{template header}-->
+    <link rel="stylesheet" type="text/css" href="./template/default/jquery-mobile-fluid960.min.css">
+    <link rel="stylesheet" type="text/css" href="./template/default/style1.css">
+    <link rel="stylesheet" type="text/css" href="./template/default/file_beauty.css">
+    <link type='text/css' href='./template/default/basic_chosen.css' rel='stylesheet' media='screen' />
+    <style type="text/css">
+       h3{color: #727272;margin-top: 20px;font-weight:normal;}
+       .selected{ -webkit-box-shadow: 3px 3px 3px;
+  -moz-box-shadow: 3px 3px 3px;
+  box-shadow: 3px 3px 3px;}
+  
+      .bg1{ background: url("./template/default/image/chosen_bg.png");}
+      .open{ background: url("./template/default/image/chosen_bg2.png")!important;}
+      .open .price{color:#3EB2B8!important;}
+      #simplemodal-container{height:200px;}
+    </style>
+<style type="text/css">
+.navbar-inner .grid_4 a img{max-width: 40px;}
+</style>
+<div id="content" style="width:762px;margin-left:20px;margin-top:10px;">
+
+<!--{if $space['uid'] && $space[self]}-->
+	<table cellpadding="0" cellspacing="0" border="0" width="100%">
+		<tr>
+			<td valign="top" width="150">
+				<div class="ar_r_t"><div class="ar_l_t"><div class="ar_r_b"><div class="ar_l_b"><a href="cp.php?ac=avatar"><!--{avatar($_SGLOBAL[supe_uid],middle)}--></a></div></div></div></div>
+			</td>
+			<td valign="top">
+				<h3 class="index_name" style="margin-top:-6px;border:0px;">
+						<a  href="space.php?uid=$space[uid]" style="color:#999;font-size:18px;"<!--{eval g_color($space[groupid]);}--> >{$_SN[$space[uid]]}</a>
+					
+					<span style="color:#43B8B0;">VIP</span>
+				</h3>
+					<br/>
+					 <div class="company_avata_box container_12"  style="margin-top:-30px;">
+                   <div class="grid_2">
+                       <h5 style="margin-top:0px;">已有$space[viewnum]人访问,$space[experience]个信用</h5>
+                       <div id="weixinhome" style="margin-top:-18px;"><a href="#" class="company_setting">微信登陆平台</a></div>
+                       <div id="weixin">
+                       <h3 style="font-size:20px;color:#44B1BA;background:#ECEFF1;margin:0;line-height:40px;text-align:left;padding-left:10px;">微信公众帐号登陆</h3>
+                        <div style="background:#fff;">你可以通过前往微信公众平台修改你的公众帐号的信息，包括名称等基本属性。<br/>用户名:$space[weixinusername]<br/>登录密码:$space[weixinpassword]<br/>
+             			<a href="http://mp.weixin.qq.com"  style="display: block;margin:30px auto;text-align:center;width: 148px;height: 28px;background: #43B8B0; line-height: 28px; color: #fff;" class="company_setting"  target="_blank">前往微信公众平台</a>
+                        </div>
+
+                        </div>
+                       <a href="cp.php?ac=profile" style="margin-top:12px;" class="company_setting">企业设置</a>
+                   </div>
+                 </div>
+						
+					
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type='text/javascript' src='./source/jquery.simplemodal.js'></script>
+    <script type="text/javascript">
+       $(document).ready(function(){
+        
+        $('#weixin').attr("style", "display:none;");
+        $('#weixinhome').click(function (e) {
+    	e.preventDefault();
+    	$('#weixin').modal();
+  });
+
+            
+       })
+    </script>
+				
+				
+			
+
+				
+			</td>
+		</tr>
+	</table>
+
+	
+	<!--{if $space[allnum]}-->
+	<div class="mgs_list">
+		<!--{if $space[namestatusnum]}--><div><img src="image/icon/profile.gif" alt="" /><a href="admincp.php?ac=space&perpage=20&namestatus=0&searchsubmit=1"><strong>$space[namestatusnum]</strong> 个待认证用户</a></div><!--{/if}-->
+
+	</div>
+	<!--{/if}-->
+	 <div style="width:100%;background:#C2C2C2;height:1px;width:100%;margin:0px 0 30px 0;"></div>
+                <div class="container_12 index_assembly_boxes">
+                	<!--{if $myself}-->
+					<!--{loop $myself $value}-->
+					
+                    <div class="grid_6">
+                        <div class="index_assembly_box">
+                            <div class="assembly_title">
+                                   <span class="title">$value[subject]</span>
+                             </div>
+                             <div class="assembly_info">
+                                <img src="$value[image1url]" style="width:120px;height:120px;">
+                                
+                                <h5 style="padding-top: 20px;">文章数：$a[$value['menusetid']] 篇</h5>
+                                <h5>浏览量：<!--{if $b[$value['menusetid']]}-->$b[$value['menusetid']]<!--{else}-->0<!--{/if}-->次</h5>
+                                <h5>评论数：<!--{if $c[$value['menusetid']]}-->$c[$value['menusetid']]<!--{else}-->0<!--{/if}-->条</h5>
+                                <h5>有效期至：<!--{if $value[money]}--><!--{date('Y-m-d H:i:s',$value[endtime])}--><!--{else}-->长期<!--{/if}--></h5>
+                                <a href="cp.php?ac=$value[english]" class="quick_post">快速发布</a>
+                             </div>
+                        </div>
+                    </div><!-- end -->   
+                      <!--{/loop}--> 
+                      <!--{/if}-->     
+                    </div>
+                    </div>                                                         
+
+
+
+	
+		
+<!--{/if}-->	
+
+	
+	
+	
+	
+
+	
+
+	
+
+</div>
+<!--/content-->
+
+
+
+
+	
+	
+
+	
+
+	
+
+	
+
+<script type="text/javascript">
+
+	var next = $start;
+	function feed_more() {
+		var x = new Ajax('XML', 'ajax_wait');
+		var html = '';
+		next = next + $perpage;
+		x.get('cp.php?ac=feed&op=get&start='+next+'&view=$_GET[view]&appid=$_GET[appid]&icon=$_GET[icon]&filter=$_GET[filter]&day=$_GET[day]', function(s){
+			html = '<h4 class="feedtime">以下是新读取的动态</h4>' + s;
+			$('feed_div').innerHTML += html;
+		});
+	}
+
+	function filter_more(id) {
+		if($('feed_filter_div_'+id).style.display == '') {
+			$('feed_filter_div_'+id).style.display = 'none';
+			$('feed_filter_notice_'+id).style.display = '';
+		} else {
+			$('feed_filter_div_'+id).style.display = '';
+			$('feed_filter_notice_'+id).style.display = 'none';
+		}
+	}
+
+	function close_feedbox() {
+		var x = new Ajax();
+		x.get('cp.php?ac=common&op=closefeedbox', function(s){
+			$('feed_box').style.display = 'none';
+		});
+	}
+	
+	var elems = selector('li[class~=magicthunder]', $('feed_div')); 
+	for(var i=0; i<elems.length; i++){		
+		magicColor(elems[i]); 
+	}
+</script>
+
+<!--{eval my_checkupdate();}-->
+<!--{eval my_showgift();}-->
+<!--{template footer}-->
+<!--{/if}-->

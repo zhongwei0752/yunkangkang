@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+		<link rel="stylesheet" href="css/mobiscroll.custom-2.5.4.min.css" /> <!-- 插件所需 --> 
+		<script type="text/javascript" src="js/jquery-v2.0.2.js"></script> <!-- select插件要先load jQuery --> 
+		<script type="text/javascript" src="js/mobiscroll.custom-2.5.4.min.js"></script> <!-- 插件所需 --> 
+		<link rel="stylesheet" type="text/css" href="css/info.css" />
+		<script type="text/javascript" src="js/myAll.js"></script>
+		<script type="text/javascript">
+			$(function() {
+					$('#nav').mobiscroll().select( {
+						theme: 'android-ics',
+						lang: 'zh',
+						display: 'bottom',
+						mode: 'scroller',
+						inputClass: 'i-txt',
+						width: 200
+					});
+					$('#show').click(function() {
+						$('#nav').mobiscroll('show');
+						return false;
+					});
+
+					$('#clearSelect').click(function() {
+						$('#nav').val(1).change();
+						$('#nav'+'_dummy').val(' ');
+						return false;
+					});
+			});
+		</script>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#nav'+'_dummy').hide();
+			});
+		</script>
+	</head>
+
+	<body>
+	<div data-role="page">
+		<header data-role="header" data-tag-toggle="false" data-theme="none">
+		</header>
+
+		<div data-role="content">
+			<div class="tag_menu">
+				<a href="#" id="show"><img src="img/tag_menu.png" alt="menu tag" id="tag_menu"
+			     onmouseover="showMenu()" onmouseout="tagUp()"/></a>
+			</div><!-- tag_menu -->
+
+
+			<div class="info_list_table">
+				<a href="product_content.html">
+				<table>
+					<tr>
+						<td class="info_img">
+							<img src="img/small_pic_product_list.png" alt="" />
+						</td>
+						<td class="info_text">
+							<div class="list_item_text">
+									<span class="list_item_title">雪纺黑白衬衣</span>
+									<span class="price">&nbsp&nbsp&#65509 79</span>
+							<br />
+							<span class="list_item_time">2013-5-27</span>
+						</div>
+						</td>
+					</tr>
+				</table><!-- one -->
+				</a>
+
+
+					<div class="split">
+						<br />
+					</div>
+
+				<a href="product_content.html">
+				<table>
+					<tr>
+						<td class="info_img">
+							<img src="img/small_pic_product_list.png" alt="" />
+						</td>
+						<td class="info_text">
+							<div class="list_item_text">
+									<span class="list_item_title">黑色波点上衣</span>
+									<span class="price">&nbsp&nbsp&#65509 79</span>
+							<br />
+							<span class="list_item_time">2013-5-27</span>
+						</div>
+						</td>
+					</tr>
+				</table><! -- two -->
+				</a>
+
+					<div class="split">
+						<br />
+					</div>
+
+				<a href="product_content.html">
+				<table>
+					<tr>
+						<td class="info_img">
+							<img src="img/small_pic_product_list.png" alt="" />
+						</td>
+						<td class="info_text">
+							<div class="list_item_text">
+									<span class="list_item_title">夏日清爽碎花连衣裙</span>
+									<span class="price">&nbsp&nbsp&#65509 79</span>
+							<br />
+							<span class="list_item_time">2013-5-27</span>
+						</div>
+						</td>
+					</tr>
+				</table><!-- three -->
+				</a>
+
+
+					<div class="split">
+						<br />
+					</div>
+
+				<a href="product_content.html">
+				<table>
+					<tr>
+						<td class="info_img">
+							<img src="img/small_pic_product_list.png" alt="" />
+						</td>
+						<td class="info_text">
+							<div class="list_item_text">
+									<span class="list_item_title">宝石绿雪纺上衣</span>
+									<span class="price">&nbsp&nbsp&#65509 79</span>
+							<br />
+							<span class="list_item_time">2013-5-27</span>
+						</div>
+						</td>
+					</tr>
+				</table><!-- four -->
+				</a>
+
+
+					<div class="split">
+						<br />
+					</div>
+
+				<a href="product_content.html">
+				<table>
+					<tr>
+						<td class="info_img">
+							<img src="img/small_pic_product_list.png" alt="" />
+						</td>
+						<td class="info_text">
+							<div class="list_item_text">
+									<span class="list_item_title">裸色珠片包包</span>
+									<span class="price">&nbsp&nbsp&#65509 79</span>
+							<br />
+							<span class="list_item_time">2013-5-27</span>
+						</div>
+						</td>
+					</tr>
+				</table><!-- five -->
+				</a>
+
+					<div class="split">
+						<br />
+					</div>
+
+				<a href="product_content.html">
+				<table>
+					<tr>
+						<td class="info_img">
+							<img src="img/small_pic_product_list.png" alt="" />
+						</td>
+						<td class="info_text">
+							<div class="list_item_text">
+									<span class="list_item_title">简单运动上衣</span>
+									<span class="price">&nbsp&nbsp&#65509 79</span>
+							<br />
+							<span class="list_item_time">2013-5-27</span>
+						</div>
+						</td>
+					</tr>
+				</table><!-- six -->
+				</a>
+
+				<div class="split">
+						<br />
+					</div>
+					<div class="button_more_2">
+						<button  onmouseover="deeper()" onmouseout="shallower()" id="colorButton">更&nbsp&nbsp多</button>
+					</div><!-- button_more_2 -->
+
+
+				<select id="nav" name="navigation" class="f-dd" onchange="top.location=this.value;">
+					<option value="home.html">首页</option>
+					<option value="info.html">企业介绍</option>
+					<option value="product_list.html" selected="selected">产品列表</option>
+					<option value="feed.html">企业动态</option>
+					<option value="book.html">预定预约</option>
+					<option value="job.html">人才招聘</option>
+					<option value="7">行业动态</option>
+				</select>
+
+		</div><!-- content -->
+	</div><!-- page -->
+	</body>
+</html>

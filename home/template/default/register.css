@@ -1,0 +1,40 @@
+@charset "gb2312";
+/*
+[name]清新蓝[/name]
+[iconbgcolor]#00aadd[/iconbgcolor]
+未来科技 设计
+www.veikei.com
+Veiki 20120926
+*/
+
+
+
+/* 主导航 */
+			#nv ul{ background: url(nv.png);   } 
+				#nv li { background: url(nv_li.png) no-repeat 100%  0; }
+
+					#nv li a { color: #fff;  } 
+					#nv li.a { background: url(nv_a.png) ; } 
+						#nv li.a a { color:#fff;  } 
+						#nv li a:hover { color:#fff;  background: url(nv_a.png);  } 
+						#nv li.hover a:hover, #nv li.hover a { background: url(nv_a.png) ; } 
+						
+
+
+/* 自定义二级导航图标 */
+.vk_nv_sub_item .icon { color:#0ad !important; }
+.vk_icon_1 .icon { background:url(vk_icon_1.png) no-repeat !important; }
+.vk_icon_2 .icon { background:url(vk_icon_2.png) no-repeat !important; }
+.vk_icon_3 .icon { background:url(vk_icon_3.png) no-repeat !important; }
+.vk_nv_sub_item ul li a:hover { background:#0ad !important; }
+
+/* 首页框架 标题 */
+.col h2 { background:url(bg_title_h2.png) no-repeat; }
+	.col h2 a { color:#333; }
+		.col h2 span a { color:#333; }
+
+/*
+[自定义]图片幻灯-左右图标切换
+*/
+		.vk_slide_l_r_4 .leftbtn:hover { background:url(bg_vk_slide_l_btn_h.png); }
+		.vk_slide_l_r_4 .rightbtn:hover { background:url(bg_vk_slide_r_btn_h.png); }

@@ -1,0 +1,49 @@
+.setItem {
+}
+
+.setItem-titlePic {
+	display: block;
+}
+
+.setContent {
+	margin-top: 10px;
+	clear: both;
+}
+
+.setContent-pic {
+	float: left;
+	position: relative;
+	top: 30px;
+	left: 50px;
+}
+
+.setContent-text {
+	color: #605D59;
+	position: relative;
+	left: 80px;
+	top: 48px;
+}
+
+.setContent-text dt {
+	margin-bottom: 15px;
+}
+
+.setContent-text dd {
+	font-size: 14px;
+	width: 900px;
+	padding-bottom: 12px;
+	position: relative;
+	left: 5px;
+	line-height: 140%;
+}
+
+.setContent-text img {
+	padding-right: 5px;
+}
+
+.setButton {
+	position: relative;
+	top: 20px;
+	left: 80px;
+}
+

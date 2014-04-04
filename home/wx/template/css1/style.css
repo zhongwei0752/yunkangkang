@@ -1,0 +1,246 @@
+/* ! MIXIN FOR WIDTH */
+/* ! MIXIN FOR PADDING, SHORTHAND */
+/* ! MIXINS FOR PADDING, INDIVIDUAL */
+/* ! MIXIN FOR MARGIN, SHORTHAND */
+/* ! MIXINS FOR MARGIN, INDIVIDUAL */
+* {
+  font-family: 'Microsoft yahei' !important;
+}
+body {
+  margin: 0;
+  font-family: 'Microsoft yahei' !important;
+  background-color: #f0f0f0;
+}
+span {
+  text-shadow: none!important;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+.ui-content {
+  padding: 0;
+}
+.banner_pic img {
+  width: 100%;
+}
+.banner_text {
+  position: relative;
+  z-index: 99;
+  background: url('img/banner_text_bg.png') repeat-x;
+  min-height: 35px;
+  max-height: 35px;
+  margin-top: -37px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 35px;
+  overflow: hidden;
+}
+.banner_text span {
+  padding-left: 10px;
+}
+.menu_icon {
+  width: 20%;
+}
+.menu_icon img {
+  max-width: 36px;
+  padding-left: 31.25%;
+  padding-top: 4px;
+}
+.arrow {
+  max-width: 8px;
+}
+.menu {
+  width: 100%;
+  height: 70px;
+}
+.split {
+  background: url('img/split_line.png') repeat-x;
+  height: 2px;
+  width: 100%;
+}
+.normal_wrapper_width {
+  width: 93.75%;
+  margin: 0 auto;
+}
+.content_header_width {
+  width: 93.75%;
+  margin: 0 auto;
+}
+.content_header_width .grid_8 {
+  width: 75%;
+}
+.content_header_width .grid_3 {
+  width: 60px;
+  height: 60px;
+}
+.content_header_width h3 {
+  margin-bottom: 6px;
+  color: #666666;
+}
+.content_header_width .time {
+  font-size: 14px;
+  padding-left: 0;
+}
+.header {
+  background: url('img/header_bg.png') repeat-x;
+  height: 48px;
+  width: 100%;
+}
+.menu_title {
+  line-height: 48px;
+  color: #fff;
+  font-family: 'Microsoft yahei' !important;
+  padding-left: 14px;
+}
+.menu_btn {
+  display: inline-block;
+  width: 50px;
+  float: right;
+  margin-right: 10px;
+  margin-top: 9px!important;
+}
+.menu_btn img {
+  max-width: 50px;
+}
+.list {
+  display: block;
+  width: 92.5%;
+  height: 75px;
+  margin: 10px auto;
+  border-left: 8px solid #76D1CD;
+  box-shadow: 1px 1px 3px #BCBCBC;
+  color: #666666;
+  background: #fff;
+  
+}
+.list_pic {
+ max-width: 73px;
+max-height: 73px;
+}
+.title {
+  padding-left: 10px;
+}
+.time {
+  font-size: 13px;
+  color: #CCCCCC;
+  padding-left: 10px;
+}
+.more_btn_link :hover {
+  background-color: #41BAB7;
+}
+.more_btn {
+  width: 93.75%;
+  background-color: #7AD0CD;
+  color: #D2F8FA;
+  height: 40px;
+  font-size: 18px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 40px;
+}
+.content_pic img {
+  width: 100%;
+  margin-top: 10px;
+}
+.content_text {
+  background: #fff;
+}
+.content_text p {
+  text-indent: 2em;
+  color: #666666;
+}
+.paginate {
+  text-align: center;
+  list-style: none;
+}
+.paginate li {
+  display: inline;
+  padding-right: 10px;
+}
+.paginate li a {
+  color: #4DB6B1;
+}
+.paginate li .page_num {
+  color: #666666;
+}
+.comment_wrapper {
+  background-color: #F0F0F0;
+  width: 100%;
+}
+.comment_text_box {
+  width: 100%;
+  height: 54px;
+  font-size: 14px;
+  padding: 4px;
+  border: #ccc 1px solid;
+  margin-top: 10px;
+  margin-bottom: 8px;
+  padding-top: 4px;
+  font-size: 14px;
+}
+.comment_btn {
+  float: right;
+  background: #49B7B1;
+  height: 60px;
+  margin-top: 10px;
+  line-height: 60px;
+  text-align: center;
+  color: #fff;
+}
+.comment_btn:hover,
+.long_btn:hover {
+  background: #3F9E9A;
+}
+.normal_wrapper_width .grid_8 {
+  width: 75%;
+}
+.normal_wrapper_width .grid_3 {
+  width: 60px;
+  height: 60px;
+}
+.comments {
+  padding: 10px 0;
+  font-size: 15px;
+  color: #666666;
+}
+.commenter {
+  color: #49B7B1;
+}
+.order_title {
+  color: #49B7B1!important;
+}
+.order_title_detail {
+  text-indent: 2em;
+  color: #666666;
+  margin-top: 10px;
+}
+.long_btn {
+  display: block;
+  background: #49B7B1;
+  height: 40px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+}
+.price {
+  color: #49B7B1;
+  padding-left: 10px;
+}
+.feed_action {
+  list-style: none;
+  float: right;
+  margin-top: 0;
+}
+.feed_action li {
+  display: inline;
+}
+.product_content_text span {
+  color: #666666;
+}
+.job_content_text {
+  margin-top: 10px;
+  color: #666666;
+}

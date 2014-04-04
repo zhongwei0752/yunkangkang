@@ -1,0 +1,107 @@
+<!--{eval $_TPL['titles'] = array($dial['subject'], $newname[subject]);}-->
+<!--{eval $friendsname = array(1 => '仅好友可见',2 => '指定好友可见',3 => '仅自己可见',4 => '凭密码可见');}-->
+<!--{template header}-->
+
+<!--{if $space[self]}-->
+
+<!--{else}-->
+<!--{eval
+	$_TPL['spacetitle'] = " $newname[subject]";
+	$_TPL['spacemenus'][] = "<a href=\"space.php?uid=$space[uid]&do=$do&view=me\">TA的所有$newname[subject]</a>";
+	$_TPL['spacemenus'][] = "<a href=\"space.php?uid=$space[uid]&do=dial&id=$dial[dialid]\">查看$newname[subject]</a>";
+}-->
+<!--{template space_menu}-->
+<!--{/if}-->
+
+<script type="text/javascript" charset="$_SC[charset]" src="source/script_calendar.js"></script>
+
+<div style="padding:0 0 10px;">
+            <div class="content" style="font-size:15px;">
+                    <div class="indexing content_indexing">
+                    <span><a href="space.php?do=home">首页</a></span>><span><a href="space.php?do=dial&view=me"> $newname[subject]</a></span>
+                    </div><!-- end -->
+                 <div class="content_detail_wrapper">
+                 	
+                      <div class="content_page_detail">
+                           <div class="content_title">$dial[subject]</div>
+                         <div class="content_text_detail" style="text-align: center;margin-bottom:10px;margin-top:10px;font-size:12px;">作者 : {$_SN[$dial[uid]]}&nbsp;|&nbsp;发布时间 : <!--{date('Y-m-d H:i:s',$dial[dateline])}--></div>
+                           <div class="advertise_content_text_detail" style="overflow:hidden">
+                           	   <!--{if $dial[fristprice]}-->
+                               <p><b>一等奖:</b>$dial[fristprice]</p><p><b>一等奖概率:</b>$dial[fristrand]</p>
+                               <!--{/if}-->
+                               <!--{if $dial[secondprice]}-->
+                               <p><b>二等奖:</b>$dial[secondprice]</p><p><b>二等奖概率:</b>$dial[secondrand]</p>
+                               <!--{/if}-->
+                               <!--{if $dial[thirdprice]}-->
+                               <p><b>三等奖:</b>$dial[thirdprice]</p><p><b>三等奖概率:</b>$dial[thirdrand]</p>
+                               <!--{/if}-->
+                           	   
+                               <p><b>概率:</b>1/$dial[frequencynum]</p>
+                               <p><b>参与概率:</b>$dial[frequency]</p>
+                               <!--{if $dial[message]}-->
+                               <p><b>详细说明:</b>$dial[message]</p>
+                               <!--{/if}-->
+							  
+                              
+                           </div>
+                       
+                           <div class="feed_action">
+                              <ul>
+                                 <li>阅览（$dial[viewnum]）</li>
+                                 <!--{if $_SGLOBAL[supe_uid] == $dial[uid] || checkperm('managedial')}-->
+                                 <li><a href="cp.php?ac=dial&dialid=$dial[dialid]&op=edit">修改</a></li>
+                                 <li><a href="cp.php?ac=dial&dialid=$dial[dialid]&op=delete" id="blog_delete_$dial[dialid]" onclick="ajaxmenu(event, this.id)">删除</a></li>
+                                 <!--{/if}-->
+                              </ul>
+                           </div>
+                  
+                      </div>
+                 </div>
+                 
+                
+              
+            </div>
+
+	
+
+
+
+
+
+
+<script type="text/javascript">
+<!--
+function closeSide2(oo) {
+	if($('sidebar').style.display == 'none'){
+		$('content').style.cssText = '';
+		$('sidebar').style.display = 'block';
+		oo.innerHTML = '&raquo; 关闭侧边栏';
+	}
+	else{
+		$('content').style.cssText = 'margin: 0pt; width: 810px;';
+		$('sidebar').style.display = 'none';
+		oo.innerHTML = '&laquo; 打开侧边栏';
+	}
+}
+function addFriendCall(){
+	var el = $('friendinput');
+	if(!el || el.value == "")	return;
+	var s = '<input type="checkbox" name="fusername[]" value="'+el.value+'" id="'+el.value+'" checked>';
+	s += '<label for="'+el.value+'">'+el.value+'</label>';
+	s += '<br />';
+	$('friends').innerHTML += s;
+	el.value = '';
+}
+resizeImg('dial_article','700');
+resizeImg('div_main_content','450');
+
+//彩虹炫
+var elems = selector('div[class~=magicflicker]'); 
+for(var i=0; i<elems.length; i++){
+	magicColor(elems[i]);
+}
+
+-->
+</script>
+
+<!--{template footer}-->

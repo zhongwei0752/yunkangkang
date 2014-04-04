@@ -1,0 +1,21 @@
+.menu_choice
+{
+    border: 1px solid #CECECE;
+    background-color: #fff;
+    width: 32.685%;
+   /*  height: 122px; */
+    float: left;
+    text-align: center;
+    font-size: 15px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+}
+.menu_choice img
+{
+    max-width: 40%;
+    margin-top: 20px;
+}
+.menu_choice_name
+{
+    padding-top: 15px;
+    margin-bottom: 20px;
+}

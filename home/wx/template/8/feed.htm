@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8" />
+        <title>$appname</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<link rel = "stylesheet" href = "template/8/css/base.css" />
+		<link rel = "stylesheet" href = "template/8/css/common.css" />
+		<link rel = "stylesheet" href = "template/8/css/page.css" />
+		<link rel = "stylesheet" href = "template/8/css/mobiscroll.custom-2.5.4.min.css" />
+		<script type="text/javascript" src = "template/8/js/jquery-v2.0.2.js"></script>
+		<script type="text/javascript" src = "template/8/js/mobiscroll.custom-2.5.4.min.js"></script>
+
+
+        <script type="text/javascript" src="template/8/js/jquery.min.js"></script>
+
+
+        <script src="template/js/scrollbox.js"></script>
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script src="template/js/mobiscroll.custom-2.5.4.min.js"></script>
+        <script src="template/js/js/jquery.query.js" type="text/javascript"></script>
+        <script type="text/javascript" src="template/js/jquery.tmpl.min.js"></script>
+        <script type="text/javascript" src="template/js/feed.js"></script><!-- 时间选择插件 -->
+
+      <!--  <script type="text/javascript" src="template/8/js/jquery.promptumenu.min.js"></script>      -->
+
+        <script type="text/javascript" src="template/8/js/touchScroll.js"></script>
+        <link rel="stylesheet" type="text/css" href="template/8/css/lanrenzhijia-model8.css">
+        <script type="text/javascript" src = "template/8/js/main.js"></script>
+
+        <style type="text/css">
+            #thelist li div
+            {
+
+
+            }
+            .thelist_span
+            {
+
+            }
+        </style>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+          /*  $('.sidebar ul').promptumenu({
+                    'width': 150,
+                    'height': 1500,
+                    'columns':1,
+                    'rows': 50,
+                    'direction':'inertia',
+                    'pages':false
+                });    */
+
+
+                var anyTransformY = function(target, distance) {
+                    $(target).css("-webkit-transform", "translateY("+distance+")");
+                };
+                anyTransformY(".contentTitle", "40px");
+                anyTransformY(".contentHide-button", "-35px");
+
+
+                $('#nav').mobiscroll().select( {
+                    theme: 'android-ics',
+                    lang: 'zh',
+                    display: 'bottom',
+                    mode: 'scroller',
+                    inputClass: 'i-txt',
+                    width: 200
+                });
+                $('#show').click(function() {
+                    $('#nav').mobiscroll('show');
+                    return false;
+                });
+
+
+
+                $('#clearSelect').click(function() {
+                    $('#nav').val(1).change();
+                    $('#nav'+'_dummy').val(' ');
+                    return false;
+                });
+            });
+        </script>
+
+
+
+        <script id="detailTemplate" type="text/x-jquery-tmpl">
+
+            <li class="itemList">
+                <a href = "wx.php?do=detail&id={{= $_GET[idtype]id}}&uid={{= uid}}&idtype=$_GET[idtype]id&type=$_GET[idtype]&moblieclicknum=$bac['moblieclicknum']">
+                    <div class = "w">
+                        <!--{BLOCK_TAG_START}-->if image1url<!--{BLOCK_TAG_END}-->
+                        <img src = "{{= image1url}}" class = "vb fl" />
+                        <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                        <!--{BLOCK_TAG_START}-->if eventid<!--{BLOCK_TAG_END}-->
+                        <img src = "{{= image1url}}" class = "vb fl" />
+                        <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+
+                        <!--{BLOCK_TAG_START}-->if eventid<!--{BLOCK_TAG_END}-->
+                        <h4 class="mb3">{{= title}}</h4>
+                        <!--{BLOCK_TAG_START}-->else<!--{BLOCK_TAG_END}-->
+                        <h4 class="mb3">{{= subject}}</h4>
+                        <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                        <span class = "ml15 itemSubtitle">{{= dateline}}</span>
+                        <!--{BLOCK_TAG_START}-->if goodscod<!--{BLOCK_TAG_END}-->
+                        <!--{BLOCK_TAG_START}-->if listshow=='1'<!--{BLOCK_TAG_END}-->
+                        <span class = "mt2 mb2 itemSubtitle"><span class = "lt"><!--原价：￥87--></span>
+                            <span class = "colour ml10">特价：￥{{= curprice}}</span></span>
+                        <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                        <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+
+                        <div class = "info_span subtitle"
+                             style="font-size:14px;min-height: 20px;padding: 0;width: 100px;margin-left: -20px;border:0;">
+
+
+
+                            <!--{BLOCK_TAG_START}-->if starttime<!--{BLOCK_TAG_END}-->
+                            <!--{BLOCK_TAG_START}-->if time<!--{BLOCK_TAG_END}-->
+
+                            <span style="margin-left:30px;color:red;">拍卖未开始</span>
+                            <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                            <!--{BLOCK_TAG_START}-->if time1<!--{BLOCK_TAG_END}-->
+
+                            <span style="margin-left:30px;color:red;">拍卖进行中</span>
+                            <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                            <!--{BLOCK_TAG_START}-->if time2<!--{BLOCK_TAG_END}-->
+
+                            <span style="margin-left:30px;color:red;">拍卖已结束</span>
+                            <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                            <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                        </div>
+
+                    </div>
+                </a>
+            </li>
+
+        </script>
+
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#nav'+'_dummy').hide();
+            });
+        </script>
+
+
+	</head>
+	<body>
+		<div class="itemNav">
+			<img src = "template/8/img/menu.png" id="menu" />
+			<span>$appname</span>
+		</div>
+
+        <div id="wrapper" style="margin-top: 27px">
+       <!-- <div class="sidebar" id="scroller">    -->
+            <div class="scroller1" id="scroller">
+            <ul id="thelist">
+                <li >
+                    <a href="wx.php?do=home&uid=$_GET[uid]">
+                        <div><span class="thelist_span">返回主页</span></div>
+                    </a>
+                </li>
+
+                <!--{loop $zhongwei $value}-->
+                <li >
+                    <a href="wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]">
+                        <div>
+                            <!--{if $value[english]==$_GET["idtype"]}-->
+                            <span class="thelist_span colour selected">$value[subject]</span>
+                            <!--{else}-->
+                            <span class="thelist_span">$value[subject]</span>
+                            <!--{/if}-->
+                        </div>
+                    </a>
+                </li>
+                <!--{/loop}-->
+                <!--{if $zhongwei1}-->
+                <!--{loop $zhongwei1 $value1}-->
+                <li >
+                    <a href="wx.php?do=feed&uid=$_GET[uid]&idtype=$value1[english]">
+                        <div>
+                            <!--{if $value1[english]==$_GET["idtype"]}-->
+                            <span class="thelist_span colour selected">$value1[subject]</span>
+                            <!--{else}-->
+                            <span class="thelist_span">$value1[subject]</span>
+                            <!--{/if}-->
+                        </div>
+                    </a>
+                </li>
+                <!--{/loop}-->
+                <!--{/if}-->
+                <!--占位行,这个8号模板特有-->
+                <li >
+                    <a href="#">
+                        <div><span class="thelist_span">&nbsp;&nbsp;</span></div>
+                    </a>
+                </li>
+                <!---->
+            </ul>
+        </div>
+        </div>
+
+		<div class="itemOuterFrame" style="background-color: #EFEFEF">
+			<div class="itemInnerFrame" style="z-index: 99">
+
+				<ul class = "mt2 itemLists list" style="">
+                    <div id="detail-panel"></div>
+					<li>
+						<input  onclick="getComment($('#idtype').val(), $('#uid').val(), $('#page').val(), $('#perpage').val());"
+                         type = "button" class = "moreBtn btn mt5 more_button" value = "更多" />
+					</li>
+				</ul>
+
+
+
+			</div>
+		</div>
+
+
+        <input type="hidden" id="id" name="id" value="$_GET[id]"/>
+        <input type="hidden" id="idtype" name="idtype" value="$_GET[idtype]"/>
+        <input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
+        <input type="hidden" id="page" name="page" value="2"/>
+        <input type="hidden" id="perpage" name="perpage" value="4"/>
+
+        <script>
+            var t1=new TouchScroll({id:'wrapper','width':5,'opacity':0.7,color:'#555',minLength:20});
+        </script>
+
+	</body>
+<script type="text/javascript">
+  //  $('.touchscrollwrapper').css("height",$(window).height());
+   // window.onresize = function(){
+   //     $('.touchscrollwrapper').css("height",$(window).height());
+ //   };
+
+</script>
+</html>

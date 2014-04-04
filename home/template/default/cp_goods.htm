@@ -1,0 +1,292 @@
+<!--{template header}-->
+
+
+
+<link rel="stylesheet" type="text/css" href="template/default/jquery-mobile-fluid960.min.css">
+<link rel="stylesheet" type="text/css" href="template/default/style1.css">
+<link rel="stylesheet" type="text/css" href="template/default/file_beauty.css">
+
+
+<!--{if $_GET[op] == 'delete'}-->
+
+<h1>删除栏目</h1>
+<a href="javascript:hideMenu();" class="float_del" title="关闭">关闭</a>
+<div class="popupmenu_inner">
+<form method="post" action="cp.php?ac=goods&op=delete&goodsid=$goodsid">
+	<p>确定删除指定的栏目吗？</p>
+	<p class="btn_line">
+		<input type="hidden" name="refer" value="$_SGLOBAL[refer]" />
+		<input type="hidden" name="deletesubmit" value="true" />
+		<input type="submit" name="btnsubmit" value="确定" class="submit" />
+	</p>
+<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+</form>
+</div>
+<!--{elseif $_GET[op] == 'delete1'}-->
+
+<h1>确认发货</h1>
+<a href="javascript:hideMenu();" class="float_del" title="关闭">关闭</a>
+<div class="popupmenu_inner">
+<form method="post" action="cp.php?ac=goods&op=delete1&id=$id&uid=$uid&gid=$gid&viewuid=$viewuid">
+	<p>确定发货？</p>
+	<p class="btn_line">
+		<input type="hidden" name="refer" value="$_SGLOBAL[refer]" />
+		<input type="hidden" name="delete1submit" value="true" />
+		<input type="submit" name="btnsubmit" value="确定" class="submit" />
+	</p>
+<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+</form>
+</div>
+
+<!--{elseif $_GET[op] == 'edithot'}-->
+
+<h1>调整热度</h1>
+<a href="javascript:hideMenu();" class="float_del" title="关闭">关闭</a>
+<div class="popupmenu_inner">
+<form method="post" action="cp.php?ac=product&op=edithot&productid=$productid">
+	<p class="btn_line">
+		新的热度：<input type="text" name="hot" value="$product[hot]" size="5"> 
+		<input type="hidden" name="refer" value="$_SGLOBAL[refer]" />
+		<input type="hidden" name="hotsubmit" value="true" />
+		<input type="submit" name="btnsubmit" value="确定" class="submit" />
+	</p>
+<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+</form>
+</div>
+
+<!--{else}-->
+
+<script language="javascript" src="image/editor/editor_function.js"></script>
+<script language="javascript" src="source/script_blog.js"></script>
+
+<!--{if $topic}-->
+	<!--{template cp_topic_menu}-->
+<!--{else}-->
+
+	<div class="content" style="font-size:15px;">
+          
+                 <div class="indexing">
+                   <span><a href="space.php?do=home">首页</a></span>><span><a href="space.php?do=goods&view=me">商品管理</a></span>><span>发布</span>
+                 </div><!-- end -->
+                 <div class="bread container_12">
+                     <div class="bread_actived grid_1">
+                         发布
+                     </div>
+                     <a href="space.php?do=goods&view=me" class="link_back_bread grid_3">
+                      商品管理
+                     </a>
+                 </div>
+<!--{/if}-->
+
+
+	  <div class="content_detail_wrapper">
+                    <div class="post_wrapper">
+	<form method="post" action="cp.php?ac=goods&goodsid=$goods[goodsid]" enctype="multipart/form-data">
+		<table cellspacing="4" cellpadding="4" width="100%" class="infotable">
+			<tr>
+				<td>
+					<div class="post_list container_12">
+                         <span class="select_title grid_1">标题&nbsp;&nbsp;:</span>
+                           <input type="text" class="t_input" id="subject" name="subject" value="$goods[subject]"  onblur="relatekw();" placeholder="标题长度不超过80字符" style = "margin-left:20px;"/>
+                            </div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1">封面图片&nbsp;&nbsp;:</span>
+                          <input type="file" name="files"  value="$goods[image1url]" style = "margin-left:20px;"/>
+                            </div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1">原价&nbsp;&nbsp;:</span>
+                           <input type="text" class="t_input"  id="oldprice" name="oldprice" value="$goods[oldprice]" style = "margin-left:20px;"/>
+                           </div>
+                           <div class="post_list container_12">
+                           <span class="select_title grid_1">优惠价&nbsp;&nbsp;:</span>
+                           <input type="text" class="t_input"  id="curprice" name="curprice" value="$goods[curprice]" style = "margin-left:20px;"/>
+                            </div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1" style="padding-right:20px;">是否在微信列表页显示价格&nbsp;&nbsp;:</span>
+                           是:<input type="radio" class="t_input" id="listshow" name="listshow" value="1"   style = "margin-left:20px;padding-right:20px;" <!--{if $goods[listshow]!='0'}-->CHECKED<!--{/if}-->/>
+                            否:<input type="radio" class="t_input" id="listshow"    name="listshow" value="0"   style = "margin-left:20px;" <!--{if $goods[listshow]=='0'}-->CHECKED<!--{/if}-->/>
+                            </div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1">淘宝链接&nbsp;&nbsp;:</span>
+                           <input type="text" class="t_input" id="taobaourl" name="taobaourl" value="$goods[taobaourl]"  onblur="relatekw();" placeholder="注意输入有效的url" style = "margin-left:20px;"/>
+                            </div>
+                             <div class="post_list container_12">
+                         <span class="select_title grid_1">查看购买者信息密码&nbsp;&nbsp;:</span>
+                           <input type="text" class="t_input" id="password" name="password" value="$goods[password]"  onblur="relatekw();" placeholder="查看购买者信息密码" style = "margin-left:20px;"/>
+                            </div>
+                             <div class="post_list container_12">
+                         <span class="select_title grid_1">分类&nbsp;&nbsp;:</span>
+                           <select  name="fenlei" >
+                           	<option value="">无</option>
+                           	<!--{loop $fenlei $value1}-->
+                           	<option value="$value1[subject]">$value1[subject]</option>
+                           	<!--{/loop}-->
+                           </select>
+                            </div>
+
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1" style = "margin-right:20px;">推送者&nbsp;&nbsp;:</span>
+                           <!-- <input type="text" class="t_input" id="taobaourl" name="taobaourl" value="$goods[taobaourl]"  onblur="relatekw();" placeholder="注意输入有效的url" style = "margin-left:20px;"/> -->
+                           <select  name="push" >
+                           <!--{if $goods[push]}-->
+                           <option value="$goods[fakeid]">$goods[name]</option>
+                           <!--{/if}-->
+                           <option value="0">未选择</option>
+                           <!--{loop $list $value}-->
+                           <option value="$value[fakeid]">$value[name]</option>
+                           <!--{/loop}-->
+                           </select><span style="color:red">(以下2项两者选一进行填写，若2项都填写，默认选择第一项)</span><br/>
+                           <span style="margin-left:175px;">or</span><br/>
+                           <div style="margin-left:175px;">
+                           <input type="text"  class="t_input" id="subject1" autocomplete = "off" name="subject1"   size="40" />
+                            <div class="list_box" style="border:1px solid #999;width:257px;">
+							<div class="keywords_list"></div>
+							<input type="hidden" name="push1" id="push1">
+                            </div>
+                            </div>
+                            </div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1" style="padding-right:20px;">货到付款功能&nbsp;&nbsp;:</span>
+                           开启:<input type="radio" class="t_input" id="goodscod" name="goodscod" value="1"   style = "margin-left:20px;padding-right:20px;" <!--{if $goods[goodscod]=='1'}-->CHECKED<!--{/if}-->/>
+                            关闭:<input type="radio" class="t_input" id="goodscod"    name="goodscod" value="0"   style = "margin-left:20px;" <!--{if $goods[goodscod]!='1'}-->CHECKED<!--{/if}-->/>
+                            </div>
+                            
+                   </div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="post_list container_12">
+                         <span class="select_title grid_1">详细描述&nbsp;&nbsp;:</span>
+                          <a id="doodleBox" href="magic.php?mid=doodle&showid=product_doodle&target=uchome-ttHtmlEditor&from=editor" style="display:none"></a>
+						  <textarea class="userData" name="message" id="uchome-ttHtmlEditor" style="height:100%;width:100%;display:none;border:0px;margin-left: 0;">$goods[message]</textarea>
+						  <iframe src="editor.php?charset=$_SC[charset]&allowhtml=$allowhtml&doodle=<!--{if isset($_SGLOBAL[magic][doodle])}-->1<!--{/if}-->" name="uchome-ifrHtmlEditor" id="uchome-ifrHtmlEditor" scrolling="no" border="0" frameborder="0" style="width:550px;border: 1px solid #C5C5C5;margin-left:20px;" height="400"></iframe>
+                            </div>
+				</td>
+			</tr>
+		</table>
+
+		<input type="hidden" name="goodssubmit" value="true" />
+		<input type="button" id="productbutton" name="goodsbutton" value="提交发布" onclick="validate(this);" style="display: none;" />
+		<input type="hidden" name="topicid" value="$_GET[topicid]" />
+		<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+	</form>
+
+	<!--{if !$_SGLOBAL[inajax] && (!$goods['uid'] || $goods['uid']==$_SGLOBAL['supe_uid'])}-->
+	<div class="pic_submit container_12" style="margin-left: 100px;">
+	<table cellspacing="4" cellpadding="4" width="100%" class="infotable">
+		<tr><th width="100">图片</th><td>
+			<div class="pic_submit container_12">
+		<input type="button" class="btn grid_3" name="clickbutton[]" value="上传图片" class="button" style="float:left;" onclick="edit_album_show('pic')">
+		<input type="button" class="btn grid_3" name="clickbutton[]" value="插入图片" class="button" style="margin-left:20px; display: none;" onclick="edit_album_show('album')" >
+	</div>
+		</td>
+		</tr>
+	</table>
+	<!--{/if}-->
+
+	<table cellspacing="4" cellpadding="4" width="100%" id="uchome-edit-pic" class="infotable" style="display:none;">
+		<tr>
+			<th width="100">&nbsp;</th>
+			<td>
+				<strong>选择图片</strong>: 
+				<table summary="Upload" cellspacing="2" cellpadding="0">
+					<tbody id="attachbodyhidden" style="display:none">
+						<tr>
+							<td>
+								<form method="post" id="upload" action="cp.php?ac=upload" enctype="multipart/form-data" target="uploadframe" style="background: transparent;">
+									<input type="file" name="attach" style="border: 1px solid #CCC;" />
+									<span id="localfile"></span>
+									<input type="hidden" name="uploadsubmit" id="uploadsubmit" value="true" />
+									<input type="hidden" name="albumid" id="albumid" value="0" />
+									<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+								</form>
+							</td>
+						</tr>
+					</tbody>
+					<tbody id="attachbody"></tbody>
+				</table>
+				 
+				<table cellspacing="2" cellpadding="0">
+					<tr>
+						<td>
+							<select name="albumid" id="uploadalbum" onchange="addSort(this)" style="display: none;"> 
+								<option value="-1">请选择相册</option>
+								<option value="-1">默认相册</option>
+								<!--{loop $albums $value}-->
+								<option value="$value[albumid]">$value[albumname]</option>
+								<!--{/loop}-->
+								<option value="addoption" style="color:red;">+新建相册</option>
+							</select>
+							<script src="source/script_upload.js" type="text/javascript"></script>
+							<iframe id="uploadframe" name="uploadframe" width="0" height="0" marginwidth="0" frameborder="0" src="about:blank"></iframe>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<table cellspacing="4" cellpadding="4" width="100%" class="infotable" id="uchome-edit-album" style="display:none;">
+		<tr>
+			<th width="100">&nbsp;</th>
+			<td>
+				选择相册: <select name="view_albumid" onchange="picView(this.value)">
+					<option value="none">选择一个相册</option>
+					<option value="0">默认相册</option>
+					<!--{loop $albums $value}-->
+					<option value="$value[albumid]">$value[albumname]</option>
+					<!--{/loop}-->
+				</select> (点击图片可以插入到内容中)
+				<div id="albumpic_body"></div>
+			</td>
+		</tr>
+	</table>
+	</div>
+	<table cellspacing="4" cellpadding="4" width="100%" class="infotable">
+		<tr>
+			<th width="100">&nbsp;</th>
+			<td>
+				<div class="confirm_btn container_12">
+                           <a href="space.php?do=home" class="cancle_btn grid_1">取消</a>
+                           <input type="button" class="btn grid_2" id="issuance" onclick="document.getElementById('productbutton').click();" value="保存发布" class="submit" />
+                        
+                      </div>
+			</td>
+		</tr>
+	</table>
+</div>
+</div>
+
+
+<!--{/if}-->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+<script language="javascript">var jquery = jQuery.noConflict(); </script>
+<script type="text/javascript">
+jquery(document).ready(function() {
+ jquery('.list_box').hide();
+ jquery('#subject1').keyup(function(){
+  var keywords = jquery('#subject1').val();
+
+  jquery.ajax({
+   type:"POST",
+   url:"space.php?do=ajax1",
+   data:{keywords:keywords},
+   success:function(html) {
+   jquery('.list_box').show();
+   jquery('.keywords_list').html(html);
+   jquery('li').click(function(){
+	jquery('.list_box').hide();
+    var update = new Array(); 
+   	update = jquery(this).text().split('|');
+     jquery('#subject1').val(update[1]);
+     jquery('#push1').val(update[0]);
+                    jquery('.list_box').hide();
+                })
+  }
+
+})
+    });
+  });
+  </script>
+<!--{template footer}-->

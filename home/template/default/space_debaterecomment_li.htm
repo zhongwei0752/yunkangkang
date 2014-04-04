@@ -1,0 +1,33 @@
+
+<div style="border-bottom:1px dashed #999;margin-top:10px;">
+<div class="comment_list container_12" style="margin-left:60px;">
+	<!--{if $value[author]}-->
+	<div class="avatar48"><a href="space.php?uid=$value[authorid]"><!--{avatar($value[authorid],small)}--></a></div>
+	<!--{else}-->
+	 <img src="image/magic/hidden.gif" class="grid_1">
+	<!--{/if}-->
+     <div class="grid_2">
+                                      <h6><span class="commenter">
+                                      	<!--{if $value[author]}-->
+		<a href="space.php?uid=$value[authorid]" id="author_$value[cid]"  style="color:#02B4AB;">{$_SN[$value[authorid]]}</a> 
+		<!--{else}-->
+		匿名
+		<!--{/if}-->:</span>
+		<div style="float:right;font-size:14px;padding-right:20px;">
+			<!--{if $value[authorid]==$_SGLOBAL[supe_uid]}-->
+			<a href="cp.php?ac=debatecomment&op=obedit&cid=$value[cid]" id="c_$value[cid]_edit" onclick="ajaxmenu(event, this.id, 1)">编辑</a>
+			<!--{/if}-->
+			<!--{if $value[authorid]==$_SGLOBAL[supe_uid] || $value[uid]==$_SGLOBAL[supe_uid]}-->
+			<a href="cp.php?ac=debatecomment&op=obdelete&cid=$value[cid]" id="c_$value[cid]_delete" onclick="ajaxmenu(event, this.id)">删除</a>
+			<!--{/if}-->
+			<!--{if $value[authorid]!=$_SGLOBAL[supe_uid] && ($value['idtype'] != 'uid' || $space[self])}-->
+            <!--{if !in_array($_SGLOBAL[supe_uid],$revoteuids)}-->
+			<a href="cp.php?ac=debatecomment&op=obreply&cid=$value[cid]" id="c_$value[cid]_reply" onclick="ajaxmenu(event, this.id, 1)">回复</a>
+            <!--{/if}-->
+			<!--{/if}-->
+		</div>
+		<span class="comment_text">$value[message]</span></h6>
+        <span class="comment_time"><!--{date('Y-m-d H:i',$value[dateline],1)}--></span>
+
+        </div>
+ </div> <br/></div>

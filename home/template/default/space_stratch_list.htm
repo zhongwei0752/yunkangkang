@@ -1,0 +1,101 @@
+﻿<!--{eval $_TPL['titles'] = array('刮刮卡');}-->
+<!--{eval $_TPL['searchfriend']=1;}-->
+
+<!--{template header}-->
+
+<!--{if !empty($_SGLOBAL[inajax])}-->
+	<div id="space_blog" class="feed">
+		<h3 class="feed_header">
+			<a href="cp.php?ac=stratch" class="r_option" target="_blank">发起活动</a>
+		</h3>
+		<!--{if $count}-->
+		<ul class="line_list">
+		<!--{loop $list $value}-->
+			<li>
+				<span class="gray r_option"><!--{date('m-d H:i',$value[dateline],1)}--></span>
+				<h4><a href="space.php?uid=$space[uid]&do=stratch&id=$value[stratch]" target="_blank" <!--{if $value[magiccolor]}--> class="magiccolor$value[magiccolor]"<!--{/if}-->>$value[subject]</a></h4>
+				<div class="detail">
+					$value[message1]
+				</div>
+			</li>
+		<!--{/loop}-->
+		</ul>
+		<div class="page">$multi</div>
+		<!--{else}-->
+		<div class="c_form">还没有相关的活动。</div>
+		<!--{/if}-->
+	</div>
+<!--{else}-->
+
+<!--{if $space[self]}-->
+<div class="content" style="font-size:15px;">
+          
+                 <div class="indexing">
+                   <span><a href="space.php?do=home">首页</a></span>><span>刮刮卡</span>
+                 </div><!-- end -->
+                 <div class="bread container_12">
+                     <div class="bread_actived grid_1">
+                         我的活动
+                     </div>
+                     <a href="cp.php?ac=stratch" class="btn grid_2">
+                      发起活动
+                     </a>
+                 </div>	
+
+<!--{/if}-->
+		
+<div id="content" style="width:760px;">
+
+<div class="content_detail_wrapper">
+ 		<!--{if $list}-->
+		<!--{loop $list $value}-->
+	     	 <div class="content_list container_12">
+	              <div class="grid_1">
+	                   	<!--{if $value[image1url]}--><img src="$value[image1url]" class="list_pic" style="width:110px;height:110px;">
+	                   	<!--{else}--><img src="image/h_pic.jpg" class="list_pic" style="width:110px;height:110px;"><!--{/if}-->
+	              </div>
+	              <div class="grid_2">
+	                 <div class="list_test ">
+	                      <a href="space.php?uid=$value[uid]&do=$do&id=$value[stratchid]"><h3>$value[subject]</h3></a>
+	                      <p style="height: 54px;overflow: hidden;width: 560px;word-wrap: break-word;text-overflow:ellipsis;font-size:15px;">$value[message]</p><br/>
+	                      <p class="action_info" style="margin-top:-4px;">
+	                       <a href="space.php?uid=$value[uid]"> <span style="color:#AAAAAA;">发布：{$_SN[$value[uid]]}</span></a>
+						   <span style="color:#AAAAAA;"><!--{date('Y-m-d',$value[dateline])}-->
+						   <!--{if !($value['open'])}-->
+						   <a href="cp.php?ac=stratch&stratchid=$value[stratchid]&op=open"  onclick="ajaxmenu(event, this.id)"><input type="button" value="未开启" style="background-color:#1DB8AE;color:white;cursor:hand;" /></a>
+						   <!--{else}-->
+						   <input type="button" value="已开启" style="background-color:gray;color:white;" disabled="disabled" />
+						   <!--{/if}-->
+						   <!--{if ($value['open'])}-->
+						   <a href="cp.php?ac=stratch&stratchid=$value[stratchid]&op=close"  onclick="ajaxmenu(event, this.id)"><input type="button" value="关闭" style="background-color:red;color:white;cursor:hand;" /></a>
+						   <!--{else}-->
+						   <input type="button" value="关闭" style="background-color:gray;color:white;float:left;" disabled="disabled" />
+						   <!--{/if}-->
+						   </span>
+	                      </p>
+	                 </div>
+	              </div>
+	         </div><!-- list end -->
+	         <br/>
+	       <!--{/loop}-->
+		<!--{else}-->
+			<div class="c_form">还没有相关的活动。</div>
+		<!--{/if}-->
+          
+	</div>
+	
+	<div class='pagination'><ul>$multi</ul></div>
+	
+	
+
+</div>
+
+
+<script>
+function fuidgoto(fuid) {
+	window.location.href = "space.php?do=stratch&view=we&fuid="+fuid;
+}
+</script>
+<!--{/if}-->
+	
+<!--{template footer}-->

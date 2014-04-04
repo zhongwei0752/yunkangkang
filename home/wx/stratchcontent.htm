@@ -1,0 +1,418 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="./template/css/base.css" />
+        <link rel="stylesheet" href="./template/css/expressInfo.css" />
+        <link rel = "stylesheet" href = "./template/css/main.css" />
+
+		<link rel = "stylesheet" href = "./template/css/base.css" />
+		<link rel = "stylesheet" href = "./template/css/common.css" />
+		<link rel = "stylesheet" href = "./template/css/page.css" />
+
+        <style type="text/css">
+            #bg,#bg2{ display: none;  position: fixed;  top: 0%;  left: 0%;  width: 100%;
+                height: 100%;  background:url(./template/img/guide_bg.png);
+                z-index:1001;/*  -moz-opacity: 0.7;  opacity:.70;  filter: alpha(opacity=70);*/}
+            #detail-panel li .span1
+            {
+                width: 15em ;
+                overflow: hidden ;
+                display: block;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                float: left;
+                vertical-align: middle;
+
+
+            }
+            #detail-panel li .span2
+            {
+                width: 10em ;
+                overflow: hidden ;
+                display: block;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                float:left;
+                vertical-align: middle;
+                color: #7d7b7b;
+
+            }
+            .span2
+            {
+                color: #7d7b7b;
+            }
+            .uchome-message-pic img
+            {
+                width: 100%;
+                display: block;
+                padding-top: 5px;
+            }
+			.award
+			{
+				margin:0 auto;
+				margin-top:20px;
+				text-align:left;
+				display:block;
+				border:2px solid #1DB8AE;
+				padding:8px 8px; 
+				border-radius:10px;
+				-moz-border-radius:10px; /* 老的 Firefox */
+			}
+			.ward
+			{
+				width:100px;
+				float:left;
+			}
+			.guagua
+			{
+				margin:16px auto;
+				width:100%;
+			}
+			#prize
+			{
+				padding-top:8px;
+				background:#333;
+				text-align:center;
+				font-size:20px;
+				color:#1DB8AE;
+				margin-top:16px;
+				width:110px;
+				height:28px;
+			}
+			
+            ::-webkit-input-placeholder { font-size: 16px; }
+
+            input:-moz-placeholder { font-size: 16px; }
+        </style>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script type="text/javascript" src="template/js/jquery.tmpl.min.js"></script>
+        <script type="text/javascript" src="template/js/detail.js"></script>
+		<script type="text/javascript" src="template/js/wScratchPad.js"></script>
+        <script id="detailTemplate" type="text/x-jquery-tmpl">
+            <li class="itemContentList" style="list-style-type:none;">
+                <span class="span1" style="padding-right:40px;">{{= username}}&nbsp;&nbsp;&nbsp;购买数:{{= number}}<div style="clear: both"></div></span><span class="span2" style="float: left;"><p style="color:#7d7b7b">{{= dateline}}</p></span><div style="clear: both"></div><br/>
+                <!--{if $_GET['zhong']=='1'}-->
+                <span>购买物品:"{{= more.subject}}"</span>,<br/>
+                <span>地址:{{= place}}<br/></span>
+                <span>联系电话:{{= tel}}</span>
+                <br/>
+                <form action="wx.php?do=upload" method="post"><input type="submit" class="add_btn" value="确认发货"> </input><input type="hidden" class="add_btn" name="goodscodid" value="{{= id}}"> </input><input type="hidden" class="add_btn" name="uid" value="{{= uid}}"> </input><input type="hidden" class="add_btn" name="gid" value="{{= gid}}"> </input><input type="hidden" class="add_btn" name="viewuid" value="{{= viewuid}}"> </input><input type="hidden" id="wxkey" name="wxkey" value="$_GET[wxkey]"/></form>
+                <!--{/if}-->
+            </li>
+        </script>
+
+        <title>$appname</title>
+	</head>
+	<body onload="myfunction()">
+    <div id="bg" onClick="hideDiv();">
+        <img src="./template/img/guide.png" alt="" style="position:fixed;top:0;right:16px;width:134px;height:97px;">
+    </div>
+    <div id="bg2" onClick="hideFriendDIv();">
+        <img src="./template/img/guide_firend.png" alt="" style="position:fixed;top:0;right:16px;width:134px;height:97px;">
+    </div>
+
+		<div class="itemContentFrame">
+			<div class = "article p8">
+                <h3 style="color: #cccccc; align:center">$wei[subject]</h3>
+                <div style="width:100%;float:left;font-size:15px;margin:0 auto;">作者：$wei[username]</div>
+                <div style="width:100%;float:left;font-size:15px;margin:0 auto;">活动开始时间：<!--{date('Y-m-d H:i:s',$wei[dateline])}--></div>
+				<div style="width:100%;float:left;font-size:15px;margin:0 auto;">活动结束时间：<!--{date('Y-m-d H:i:s',$wei[endtime])}--></div>
+				<span class = "itemContentSubtitle"></span>
+                <div class="ss" style="margin-top:100px;">
+				</div>
+				<div class="award" style="width:95%;">
+				<h1 style="font-size:24px;color:#1DB8AE;">刮奖区</h1>
+				<!--{if empty($wei2)}-->
+				<div id="prize">$res['yes']</div>
+				<!--{else}-->
+					<!--{if ($wei3['award_id']=='1')}-->
+					<div id="prize">一等奖</div>
+					<p style="color:red;">您已经参加活动</p>
+					<p style="color:#1DB8AE;">您获得的奖品是$wei['award1']</p>
+					<!--{else}-->
+					<!--{if ($wei3['award_id']=='2')}-->
+					<div id="prize">二等奖</div>
+					<p style="color:red;">您已经参加活动</p>
+					<p style="color:#1DB8AE;">您获得的奖品是$wei['award2']</p>
+					<!--{else}-->
+					<!--{if ($wei3['award_id']=='3')}-->
+					<div id="prize">三等奖</div>
+					<p style="color:red;">您已经参加活动</p>
+					<p style="color:#1DB8AE;">您获得的奖品是$wei['award3']</p>
+					<!--{else}-->
+					<!--{if ($wei3['award_id']=='4')}-->
+					<div id="prize">谢谢参与</div>
+					<p style="color:red;">您已经参加活动</p>
+					<p style="color:#1DB8AE;">谢谢你的参与！！</p>
+					<!--{/if}-->
+					<!--{/if}-->
+					<!--{/if}-->
+					<!--{/if}-->
+				<!--{/if}-->
+				<div class="guagua">
+					<div id="wScratchPad" style="display:inline-block; position:absolute; left:18px; top:192px; border:none;">
+					</div>
+				
+					<!--{if empty($wei2)}-->
+					<script type="text/javascript" src="./wScratchPad.js"></script>
+					
+					<script type="text/javascript">
+					$(document).ready(function(){
+						
+
+						//点击表格外的地方时消失
+						$(".expressInfo").click(function(){
+							$(".expressInfo").fadeOut();
+						});
+
+						$("#buttonSubmit").click(function(){
+							$(".expressInfo").fadeOut();
+						});
+
+						/*     $(".buttonSubmit").click(function(){
+						 $(".expressInfo").fadeOut();
+						 });  */
+						//阻止事件冒泡
+						$(".formContainer").click(function(event){
+							event.stopPropagation();
+						});
+					});
+					
+					
+					
+					var sp = $("#wScratchPad").wScratchPad({
+					  scratchDown: function(e, percent){$("#percent_scratched").html(percent)},
+					  scratchMove: function(e, percent){$("#percent_scratched").html(percent)},
+					  scratchUp: function(e, percent){
+						if(percent>50)
+						{
+							$("#wScratchPad").click(function(){
+							$(".expressInfo").fadeIn();
+							});
+						}
+					}
+					});
+			
+					function set_image_bg() {
+					  sp.wScratchPad('image', './images/slide2.jpg');
+					  sp.wScratchPad('reset');
+					}
+
+					function set_image_overlay() {
+					  sp.wScratchPad('image2', './images/slide3.jpg');
+					  sp.wScratchPad('reset');
+					}
+
+					function enabled(toggle) {
+					  sp.wScratchPad('enabled', toggle);
+					}
+				  </script>
+				<!--{/if}-->
+				</div>
+				</div>
+				
+                <div class="award" style="width:95%;">
+				<h3 style="color:#1DB8AE;">活动奖励：</h3>
+				<h5>一等奖($wei['winsum1']名)&nbsp;:&nbsp;$wei['award1']</h5>
+				<h5>二等奖($wei['winsum2']名)&nbsp;:&nbsp;$wei['award2']</h5>
+				<h5>三等奖($wei['winsum3']名)&nbsp;:&nbsp;$wei['award3']</h5>
+                </div>
+				<div class="award" style="width:95%;">
+				<h3 style="color:#1DB8AE;">活动参与：</h3>
+				<h5>每人参与次数&nbsp;:&nbsp;$wei['times']&nbsp;次</h5>
+				<h5>最多参与人数&nbsp;:&nbsp;不限制</h5>
+                </div>
+				<div class="award" style="width:95%;">
+				<h3 style="color:#1DB8AE;">活动介绍：</h3>
+				<h5>$wei[message1]</h5>
+                </div>
+                <div id="friend" class="friend_wrapper" style="width:100%;height:115px;border:1px dashed #999;margin:0 auto;margin-top:20px;text-align:center;">
+                    <div style="text-align: center;margin: 0 auto;width: 270px;height: 30px;margin-top: 20px">
+                        <div style="margin:0 auto;padding:0;height: 30px;width: 120px;float: left"><a id="" class="friend_btn" style="" onClick="showDIv()">
+                            <img src="./template/img/repost_icon.png" alt="">
+                            <span>发送给朋友</span>
+                        </a>  </div>
+                        <div style="margin:0 auto;padding:0;height: 30px;width: 120px;float: left;margin-left:20px">  <a id="" class="friend_btn" style="" onClick="showFriendDIv()">
+                            <img src="./template/img/friend_circle.png" alt="">
+                            <span>分享到朋友圈</span>
+                        </a></div>
+                    </div>
+                    <br/><br/><br/>
+                    <div style="margin:0 auto;padding:0;height: 30px;width:100%;text-align: center;margin-top: -50px"> <h3 style="font-size:14px;">手机用户请关注微信公众账号：小赢家</h3></div>
+                    <div style="clear: both"></div>
+                </div><!-- / -->
+                
+				<!--<input type = "button" class = "articleBtn btn mt8 mb8" value = "购买" />  -->
+			</div>
+			<div class = "wrapperPic h2"><img src = "./template/11/img/bottom_border.png" class="w h vt" /></div>
+            <br/>
+            <input type = "button" style="color: #cccccc ;background-color: #333333"
+                   onclick="getDetail($('#idtype').val(),$('#id').val(), $('#uid').val(), $('#page').val(), $('#perpage').val());"
+                   value = "更多" class = "more_button"  />
+		</div>
+
+    <input type="hidden" id="wxkey" name="wxkey" value="$_GET[wxkey]"/>
+    <input type="hidden" id="id" name="id" value="$_GET[id]"/>
+    <input type="hidden" id="idtype" name="idtype" value="$_GET[idtype]"/>
+    <input type="hidden" id="type" name="type" value="$_GET[type]"/>
+    <input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
+    <input type="hidden" id="page" name="page" value="1"/>
+    <input type="hidden" id="perpage" name="perpage" value="10"/>
+
+    <script type="text/javascript">
+        $(function(){
+            $(".comment_list .commentContainer").css("display","none");
+            $("#detail-panel li span").css({width:"1em",overflow:"hidden",display:"block",textOverflow:"ellipsis",whiteSpace:"nowrap"});
+            $(".messagetext span").css({backgroundColor:"#240934",color:"#cccccc" });
+
+        })
+
+    </script>
+
+	
+	
+    <script>
+
+        function gototaobao(url){
+            window.open(url);
+        }
+    </script>
+
+    <script type="text/javascript" charset="utf-8">
+        function showDIv(){
+            document.getElementById('bg').style.display = "block";
+        }
+        function hideDiv(){
+            document.getElementById('bg').style.display = "none";
+        }
+        function showFriendDIv(){
+            document.getElementById('bg2').style.display = "block";
+        }
+        function hideFriendDIv(){
+            document.getElementById('bg2').style.display = "none";
+        }
+
+
+        $(document).ready(function () {
+            $("#submit").click(function () {
+                var tel=$('#tel').val();
+                if(tel.length!=11){
+                    alert("手机号码填写长度不对");
+                }else{ /*if_tel_else*/
+                    if($("#username").val()==""||$("#tel").val()==""||$("#place").val()==""||$("#number").val()==""){
+                        alert("邮寄信息中存在空值")
+                    }else{
+                        $.ajax({
+                            type: "POST",
+                            url: "wx.php?do=upload",
+                            data: "uid="+$('#uid').val()+"&gid="+$('#gid').val()+" &viewuid="+$('#viewuid').val()+" &moblieclicknum="+$('#moblieclicknum').val()+"&wxkey="+$('#wxkey').val()+"&username="+$('#username').val()+"&tel="+$('#tel').val()+"&number="+$('#number').val()+"&place="+$('#place').val()+"&buy=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
+                            async: true,
+                            success: function (data) {
+                                // $("#submit").attr("disabled", true);
+                                $("#zhong").html("<p style='width:210px;text-align:center;margin:0 auto;'>你已提交订单，若想继续下单，请刷新页面</p>");
+                                $(".expressInfo").fadeOut();
+                                $('#ajax').append("<li><span style='padding-right:40px;'>"+$('#username').val()+"</span>购买数:"+$('#number').val()+"<p style='float:right;'>现在</p><br/></li>");//输出提交的表表单
+                            } //操作成功后的操作！msg是后台传过来的值
+                        });
+                    }
+                }   /*if_tel_else*/
+            });
+        });
+    </script>
+
+	<script type="text/javascript" charset="utf-8">
+		$("#submit").click(function () {
+			var num=$('#number').val();
+			if(num.length!=11)
+			{
+				alert("手机号码填写长度不对");
+			}
+		});
+	</script>
+	
+	<div class="expressInfo">
+        <div class="formContainer bc tc">
+        <form method="post" action="wx.php?do=upload">
+            <h1 id="formTitle">您的中奖信息：$res['yes']</h1>
+            <input type="text" placeholder="姓名" name="name"  id="name" class="inputContainer" />
+			<input type="text" placeholder="手机号码" name="number"  id="number" class="inputContainer" />
+            <br />
+
+            <input type="submit" class="buttonSubmit" value="提交">
+            <input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
+            <input type="hidden" id="stratchid" name="stratchid" value="$_GET[id]"/>
+            <input type="hidden" name="moblieclicknum" value="$_GET[moblieclicknum]">
+            <input type="hidden" name="infor" value="1">
+            <input type="hidden" id="wxkey" name="wxkey" value="$_GET[wxkey]"/>
+        
+        </form> 
+        </div> <!-- formContainer -->
+        </div> <!-- expressInfo --> 
+	
+    </body>
+	    <script>
+		var dataForWeixin={
+		   appId:"",
+		   MsgImg:"$pic",
+		   TLImg:"$pic",
+		   url:"$url",
+		   title:"$wei[subject]",
+		   desc:"$wei[subject]",
+		   fakeid:"",
+		   callback:function(){}
+		};
+		(function(){
+		   var onBridgeReady=function(){
+		   WeixinJSBridge.on('menu:share:appmessage', function(argv){
+			  WeixinJSBridge.invoke('sendAppMessage',{
+				 "appid":dataForWeixin.appId,
+				 "img_url":dataForWeixin.MsgImg,
+				 "img_width":"120",
+				 "img_height":"120",
+				 "link":dataForWeixin.url,
+				 "desc":dataForWeixin.desc,
+				 "title":dataForWeixin.title
+			  }, function(res){(dataForWeixin.callback)();});
+		   });
+		   WeixinJSBridge.on('menu:share:timeline', function(argv){
+			  (dataForWeixin.callback)();
+			  WeixinJSBridge.invoke('shareTimeline',{
+				 "img_url":dataForWeixin.TLImg,
+				 "img_width":"120",
+				 "img_height":"120",
+				 "link":dataForWeixin.url,
+				 "desc":dataForWeixin.desc,
+				 "title":dataForWeixin.title
+			  }, function(res){});
+		   });
+		   WeixinJSBridge.on('menu:share:weibo', function(argv){
+			  WeixinJSBridge.invoke('shareWeibo',{
+				 "content":dataForWeixin.title,
+				 "url":dataForWeixin.url
+			  }, function(res){(dataForWeixin.callback)();});
+		   });
+		   WeixinJSBridge.on('menu:share:facebook', function(argv){
+			  (dataForWeixin.callback)();
+			  WeixinJSBridge.invoke('shareFB',{
+				 "img_url":dataForWeixin.TLImg,
+				 "img_width":"120",
+				 "img_height":"120",
+				 "link":dataForWeixin.url,
+				 "desc":dataForWeixin.desc,
+				 "title":dataForWeixin.title
+			  }, function(res){});
+		   });
+		};
+		if(document.addEventListener){
+		   document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+		}else if(document.attachEvent){
+		   document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
+		   document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+		}
+		})();
+		</script>
+
+
+</html>

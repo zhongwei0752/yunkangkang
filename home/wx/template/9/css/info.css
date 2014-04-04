@@ -1,0 +1,44 @@
+.summary {
+	line-height: 16px;
+}
+
+table {
+    width: 100%;
+}
+
+.split {
+    background: url('./img/split.png') repeat-x;
+    height: 2px;
+    width: 100%;
+}
+
+.info_img {
+    padding: 3px 0 3px 4%;
+    width : 28.7%;
+}
+
+.info_text {
+    padding-left: 5%;
+}
+
+.info_img img{
+    width: 100%;
+    max-width: 140px;
+}
+
+.list_item_title {
+    /*font-size: 1.2em;
+    font-weight: bold;
+    color: #666666;  */
+    font-size: 1.1em;
+    font-weight: normal;
+    color: #000000;
+
+}
+
+.list_item_time {
+    display: inline-block;
+    font-size: 0.8em;
+    color: #AAAAAA;
+    padding-top: 4%;
+}

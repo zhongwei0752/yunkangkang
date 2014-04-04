@@ -1,0 +1,162 @@
+﻿<!--{eval $_TPL['titles'] = array($stratch['loupan'],$stratch['subject'], '刮刮卡');}-->
+<!--{template header}-->
+
+<!--{if $space[self]}-->
+<script type="text/javascript" charset="$_SC[charset]" src="source/script_calendar.js"></script>
+<div  style="padding:0 0 10px;">
+            <div class="content" style="font-size:15px;">
+            	<div class="indexing" style="margin-bottom:15px;">
+                  <span><a href="space.php?do=home">首页</a></span>><span><a href="space.php?do=stratch">刮刮卡</a></span>
+                 </div>
+				     <div class="bread container_12">
+        <div class="bread_actived grid_1">
+        	查看活动
+        </div>
+    </div>
+	<!--{else}-->
+<!--{eval 
+	$_TPL['spacetitle'] = "刮刮卡";
+	$_TPL['spacemenus'][] = "<a href=\"space.php?uid=$space[uid]&do=$do&view=me\">查看全部活动</a>";
+}-->
+<!--{template space_menu}-->
+<!--{/if}-->
+<style type="text/css">
+/*其他主题类型样式*/
+.r_one{color:#555;}
+.s8,.s8 a,.s8 a:hover{color:#1bb9ea;}
+.s7,.s7 a{color:#ff00a2;}
+.s1{color:#008000;} /*绿色*/
+.s3{color:#ff6600;} /*橙色*/
+.s9{line-height:25px;padding:0 .8em;}
+.dig2{height:25px;line-height:25px;display: inline-block;font-size:12px;background:#ffffee;width:80px;cursor: pointer;margin:.5em 0;color:#666;border:1px solid #ffd0a8;}
+.dig2:hover{text-decoration:none;border:1px solid #f5a25c;color:#ff6600;}
+.gogo{height:35px;line-height:30px;color:#777; text-align:center}
+.tab2{background:#e4e4e4;margin-top:4px;height:100px;}
+.tab2 .one{background:url(image/tab-one.gif) left center repeat-y;width:50px;}
+.tab2 .two{background:url(image/tab-two.gif) left center repeat-y;width:50px;}
+
+.dig3{border:1px solid #ee6821;margin:.5em 2em}
+.dig3 span{background:#ee6821;color:#fff;height:25px;line-height:25px;padding:0 .5em;}
+.dig3 div{cursor:pointer;height:25px;line-height:25px;padding:0 .5em;background:#fff;}
+.dig4{border:1px solid #23bceb;margin:.5em 2em}
+.dig4 span{background:#23bceb;color:#fff;height:25px;line-height:25px;padding:0 .5em;}
+.dig4 div{cursor:pointer;height:25px;line-height:25px;padding:0 .5em;background:#fff;}
+.dig5{background:#ffffee;height:25px;line-height:25px;border:1px solid #f5a25c;color:#ff6600;width:80px;margin:.5em 2em;}
+
+.vote{margin:10px auto;background:$bgcolor;width:90%;padding:5px 8px;border:1px solid #f9f9f9;line-height:22px;}
+
+.vs-new{background:url(image/vs-new.png) no-repeat;width:110px;height:110px;}
+.vs-old{background:url(image/vs-old.png) no-repeat;width:110px;height:110px;}
+/*伪类按钮*/
+.bta{cursor:pointer;color:#333333;padding:2px 8px;background:#f9f9f9;margin:2px;white-space:nowrap;border:1px solid #dbe4e9;}
+</style>
+                 <div class="content_detail_wrapper">
+                      <div class="content_page_detail">
+                           <div class="content_title">$stratch[subject]</div>
+                           <div class="content_text_detail" style="text-align: center;margin-bottom:10px;margin-top:10px;font-size:12px;">作者 : $stratch[username]&nbsp;|&nbsp;发布时间 : <!--{date('Y-m-d H:i:s',$stratch[dateline])}--></div>
+						   <div class="content_text_detail"style="overflow:hidden">
+                               <p>$stratch[message]</p>
+                           </div>
+						   <div class="list" style="float:left;margin-left:10px;width:100%;margin-top:20px;">
+							<h3>奖项列表：</h3>
+							<p>一等奖：$stratch['award1']($stratch['winsum1']&nbsp;名)</p>
+							<p>二等奖：$stratch['award2']($stratch['winsum2']&nbsp;名)</p>
+							<p>三等奖：$stratch['award3']($stratch['winsum3']&nbsp;名)</p>
+						   </div>
+							<div class="feed_action">
+								<ul>
+									<li><a href="cp.php?ac=stratch&stratchid=$stratch[stratchid]&op=edit">修改</a></li>
+									<li><a href="cp.php?ac=stratch&stratchid=$stratch[stratchid]&op=delete" id="stratch_delete_$stratch[stratchid]" onclick="ajaxmenu(event, this.id)">删除</a></li>
+								</ul>
+							</div>
+            <div class="comments" id="div_main_content">
+		
+
+		<!--{if !$stratch[noreply]}-->
+		<form id="quickcommentform_{$id}" name="quickcommentform_{$id}" action="cp.php?ac=stratchcomment" method="post" class="quickpost">
+
+			<table cellpadding="0" cellspacing="0">
+				<tr>
+					<td>
+						<input type="hidden" name="refer" value="space.php?uid=$stratch[uid]&do=$do&id=$id" />
+						<input type="hidden" name="id" value="$id">
+						
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="hidden" name="refer" value="space.php?uid=$stratch[uid]&do=$do&id=$id" />
+						<input type="hidden" name="id" value="$id">
+						<input type="hidden" name="idtype" value="stratchid">
+						<input type="hidden" name="commentsubmit" value="true" />
+						
+						<div id="__quickcommentform_{$id}"></div>
+					</td>
+				</tr>
+			</table>
+		<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" /></form>
+		<br />
+		<!--{/if}-->
+	</div>
+	<div id="bottom"></div>
+		
+
+
+
+                           </div>
+                      </div>
+                 </div>
+                 
+                </div>
+     
+              
+
+
+
+
+
+
+<script type="text/javascript">
+<!--
+function closeSide2(oo) {
+	if($('sidebar').style.display == 'none'){
+		$('content').style.cssText = '';
+		$('sidebar').style.display = 'block';
+		oo.innerHTML = '&raquo; 关闭侧边栏';
+	}
+	else{
+		$('content').style.cssText = 'margin: 0pt; width: 810px;';
+		$('sidebar').style.display = 'none';
+		oo.innerHTML = '&laquo; 打开侧边栏';
+	}
+}
+function addFriendCall(){
+	var el = $('friendinput');
+	if(!el || el.value == "")	return;
+	var s = '<input type="checkbox" name="fusername[]" value="'+el.value+'" id="'+el.value+'" checked>';
+	s += '<label for="'+el.value+'">'+el.value+'</label>';
+	s += '<br />';
+	$('friends').innerHTML += s;
+	el.value = '';
+}
+resizeImg('introduce_article','700');
+resizeImg('div_main_content','450');
+
+//彩虹炫
+var elems = selector('div[class~=magicflicker]'); 
+for(var i=0; i<elems.length; i++){
+	magicColor(elems[i]);
+}
+
+-->
+</script>
+
+<!--{template footer}-->
+
+
+
+	
+
+		
+
+

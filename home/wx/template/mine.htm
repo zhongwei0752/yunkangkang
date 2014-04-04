@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <link rel = "stylesheet" type = "text/css" href = "./template/css/main.css">
+    <link rel="stylesheet" href="./template/css/mobiscroll.custom-2.5.4.min.css">
+    <script src="./template/js/jquery-v2.0.2.js"></script>
+      <script src="./template/js/mobiscroll.custom-2.5.4.min.js"></script>
+      <script src="./template/js/scrollbox.js"></script>
+  </head>
+  <body> 
+    <div class = "navigation">
+      <span>企业动态</span>
+      <a href = "#" id = "show" class = "menu_btn"><img src = "img/menu_btn.png" id = "show" /></a>
+    </div>
+    <ul class = "list mt55">
+      <?php
+foreach ($wei2 as $value)
+{
+  echo "value: " . $value . "<br />";
+}
+?>
+    </ul>
+    <input type = "button" value = "更多" class = "more_button" href = "#" />
+    <div style = "display: none;">
+      <select name="" id="demo" class="f-dd">
+        <option value="index.html">主页</option>
+          <option value="info.html">企业介绍</option>
+          <option value="product.html">产品列表</option>
+          <option value="feed.html" selected = "selected">企业动态</option>
+          <option value="book.html">预约预订</option>
+          <option value="job.html">人才招聘</option>
+      </select>
+    </div>
+  </body>
+</html>

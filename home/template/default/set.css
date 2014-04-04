@@ -1,0 +1,58 @@
+.gallery {
+	margin: 20px 0;
+}
+
+#setItem1 {
+	margin-top: 50px;
+}
+
+#setItem2 {
+	margin-top: 80px;
+}
+
+#setItem3 {
+	margin-top: 80px;
+}
+
+#setItem4 {
+	margin-top: 130px;
+}
+
+#set1 {
+	height: 240px;
+	background: #C6DBDC;
+}
+
+#set2 {
+	height: 350px;
+	background: #C7D9E8;
+}
+
+#set3 {
+	height: 300px;
+	background: #C9E3B4;
+}
+
+#set4 {
+	height: 440px;
+	background: #D8D8D8;
+}
+
+.bottomWrapper {
+	margin-top: 80px;
+}
+
+.bottomWrapper .contactUs .listItem:link
+{
+  color: #BBBBBB;
+  *color: #BBBBBB ;
+  _color: #BBBBBB;
+}
+
+.bottomWrapper .contactUs .listItem:hover
+{
+    color: #60B4AE;
+   *color:  #60B4AE ;
+   _color:  #60B4AE;
+
+}

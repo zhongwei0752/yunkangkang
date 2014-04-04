@@ -1,0 +1,54 @@
+.cComment {
+	color: #868686;
+}
+
+.comment {
+	margin-top: 5px;
+	background: #f0f0f0;
+	border-top: solid 1px #DDDCCF;
+}
+
+.commentContainer {
+	height: 80px;
+}
+
+.commentText {
+	width: 75%;
+}
+
+.commentText textarea {
+	margin-left: 5%;
+	width: 98%;
+	height: 60px;
+	margin-top: 9px;
+	border: 1px solid #cfcfcf;
+}
+
+.commentPublish {
+	width: 100%;
+}
+
+.commentPublish a {
+	margin-right: 8px;
+	margin-top: 8px;
+	width: 60px;
+	height: 60px;
+	background: #133F5F;
+	line-height: 60px;
+	text-align: center;
+	border: 1px solid #dfdfdf;
+}
+
+.commentPublish a:hover {
+	background: #046FA9;
+}
+
+.commentList li {
+	padding-left: 4.06%;
+	border-top: 1px solid #cfcfcf;
+}
+
+.commentItem {
+	padding: 10px 0;
+	line-height: 18px;
+}

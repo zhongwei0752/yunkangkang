@@ -1,0 +1,183 @@
+<!--{template header}-->
+
+<link rel="stylesheet" type="text/css" href="template/default/jquery-mobile-fluid960.min.css">
+<link rel="stylesheet" type="text/css" href="template/default/style1.css">
+<link rel="stylesheet" type="text/css" href="template/default/file_beauty.css">
+
+
+<!--{if $_GET[op] == 'delete'}-->
+
+<h1>删除栏目</h1>
+<a href="javascript:hideMenu();" class="float_del" title="关闭">关闭</a>
+<div class="popupmenu_inner">
+<form method="post" action="cp.php?ac=job&op=delete&jobid=$jobid">
+	<p>确定删除指定的栏目吗？</p>
+	<p class="btn_line">
+		<input type="hidden" name="refer" value="$_SGLOBAL[refer]" />
+		<input type="hidden" name="deletesubmit" value="true" />
+		<input type="submit" name="btnsubmit" value="确定" class="submit" />
+	</p>
+<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+</form>
+</div>
+
+<!--{elseif $_GET[op] == 'edithot'}-->
+
+<h1>调整热度</h1>
+<a href="javascript:hideMenu();" class="float_del" title="关闭">关闭</a>
+<div class="popupmenu_inner">
+<form method="post" action="cp.php?ac=job&op=edithot&jobid=$jobid">
+	<p class="btn_line">
+		新的热度：<input type="text" name="hot" value="$job[hot]" size="5"> 
+		<input type="hidden" name="refer" value="$_SGLOBAL[refer]" />
+		<input type="hidden" name="hotsubmit" value="true" />
+		<input type="submit" name="btnsubmit" value="确定" class="submit" />
+	</p>
+<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+</form>
+</div>
+
+<!--{else}-->
+
+<script language="javascript" src="image/editor/editor_function.js"></script>
+<script language="javascript" src="source/script_blog.js"></script>
+
+<!--{if $topic}-->
+	<!--{template cp_topic_menu}-->
+<!--{else}-->
+
+	<div class="content" style="font-size:15px;">
+          
+                 <div class="indexing">
+                 <span><a href="space.php?do=home">首页</a></span>><span><a href="space.php?do=job&view=me">人才招聘</a></span>
+                 </div><!-- end -->
+                 <div class="bread container_12">
+                     <div class="bread_actived grid_1">
+                         发布
+                     </div>
+                     <a href="space.php?do=job&view=me" class="link_back_bread grid_3">
+                      人才招聘
+                     </a>
+                 </div>
+<!--{/if}-->
+
+
+	  <div class="content_detail_wrapper">
+                    <div class="post_wrapper">
+	<form method="post" action="cp.php?ac=job&jobid=$job[jobid]" enctype="multipart/form-data">
+					<div class="post_list container_12">
+                         <span class="select_title grid_1">职位名称&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                         <input type="text" class="t_input" id="subject" name="subject" value="$job[subject]"  onblur="relatekw();"  />
+                            </div>
+                         <div class="post_list container_12">
+                         <span class="select_title grid_1">职位描述&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                          <a id="doodleBox" href="magic.php?mid=doodle&showid=job_doodle&target=uchome-ttHtmlEditor&from=editor" style="display:none"></a>
+						  <textarea class="userData" name="message" id="uchome-ttHtmlEditor" style="height:100%;width:100%;display:none;border:0px">$job[message]</textarea>
+						  <iframe src="editor.php?charset=$_SC[charset]&allowhtml=$allowhtml&doodle=<!--{if isset($_SGLOBAL[magic][doodle])}-->1<!--{/if}-->" name="uchome-ifrHtmlEditor" id="uchome-ifrHtmlEditor" scrolling="no" border="0" frameborder="0" style="width:550px;border: 1px solid #C5C5C5;margin-left:20px;" height="200"></iframe>
+                            </div>
+                         <div class="post_list container_12">
+                         <span class="select_title grid_1">资格要求&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                          <textarea name="messagecomment" style="width:550px;height:200px;margin-left:20px;">$job[messagecomment]</textarea>
+                            </div>
+						 <div class="post_list container_12">
+                         <span class="select_title grid_1">电话&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                          <input type="text" class="t_input" id="telephone" name="telephone" value="$job[telephone]" />
+                            </div>
+                             <div class="post_list container_12">
+                         <span class="select_title grid_1">邮箱&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                          <input type="text" class="t_input" id="email" name="email" value="$job[email]" />
+                            </div>
+                             <div class="post_list container_12">
+                         <span class="select_title grid_1">待遇&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                          <input type="text" class="t_input" id="money" name="money" value="$job[money]" />
+                            </div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1">其他&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                          <textarea name="othermessage" style="width:550px;height:200px;margin-left:20px;">$job[othermessage]</textarea>
+                            </div>
+		
+
+		<input type="hidden" name="jobsubmit" value="true" />
+		<input type="button" id="jobbutton" name="jobbutton" value="提交发布" onclick="validate(this);" style="display: none;" />
+		<input type="hidden" name="topicid" value="$_GET[topicid]" />
+		<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+	</form>
+
+	<!--{if !$_SGLOBAL[inajax] && (!$job['uid'] || $job['uid']==$_SGLOBAL['supe_uid'])}-->
+	<table cellspacing="4" cellpadding="4" width="100%" class="infotable">
+		<tr><th width="100">图片</th><td>
+			<div class="pic_submit container_12">
+		<input type="button" class="btn grid_3" name="clickbutton[]" value="上传图片" class="button" style="float:left;" onclick="edit_album_show('pic')">
+	</div>
+		</td></tr>
+	</table>
+	<!--{/if}-->
+
+	<table cellspacing="4" cellpadding="4" width="100%" id="uchome-edit-pic" class="infotable" style="display:none;">
+		<tr>
+			<th width="100">&nbsp;</th>
+			<td>
+				<strong>选择图片</strong>: 
+				<table summary="Upload" cellspacing="2" cellpadding="0">
+					<tbody id="attachbodyhidden" style="display:none">
+						<tr>
+							<td>
+								<form method="post" id="upload" action="cp.php?ac=upload" enctype="multipart/form-data" target="uploadframe" style="background: transparent;">
+									<input type="file" name="attach" style="border: 1px solid #CCC;" />
+									<span id="localfile"></span>
+									<input type="hidden" name="uploadsubmit" id="uploadsubmit" value="true" />
+									<input type="hidden" name="albumid" id="albumid" value="0" />
+									<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+								</form>
+							</td>
+						</tr>
+					</tbody>
+					<tbody id="attachbody"></tbody>
+				</table>
+				<table cellspacing="2" cellpadding="0">
+					<tr>
+						<td>
+							<input type="hidden" name="albumid" id="uploadalbum" value="-1"/>
+							<font color="#02B4AB">*此上传图片将会出现在正文底部，且会出现在微信详情页面头部。</font>
+							<script src="source/script_upload.js" type="text/javascript"></script>
+							<iframe id="uploadframe" name="uploadframe" width="0" height="0" marginwidth="0" frameborder="0" src="about:blank"></iframe>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<table cellspacing="4" cellpadding="4" width="100%" class="infotable" id="uchome-edit-album" style="display:none;">
+		<tr>
+			<th width="100">&nbsp;</th>
+			<td>
+				选择相册: <select name="view_albumid" onchange="picView(this.value)">
+					<option value="none">选择一个相册</option>
+					<option value="0">默认相册</option>
+					<!--{loop $albums $value}-->
+					<option value="$value[albumid]">$value[albumname]</option>
+					<!--{/loop}-->
+				</select> (点击图片可以插入到内容中)
+				<div id="albumpic_body"></div>
+			</td>
+		</tr>
+	</table>
+	<table cellspacing="4" cellpadding="4" width="100%" class="infotable">
+		<tr>
+			<th width="100">&nbsp;</th>
+			<td>
+				<div class="confirm_btn container_12">
+                           <a href="space.php?do=home" class="cancle_btn grid_1">取消</a>
+                           <input type="button" class="btn grid_2" id="issuance" onclick="document.getElementById('jobbutton').click();" value="保存发布" class="submit" />
+                        
+                      </div>
+			</td>
+		</tr>
+	</table>
+</div>
+</div>
+
+
+<!--{/if}-->
+<!--{template footer}-->
+

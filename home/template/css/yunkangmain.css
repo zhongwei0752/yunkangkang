@@ -1,0 +1,375 @@
+.listcontentbody
+{
+    width: 90%;
+    margin-left: 5%;
+}
+.listtil
+{
+
+    margin-bottom: 10px;
+    color: #3F9BA0;
+    font-size: 20px;
+    font-weight: 600;
+}
+.l1
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.l1_s1
+{
+    color: #999999;
+    font-size: 14px;
+    width: 15%;
+}
+.l1_s2
+{
+    color: #666666;
+    font-size: 14px;
+    width: 75%;
+}
+.l1_s2 input
+{
+     border: 1px solid #DDDDDD;
+     height:30px ;
+     line-height: 30px;
+     padding-left: 5px;
+     width: 65%;
+     color:#666666 ;
+}
+.numshowbox
+{
+    position: relative;
+    top: -60px;
+    text-align: center;
+}
+
+.numshowbox h1
+{
+    color: #fff;
+    position: relative;
+    top: 100px;
+}
+.numshowbox img
+{
+    width: 160px;
+}
+.showmessage
+{
+    color: #666666;
+    font-size: 15px;
+    text-align: center;
+}
+.showmessage em
+{
+    font-style:normal;
+    color: #4B99A4;
+}
+.errorshowbox
+{
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.errorshowbox img
+{
+    width: 120px;
+}
+.asktextbox textarea
+{
+    resize: none;
+    border: 1px solid #ddd;
+    width: 100%;
+    padding-left: 5px;
+    padding-top: 5px;
+    margin-left: -5px;
+    height: 100px;
+    color: #666;
+}
+.askbox
+{
+    margin-top: -30px;
+}
+.rightword
+{
+    float: left;
+    width: 90%;
+    color: #666666;
+    margin-left: 10px;
+}
+.rightword p
+{
+    margin-top: 5px;
+
+}
+.rw_p2
+{
+    color: #CCCCCC;
+   position: relative;
+    top: -12px;
+}
+.ques_til
+{
+    height: auto;
+}
+.listonline
+{
+    border-top: 1px dashed #ddd;
+}
+.ll1,.ll2
+{
+    color: #CCCCCC;
+    font-size: 15px;
+}
+.ll2
+{
+    color: #4799A3;
+}
+.askmoretextarea
+{
+    width: 90%;
+    margin-left: 5%;
+    border-top: 1px dashed #ddd;
+    height: 0px;
+}
+.askmorebox
+{
+    width: 100%;
+    margin-top: 20px;
+    display: none;
+
+}
+.askmorebox textarea
+{
+    width: 100%;
+    padding-top: 5px;
+    padding-left: 5px;
+    margin-left: -5px;
+    border: 1px solid #ccc;
+    resize: none;
+    height: 80px;
+    color: #666;
+}
+.feedcontentmainbody
+{
+    width: 100%;
+    margin-top: 0;
+    background-color: #fff;
+    box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+}
+.feedcontent
+{
+    width: 90%;
+    margin-left: 5%;
+}
+
+.fc_title
+{
+    font-size: 18px;
+    color: #4B99A4;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 15px;
+    letter-spacing: 1px;
+}
+.fc_date
+{
+    font-size: 14px;
+    color: #CCCCCC;
+    margin-top: 10px;
+
+}
+.fc_picbox
+{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+}
+.fc_picbox img
+{
+    width: 100%;
+}
+.fc_detail
+{
+    width: 90%;
+    margin-left: 5%;
+    font-size: 14px;
+   color:  #666666 ;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+.sharebtn
+{
+    width: 90%;
+    margin-left: 5%;
+    height: 50px;
+    background-image: url('../img/sendpic.png');
+    background-size:100%;
+    background-position: 100%;
+    background-repeat: no-repeat;
+  /*  border: 1px solid #000;*/
+    text-align: center;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 50px;
+    letter-spacing: 1px;
+
+}
+.sharebtn:hover
+{
+    color: #666;
+}
+.ques_til2
+{
+    color: #4B99A4;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.choose
+{
+    margin-bottom: 20px;
+}
+.checkbox1
+{
+    width: 21px !important;
+    height: 21px !important;
+
+    background-image: url(../img/checkbox.png);
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position:0px -20px;
+}
+.checkbox1_h
+{
+
+    background-position:0px 1px;
+}
+.que_con
+{
+    margin-top: -22px;
+    font-size: 16px;
+    font-style: normal;
+    color: #666;
+    padding-left: 30px;
+    padding-right: 10px;
+}
+.result_detail
+{
+    width: 100%;
+    margin-left: 0;
+    margin-top: -10px;
+    line-height: 24px;
+}
+.personalpic
+{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+.personalpic img
+{
+    width: 100px;
+    height: 100px;
+}
+.personalmess
+{
+    font-size: 15px;
+    float: left;
+    width: 145px;
+    margin-left: 10px;
+
+}
+.personalmess div
+{
+    margin-bottom: 7px;
+}
+.per_name
+{
+    font-size: 16px;
+    color: #4B99A4;
+}
+.pd1
+{
+    color: #999999;
+}
+.pd2
+{
+    color: #666666;
+}
+.report_tit
+{
+    width: 200px;
+    height: 45px;
+    background-image: url('../img/report_titelpic.png');
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    color: #4B99A4;
+    font-size: 18px;
+    background-size: 15px;
+    padding-left: 30px;
+    margin-left: 5%;
+}
+.reportlist
+{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: -18px;
+
+}
+.reportlist ul
+{
+    -webkit-padding-start: 0px;
+}
+.reportlist li
+{
+    background-image: url('../img/report_listpic.png');
+    background-repeat: repeat-y;
+    background-position: 6px 0px;
+    background-size: 3.5px;
+}
+.report_daypic
+{
+    width: 150px;
+    height: 40px;
+    background-image: url('../img/report_daypic.png');
+    background-repeat: no-repeat;
+    background-position: 2px 0px;
+    background-size: 130px;
+    color: #fff;
+    font-size: 14px;
+    padding-left: 40px;
+    padding-top: 1px;
+
+}
+.report_detail
+{
+    background-color: #fff;
+    width: 88%;
+    padding: 10px;
+    margin-left: 20px;
+
+}
+.report_con
+{
+    height: 75px;
+    overflow: hidden;
+  /*  text-overflow: ellipsis;
+    white-space: nowrap;  */
+}
+.re_icon
+{
+    width: 45px;
+    height: 20px;
+    background-color: #fff;
+    font-size: 14px;
+     color: #666;
+    float: right;
+    margin-top: -35px;
+    position: relative;
+    z-index: 50;
+
+
+}

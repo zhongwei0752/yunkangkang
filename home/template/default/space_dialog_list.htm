@@ -1,0 +1,227 @@
+
+<!--{template header}-->
+<style>
+#simplemodal-container{
+  width:620px;
+  height:400px;
+}
+</style>
+<!--{if $space[self]}-->
+<div class="content" style="font-size:15px;">
+          
+                 <div class="indexing">
+                   <img src="$wei1[image2url]" /><span><a href="space.php?do=home">首页</a></span>><span>在线沟通</span>
+                 </div><!-- end -->
+                 <div class="bread container_12">
+                     <div class="bread_actived grid_1">
+                         问题列表
+                     </div>
+                       <a href="javascript:;" id="servicechange" class="btn grid_2">
+                      修改客服
+                     </a>
+                      <a href="cp.php?ac=dialog&op=ask" class="btn grid_2">
+                      发布
+                     </a>
+                 </div>	
+<!--{/if}-->
+	<script language="javascript" type="text/javascript" src="source/jquery.js"></script>
+		<script type="text/javascript" src="./source/jquery.simplemodal.js"></script>	
+<div id="content" style="width:760px;">
+
+<div class="content_detail_wrapper">
+		 <div id="talk75">
+  <h3 style="font-size:20px;color:#44B1BA;background:#ECEFF1;margin:0;line-height:40px;text-align:left;padding-left:10px;">回复</h3>
+  <div style="width:600px;background:#fff;margin:20px auto;text-align:center;">
+  	<form  method = "post" id = "reply">
+  		<textarea id = "inputText" name="message" style="width:300px;height:50px;resize: none;"></textarea>
+  		<br/><br/>
+  		<input type="button" style="margin-left:250px;" class="btn grid_2" value="提交" onclick="datasubmit()">
+  	</form>
+  </div>
+
+</div>
+ <script type="text/javascript">
+    var jquery = jQuery.noConflict();
+      jquery(document).ready(function(){
+       jquery('#talk75').attr("style", "display:none;");
+	});
+ </script> 
+	<div id = "dialoglist" class = "pm_list">
+		
+ 		<!--{if $list}-->
+		<!--{loop $list $value}-->
+                     
+   		<div class = "dialog">
+   			<div class = "dia-header">
+   				<a class = "q_title" href = "space.php?do=dialog&dialog=$value[id]">$value['subject']</a>
+   				
+   				<a href="javascript:void(0);" style = "color: #00A69E; float: right;" onclick="quickreply($space[uid],$value[q_uid],$value[id])">回复</a>
+   			</div>
+   			<div class = "dia-content">
+   				<ul>
+   					<!--{eval $cl = $clist[$value[num]]}-->
+   					<!--{loop $cl $cval}-->
+   						<li class="q_li">
+   							
+   							<div class = "con-user">
+   								<!--{avatar($cval[uid],'small')}-->
+   							 
+   							</div>
+   							<div class = "con-mes">
+   								<span style = "color: #02B4AB;vertical-align: top;display: block; margin-bottom: 4px;">$cval[name]:</span>
+   								
+   							 $cval[message]
+   							<a href="javascript:void(0);" style = "color: #00A69E;vertical-align: top;" onclick="quickreply($space[uid],$cval[uid],$value[id])">回复</a>	
+   							<a href="cp.php?ac=dialog&dialog=$cval[did]&op=delete" id="blog_delete_$cval[did]" style = "vertical-align: top;" onclick="ajaxmenu(event, this.id)">删除</a>
+						    </div>					
+   						</li>
+   					<!--{/loop}-->
+   				</ul>
+   			</div>
+   		</div>             
+                		
+        <!--{/loop}-->
+                  
+		<!--{else}-->
+			<div class="c_form">还没有相关的对话。</div>
+		<!--{/if}-->
+          
+	</div>
+    </div>             
+	<div class='pagination'><ul>$multi</ul></div>
+	
+	
+
+</div>
+<!--{if !$space[service]}-->
+    <script type="text/javascript">
+    var jquery = jQuery.noConflict();
+     jquery('#weixin').attr("style", "display:none;");
+      
+      jquery(document).ready(function(){
+        
+
+        jquery('#weixin').modal();
+         
+        
+         })
+      
+      
+         
+    </script>
+    <!--{/if}-->
+    <script type="text/javascript">
+    var jquery = jQuery.noConflict();
+    jquery('#servicechange').click(function(){
+        jquery('#weixin').modal();
+         })  
+     </script>
+    
+
+<script>
+
+function fuidgoto(fuid) {
+	window.location.href = "space.php?do=product&view=we&fuid="+fuid;
+}
+function datasubmit(){
+	console.log(uid);
+	var $ = jQuery.noConflict();
+	var mes = $("#inputText").val();
+	var ddata = {"uid":uid,"rid":rid,"dialogid":did,"message":mes};
+	$.post("cp.php?ac=dialog",ddata,function(data){
+		//showmessage("reply_success");
+		console.log(data);
+		//$(".reply_area").append(data);
+		window.location.reload();
+	});
+	//window.reload();
+	//console.log($space[uid]);
+}
+function quickreply(uidt,ridt,didt){
+	var jquery = jQuery.noConflict(); 
+    jquery('#talk75').attr("style", "display:none;");
+   	//e.preventDefault();
+   	jquery('#talk75').modal();
+   	uid = uidt;
+   	rid = ridt;
+   	did = didt;
+}
+
+
+function quickdelete(did){
+	console.log(did);
+	var ddata = {"did":did};
+	var $ = jQuery.noConflict(); 
+	$.post("cp.php?ac=dialog&do=delete",ddata,function(data){
+		console.log(data);
+		window.location.reload();
+	});
+	
+}
+
+</script>
+<script type="text/javascript">
+var jquery = jQuery.noConflict();
+jquery(document).ready(function() {
+ jquery('.list_box').hide();
+ jquery('#subject1').keyup(function(){
+  var keywords = jquery('#subject1').val();
+  jquery.ajax({
+   type:"POST",
+   url:"space.php?do=ajax1",
+   data:{keywords:keywords},
+   success:function(html) {
+   jquery('.list_box').show();
+   jquery('.keywords_list').html(html);
+   jquery('li').click(function(){
+    jquery('.list_box').hide();
+    var update = new Array(); 
+    update = jquery(this).text().split('|');
+     jquery('#subject1').val(update[1]);
+     jquery('#push1').val(update[0]);
+     jquery('.list_box').hide();
+                })
+  }
+
+})
+    });
+  });
+  </script><br/>
+	 <div id="weixin">
+     <form action = "space.php?do=dialog" method = "post" style="margin:0 auto;text-align:center;">
+    <br/>
+   <h3 style="font-size:20px;color:#44B1BA;margin-left:-10px;line-height:40px;">绑定客服</h3>
+    <span style="color:red">(以下2项两者选一进行填写，若2项都填写，默认选择第一项)</span>
+    <h3 style="font-size:20px;color:#44B1BA;margin:0;line-height:40px;padding-left:10px;">绑定客服:&nbsp;<select name="recomendman" ><option value="0">请选择</option>
+    <!--{loop $list1 $value}--><option value="$value[uid]">$value[name]</option><!--{/loop}--><!-- <div class="list_box" style=" border:1px solid red;">
+          <div class="keywords_list"></div>
+          </div> --></select></h3>
+
+                          
+                           <div>
+                            or<input type="text" style="margin-left:10px;"  class="t_input" id="subject1" autocomplete = "off" name="subject1"   size="40" />
+                            <div class="list_box" style="border:1px solid #999;margin-left:193px;width:257px;">
+              <div class="keywords_list"></div>
+              <input type="hidden" name="push1" id="push1">
+                            </div>
+                            </div>
+
+<br/>
+    <input type="submit" name="submit" style="margin-left:220px;margin-right:20px;" class="btn grid_2" value="提交">
+    <input type="submit" name="submit" style="
+display: inline-block;
+width: 94px;
+height: 32px;
+line-height: 32px;
+text-align: center;
+color: white;
+background: url('./template/default/image/btn_normal.png') no-repeat;margin: 0;
+padding: 0;
+border: 0;
+float: left;
+" class="modalCloseImg simplemodal-close"  value="取消">
+    <input type="hidden" name="recomendweixin" value="1">
+    </form>
+
+    </div>
+<!--{template footer}-->

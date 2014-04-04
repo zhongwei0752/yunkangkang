@@ -1,0 +1,8 @@
+/*product页面*/
+.itemPrice{ position: absolute; top: 20px; }
+
+/*主页*/
+.indexFrame{ padding: 6% 14% 6% 6%; }
+.mainBlock{ height: 120px; width: 47.5%; text-align: center; }
+.mainBlock img{ width: 51px; margin: 35px 0 15px; }
+.mainBlock span{ float: right; color: white; opacity: 0.6; margin-right: 6%; }

@@ -1,0 +1,344 @@
+<!--{template header}-->
+
+<link rel="stylesheet" type="text/css" href="template/default/jquery-mobile-fluid960.min.css">
+<link rel="stylesheet" type="text/css" href="template/default/style1.css">
+<link rel="stylesheet" type="text/css" href="template/default/file_beauty.css">
+
+<!--{if $_GET[op] == 'delete'}-->
+
+<div <!--{if !$_SGLOBAL[inajax]}-->class="inpage"<!--{/if}-->>
+<form method="post" action="cp.php?ac=debate&op=delete&debateid=$debateid">
+	<h1>确定删除指定的辩论吗？</h1>
+	<a href="javascript:hideMenu();" class="float_del" title="关闭">关闭</a>
+	<p class="btn_line">
+		<input type="hidden" name="refer" value="$_SGLOBAL[refer]" />
+		<input type="hidden" name="deletesubmit" value="true" />
+		<input type="submit" name="btnsubmit" value="确定" class="submit" />
+		<!--{if $_SGLOBAL[inajax]}--><input type="button" name="btnclose" value="取消" onclick="hideMenu();" class="button" /><!--{/if}-->
+	</p>
+<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+</form>
+</div>
+<!--{elseif $_GET[op] == 'opvote'}-->
+<div <!--{if !$_SGLOBAL[inajax]}-->class="inpage"<!--{/if}-->>
+<form method="post" action="cp.php?ac=debate&op=opvote&debateid=$debateid">
+<!--{if in_array($_SGLOBAL[supe_uid],$obvoteuids) || in_array($_SGLOBAL[supe_uid],$revoteuids)}-->
+	<h1>你已经投过票了！</h1>
+	<a href="javascript:hideMenu();" class="float_del" title="关闭">关闭</a>
+    <!--{else}-->
+    <h1>确定支持正方观点吗？</h1>
+    <a href="javascript:hideMenu();" class="float_del" title="关闭">关闭</a>
+    <!--{/if}-->
+	<p class="btn_line">
+		<input type="hidden" name="refer" value="$_SGLOBAL[refer]" />
+		<input type="hidden" name="opvotesubmit" value="true" />
+		<input type="submit" name="btnsubmit" value="确定" class="submit" <!--{if in_array($_SGLOBAL[supe_uid],$obvoteuids) || in_array($_SGLOBAL[supe_uid],$revoteuids)}--> disabled <!--{/if}--> />
+		<!--{if $_SGLOBAL[inajax]}--><input type="button" name="btnclose" value="取消" onclick="hideMenu();" class="button" /><!--{/if}-->
+	</p>
+<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+</form>
+</div>
+<!--{elseif $_GET[op] == 'revote'}-->
+<div <!--{if !$_SGLOBAL[inajax]}-->class="inpage"<!--{/if}-->>
+<form method="post" action="cp.php?ac=debate&op=revote&debateid=$debateid">
+<!--{if in_array($_SGLOBAL[supe_uid],$obvoteuids) || in_array($_SGLOBAL[supe_uid],$revoteuids)}-->
+	<h1>你已经投过票了！</h1>
+	<a href="javascript:hideMenu();" class="float_del" title="关闭">关闭</a>
+    <!--{else}-->
+    <h1>确定支持反方观点吗？</h1>
+    <a href="javascript:hideMenu();" class="float_del" title="关闭">关闭</a>
+    <!--{/if}-->
+	<p class="btn_line">
+		<input type="hidden" name="refer" value="$_SGLOBAL[refer]" />
+		<input type="hidden" name="revotesubmit" value="true" />
+		<input type="submit" name="btnsubmit" value="确定" class="submit" <!--{if in_array($_SGLOBAL[supe_uid],$obvoteuids) || in_array($_SGLOBAL[supe_uid],$revoteuids)}--> disabled <!--{/if}--> />
+		<!--{if $_SGLOBAL[inajax]}--><input type="button" name="btnclose" value="取消" onclick="hideMenu();" class="button" /><!--{/if}-->
+	</p>
+<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+</form>
+</div>
+<!--{elseif $_GET[op] == 'judgedebate'}-->
+<div id="$debateid"<!--{if !$_SGLOBAL[inajax]}-->class="inpage"<!--{/if}-->>
+<!--{if $_SGLOBAL[inajax]}-->
+	<h1>结束辩论，裁判点评</h1>
+	<a href="javascript:hideMenu();" class="float_del" title="关闭">关闭</a>
+	<div class="popupmenu_inner">
+<!--{/if}-->
+<form id="judgedebateform" name="judgedebateform" method="post" action="cp.php?ac=debate&op=judgedebate&debateid=$debateid">
+<table >
+	<tr>
+		<td>辩论结果：</td>
+		<td>
+<!--{if $debate[judge]==1}-->
+正方胜(支持数： $debate[obvote] 辩手：$debate[obreplynum])
+<!--{elseif $debate[judge]==2}-->
+平局
+<!--{elseif $debate[judge]==3}-->
+反方胜(支持数： $debate[revote] 辩手：$debate[rereplynum])
+<!--{else}-->
+			<input class="input" type="radio" name="judge" value="1" />正方胜(支持数：$debate[obvote]&nbsp;辩手：$debate[obreplynum])<br />
+			<input class="input" type="radio" name="judge" value="2" CHECKED/>平局<br />
+			<input class="input" type="radio" name="judge" value="3" />反方胜(支持数：$debate[revote]&nbsp;辩手：$debate[rereplynum])
+<!--{/if}-->
+		</td>
+	</tr>
+	<tr>
+		<td>最佳辩手：</td>
+		<td>
+<!--{if $debate[debater]}-->
+			<a href="space.php?username=$debate[debater]" target="_blank">$debate[debater]</a>
+<!--{else}-->
+			<input class="input" id="debater" type="text" name="debater">
+			<select onChange="if(this.value)$('debater').value=this.value;">
+			<option value="">推荐辩手(支持数)</option>
+ <!--{if $debatear}-->           
+<!--{loop $debatear $value}-->
+			<option value="$value[author]">$value[author]($value[vote])</option>
+<!--{/loop}-->
+<!--{/if}-->
+			</select>
+<!--{/if}-->
+		</td>
+	</tr>
+	<tr>
+		<td>裁判点评:</td>
+		<td><textarea class="input" name="umpirepoint" rows="5" cols="40">$debate[umpirepoint]</textarea></td>
+	</tr>
+    <tr align="center">
+		<td >
+		<input type="hidden" name="refer" value="$_SGLOBAL[refer]" />
+		<input type="hidden" name="judgedebatesubmit" value="true" />
+		<!--{if $_SGLOBAL[inajax]}-->
+		<input type="submit" name="judgedebatesubmit_btn" id="judgedebatesubmit_btn" value="提交" class="submit" />
+		<!--{else}-->
+		<input type="submit" name="judgedebatesubmit_btn" id="judgedebatesubmit_btn" value="提交" class="submit" />
+		<!--{/if}-->
+		</td>
+	</tr>
+</table>
+<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+</form>
+</div>
+<!--{else}-->
+
+<script language="javascript" src="image/editor/editor_function.js"></script>
+<script language="javascript" src="source/date.js"></script>
+<script type="text/javascript">
+	function validate(obj) {
+	    var subject = $('subject');
+		var obtitle = $('obtitle');
+		var retitle = $('retitle');
+	    if (subject) {
+	    	var slen = strlen(subject.value);
+	        if (slen < 1 || slen > 150) {
+	            alert("标题长度(1~150字符)不符合要求");
+	            subject.focus();
+	            return false;
+	        }
+	    }
+		if (obtitle) {
+	    	var slen = strlen(obtitle.value);
+	        if (slen < 1 || slen > 80) {
+	            alert("正方辩题长度(1~80字符)不符合要求");
+	            obtitle.focus();
+	            return false;
+	        }
+	    }
+		if (retitle) {
+	    	var slen = strlen(retitle.value);
+	        if (slen < 1 || slen > 80) {
+	            alert("反方辩题长度(1~80字符)不符合要求");
+	            retitle.focus();
+	            return false;
+	        }
+	    }
+
+	    if($('seccode')) {
+			var code = $('seccode').value;
+			var x = new Ajax();
+			x.get('cp.php?ac=common&op=seccode&code=' + code, function(s){
+				s = trim(s);
+				if(s.indexOf('succeed') == -1) {
+					alert(s);
+					$('seccode').focus();
+	           		return false;
+				} else {
+					uploadEdit(obj);
+					return true;
+				}
+			});
+	    } else {
+	    	uploadEdit(obj);
+	    	return true;
+	    }
+	}
+	function edit_album_show(id) {
+		var obj = $('uchome-edit-'+id);
+		if(id == 'album') {
+			$('uchome-edit-pic').style.display = 'none';
+		}
+		if(id == 'pic') {
+			$('uchome-edit-album').style.display = 'none';
+		}
+		if(obj.style.display == '') {
+			obj.style.display = 'none';
+		} else {
+			obj.style.display = '';
+		}
+	}
+</script>
+
+
+
+
+
+
+<div class="content" style="font-size:15px;">
+          
+                 <div class="indexing">
+                   <span><a href="space.php?do=home">首页</a></span>><span><a href="space.php?do=debate">大擂台</a></span>><span>发起辩论</span>
+                 </div><!-- end -->
+                 <div class="bread container_12">
+                     <div class="bread_actived grid_1">
+                         发起辩论
+                     </div>
+                     <a href="space.php?do=debate" class="link_back_bread grid_3">
+                      大擂台
+                     </a>
+                 </div>
+
+	  <div class="content_detail_wrapper">
+                    <div class="post_wrapper">
+	<form method="post" action="cp.php?ac=debate&debateid=$debate[debateid]"  enctype="multipart/form-data">
+		<table cellspacing="4" cellpadding="4" width="100%" class="infotable">
+			<tr>
+				<td>
+					<div class="post_list container_12">
+                         <span class="select_title grid_1">辩论题目&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                         <input type="text" class="text" id="subject" name="subject" value="$debate[subject]" size="70" placeholder="题目长度不超过60字符"/>
+                    </div>
+					<div class="post_list container_12">
+                         <span class="select_title grid_1">结束时间&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                           <input name="endtime" type="text"  id="endtime" value="$debate[endtime]" onClick="javascript:ShowCalendar(this.id,1)" size="25" placeholder="点击获取时间"/>
+                            </div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1">正方观点&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                         <input name="obtitle" type="text" id="obtitle" value="$debate[obtitle]" size="50" placeholder="填写正方观点">
+                            <input type="file" name="obfiles"  value="$debate[obimageurl]" style = "margin-left:20px;"/>
+                            </div>
+                            <div class="post_list container_12">
+                         <span class="select_title grid_1">反方观点&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                         <input name="retitle" type="text" id="retitle" value="$debate[retitle]" size="50" placeholder="填写反方观点">
+                        	<input type="file" name="refiles"  value="$debate[reimageurl]" style = "margin-left:20px;"/>
+                        	</div>
+							<div class="post_list container_12">
+                         <span class="select_title grid_1">设置密码&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                         <input name="passwd" type="text" id="passwd" value="$debate[passwd]" size="50" placeholder="填写密码">
+                        	</div>
+                             <div class="post_list container_12">
+                         <span class="select_title grid_1">裁判&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+                          <label>
+			      				<input name="umpire" type="text" id="umpire" value="$debate[umpire]" size="25">
+			    			</label>
+                            </div>
+				</td>
+				
+			</tr>
+			<tr>
+				<td>
+					 <div class="post_list container_12">
+                         <span class="select_title grid_1">辩论内容&nbsp;&nbsp;:&nbsp;&nbsp;</span>
+						  <textarea class="userData" name="message" id="uchome-ttHtmlEditor" style="height:100%;width:100%;display:none;border:0px">$debate[message]</textarea>
+						  <iframe src="editor.php?charset=$_SC[charset]&allowhtml=$allowhtml&doodle=<!--{if isset($_SGLOBAL[magic][doodle])}-->1<!--{/if}-->" name="uchome-ifrHtmlEditor" id="uchome-ifrHtmlEditor" scrolling="no" border="0" frameborder="0" style="width:550px;height:350px;border: 1px solid #C5C5C5;" height="200"></iframe>
+                            </div>
+				</td>
+			</tr>
+		</table>
+		<input type="hidden" name="debatesubmit" value="true" />
+		<input type="button" id="debatebutton" name="debatebutton" value="提交发布" onclick="validate(this);" style="display: none;" />
+		<input type="hidden" name="topicid" value="$_GET[topicid]" />
+		<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+	</form>
+	<style>
+	.infotable th{
+		padding-right: 0em;
+	}
+	</style>
+	<!--{if !$_SGLOBAL[inajax] && (!$introduce['uid'] || $introduce['uid']==$_SGLOBAL['supe_uid'])}-->
+	<table cellspacing="4" cellpadding="4" width="100%" class="infotable" style="margin-left:55px;">
+		<tr><th width="100" style="margin-left:50px;">图片&nbsp;&nbsp;:</th><td>
+			<div class="pic_submit container_12">
+		<input type="button" class="btn grid_3" style="margin-right:-20px;" name="clickbutton[]" value="上传图片" class="button" style="float:left;" onclick="edit_album_show('pic')">
+	
+	</div>
+		</td></tr>
+	</table>
+	<!--{/if}-->
+
+	<table cellspacing="4" cellpadding="4" width="100%" id="uchome-edit-pic" class="infotable" style="display:none;">
+		<tr>
+			<th width="100">&nbsp;</th>
+			<td>
+				<strong>选择图片</strong>: 
+				<table summary="Upload" cellspacing="2" cellpadding="0">
+					<tbody id="attachbodyhidden" style="display:none">
+						<tr>
+							<td>
+								<form method="post" id="upload" action="cp.php?ac=upload" enctype="multipart/form-data" target="uploadframe" style="background: transparent;">
+									<input type="file" name="attach" style="border: 1px solid #CCC;" />
+									<span id="localfile"></span>
+									<input type="hidden" name="uploadsubmit" id="uploadsubmit" value="true" />
+									<input type="hidden" name="albumid" id="albumid" value="0" />
+									<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+								</form>
+							</td>
+						</tr>
+					</tbody>
+					<tbody id="attachbody"></tbody>
+				</table>
+				<table cellspacing="2" cellpadding="0">
+					<tr>
+						<td>
+							<input type="hidden" name="albumid" id="uploadalbum" value="-1"/>
+							<font color="#02B4AB">*此上传图片将会出现在正文底部，且会出现在微信详情页面头部。</font>
+							<script src="source/script_upload.js" type="text/javascript"></script>
+							<iframe id="uploadframe" name="uploadframe" width="0" height="0" marginwidth="0" frameborder="0" src="about:blank"></iframe>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<table cellspacing="4" cellpadding="4" width="100%" class="infotable" id="uchome-edit-album" style="display:none;">
+		<tr>
+			<th width="100">&nbsp;</th>
+			<td>
+				选择相册: <select name="view_albumid" onchange="picView(this.value)">
+					<option value="none">选择一个相册</option>
+					<option value="0">默认相册</option>
+					<!--{loop $albums $value}-->
+					<option value="$value[albumid]">$value[albumname]</option>
+					<!--{/loop}-->
+				</select> (点击图片可以插入到内容中)
+				<div id="albumpic_body"></div>
+			</td>
+		</tr>
+	</table>
+	<table cellspacing="4" cellpadding="4" width="100%" class="infotable">
+		<tr>
+			<th width="100">&nbsp;</th>
+			<td>
+				<div class="confirm_btn container_12" style="margin-left:-20px;">
+                           <a href="space.php?do=home" class="cancle_btn grid_1">取消</a>
+                        <input type="button" class="btn grid_2" id="debatebutton" onclick="document.getElementById('debatebutton').click();" value="保存发布" class="submit" />
+                      </div>
+			</td>
+		</tr>
+	</table>
+</div>
+</div>
+
+<!--{/if}-->
+
+
+<!--{template footer}-->

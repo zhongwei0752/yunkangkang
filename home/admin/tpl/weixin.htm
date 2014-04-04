@@ -1,0 +1,26 @@
+<!--{template admin/tpl/header}-->
+
+<form method="post" id="batchform" action="admincp.php?ac=weixin">
+	<div class="mainarea">
+	<div class="maininner">
+	<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+	<table cellspacing="3" cellpadding="3">
+		<tr>
+			<th>微信登陆账号名</th><td><input type="text" name="username" ></td>
+			<th>微信登陆密码</th><td><input type="text" name="password" ></td>
+			
+		</tr><br>
+		
+	</table>
+	<input type="hidden" name="cheakid" value="1" />
+	<input type="submit" name="submit" value="录入" class="submit">
+</div>
+</div>
+</form>
+</div>
+</div>
+<div class="side">
+	<!--{template admin/tpl/side}-->
+</div>
+
+<!--{template admin/tpl/footer}-->

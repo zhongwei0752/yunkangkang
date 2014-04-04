@@ -1,0 +1,148 @@
+body {
+background: #F2F2F2;
+}
+.logo, .content, .footer {
+width: 900px;
+margin: 0 auto;
+padding: 0 30px;
+}
+.top {
+padding-top: 25px;
+height: 75px;
+background: #ECECEC;
+border-bottom: 1px solid #D9D9D9;
+}
+#reginfo_a_btn {
+font-size: 14px;
+}
+.xi2, .xi2 a, .xi3 a ,.rfm a{
+color: #F60;
+}
+ 
+	.bm_h {
+padding: 0 10px;
+height: 31px;
+border-top: 0px solid white;
+border-bottom: 0px solid #C2D5E3;
+background: none;
+line-height: 31px;
+white-space: nowrap;
+overflow: hidden;
+}
+.bm {
+border: 0px solid #CDCDCD;
+background: none;
+}
+
+	.suc_botm {
+background: url(../img/bom_cor.png) left bottom no-repeat;
+height: 62px;
+}
+.suc_content {
+height: auto;
+}.suc_content {
+padding-top: 80px;
+height: 630px;
+width: 903px;
+margin: 0 auto;
+}.suc_kuang {
+background: #FDFDFD url(../img/con_bg.png) left bottom repeat-x;
+}
+.hei_513 {
+ 
+border: 1px solid #DADADA;
+border-bottom: none;
+}
+
+.dd_r input {
+display: block;
+float: left;
+}
+.dt_l, .dd_r {
+float: left;
+height: 38px;
+margin-bottom: 12px;
+vertical-align: middle;
+}
+.dd_r input {
+display: block;
+float: left;
+}
+.px {
+display: inline-block;
+height: 20px;
+padding: 8px;
+font-size: 14px;
+border: 1px solid #E3E3E3;
+border-top: 1px solid #CCC;
+width: 252px;
+background: white url(http://www.kizhuo.com/source/plugin/wmff_xiaomidenglu/img/s_bgs.png) 0 -118px repeat-x;
+box-shadow: 0 1px 1px white;
+}
+.sub_login {
+margin: 0 auto;
+width: 130px;
+border: 1px solid #DD621F;
+height: 40px;
+background: url(http://www.kizhuo.com/source/plugin/wmff_xiaomidenglu/img/s_bgs.png) 0 0 repeat-x;
+cursor: pointer;
+}
+.no_bg {
+border: 0 none;
+padding-left: 46px;
+background-color: transparent;
+cursor: pointer;
+display: block;
+}
+
+.sub_login strong {
+width: 130px;
+height: 40px;
+color: white;
+font: 700 16px/40px \5FAE\8F6F\96C5\9ED1,\9ED1\4F53,\6587\6CC9\9A7F\9ED1\4F53;
+}
+.h4_suc {
+margin: 0 0 10px 30px;
+padding-top: 20px;
+font-size: 22px;
+font-weight: bold;
+color: #FF9630;
+}
+.suc_p {
+padding: 0 0 20px 30px;
+border-bottom: 1px dashed #E3E3E3;
+color: #999;
+}
+.rfm th { 
+width: 170px;
+padding-right: 10px;
+font-size: 14px;
+font-weight: bold;
+line-height: 38px;
+text-align: right;
+}
+
+.rfm .p_chk ,.rfm .p_tip{ 
+font-size: 14px;
+line-height: 38px;
+}
+.sub_bg, .input_kuang, .input_b, .sub_login, .mt_login {
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+}
+
+.footer span, .links {
+color: #F60;
+}.footer a {
+color: #F60;
+padding: 0 4px;
+}.footer span {
+margin-left: 4px;
+}.footer {
+text-align: center;
+margin-top: 55px;
+}.links {
+display: inline-block;
+zoom: 1;
+}

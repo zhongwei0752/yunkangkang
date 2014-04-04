@@ -1,0 +1,48 @@
+*{ font-family: 'Microsoft yahei' !important; -webkit-tap-highlight-color: rgba(0, 0, 0 ,0) }
+html,body{ height: 100%; }
+body{ background-color: #EFEFEF; }
+h3{ font-weight: bold; font-size: 18px; padding-top: 4px; padding-bottom: 7px;}
+h4{ margin-left: 93px; font-weight: bold; white-space: nowrap;}
+a{ text-decoration: none; color: black; }
+input{ border: 0; border-radius: 0 !important; -webkit-appearance: none;}
+textarea{ -webkit-appearance: none; border-radius: 0 !important; }
+.itemNav{ position: fixed; top: 0; z-index: 999; background-color: #EFEFEF; line-height: 40px; height: 40px; width: 100%; text-align: center; box-shadow: 1px 1px 2px rgb(150, 150, 150); }
+.itemNav img{ width: 40px; vertical-align: middle; position: absolute; right: 4%; top: 5px;}
+.itemSpan{ margin-left: -20px; }
+.itemSubtitle{ font-size: 12px; display: block; margin-left: 93px; color: #868686; }
+.itemLists{ width: 100%; }
+.itemList div{ border-bottom: 1px solid #EFEFEF; overflow: hidden; min-height: 80px; padding-top: 8px; background-color: #FFFFFF; color: black; }
+.itemList img{ height: 72px; margin-left: 8px; }
+.itemOuterFrame{ height: 100%; width: 100%; margin-top: 40px; background-color: white; }
+.itemInnerFrame{ border-right: 4px solid #83CFE9; width: 98%; overflow: hidden; position: relative; left: 0; background-color: white; }
+.sidebar{ display: none; min-height: 100%; opacity: 0; width: 37.5%; overflow: hidden; position: fixed; top: 40px; right: 0; z-index: 2; background-color: #EFEFEF; }
+.sidebar li div{ height: 22px; text-align: center;padding: 2px 0;/* padding: 10px 0;*/ }
+#menu{ cursor: pointer; }
+.itemContentFrame{ background-color: #EFEFEF; color: #868686;}
+.itemContentList{ padding: 16px 8px;  border-top: 1px solid #DDDDCE; border-bottom: 1px solid #EBEBE7; font-size: 14px; }
+.article{ background-color: white; color: black; }
+.comment_area{ font-size: 14px; background-color: white; height: 49px; padding: 3px 2%; width: 72%; border: 1px solid #DDDDDD; vertical-align: middle; }
+.colour{ color: #83CFE9 !important; }
+.colour2{ color: #B5D79D !important; }
+.selected{ /*margin-left: -22px;*/ margin-left: -10px;}
+.selected:before{ content: ">>"; }
+.btn{ color: white; background-color: #83CFE9; font-size: large; cursor: pointer; }
+.btn:hover{ background-color: rgb(107, 199, 228); }
+.articleBtn, .moreBtn{ height: 40px; width: 94%; margin-left: 3%; }
+.moreBtn{ margin-bottom: 10px; }
+.articleBtn{ width: 96%; margin-left: 2%; }
+.submitBtn{ height: 57px; width: 18%;  vertical-align: middle; }
+.article p{ /*text-indent: 2em;*/ }
+.itemContentSubtitle{ font-size: 13px; color: #999999; }
+.pageSelect{ text-align: center; padding}
+.pageSelect li{ display: inline-block; margin: 0 2%;}
+.wrapperPic{ width: 100%; }
+
+/***8号模板首页返回顶部按钮新增的***/
+#btn_top {
+    position: fixed;
+    width: 50px;
+    bottom: 30px;
+    right: 10px;
+    z-index: 99;
+}

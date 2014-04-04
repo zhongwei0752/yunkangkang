@@ -1,0 +1,110 @@
+<!--{eval $_TPL['titles'] = array('投票');}-->
+<!--{template header}-->
+
+<!--{if !empty($_SGLOBAL[inajax])}-->
+	<div id="space_poll">
+		<h3 class="feed_header">
+			<a href="cp.php?ac=poll" class="r_option" target="_blank">发起投票</a>
+			投票(共 $count 个)</h3>
+		<!--{if $list}-->
+		<ul class="line_list">
+		<!--{loop $list $value}-->
+			<li>
+				<span class="gray r_option">{$value[voternum]}人投票</span>
+				<h4><a href="space.php?uid=$space[uid]&do=poll&pollid=$value[pollid]" target="_blank">$value[subject]</a></h4>
+				<div class="detail">
+				 <!--{loop $value['option'] $val}-->
+					<p><input type="<!--{if $value[multiple]}-->checkbox<!--{else}-->radio<!--{/if}-->" disabled name="poll_$value[pollid]"/> $val</p>
+				 <!--{/loop}-->
+				</div>
+			</li>
+		<!--{/loop}-->
+		</ul>
+		<div class="page">$multi</div>
+		
+		<!--{else}-->
+		<div class="c_form">还没有相关的投票。</div>
+		<!--{/if}-->
+	</div><br>
+<!--{else}-->
+
+<!--{if $space[self]}-->
+
+<div class="content" style="font-size:15px;">
+          
+                 <div class="indexing">
+                  <span><a href="space.php?do=home">首页</a></span>><span>我的投票</span>
+                 </div><!-- end -->
+                 <div class="bread container_12">
+                     <div class="bread_actived grid_1">
+                         我的投票
+                     </div>
+                     
+                     <a href="cp.php?ac=poll" class="btn grid_2">
+                      发起投票
+                     </a>
+</div>	
+
+<!--{else}-->
+<!--{eval 
+	$_TPL['spacetitle'] = "投票";
+	$_TPL['spacemenus'][] = "<a href=\"space.php?uid=$space[uid]&do=$do&view=me\">TA的所有投票</a>";
+}-->
+<!--{template space_menu}-->
+<div class="h_status">按照投票发起时间排序</div>
+<!--{/if}-->
+
+
+<!--{if $searchkey}-->
+<div class="h_status">以下是搜索投票 <span style="color:red;font-weight:bold;">$searchkey</span> 结果列表</div>
+<!--{/if}-->
+	
+<div id="content" style="width: 762px; background: white; border: solid 1px #e3e3e3;">
+	<!--{if $count}-->
+	<div class="poll_list" style="width: 758px; min-height: 782px;">
+		<ul>
+		<!--{loop $list $value}-->
+			<li style="height: 146px; border-bottom: none;">
+				<div class="grid_1" style="width: 138px; height: 138px;">
+						<img style="margin: 20px 0 0 28px; width: 110px; height: 110px;" src="$value[imageurl]"/>
+                </div>
+				<div class="grid_2"  style="width: 500px; margin-left: 20px">
+
+					<h4 style="margin-top: 20px;">
+						<!--{if $value[percredit]}--><span class="poll_reward">+$value[percredit]</span><!--{/if}--><a href="space.php?uid=$value[uid]&do=$do&pollid=$value[pollid]" style="color: #1db8ae; font-size: 18px">$value[subject]</a>
+					</h4>
+					<div class="poll_options">
+						<p class = "mes" style="height: 68px; margin-top: 10px; text-overflow:ellipsis; white-space:nowrap; overflow:hidden;">$value[message]</p>
+						 <p style="font-size: 12px;">
+						 	<span class="gray" ><!--{date('Y-m-d H:i',$value[dateline],1)}--></span>
+						 	<span class="pipe">|</span>
+						 	<a href="space.php?uid=$value[uid]&do=$do&pollid=$value[pollid]#comment">评论($value[replynum])</a>
+						 	<!--{if $_GET[view]=='me'&&$value[expiration]&&$value[expiration]<$_SGLOBAL[timestamp]}-->
+						 	<span class="pipe">|</span>
+						 	<span class="gray">投票已结束</span><!--{if empty($value[summary])}-->&nbsp;<a class="green" href="space.php?uid=$value[uid]&do=$do&pollid=$value[pollid]">去写写投票总结</a><!--{/if}-->
+						 	<!--{/if}-->
+						 </p>
+					</div>
+				</div>
+				<div class="poll_status">
+					<a href="space.php?uid=$value[uid]&do=$do&pollid=$value[pollid]" class="poll_joins pj_<!--{eval echo random(1, 1)}-->" style="margin-top: 30px;color: #999;"><span>$value[voternum]</span>人参与</a> 
+				</div>
+			</li>
+		<!--{/loop}-->
+			
+	</ul>
+	</div>
+	
+	
+	
+	<!--{else}-->
+	<div class="c_form">还没有相关的投票。</div>
+	<!--{/if}-->
+
+
+</div>
+</div>
+<div class="pagination"><ul>$multi</ul></div>
+<!--{/if}-->
+
+<!--{template footer}-->

@@ -1,0 +1,130 @@
+
+<!--{template header}-->
+  <link rel="stylesheet" type="text/css" href="./template/default/style2.css" />
+  <link rel="stylesheet" type="text/css" href="template/default/jquery-mobile-fluid960.min.css">
+    <link rel="stylesheet" type="text/css" href="template/default/style1.css">
+    <link rel="stylesheet" type="text/css" href="template/default/file_beauty.css">
+    <link type='text/css' href='template/default/basic_chosen.css' rel='stylesheet' media='screen' />
+    <link rel="stylesheet" href="./template/default/base.css" />
+    <link rel="stylesheet" href="./template/default/common.css" />
+    <link rel="stylesheet" href="./template/default/nav.css" />
+    <link rel="stylesheet" href="./template/default/bottomWrapper.css" />
+    <link rel="stylesheet" href="./template/default/setItem.css" />
+    <link rel="stylesheet" href="./template/default/set.css" />
+    <script type="text/javascript" src="./source/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="./source/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="./source/set_html_effect.js"></script>
+    <script type="text/javascript" src="./source/set_html_function.js"></script>
+<div class="content" style="font-size:15px;width:800px;">
+                 <div class="bread container_12">
+                     <a href="cp.php?ac=profile" class="link_back_bread grid_3">
+                         实名认证
+                      </a>
+                    <!--{if $zhong1||$_SN[$_SGLOBAL[supe_uid]]=="admin"}--> <a href="cp.php?ac=advance" class="link_back_bread grid_3" >
+                      高级管理
+                     </a><!--{/if}-->
+                     <!--{if $zhong1}--> 
+                     <a href="space.php?do=menuset" class="link_back_bread grid_3">
+                      组件管理
+                     </a>
+                     <!--{/if}-->
+                      <div class="bread_actived grid_1" style="margin-left:10px;">
+                      组件套餐
+                      </div>
+                    
+                 <!--{if $_SCONFIG['namechange']}--><!--{if $zhong1}--><a class="btn grid_2" href="$theurl&namechange=1">修改</a><!--{/if}--><!--{/if}-->
+                 </div><!-- end -->
+                 
+
+
+                <div class="content_detail_wrapper" style="color:#939393;width:800px;">
+                    <div class="post_wrapper">
+                      <div class="setItem" id="setItem1">
+      <img src="./template/default/image/img/title_set01.png" alt="" class="setItem-titlePic" />
+      <div class="setContent" id="set1">
+        <img src="./template/default/image/img/mid_pic_01.png" alt="" class="setContent-pic" />
+        <dl class="setContent-text">
+          <dt class="fb">一经注册开通，免费套餐任你玩</dt>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">企业介绍，</span>详尽企业介绍，品牌强势进驻公众平台。</dd>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">企业动态，</span>动态实时更新，劲爆猛料火线速递。</dd>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">产品介绍，</span>完美图文展示，优质产品吸引更多关注。</dd>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">企业官网，</span>手机品牌官网，行业先驱非您莫属。</dd>
+        </dl>
+      </div>
+      <form action = "space.php?do=menuset&status=taocan" method = "post" name="mianfei">
+      <!--{loop $mianfei $value}-->
+      <input type='hidden' name='$value[menusetid]' value='1' style='width:20px;' />
+    <!--{/loop}-->
+     <a href="javascript:document.mianfei.submit();" class="setButton" id="firstButton"><img src="./template/default/image/img/use_now3.png" alt="" /></a>
+     </form>
+     <br/>
+    </div> <!-- setItem --> 
+
+    <div class="setItem" id="setItem2">
+      <img src="./template/default/image/img/title_set02.png" alt="" class="setItem-titlePic" />
+      <div class="setContent" id="set2">
+        <img src="./template/default/image/img/mid_pic_02.png" alt="" class="setContent-pic" />
+        <dl class="setContent-text">
+          <dt class="fb">完美补充传统官网，企业在移动互联网轻松获得更多口碑</dt>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">企业介绍，</span>详尽企业介绍，品牌强势进驻公众平台。</dd>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">企业动态，</span>动态实时更新，劲爆猛料火线速递。</dd>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">产品介绍，</span>完美图文展示，优质产品吸引更多关注。</dd>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">行业动态，</span>把握行业脉搏，与客户分享最具行业价值信息。</dd>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">成功案例，</span>成功是时间的积累，您的实力谁能置疑？</dd>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">分支机构，</span>罗列所有驻点，客户总能找到身边的您。</dd>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">人才招聘，</span>网罗微信时代人才，轻松开展微招聘。</dd>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">企业官网，</span>海量手机官网模板，改版升级轻松设置。</dd>
+        </dl>
+      </div>
+      <form action = "space.php?do=menuset&id=putong&status=taocan" method = "post" name="putong">
+      <!--{loop $putong $value}-->
+      <input type='hidden' name='$value[menusetid]' value='1' style='width:20px;' />
+    <!--{/loop}-->
+    <a href="javascript:document.putong.submit();" class="setButton" id="secondButton"><img src="./template/default/image/img/buy_now3.png" alt="" /></a>
+     </form>
+     
+     <br/>
+    </div> <!-- setItem --> 
+
+    <div class="setItem"  id="setItem3">
+      <img src="./template/default/image/img/title_set03.png" alt="" class="setItem-titlePic" />
+      <div class="setContent" id="set3">
+        <img src="./template/default/image/img/mid_pic_03.png" alt="" class="setContent-pic" />
+        <dl class="setContent-text">
+          <dt class="fb">摇身一变，微信app轻松获得，更低的推广成本，更高的经济效益。
+                    </dt>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">自定义菜单，</span>微信内置app折叠菜单，更直观，更方便。</dd>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">微信商城，</span>开设微信商城，马上启程新渠道电商之路。</dd>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">焦点推荐，</span>设置醒目焦点内容推荐，锁住客户关注。</dd>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">微信呼叫中心，</span>多层级客服响应处理，客户一呼百应。</dd>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">客户管理中心，</span>沉淀转化优质客户，定点精准开展二次营销。</dd>
+        </dl>
+      </div>
+      <form action = "space.php?do=menuset&id=gaoji&status=taocan" method = "post" name="gaoji">
+      <!--{loop $gaoji $value}-->
+      <input type='hidden' name='$value[menusetid]' value='1' style='width:20px;' />
+    <!--{/loop}-->
+    <a href="javascript:document.gaoji.submit();" class="setButton" id="thirdButton"><img src="./template/default/image/img/buy_now_green5.png" alt="" /></a>
+     </form>
+       
+      <br/>
+    </div> <!-- setItem --> 
+
+    <div class="setItem" id="setItem4">
+      <img src="./template/default/image/img/title_set04.png" alt="" class="setItem-titlePic" />
+      <div class="setContent" id="set4">
+        <img src="./template/default/image/img/mid_pic_04.png" alt="" class="setContent-pic" />
+        <dl class="setContent-text">
+          <dt class="fb">囊括各大领域解决方案，业务服务开展高度契合，聚集品牌口碑，备受推崇。</dt>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">零售行业，</span>通过微信公众账号作为电商入口，将线下每个零售店铺搬到微信公众平台上。新货上架、活动优惠信息，借助朋友圈口碑营销的威力，促进消费。</dd>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">餐饮行业，</span>通过提供分支机构、预约订餐、客户信息统计、会员卡获取特权等功能，最大力度活跃客户，开始全民O2O时代。</dd>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">教育机构，</span>通过预约预订、客户管理、在线调查、咨询留言等功能，实现课程活动预约报名、校内选课、查看课表、课堂互动等功能，结合后台统计功能，合理展开教学安排，实现微时代的信息化管理。</dd>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">个人机构，</span>通过预约预订、客户管理、咨询留言等功能，依赖微信强关系的社交特质，轻松开展私密性个人服务，打造个人服务品牌。</dd>
+          <dd><img src="./template/default/image/img/list_point.png" alt="" /><span class="fb">服务消费，</span>通过分支机构、预约服务、客户信息统计、会员卡获取特权等功能，让用户和商家享受到便捷的服务和管理。</dd>
+        </dl>
+      </div>
+    </div> <!-- setItem --> 
+  </div>
+
+
+<!--{template footer}-->

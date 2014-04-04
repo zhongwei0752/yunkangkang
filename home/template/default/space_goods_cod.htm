@@ -1,0 +1,91 @@
+<!--{eval $_TPL['titles'] = array(货到付款内容);}-->
+<!--{eval $friendsname = array(1 => '仅好友可见',2 => '指定好友可见',3 => '仅自己可见',4 => '凭密码可见');}-->
+<!--{template header}-->
+<!--{if !empty($_SGLOBAL[inajax])}-->
+	<div id="space_blog" class="feed">
+		<h3 class="feed_header">
+			<a href="cp.php?ac=introduce" class="r_option" target="_blank">发布</a>
+		</h3>
+		<!--{if $count}-->
+		<ul class="line_list">
+		<!--{loop $list $value}-->
+			<li>
+				<span class="gray r_option"><!--{date('m-d H:i',$value[dateline],1)}--></span>
+				<h4><a href="space.php?uid=$space[uid]&do=introduce&id=$value[introduceid]" target="_blank" <!--{if $value[magiccolor]}--> class="magiccolor$value[magiccolor]"<!--{/if}-->>$value[subject]</a></h4>
+				<div class="detail">
+					$value[message1]
+				</div>
+			</li>
+		<!--{/loop}-->
+		</ul>
+		<div class="page">$multi</div>
+		<!--{else}-->
+		<div class="c_form">还没有相关的货到付款内容。</div>
+		<!--{/if}-->
+	</div>
+<!--{else}-->
+
+<!--{if $space[self]}-->
+<div class="content" style="font-size:15px;">
+          
+                 <div class="indexing">
+                   <span><a href="space.php?do=home">首页</a></span>><span>货到付款列表</span>
+                 </div><!-- end -->
+                 <div class="bread container_12">
+                     <div class="bread_actived grid_1">
+                         货到付款列表
+                     </div>
+
+                 </div>	
+
+ 
+
+<!--{/if}-->
+		
+<div id="content" style="width:760px;">
+<script type="text/javascript" charset="$_SC[charset]" src="source/script_calendar.js"></script>
+<script language="javascript" type="text/javascript" src="source/script_ajax.js"></script>
+<div class="content_detail_wrapper">
+ <div id="nav" style="margin:20px auto;text-align:center;">
+ <a href="space.php?do=goods&cod=1" style="padding-left:20px;<!--{if $_GET['cod']=='1'}-->color:#02B4AB<!--{/if}-->">未发货</a><a href="space.php?do=goods&cod=2" style="padding-left:20px;<!--{if $_GET['cod']=='2'}-->color:#02B4AB<!--{/if}-->">已发货</a>
+ </div>
+ 		<!--{if $list}-->
+		<!--{loop $list $value}-->
+                     <div class="content_list container_12">
+                         
+                          <div class="grid_2">
+                             <div class="list_test ">
+                                  <a href="space.php?uid=$value[viewuid]&do=$do&id=$value[gid]"><h3><!--{eval $wei = $value['more'];}-->$wei[subject]</h3></a>
+                                  <!--{if $_GET['cod']=='1'}-->
+                                  <a href="cp.php?ac=goods&id=$value[id]&op=delete1&uid=$value[uid]&viewuid=$value[viewuid]&gid=$value[gid]"  style="float:right;font-size:10px;color:red;" id="blog_delete1_$value[id]"  onclick="ajaxmenu(event, this.id)">确认收货</a>
+                                  <!--{/if}-->
+                                  <p>客户名：$value[username]</p><p>购买数量：$value[number]</p><p>客户电话：$value[tel]</p><p>客户地址：$value[place]</p><br/>
+                                  <p class="action_info" style="margin-top:-4px;">
+                                   <a href="space.php?uid=$value[uid]"> <span style="color:color:#AAAAAA;">发布：{$_SN[$value[uid]]}</span></a>
+                                   <!--{if $_GET['cod']=='2'}-->
+                                   <span style="color:color:#AAAAAA;"><!--{date('Y-m-d ',$value[dateline1])}--></span>
+                                   <!--{else}-->
+                                    <span style="color:color:#AAAAAA;"><!--{date('Y-m-d ',$value[dateline])}--></span>
+                                    <!--{/if}-->
+                                  </p>
+                             </div>
+                          </div>
+                     </div><!-- list end -->
+                     <br/>
+                   <!--{/loop}-->
+		<!--{else}-->
+			<div class="c_form">还没有相关的货到付款内容。</div>
+		<!--{/if}-->
+          
+	</div>
+	
+	<div class='pagination'><ul>$multi</ul></div>
+	
+	
+
+</div>
+
+
+<!--{/if}-->
+	
+<!--{template footer}-->

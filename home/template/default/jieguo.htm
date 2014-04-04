@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>喜帖结果</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+    赴宴：
+<!--{loop $ly $value1}-->
+姓名：$value1[username]-电话：$value1[telephone]-人数：$value1[count]<br/>
+<!--{/loop}-->
+<br/>
+祝福：
+<!--{loop $zf $value}-->
+姓名：$value[username]-电话：$value[telephone]-内容：$value[content]<br/>
+<!--{/loop}-->
+</body></html>

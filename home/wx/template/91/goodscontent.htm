@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <title>$wei[subject]</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <link rel="stylesheet" href="template/9/css/expressInfo.css" />
+	<link rel="stylesheet" href="template/9/css/base.css" />
+	<link rel="stylesheet" href="template/9/css/common.css" />
+	<link rel="stylesheet" href="template/9/css/product_content.css" />
+	<link rel="stylesheet" href="template/9/css/pageTitle.css" />
+	<link rel="stylesheet" href="template/9/css/pageComment.css" />
+	<link rel="stylesheet" href="template/9/css/button.css" />
+    <script type="text/javascript" src="template/9/js/jquery-v2.0.2.js"></script>
+    <script type="text/javascript" src="template/9/js/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="template/9/js/detail.js"></script>
+
+    <style type="text/css">
+      #bg,#bg2{ display: none;  position: fixed;  top: 0%;  left: 0%;  width: 100%;
+        height: 100%;  background:url(./template/img/guide_bg.png);
+        z-index:1001;/*  -moz-opacity: 0.7;  opacity:.70;  filter: alpha(opacity=70);*/}
+
+    </style>
+
+
+
+
+
+    <script id="detailTemplate2" type="text/x-jquery-tmpl">
+        <header data-role="header" data-tap-toggle="false" data-theme="none">
+            <div class="time"><!--{BLOCK_TAG_START}-->if industry<!--{BLOCK_TAG_END}-->
+                <p> {{= industry.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if branch<!--{BLOCK_TAG_END}-->
+                <p> {{= branch.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if development<!--{BLOCK_TAG_END}-->
+                <p> {{= development.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if product<!--{BLOCK_TAG_END}-->
+                <p> {{= product.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if introduce<!--{BLOCK_TAG_END}-->
+                <p> {{= introduce.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if cases<!--{BLOCK_TAG_END}-->
+                <p> {{= cases.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if talk<!--{BLOCK_TAG_END}-->
+                <p> {{= branch.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}-->
+                <!--{BLOCK_TAG_START}-->if job<!--{BLOCK_TAG_END}-->
+                <p> {{= job.dateline}}</p>
+                <!--{BLOCK_TAG_START}-->/if<!--{BLOCK_TAG_END}--></div>
+        </header>
+    </script>
+
+
+
+
+</head>
+<body>
+
+<div id="bg" onclick="hideDiv();">
+    <img src="./template/img/guide.png" alt="" style="position:fixed;top:0;right:16px;width:134px;height:97px;">
+</div>
+<div id="bg2" onclick="hideFriendDIv();">
+    <img src="./template/img/guide_firend.png" alt="" style="position:fixed;top:0;right:16px;width:134px;height:97px;">
+</div>
+
+
+
+
+
+<div class="content">
+		<div class="head pt20">
+			<h1 class="cTitle f20">Efekta<sup>TM</sup>学习系统 科技改变英语学习</h1>
+			<div class="cTitle pt15">价格：<strong class="cPrice"> $wei[curprice]</strong>元/年</div>
+			<div class="cTime pt15">
+				<span id="time1" class="time"></span>
+                <span id="countComment" class="fr">评论($wei[replynum])</span>
+				<span id="countRead" class="fr pr5">浏览($wei[viewnum])</span>
+			</div>
+		</div> <!-- head --> 
+
+		<div class="content-text">
+			<!--<img src="http://v5.home3d.cn/home/$home1[imageurl]" alt="" />   -->
+			<h2 class="cTitle f20 pt10">$wei[subject]</h2>
+			<p class="cParagraph pt10 pb10" style="background-color: #ffffff">
+                $wei[message]
+			</p>
+        </div>
+            <!--<h2 class="cTitle f20 pt10">尝试 口语是开口连出来的</h2>
+            <p class="cParagraph pt10 pb10">
+                在培训中心的小班面授课和大班研讨课上与外籍培训师面对面练口语，也可以随时加入24小时不间断的在线的会话课
+            </p>
+        </div> --><!-- content-text -->
+	</div> <!-- content -->
+
+
+<!--{if $wei[taobaourl]}-->
+
+<div class="button myMargin" onclick='gototaobao("$wei[taobaourl]")'>
+    <a href="" class="f20 cWhite" onclick='gototaobao("$wei[taobaourl]")'>购买</a>
+</div>
+
+
+<!--{/if}-->
+
+
+
+	<div class="comment">
+		<div class="commentContainer">
+			<div class="commentPublish">
+				<div class="commentText fl">
+					<textarea id="comment_text_box" placeholder="请写下你的评论..." name="" class="f16"></textarea>
+				</div> <!-- comment_text --> 
+				<a href="#" class="cWhite fr" onclick="cpComment($('#idtype').val(), $('#id').val(), $('#review').val())">发&nbsp表</a>
+			</div> <!-- comment_publish -->
+
+            <ul class = "comment_list" style="">
+                <div id="ajax"></div>
+                <div id="detail-panel"></div>
+            </ul>
+            <br/>
+            <input type = "button" style="border: none;width:100%;margin-top:5px;color: #6b6b6b;background-color: #f0f0f0"
+            onclick="getDetail($('#idtype').val(),$('#id').val(), $('#uid').val(), $('#page').val(), $('#perpage').val());"
+            value = "更多" class = "more_button"  />
+
+
+
+		</div><!-- comment_container --> 
+
+
+        <div class="split">
+            <br />
+        </div><!-- split -->
+
+        <div class="comment_list">
+            <ul>
+                <div id="comment-panel"></div>
+
+            </ul>
+        </div><!-- comment_list -->
+
+
+
+	</div> <!-- comment -->
+
+
+
+<input type="hidden" id="wxkey" name="wxkey" value="$_GET[wxkey]"/>
+<input type="hidden" id="id" name="id" value="$_GET[id]"/>
+<input type="hidden" id="idtype" name="idtype" value="$_GET[idtype]"/>
+<input type="hidden" id="type" name="type" value="$_GET[type]"/>
+<input type="hidden" id="uid" name="uid" value="$_GET[viewuid]"/>
+<input type="hidden" id="page" name="page" value="0"/>
+<input type="hidden" id="perpage" name="perpage" value="5"/>
+
+<script type="text/javascript">
+
+    $(function(){
+        $(".comment_list .commentContainer").css("display","none");
+        $("#detail-panel li span").css({width:"1em",overflow:"hidden",display:"block",textOverflow:"ellipsis",whiteSpace:"nowrap"});
+       /*  $(".dial_btn").mouseover(function(){
+             $(".dial_btn").css("background", "#046fa9");
+         })
+        $(".dial_btn").mouseout(function(){
+            $(".dial_btn").css("background", "#133F5F");
+        })   */
+    })
+
+</script>
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#buttonBuy").click(function(){
+            $(".expressInfo").fadeIn();
+        });
+
+        //点击表格外的地方时消失
+        $(".expressInfo").click(function(){
+            $(".expressInfo").fadeOut();
+        });
+
+        //阻止事件冒泡
+        $(".formContainer").click(function(event){
+            event.stopPropagation();
+        });
+
+        $("#buttonBuy1").click(function(){
+            $(".expressInfo1").fadeIn();
+        });
+
+        //点击表格外的地方时消失
+        $(".expressInfo1").click(function(){
+            $(".expressInfo1").fadeOut();
+        });
+
+        $("#buttonSubmit").click(function(){
+            $(".expressInfo").fadeOut();
+        });
+        //阻止事件冒泡
+        $(".formContainer1").click(function(event){
+            event.stopPropagation();
+        });
+
+    });
+
+</script>
+
+<script>
+
+    function gototaobao(url){
+        window.open(url);
+    }
+</script>
+
+<script type="text/javascript" charset="utf-8">
+    function showDIv(){
+        document.getElementById('bg').style.display = "block";
+    }
+    function hideDiv(){
+        document.getElementById('bg').style.display = "none";
+    }
+    function showFriendDIv(){
+        document.getElementById('bg2').style.display = "block";
+    }
+    function hideFriendDIv(){
+        document.getElementById('bg2').style.display = "none";
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" charset="utf-8">
+    function showDIv(){
+        document.getElementById('bg').style.display = "block";
+    }
+    function hideDiv(){
+        document.getElementById('bg').style.display = "none";
+    }
+    function showFriendDIv(){
+        document.getElementById('bg2').style.display = "block";
+    }
+    function hideFriendDIv(){
+        document.getElementById('bg2').style.display = "none";
+    }
+
+
+    $(document).ready(function () {
+        $("#submit").click(function () {
+
+            if($("#username").val()==""||$("#tel").val()==""||$("#place").val()==""||$("#number").val()==""){
+                alert("邮寄信息中存在空值")
+            }else{
+                $.ajax({
+                    type: "POST",
+                    url: "wx.php?do=upload",
+                    data: "uid="+$('#uid').val()+"&gid="+$('#gid').val()+" &viewuid="+$('#viewuid').val()+" &moblieclicknum="+$('#moblieclicknum').val()+"&wxkey="+$('#wxkey').val()+"&username="+$('#username').val()+"&tel="+$('#tel').val()+"&number="+$('#number').val()+"&place="+$('#place').val()+"&buy=1",//提交表单，相当于CheckCorpID.ashx?ID=XXX
+                    async: true,
+                    success: function (data) {
+                        $("#submit").attr("disabled", true);
+                        $("#zhong").html("你已提交订单，若想继续下单，请刷新页面");
+                        $(".expressInfo").fadeOut();
+                        $('#ajax').append("<li><span style='padding-right:40px;'>"+$('#username').val()+"</span>购买数:"+$('#number').val()+"<p style='float:right;'>现在</p><br/></li>");//输出提交的表表单
+                    }  //操作成功后的操作！msg是后台传过来的值
+                });
+            }
+        });
+    });
+</script>
+
+<div class="expressInfo">
+    <div class="formContainer bc tc">
+        <form method="post" action="wx.php?do=upload" name="buyform">
+            <h1 id="formTitle">邮寄信息</h1>
+            <input type="text" placeholder="姓名" id="username" name="username" value="$_COOKIE[uchome_username]" class="inputContainer" />
+            <br />
+            <input type="text" placeholder="电话"id="tel" name="tel" value="$_COOKIE[uchome_tel]" class="inputContainer" />
+            <br />
+            <input type="text" placeholder="购买数量" id="number" name="number" value="$_COOKIE[uchome_number]" class="inputContainer" />
+            <br />
+            <textarea  name="place" rows="3" class="inputContainer" id="place"  placeholder="地址" >$_COOKIE[uchome_place]</textarea>
+            <br />
+            <div id="zhong">
+                <input type="button" id="submit" class="buttonSubmit"  value="提交">
+                <input type="button" id="buttonSubmit"  class="buttonSubmit" style="margin-left:30px;" value="取消">
+            </div>
+            <input type="hidden" id="uid" name="uid" value="$_SGLOBAL['supe_uid']"/>
+            <input type="hidden" id="gid" name="gid" value="$_GET[id]"/>
+            <input type="hidden" id="viewuid" name="viewuid" value="$_GET[viewuid]"/>
+            <input type="hidden" name="buy" value="1">
+            <input type="hidden" id="wxkey" name="wxkey" value="$_GET[wxkey]"/>
+    </div> <!-- formContainer -->
+    </form>
+</div> <!-- expressInfo -->
+
+<div class="expressInfo1">
+    <div class="formContainer1 bc tc">
+        <form method="post" action="wx.php?do=upload">
+            <h1 id="formTitle">密码确认</h1>
+            <input type="text" placeholder="密码" name="password"  class="inputContainer" />
+            <br />
+
+            <input type="submit" class="buttonSubmit" value="提交">
+            <input type="hidden" id="uid" name="uid" value="$_GET[uid]"/>
+            <input type="hidden" id="gid" name="gid" value="$_GET[id]"/>
+            <input type="hidden" id="viewuid" name="viewuid" value="$_GET[viewuid]"/>
+            <input type="hidden" name="moblieclicknum" value="$_GET[moblieclicknum]">
+            <input type="hidden" name="password1" value="1">
+            <input type="hidden" id="wxkey" name="wxkey" value="$_GET[wxkey]"/>
+    </div> <!-- formContainer -->
+    </form>
+</div> <!-- expressInfo -->
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!--{eval $_TPL['titles'] = array('辩论');}-->
+<!--{eval $_TPL['searchfriend']=1;}-->
+
+<!--{template header}-->
+
+<!--{if !empty($_SGLOBAL[inajax])}-->
+	<div id="space_blog" class="feed">
+		<h3 class="feed_header">
+			<a href="cp.php?ac=debate" class="r_option" target="_blank">发起辩论</a>
+		</h3>
+		<!--{if $count}-->
+		<ul class="line_list">
+		<!--{loop $list $value}-->
+			<li>
+				<span class="gray r_option"><!--{date('m-d H:i',$value[dateline],1)}--></span>
+				<h4><a href="space.php?uid=$space[uid]&do=debate&id=$value[debate]" target="_blank" <!--{if $value[magiccolor]}--> class="magiccolor$value[magiccolor]"<!--{/if}-->>$value[subject]</a></h4>
+				<div class="detail">
+					$value[message1]
+				</div>
+			</li>
+		<!--{/loop}-->
+		</ul>
+		<div class="page">$multi</div>
+		<!--{else}-->
+		<div class="c_form">还没有相关的辩论。</div>
+		<!--{/if}-->
+	</div>
+<!--{else}-->
+
+<!--{if $space[self]}-->
+<div class="content" style="font-size:15px;">
+          
+                 <div class="indexing">
+                   <span><a href="space.php?do=home">首页</a></span>><span>大擂台</span>
+                 </div><!-- end -->
+                 <div class="bread container_12">
+                     <div class="bread_actived grid_1">
+                         我的辩论
+                     </div>
+                     <a href="cp.php?ac=debate" class="btn grid_2">
+                      发起辩论
+                     </a>
+                 </div>	
+
+<!--{/if}-->
+		
+<div id="content" style="width:760px;">
+
+<div class="content_detail_wrapper">
+ 		<!--{if $list}-->
+		<!--{loop $list $value}-->
+	     	 <div class="content_list container_12">
+	              <div class="grid_1">
+	                   	<!--{if $value[image1url]}--><img src="$value[image1url]" class="list_pic" style="width:110px;height:110px;">
+	                   	<!--{else}--><img src="image/h_pic.jpg" class="list_pic" style="width:110px;height:110px;"><!--{/if}-->
+	              </div>
+	              <div class="grid_2">
+	                 <div class="list_test ">
+	                      <a href="space.php?uid=$value[uid]&do=$do&id=$value[debateid]"><h3>$value[subject]</h3></a>
+	                      <p style="height: 54px;overflow: hidden;width: 560px;word-wrap: break-word;text-overflow:ellipsis;font-size:15px;">$value[message]</p><br/>
+	                      <p class="action_info" style="margin-top:-4px;">
+	                       <a href="space.php?uid=$value[uid]"> <span style="color:color:#AAAAAA;">发布：{$_SN[$value[uid]]}</span></a>
+	                        <!--{if $value[viewnum]}--><a href="space.php?uid=$value[uid]&do=$do&id=$value[debateid]"><span style="color:color:#AAAAAA;">阅读: ($value[viewnum])</span></a><!--{else}--><span style="color:color:#AAAAAA;">阅读: (0)</span><!--{/if}-->
+	                        <!--{if ($value['replynum']=$value['obreplynum']+$value['rereplynum'])}--><a href="space.php?uid=$value[uid]&do=$do&id=$value[debateid]#comment"><span style="color:color:#AAAAAA;">评论: ($value['replynum'])</span></a><!--{else}--><span>评论:(0)</span><!--{/if}--><span style="color:color:#AAAAAA;"><!--{date('Y-m-d',$value[dateline])}--></span>
+	                      </p>
+	                 </div>
+	              </div>
+	         </div><!-- list end -->
+	         <br/>
+	       <!--{/loop}-->
+		<!--{else}-->
+			<div class="c_form">还没有相关的辩论。</div>
+		<!--{/if}-->
+          
+	</div>
+	
+	<div class='pagination'><ul>$multi</ul></div>
+	
+	
+
+</div>
+
+
+<script>
+function fuidgoto(fuid) {
+	window.location.href = "space.php?do=debate&view=we&fuid="+fuid;
+}
+</script>
+<!--{/if}-->
+	
+<!--{template footer}-->

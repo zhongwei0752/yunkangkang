@@ -1,0 +1,103 @@
+* {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	outline: none;
+}
+
+body {
+	font-family: 'Microsoft yahei' !important;
+	background-color: #F0F0F0;
+}
+
+h1 {
+	font-size: 1.2em;
+	color: #C4568E;
+}
+
+p, form {
+	color: #666;
+	line-height: 1.5em;
+}
+
+form {
+	width: 100%;
+	background-color: #fff;
+	margin-bottom: 10px;
+}
+
+form>table {
+	width: 100%;
+	border: solid #ccc 1px;
+	border-collapse: collapse;
+}
+
+.my_td {
+	border: solid #ccc 1px;
+	border-collapse: collapse;
+	margin: 0;
+	padding-left: 5%;
+}
+
+.my_th {
+	border: solid #ccc 1px;
+	border-collapse: collapse;
+	margin: 0;
+}
+
+td>input {
+	border: none;
+	font-size: 1em;
+	font-family: 'Microsoft yahei' !important;
+	padding: 0;
+	color: #666;
+	width: 50%;
+}
+
+tr {
+	height: 40px;
+}
+
+th {
+	width: 25%;
+}
+
+textarea {
+	border: none;
+	width: 98%;
+}
+
+#submit {
+	background-color: #5A569B;
+	border: none;
+	width: 100%;
+	height: 40px;
+	font-size: 1em;
+	color: #fff;
+}
+
+select {
+	border: none;
+	font-size: 0.9em;
+	width: 50%;
+	-webkit-appearance: none;
+	background-color: #fff;
+	color: #666;
+}
+
+.one_col {
+	width: 50%;
+}
+
+td>img {
+	width: 15px;
+	float: right;
+	padding-top: 9px;
+	padding-right: 10px;
+}
+
+#pay_way_td {
+	width: 55%;
+}
+
+#submit:hover {
+	background-color: #444E78;
+}

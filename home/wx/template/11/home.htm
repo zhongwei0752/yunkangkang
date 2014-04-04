@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<link rel = "stylesheet" href = "./template/11/css/base.css" />
+		<link rel = "stylesheet" href = "./template/11/css/common.css" />
+		<link rel = "stylesheet" href = "./template/11/css/page.css" />
+		<script type="text/javascript" src = "./template/11/js/jquery-v2.0.2.js"></script>
+		<script type="text/javascript" src = "./template/11/js/main.js"></script>
+        <title>$home1[subject]</title>
+	</head>
+	<body>
+		<div class = "indexFrame">
+			<div class = "wrapperPic">
+				<img src = "http://v5.home3d.cn/home/$home1[imageurl]" class = "w vb" />
+			</div>
+
+            <!--注意各个tr标签的id都与相关的页面跳转联系起来-->
+
+             <div class="main_menu" style="margin-bottom: 20px">
+                 <!--{loop $zhongwei $value}-->
+                 <!--{if  $value[menusetid]=='19'||$value[menusetid]=='25'||$value[menusetid]=='225'}-->
+                 <div class="menu_choice blue" onclick="location.href= 'wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]'">
+                 <!--{elseif  ($value[menusetid]=='16')||($value[menusetid]=='26')||($value[menusetid]=='226')}-->
+                  <div class="menu_choice lightBlue" onclick="location.href= 'wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]'">
+                  <!--{elseif  ($value[menusetid]=='14')||($value[menusetid]=='27')||($value[menusetid]=='227')}-->
+                  <div class="menu_choice orange" onclick="location.href= 'wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]'">
+                  <!--{elseif  ($value[menusetid]=='15')||($value[menusetid]=='28')||($value[menusetid]=='228')}-->
+                  <div class="menu_choice green" onclick="location.href= 'wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]'">
+                  <!--{elseif  ($value[menusetid]=='17')||($value[menusetid]=='223')||($value[menusetid]=='229')}-->
+                  <div class="menu_choice yellow" onclick="location.href= 'wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]'">
+                  <!--{elseif  ($value[menusetid]=='18')||($value[menusetid]=='221')||($value[menusetid]=='230')}-->
+                  <div class="menu_choice purple" onclick="location.href= 'wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]'">
+                  <!--{elseif  ($value[menusetid]=='20')||($value[menusetid]=='222')}-->
+                  <div class="menu_choice pink" onclick="location.href= 'wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]'">
+                  <!--{else}-->
+                  <div class="menu_choice deepBlue" onclick="location.href= 'wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]'">
+                  <!--{/if}-->
+                     <!--{if $bac['moblieclicknum']=='1'||$bac['moblieclicknum']=='0'}-->
+                     <img src="http://v5.home3d.cn/home/wx/template/img/$value[icon]" alt="" />
+                     <!--{else}-->
+                     <img src="http://v5.home3d.cn/home/wx/template/$bac['moblieclicknum']/img/$value[icon]" alt="" />
+                     <!--{/if}-->
+                     <div class = "menu_choice_word">$value[subject]</div>
+                 </div>
+
+
+                 <!--{/loop}-->
+                 <!--{loop $zhongwei1 $value}-->
+                      <!--{if  $value[menusetid]=='19'||$value[menusetid]=='25'||$value[menusetid]=='225'}-->
+                      <div class="menu_choice blue" onclick="location.href= 'wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]'">
+                          <!--{elseif  ($value[menusetid]=='16')||($value[menusetid]=='26')||($value[menusetid]=='226')}-->
+                          <div class="menu_choice lightBlue" onclick="location.href= 'wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]'">
+                              <!--{elseif  ($value[menusetid]=='14')||($value[menusetid]=='27')||($value[menusetid]=='227')}-->
+                              <div class="menu_choice orange" onclick="location.href= 'wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]'">
+                                  <!--{elseif  ($value[menusetid]=='15')||($value[menusetid]=='28')||($value[menusetid]=='228')}-->
+                                  <div class="menu_choice green" onclick="location.href= 'wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]'">
+                                      <!--{elseif  ($value[menusetid]=='17')||($value[menusetid]=='223')||($value[menusetid]=='229')}-->
+                                      <div class="menu_choice yellow" onclick="location.href= 'wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]'">
+                                          <!--{elseif  ($value[menusetid]=='18')||($value[menusetid]=='221')||($value[menusetid]=='230')}-->
+                                          <div class="menu_choice purple" onclick="location.href= 'wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]'">
+                                              <!--{elseif  ($value[menusetid]=='20')||($value[menusetid]=='222')}-->
+                                              <div class="menu_choice pink" onclick="location.href= 'wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]'">
+                                                  <!--{else}-->
+                                                  <div class="menu_choice deepBlue" onclick="location.href= 'wx.php?do=feed&uid=$_GET[uid]&idtype=$value[english]'">
+                                                      <!--{/if}-->
+                     <!--{if $bac['moblieclicknum']=='1'||$bac['moblieclicknum']=='0'}-->
+                     <img src="http://v5.home3d.cn/home/wx/template/img/$value[icon]" alt="" />
+                     <!--{else}-->
+                     <img src="http://v5.home3d.cn/home/wx/template/$bac['moblieclicknum']/img/$value[icon]" alt="" />
+                     <!--{/if}-->
+                     <div class = "menu_choice_word">$value[subject]</div>
+                 </div>
+
+                 <!--{/loop}-->
+             </div>
+
+
+
+
+
+
+		</div>
+	</body>
+</html>

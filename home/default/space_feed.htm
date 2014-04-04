@@ -1,0 +1,143 @@
+<!--{if empty($_TPL['getmore'])}-->	
+<!--{eval $_TPL['titles'] = array('首页');}-->
+<!--{template header}-->
+<style type="text/css">
+.navbar-inner .grid_4 a img{max-width: 40px;}
+</style>
+<div id="content" style="width:762px;margin-left:20px;margin-top:10px;">
+
+<!--{if $space['uid'] && $space[self]}-->
+	<table cellpadding="0" cellspacing="0" border="0" width="100%">
+		<tr>
+			<td valign="top" width="150">
+				<div class="ar_r_t"><div class="ar_l_t"><div class="ar_r_b"><div class="ar_l_b"><a href="cp.php?ac=avatar"><!--{avatar($_SGLOBAL[supe_uid],middle)}--></a></div></div></div></div>
+			</td>
+			<td valign="top">
+				<h3 class="index_name" style="margin-left:20px;border:0px;">
+						<a  href="space.php?uid=$space[uid]" style="color:#999;font-size:18px;"<!--{eval g_color($space[groupid]);}--> >{$_SN[$space[uid]]}</a>
+					
+					<span style="color:#43B8B0;">VIP</span>
+				</h3>
+					<br/>
+					 <div class="company_avata_box container_12"  style="margin-top:-30px;">
+                   <div class="grid_2">
+                       <h5>当前状态:<!--{if $_SGLOBAL[session][magichidden]}-->当前隐身<!--{else}-->在线<!--{/if}--></h5>
+                       <h5 style="margin-top:-10px;">已有$space[viewnum]人访问,$space[experience]个信用</h5>
+                       <a href="cp.php?ac=profile" style="margin-top:20px;" class="company_setting">企业设置</a>
+                   </div>
+                 </div>
+						
+					
+				
+				
+				
+			
+
+				
+			</td>
+		</tr>
+	</table>
+
+	
+	<!--{if $space[allnum]}-->
+	<div class="mgs_list">
+		<!--{if $space[namestatusnum]}--><div><img src="image/icon/profile.gif" alt="" /><a href="admincp.php?ac=space&perpage=20&namestatus=0&searchsubmit=1"><strong>$space[namestatusnum]</strong> 个待认证用户</a></div><!--{/if}-->
+
+	</div>
+	<!--{/if}-->
+	 <div style="width:100%;background:#C2C2C2;height:1px;width:100%;margin:0px 0 30px 0;"></div>
+                <div class="container_12 index_assembly_boxes">
+                	<!--{if $myself}-->
+					<!--{loop $myself $value}-->
+					
+                    <div class="grid_6">
+                        <div class="index_assembly_box">
+                            <div class="assembly_title">
+                                   <span class="title">$value[subject]</span>
+                             </div>
+                             <div class="assembly_info">
+                                <img src="$value[image1url]" style="width:120px;height:120px;">
+                                
+                                <h5 style="padding-top: 20px;">文章数：$a[$value['menusetid']] 篇</h5>
+                                <h5>浏览量：<!--{if $b[$value['menusetid']]}-->$b[$value['menusetid']]<!--{else}-->0<!--{/if}-->次</h5>
+                                <h5>评论数：<!--{if $c[$value['menusetid']]}-->$c[$value['menusetid']]<!--{else}-->0<!--{/if}-->条</h5>
+                                <h5>有效期至：<!--{if $value[money]}--><!--{date('Y-m-d H:i:s',$value[endtime])}--><!--{else}-->长期<!--{/if}--></h5>
+                                <a href="cp.php?ac=$value[english]" class="quick_post">快速发布</a>
+                             </div>
+                        </div>
+                    </div><!-- end -->   
+                      <!--{/loop}--> 
+                      <!--{/if}-->     
+                    </div>
+                    </div>                                                         
+
+
+
+	
+		
+<!--{/if}-->	
+
+	
+	
+	
+	
+
+	
+
+	
+
+</div>
+<!--/content-->
+
+
+
+
+	
+	
+
+	
+
+	
+
+	
+
+<script type="text/javascript">
+
+	var next = $start;
+	function feed_more() {
+		var x = new Ajax('XML', 'ajax_wait');
+		var html = '';
+		next = next + $perpage;
+		x.get('cp.php?ac=feed&op=get&start='+next+'&view=$_GET[view]&appid=$_GET[appid]&icon=$_GET[icon]&filter=$_GET[filter]&day=$_GET[day]', function(s){
+			html = '<h4 class="feedtime">以下是新读取的动态</h4>' + s;
+			$('feed_div').innerHTML += html;
+		});
+	}
+
+	function filter_more(id) {
+		if($('feed_filter_div_'+id).style.display == '') {
+			$('feed_filter_div_'+id).style.display = 'none';
+			$('feed_filter_notice_'+id).style.display = '';
+		} else {
+			$('feed_filter_div_'+id).style.display = '';
+			$('feed_filter_notice_'+id).style.display = 'none';
+		}
+	}
+
+	function close_feedbox() {
+		var x = new Ajax();
+		x.get('cp.php?ac=common&op=closefeedbox', function(s){
+			$('feed_box').style.display = 'none';
+		});
+	}
+	
+	var elems = selector('li[class~=magicthunder]', $('feed_div')); 
+	for(var i=0; i<elems.length; i++){		
+		magicColor(elems[i]); 
+	}
+</script>
+
+<!--{eval my_checkupdate();}-->
+<!--{eval my_showgift();}-->
+<!--{template footer}-->
+<!--{/if}-->
